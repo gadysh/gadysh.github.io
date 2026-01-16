@@ -185,6 +185,8 @@ p {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .nav-container {
