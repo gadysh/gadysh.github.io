@@ -69,47 +69,38 @@ function initStaggeredReveals() {
         });
     });
 
-    // כרטיסי Bento Grid - Stagger משמעותי
-    ScrollTrigger.batch('.glass-card', {
+    // כרטיסי Bento Grid - Stagger
+    ScrollTrigger.batch('.clean-card', {
         start: 'top 85%',
         onEnter: batch => {
             gsap.to(batch, {
                 opacity: 1,
                 y: 0,
-                stagger: 0.15,
-                duration: 0.6,
-                ease: 'power3.out',
+                stagger: 0.1,
+                duration: 0.5,
+                ease: 'power2.out',
                 overwrite: true
             });
         },
         onLeaveBack: batch => {
             gsap.to(batch, {
                 opacity: 0,
-                y: 50,
+                y: 30,
                 overwrite: true
             });
         }
     });
 
-    // הגדרה התחלתית לכרטיסים שאנחנו רוצים להנפיש
-    gsap.set('.glass-card', { opacity: 0, y: 50 });
+    // הגדרה התחלתית
+    gsap.set('.clean-card', { opacity: 0, y: 30 });
 }
 
 /**
- * אפקט עקיבה אחרי העכבר לכרטיסי זכוכית
- * מוסיף זוהר (Glow) שעוקב אחרי העכבר
+ * Clean Logic for Hover (CSS handles most, JS for subtle polish if needed)
  */
 function initGlassHoverEffects() {
-    document.querySelectorAll('.glass-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
+    // Removed heavy glass mouse tracking for cleaner enterprise feel
+    // CSS :hover is sufficient for this style
 }
 
 // Smooth Scroll (אופציונלי - אם רוצים תחושה חלקה מלאה)

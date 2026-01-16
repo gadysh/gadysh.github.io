@@ -4,246 +4,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="פתרונות AI מותאמים אישית לארגונים בישראל. ליווי צמוד, בניית POC והטמעה מלאה.">
-    <meta name="keywords" content="AI ארגוני, בינה מלאכותית, אוטומציה, POC, הטמעת AI">
+    <title>PowOrg - אוטומציה ארגונית חכמה</title>
+    <meta name="description" content="הפכו תהליכים ידניים לאוטומטיים בעזרת AI Agents. הטמעה ארגונית בטוחה ומפוקחת.">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="PowOrg - AI ארגוני עם ליווי POC והטמעה">
-    <meta property="og:description" content="פתרונות AI מותאמים אישית לארגונים. ליווי, POC והטמעה מלאה.">
-    <meta property="og:image" content="/assets/img/og-image.png">
-    <meta property="og:type" content="website">
-
-    <title>PowOrg - AI ארגוני עם ליווי POC והטמעה</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
-
-    <!-- Google Fonts - Heebo -->
+    <!-- Fonts: Urbanist + Heebo (fallback) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Urbanist:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
 
-    <!-- Marked.js -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
-
-    <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/ScrollToPlugin.min.js"></script>
 </head>
 
 <body>
 
-    <!-- Navigation -->
+    <!-- 1. Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="/" class="nav-brand">PowOrg</a>
-
-            <button class="nav-toggle" aria-label="תפריט ניווט">☰</button>
-
+            <button class="nav-toggle">☰</button>
             <ul class="nav-menu">
-                <li><a href="#hero" class="nav-link">הבית</a></li>
+                <li><a href="#hero" class="nav-link">בית</a></li>
                 <li><a href="#process" class="nav-link">התהליך</a></li>
-                <li><a href="#use-cases" class="nav-link">מקרי שימוש</a></li>
-                <li><a href="/pages/poc.html" class="nav-link">POC</a></li>
+                <li><a href="#use-cases" class="nav-link">פתרונות</a></li>
                 <li><a href="/pages/security.html" class="nav-link">אבטחה</a></li>
-                <li><a href="#contact" class="nav-link btn-secondary"
-                        style="padding: 0.5rem 1.5rem; border-radius: 50px;">צור קשר</a></li>
+                <li><a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; color: white;">צור קשר</a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- 2. Hero Section -->
     <section id="hero">
-        <div class="hero-bg-img"></div>
-        <div class="hero-overlay"></div>
+        <!-- Background Image (Generated 3D) -->
+        <div class="hero-visual-bg"></div>
 
         <div class="container"
-            style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; min-height: 80vh;">
-
-            <!-- Left: Visual (On Desktop) -->
-            <div style="display: none; height: 100%; align-items: center; justify-content: center;"
-                id="hero-visual-desktop">
-                <!-- Can place 3D element here later, for now keeping clear for background visibility -->
-            </div>
-
-            <!-- Right: Content -->
-            <div class="hero-content">
-                <span class="hero-tag">AI Automation for Enterprise</span>
-                <h1 class="hero-title">
-                    אוטומציה ארגונית ש<span class="text-gradient">באמת עובדת</span>
+            style="position: relative; z-index: 10; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;">
+            <!-- Content (Right) -->
+            <div>
+                <div class="tag-clean"
+                    style="margin-bottom: 1.5rem; background: #EFF6FF; color: #2563EB; border: none;">
+                    Enterprise AI Automation
+                </div>
+                <h1>
+                    תנו לאייג'נטים לעבוד.<br>
+                    <span style="color: var(--text-muted); font-weight: 500;">אתם תפקחו מלמעלה.</span>
                 </h1>
-                <p>
-                    אנחנו לא עוד כלי ענן גנרי. PowOrg בונים אתכם פתרונות AI מקצה לקצה:
-                    ממיפוי הצרכים, דרך בניית POC מהיר, ועד להטמעה מלאה ומאובטחת בארגון.
+                <p style="margin-bottom: 2.5rem; max-width: 600px;">
+                    אנחנו מטמיעים סוכני AI חכמים בתוך מערכות הארגון הקימות שלכם.
+                    העובדים מפסיקים לבזבז זמן על רוטינות והופכים למנהלי תהליכים.
+                    יעילות, אבטחה, ושקט תעשייתי.
                 </p>
 
-                <div class="hero-cta-group">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="#contact" class="btn btn-primary">
-                        קבעו פגישת אפיון
-                        <span style="font-size: 1.2em;">→</span>
+                        בדיקת התאמה לארגון
                     </a>
                     <a href="#use-cases" class="btn btn-secondary">
-                        ראו דוגמאות
+                        צפו בדוגמאות
                     </a>
                 </div>
 
-                <div style="margin-top: 3rem; display: flex; gap: 2rem; opacity: 0.7; font-size: 0.9rem;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <img src="/assets/icons/check.svg" style="width: 20px;"> POC תוך 14 יום
+                <div style="margin-top: 3rem; display: flex; gap: 2rem; font-size: 0.9rem; color: var(--text-muted);">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="/assets/icons/check.svg" style="width: 18px; opacity: 0.6;"> התממשקות ל-ERP/CRM
                     </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <img src="/assets/icons/shield.svg" style="width: 20px;"> אבטחה בסטנדרט בנקאי
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="/assets/icons/shield.svg" style="width: 18px; opacity: 0.6;"> On-Prem / VPC
                     </div>
                 </div>
             </div>
 
+            <!-- Visual Placeholder (Left) - keeps space for the bg image visual part -->
+            <div></div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section id="process" class="section-spacer" style="position: relative; overflow: hidden;">
-        <img src="/assets/img/glass-abstract.png" alt="" aria-hidden="true"
-            style="position: absolute; top: 10%; left: -150px; width: 600px; opacity: 0.5; pointer-events: none; z-index: 0; animation: float 18s ease-in-out infinite;">
-        <div class="container" style="position: relative; z-index: 1;">
-            <h2 class="section-title">איך זה עובד?</h2>
-            <p class="section-desc">תהליך מובנה ומקצועי שמבטיח תוצאות</p>
-
-            <!-- Will be populated by JS from Markdown -->
-            <div id="process-content"></div>
-        </div>
-    </section>
-
-    <!-- Use Cases Section (Bento Grid) -->
-    <section id="use-cases" class="section-spacer">
+    <!-- 3. Process Section -->
+    <section id="process">
         <div class="container">
-            <div style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 3rem;">
+            <div class="section-head">
+                <h2>איך עובד התהליך?</h2>
+                <p>בלי זעזועים לארגון. הטמעה מדורגת ובטוחה.</p>
+            </div>
+            <!-- Markdown Content Loaded Here -->
+            <div id="process-content" class="bento-grid-clean"></div>
+        </div>
+    </section>
+
+    <!-- 4. Use Cases Section -->
+    <section id="use-cases">
+        <div class="container">
+            <div class="section-head"
+                style="text-align: right; max-width: 100%; display: flex; justify-content: space-between; align-items: end;">
                 <div>
-                    <h2 class="section-title" style="text-align: right; margin: 0;">מקרי שימוש</h2>
-                    <p style="margin: 0; color: var(--accent-cyan);">פתרונות שכבר רצים בארגונים</p>
+                    <h2>פתרונות שכבר עובדים</h2>
+                    <p>סוכנים שחוסכים אלפי שעות עבודה בחודש</p>
                 </div>
+                <a href="#contact" class="btn btn-link">כל הפתרונות ←</a>
             </div>
 
-            <div class="bento-grid" id="use-cases-gallery">
-                <!-- JS will populate -->
+            <div id="use-cases-gallery" class="bento-grid-clean">
+                <!-- JS Populated -->
             </div>
         </div>
     </section>
 
-    <!-- Security Section -->
-    <section id="security" class="section-spacer">
+    <!-- 5. Security & Trust -->
+    <section id="security">
         <div class="container">
-            <div class="glass-card"
-                style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 4rem;">
-                <div>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">אבטחה ללא פשרות</h2>
-                    <p>
-                        המידע שלכם הוא הנכס היקר ביותר. אנחנו מציעים פריסה גמישה:
-                        On-Premise מלא, ענן פרטי, או היברידי. הכל תחת תקני האבטחה המחמירים ביותר.
+            <div class="clean-card"
+                style="flex-direction: row; align-items: center; justify-content: space-between; background: linear-gradient(to left, #ffffff, #F3F4F6);">
+                <div style="flex: 1; padding: 1rem;">
+                    <div class="icon-box-clean" style="background: white;">
+                        <img src="/assets/icons/lock.svg" style="opacity: 1;">
+                    </div>
+                    <h2>אבטחה בראש סדר העדיפויות</h2>
+                    <p style="margin-bottom: 2rem;">
+                        אנחנו מבינים Enterprise. המידע לא יוצא החוצה לאימון מודלים.
+                        הטמעה בתוך הרשת הארגונית, ניהול הרשאות מלא, ולוגים מפורטים.
                     </p>
-
-                    <ul
-                        style="list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
-                        <li style="display: flex; gap: 1rem; align-items: center;">
-                            <div
-                                style="width: 24px; height: 24px; background: var(--accent-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">
-                                ✓</div>
-                            הצפנה מקצה לקצה
-                        </li>
-                        <li style="display: flex; gap: 1rem; align-items: center;">
-                            <div
-                                style="width: 24px; height: 24px; background: var(--accent-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">
-                                ✓</div>
-                            ציות ל-GDPR ותקני פרטיות
-                        </li>
-                    </ul>
-
-                    <a href="/pages/security.html" class="btn btn-secondary">פרטים טכניים מלאים</a>
+                    <a href="/pages/security.html" class="btn btn-secondary">סקירת אבטחה טכנית</a>
                 </div>
-
-                <div style="position: relative;">
-                    <img src="/assets/icons/shield.svg" style="width: 100%; opacity: 0.2; transform: rotate(-15deg);">
-                    <div
-                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                        <div style="font-size: 5rem; font-weight: 900; color: var(--accent-cyan);">100%</div>
-                        <div>שליטה במידע</div>
-                    </div>
+                <div style="flex: 1; display: flex; justify-content: center; opacity: 0.1;">
+                    <!-- decorative shield simplified -->
+                    <svg width="300" height="300" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+                    </svg>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section-spacer">
+    <!-- 6. Contact Section -->
+    <section id="contact">
         <div class="container">
-            <div class="glass-card" style="max-width: 900px; margin: 0 auto; overflow: visible;">
-                <div style="text-align: center; margin-bottom: 3rem;">
-                    <h2 class="text-gradient" style="font-size: 3rem;">מוכנים להתקדם?</h2>
-                    <p>בואו נבדוק יחד איפה AI יכול לחסוך לכם זמן וכסף</p>
-                </div>
+            <div class="section-head">
+                <h2>מוכנים להתייעל?</h2>
+                <p>שיחת ייעוץ קצרה (ללא התחייבות) לבדיקת היתכנות.</p>
+            </div>
 
-                <form id="contact-form" style="max-width: 600px; margin: 0 auto;">
+            <div class="clean-card" style="max-width: 600px; margin: 0 auto; box-shadow: var(--shadow-2xl);">
+                <form id="contact-form">
                     <div id="form-message"></div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                        <div>
-                            <input type="text" id="name" name="name" class="form-input" placeholder="שם מלא" required>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label
+                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">שם
+                                מלא</label>
+                            <input type="text" name="name" class="form-input-clean" required>
                         </div>
-                        <div>
-                            <input type="text" id="organization" name="organization" class="form-input"
-                                placeholder="שם הארגון" required>
+                        <div class="form-group">
+                            <label
+                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">ארגון</label>
+                            <input type="text" name="organization" class="form-input-clean" required>
                         </div>
                     </div>
 
-                    <input type="text" id="contact" name="contact" class="form-input" placeholder="אימייל או טלפון"
-                        required>
+                    <div class="form-group">
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">אימייל
+                            עסקי</label>
+                        <input type="email" name="contact" class="form-input-clean" required>
+                    </div>
 
-                    <textarea id="message" name="message" class="form-textarea" rows="4"
-                        placeholder="ספרו לנו בקצרה על האתגר..."></textarea>
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">מה
+                            תרצו לאוטומט?</label>
+                        <textarea name="message" class="form-input-clean" rows="4"></textarea>
+                    </div>
 
-                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                        שלחו פרטים ונחזור בהקדם
-                    </button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">שלח פרטים</button>
                 </form>
-
-                <div
-                    style="text-align: center; margin-top: 3rem; border-top: 1px solid var(--glass-border); padding-top: 2rem;">
-                    <p style="margin-bottom: 1rem;">מעדיפים וואטסאפ?</p>
-                    <a id="whatsapp-btn" href="#" class="btn btn-secondary" style="display: inline-flex;">
-                        <img src="/assets/icons/chat.svg" style="width: 20px; filter: brightness(10);"> צ'אט מהיר
-                        בוואטסאפ
-                    </a>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <footer class="footer-clean">
         <div class="container">
             <div class="nav-brand" style="margin-bottom: 1rem;">PowOrg</div>
-            <p>&copy; 2026 כל הזכויות שמורות.</p>
+            <p style="font-size: 0.9rem;">&copy; 2026 כל הזכויות שמורות.</p>
         </div>
     </footer>
 
-    <!-- Use Case Modal -->
+    <!-- Modal -->
     <div id="use-case-modal" class="modal"
-        style="display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; padding: 2rem;">
-        <div class="modal-content glass-card"
-            style="width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; position: relative;">
-            <button class="modal-close" onclick="closeUseCaseModal()"
-                style="position: absolute; top: 1.5rem; left: 1.5rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">×</button>
-            <div class="modal-body" style="padding: 1rem;">
-                <!-- Content loaded dynamically -->
+        style="display: none; position: fixed; inset: 0; z-index: 2000; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);">
+        <div class="modal-content clean-card"
+            style="width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 0;">
+            <div
+                style="background: var(--bg-subtle); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light);">
+                <span style="font-weight: 700;">פירוט מקרה שימוש</span>
+                <button onclick="closeUseCaseModal()"
+                    style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">×</button>
+            </div>
+            <div class="modal-body" style="padding: 2rem;">
+                <!-- Dynamic Content -->
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
     <script type="module" src="/js/main.js"></script>
 </body>
 
