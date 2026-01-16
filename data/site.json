@@ -1,0 +1,29 @@
+{
+  "brand": {
+    "name": "PowOrg",
+    "tagline": "Power Your Organization with AI",
+    "description": "AI ארגוני עם ליווי POC והטמעה"
+  },
+  "contact": {
+    "email": "info@poworg.com",
+    "phone": "+972-50-000-0000",
+    "whatsapp": "972500000000",
+    "whatsappMessage": "שלום, אני מעוניין לשמוע עוד על פתרונות AI ארגוניים",
+    "linkedin": "https://linkedin.com/company/poworg",
+    "formEndpoint": ""
+  },
+  "seo": {
+    "title": "PowOrg - AI ארגוני עם ליווי POC והטמעה",
+    "description": "פתרונות AI מותאמים אישית לארגונים בישראל. ליווי צמוד, בניית POC והטמעה מלאה. אוטומציה, סוכנים חכמים, וניתוח מסמכים.",
+    "keywords": "AI ארגוני, בינה מלתכתית, אוטומציה, POC, הטמעת AI, סוכנים חכמים",
+    "ogImage": "/assets/img/og-image.png"
+  },
+  "navigation": [
+    { "title": "הבית", "href": "#hero" },
+    { "title": "התהליך", "href": "#process" },
+    { "title": "מקרי שימוש", "href": "#use-cases" },
+    { "title": "POC", "href": "/pages/poc.html" },
+    { "title": "אבטחה", "href": "/pages/security.html" },
+    { "title": "צור קשר", "href": "#contact" }
+  ]
+}

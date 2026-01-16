@@ -1,7 +1,288 @@
 <!DOCTYPE html>
-<html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="פתרונות AI מותאמים אישית לארגונים בישראל. ליווי צמוד, בניית POC והטמעה מלאה.">
+    <meta name="keywords" content="AI ארגוני, בינה מלאכותית, אוטומציה, POC, הטמעת AI">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="PowOrg - AI ארגוני עם ליווי POC והטמעה">
+    <meta property="og:description" content="פתרונות AI מותאמים אישית לארגונים. ליווי, POC והטמעה מלאה.">
+    <meta property="og:image" content="/assets/img/og-image.png">
+    <meta property="og:type" content="website">
+
+    <title>PowOrg - AI ארגוני עם ליווי POC והטמעה</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+
+    <!-- Google Fonts - Heebo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+
+    <!-- GSAP for animations -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/ScrollToPlugin.min.js"></script>
+</head>
+
 <body>
-<h1>Hello Gady</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-brand">PowOrg</a>
+
+            <button class="nav-toggle" aria-label="תפריט ניווט">☰</button>
+
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link">הבית</a></li>
+                <li><a href="#process" class="nav-link">התהליך</a></li>
+                <li><a href="#use-cases" class="nav-link">מקרי שימוש</a></li>
+                <li><a href="/pages/poc.html" class="nav-link">POC</a></li>
+                <li><a href="/pages/security.html" class="nav-link">אבטחה</a></li>
+                <li><a href="#contact" class="nav-link">צור קשר</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-gradient"></div>
+        <div class="container hero-content">
+            <p class="hero-tagline">Power Your Organization with AI</p>
+            <h1 class="hero-title">הפכו תהליכים ארגוניים לאוטומטיים עם AI מותאם אישית</h1>
+            <p class="hero-subtitle">
+                לא עוד כלים ענן שצריך לבנות בעצמכם. אנחנו מלווים אתכם צעד אחר צעד:
+                מיפוי צרכים, בניית POC, והטמעה מלאה בארגון.
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">קבעו שיחת היכרות</a>
+                <a href="#use-cases" class="btn btn-secondary">מקרי שימוש</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <section id="outcomes">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">מה יוצא מזה?</h2>
+                <p class="section-subtitle">תוצאות מוחשיות שאתם יכולים למדוד</p>
+            </div>
+
+            <div class="grid-3" id="outcomes-content">
+                <!-- Content loaded from Markdown -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">איך עובדים איתנו?</h2>
+                <p class="section-subtitle">תהליך ברור עם מחויבות לתוצאה</p>
+            </div>
+
+            <div id="process-content">
+                <!-- Content loaded from Markdown -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section id="capabilities">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">אילו יכולות AI אנחנו מביאים?</h2>
+                <p class="section-subtitle">טכנולוגיה מתקדמת מותאמת לצרכים שלכם</p>
+            </div>
+
+            <div class="grid-3" id="capabilities-content">
+                <!-- Content loaded from Markdown -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">מקרי שימוש</h2>
+                <p class="section-subtitle">דוגמאות ממשיות מארגונים כמוכם</p>
+            </div>
+
+            <div class="grid-4" id="use-cases-gallery">
+                <!-- Use cases loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">אבטחה ושליטה</h2>
+                <p class="section-subtitle">המידע שלכם נשאר אצלכם. תמיד.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3 class="card-title">הצפנה מלאה</h3>
+                    <p class="card-description">
+                        כל המידע מוצפן בתעבורה ובמנוחה. תקני אבטחה מובילים.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h3 class="card-title">On-Premise או ענן</h3>
+                    <p class="card-description">
+                        אתם בוחרים: הכל אצלכם באתר, ענן פרטי, או היברידי.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">📋</div>
+                    <h3 class="card-title">ציות מלא</h3>
+                    <p class="card-description">
+                        עמידה ב-GDPR, חוק הגנת הפרטיות, ותקני ISO 27001.
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/pages/security.html" class="btn btn-secondary">קראו עוד על אבטחה</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why PowOrg Section -->
+    <section id="why">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">למה PowOrg?</h2>
+            </div>
+
+            <div id="why-content" style="max-width: 800px; margin: 0 auto;">
+                <!-- Content loaded from Markdown -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">בואו נדבר</h2>
+                <p class="section-subtitle">שיחת היכרות ללא התחייבות</p>
+            </div>
+
+            <div class="grid-2" style="max-width: 1000px; margin: 0 auto; align-items: start;">
+                <!-- Contact Form -->
+                <div>
+                    <form id="contact-form">
+                        <div id="form-message"></div>
+
+                        <div class="form-group">
+                            <label for="name" class="form-label">שם מלא</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organization" class="form-label">ארגון</label>
+                            <input type="text" id="organization" name="organization" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role" class="form-label">תפקיד</label>
+                            <input type="text" id="role" name="role" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact" class="form-label">אימייל או טלפון</label>
+                            <input type="text" id="contact" name="contact" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">איזה תהליך הכי כואב אצלכם?</label>
+                            <textarea id="message" name="message" class="form-textarea" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            שלחו פנייה
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <div class="card">
+                        <h3 class="card-title">דרכי התקשרות נוספות</h3>
+
+                        <div style="margin: 1.5rem 0;">
+                            <a id="whatsapp-btn" href="#" class="btn btn-primary"
+                                style="width: 100%; justify-content: center;">
+                                💬 פנו בוואטסאפ
+                            </a>
+                        </div>
+
+                        <p class="card-description">
+                            <strong>Email:</strong><br>
+                            <a href="mailto:info@poworg.com">info@poworg.com</a>
+                        </p>
+
+                        <p class="card-description">
+                            <strong>LinkedIn:</strong><br>
+                            <a href="https://linkedin.com/company/poworg" target="_blank"
+                                rel="noopener">linkedin.com/company/poworg</a>
+                        </p>
+
+                        <p class="card-description"
+                            style="margin-top: 2rem; font-size: 0.9rem; color: var(--color-text-tertiary);">
+                            זמן תגובה: בדרך כלל תוך 24 שעות
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 PowOrg. כל הזכויות שמורות.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="/pages/security.html">אבטחה ופרטיות</a> ·
+                <a href="/pages/poc.html">תהליך POC</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Use Case Modal -->
+    <div id="use-case-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeUseCaseModal()" aria-label="סגור">×</button>
+            <div class="modal-body">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/js/main.js"></script>
 </body>
+
 </html>

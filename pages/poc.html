@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="תהליך POC - Proof of Concept עם PowOrg. פיילוט מעשי, לוחות זמנים ברורים, ומחויבות לתוצאה.">
+
+    <title>תהליך POC - PowOrg</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+
+    <!-- Google Fonts - Heebo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+
+    <!-- GSAP for animations -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-brand">PowOrg</a>
+
+            <button class="nav-toggle" aria-label="תפריט ניווט">☰</button>
+
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">הבית</a></li>
+                <li><a href="/#process" class="nav-link">התהליך</a></li>
+                <li><a href="/#use-cases" class="nav-link">מקרי שימוש</a></li>
+                <li><a href="/pages/poc.html" class="nav-link">POC</a></li>
+                <li><a href="/pages/security.html" class="nav-link">אבטחה</a></li>
+                <li><a href="/#contact" class="nav-link">צור קשר</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <section style="padding-top: 120px; padding-bottom: 4rem;">
+        <div class="container">
+            <div id="page-content" style="max-width: 900px; margin: 0 auto;">
+                <!-- Content loaded from /content/poc.md -->
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="/#contact" class="btn btn-primary">קבעו שיחת היכרות</a>
+                <a href="/" class="btn btn-secondary">חזרה לעמוד הבית</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 PowOrg. כל הזכויות שמורות.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="/pages/security.html">אבטחה ופרטיות</a> ·
+                <a href="/pages/poc.html">תהליך POC</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="/js/main.js"></script>
+</body>
+
+</html>
