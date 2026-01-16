@@ -98,19 +98,25 @@ async function initUseCasesGallery() {
     if (!gallery || useCases.length === 0) return;
 
     gallery.innerHTML = useCases.map(useCase => `
-    <article class="use-case-card card" data-use-case="${useCase.id}">
-      <div class="card-icon">
+    <article class="glass-card" data-use-case="${useCase.id}" style="display: flex; flex-direction: column; height: 100%;">
+      <div class="icon-box">
         <img src="${useCase.iconPath}" alt="" aria-hidden="true">
       </div>
-      <h3 class="card-title">${useCase.title}</h3>
-      <p class="card-description">${useCase.oneLiner}</p>
+      
+      <h3 style="margin-bottom: 0.5rem; color: var(--text);">${useCase.title}</h3>
+      
+      <p style="font-size: 0.95rem; color: var(--muted); flex-grow: 1; margin-bottom: 1.5rem;">
+        ${useCase.oneLiner}
+      </p>
+      
       ${useCase.tags.length > 0 ? `
-        <div class="card-tags">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
           ${useCase.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
         </div>
       ` : ''}
-      <button class="btn-link" onclick="window.openUseCaseModal('${useCase.id}')">
-        קרא עוד ←
+      
+      <button class="btn-link" onclick="window.openUseCaseModal('${useCase.id}')" style="align-self: flex-start; color: var(--accent-cyan); background: none; border: none; padding: 0; font-weight: 600; cursor: pointer;">
+        קרא עוד <span style="margin-right: 4px;">←</span>
       </button>
     </article>
   `).join('');

@@ -1,133 +1,159 @@
 /**
- * מערכת אנימציות - גרסה עדינה ומקצועית
- * תמיכה מלאה ב-prefers-reduced-motion
+ * מערכת אנימציות Vibrant Glass
+ * כולל Parallax, Staggered Reveal, ואינטראקציות עכבר
  */
 
 // בדיקה אם המשתמש מבקש reduced motion
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// אתחול GSAP עם הגדרות RTL
 export function initAnimations() {
-    if (typeof gsap === 'undefined') {
-        console.warn('GSAP not loaded, skipping animations');
-        return;
-    }
+    if (typeof gsap === 'undefined') return;
+    if (prefersReducedMotion) return;
 
-    // כיבוי מלא של אנימציות אם המשתמש מבקש reduced motion
-    if (prefersReducedMotion) {
-        console.log('Reduced motion detected - all animations disabled');
-        return;
-    }
+    gsap.registerPlugin(ScrollTrigger);
 
-    // אתחול ScrollTrigger
-    if (typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-        initScrollAnimations();
-    }
+    initHeroParallax();
+    initStaggeredReveals();
+    initGlassHoverEffects();
 }
 
-// אנימציות גלילה - עדינות בלבד
-function initScrollAnimations() {
-    // אנימציה עדינה לסקשנים
-    gsap.utils.toArray('section').forEach((section, index) => {
-        // דלג על hero - הוא לא צריך אנימציה
-        if (section.id === 'hero') return;
+/**
+ * Hero Section Parallax
+ * תזוזה עדינה של הרקע והאלמנטים הוויזואליים בגלילה
+ */
+function initHeroParallax() {
+    // רקע זז לאט
+    gsap.to('.hero-bg-img', {
+        scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+        },
+        y: 100,
+        scale: 1.1,
+        ease: 'none'
+    });
 
-        gsap.from(section, {
+    // טקסט זז קצת יותר מהר (אפקט עומק)
+    gsap.to('.hero-content', {
+        scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+        },
+        y: 50,
+        opacity: 0.5,
+        ease: 'none'
+    });
+}
+
+/**
+ * חשיפה מדורגת של אלמנטים (Staggered Reveal)
+ */
+function initStaggeredReveals() {
+    // כותרות סקשנים - Fade Up + Scale
+    gsap.utils.toArray('.section-title').forEach(title => {
+        gsap.from(title, {
             scrollTrigger: {
-                trigger: section,
+                trigger: title,
                 start: 'top 85%',
-                toggleActions: 'play none none none', // רק פעם אחת
+                toggleActions: 'play none none reverse'
             },
             opacity: 0,
-            y: 12, // תזוזה קטנה מאוד
-            duration: 0.6,
-            ease: 'power2.out'
+            y: 50,
+            scale: 0.9,
+            duration: 0.8,
+            ease: 'back.out(1.7)'
         });
     });
 
-    // אנימציה לכרטיסים - עדינה מאוד
-    gsap.utils.toArray('.card').forEach((card, index) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 90%',
-                toggleActions: 'play none none none',
-            },
-            opacity: 0,
-            y: 8,
-            duration: 0.5,
-            delay: index * 0.05, // stagger קל
-            ease: 'power2.out'
+    // כרטיסי Bento Grid - Stagger משמעותי
+    ScrollTrigger.batch('.glass-card', {
+        start: 'top 85%',
+        onEnter: batch => {
+            gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                stagger: 0.15,
+                duration: 0.6,
+                ease: 'power3.out',
+                overwrite: true
+            });
+        },
+        onLeaveBack: batch => {
+            gsap.to(batch, {
+                opacity: 0,
+                y: 50,
+                overwrite: true
+            });
+        }
+    });
+
+    // הגדרה התחלתית לכרטיסים שאנחנו רוצים להנפיש
+    gsap.set('.glass-card', { opacity: 0, y: 50 });
+}
+
+/**
+ * אפקט עקיבה אחרי העכבר לכרטיסי זכוכית
+ * מוסיף זוהר (Glow) שעוקב אחרי העכבר
+ */
+function initGlassHoverEffects() {
+    document.querySelectorAll('.glass-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
         });
     });
 }
 
-// Smooth scroll לעוגנים (רק אם לא reduced motion)
+// Smooth Scroll (אופציונלי - אם רוצים תחושה חלקה מלאה)
 export function initSmoothScroll() {
-    if (prefersReducedMotion) {
-        // אפילו ללא GSAP, smooth scroll native מכובה ב-CSS
-        return;
-    }
+    if (prefersReducedMotion) return;
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href === '#' || !href) return;
-
             e.preventDefault();
             const target = document.querySelector(href);
-
             if (target) {
-                if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
-                    gsap.registerPlugin(ScrollToPlugin);
-                    gsap.to(window, {
-                        duration: 0.8,
-                        scrollTo: { y: target, offsetY: 80 },
-                        ease: 'power2.inOut'
-                    });
-                } else {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: { y: target, offsetY: 80 },
+                    ease: 'power3.inOut'
+                });
             }
         });
     });
 }
 
-// אנימציה לפתיחת modal - עדינה מאוד
 export function animateModal(modal, show = true) {
-    if (prefersReducedMotion) {
-        modal.style.display = show ? 'flex' : 'none';
-        return;
-    }
-
-    if (typeof gsap === 'undefined') {
-        modal.style.display = show ? 'flex' : 'none';
-        return;
-    }
+    if (!modal) return;
 
     if (show) {
         modal.style.display = 'flex';
         gsap.fromTo(modal,
-            { opacity: 0 },
-            { opacity: 1, duration: 0.25, ease: 'power2.out' }
+            { opacity: 0, backdropFilter: 'blur(0px)' },
+            { opacity: 1, backdropFilter: 'blur(20px)', duration: 0.4 }
         );
-        gsap.fromTo('.modal-content',
-            { opacity: 0, y: 10 },
-            { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }
+        gsap.fromTo(modal.querySelector('.modal-content'),
+            { opacity: 0, scale: 0.8, y: 50 },
+            { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: 'back.out(1.2)' }
         );
     } else {
         gsap.to(modal, {
             opacity: 0,
-            duration: 0.2,
-            ease: 'power2.in',
+            duration: 0.3,
             onComplete: () => modal.style.display = 'none'
         });
     }
 }
 
-// Hover effects עדינים (CSS handles most, this is backup)
-export function initHoverEffects() {
-    // רוב ה-hover effects מטופלים ב-CSS
-    // זה רק בשביל edge cases אם צריך
-}
+// Placeholder functions for compatibility
+export function initHoverEffects() { }

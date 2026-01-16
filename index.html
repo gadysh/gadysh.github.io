@@ -21,16 +21,16 @@
     <!-- Google Fonts - Heebo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/styles.css">
 
-    <!-- Marked.js for Markdown parsing -->
+    <!-- Marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
 
-    <!-- GSAP for animations -->
+    <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/ScrollToPlugin.min.js"></script>
@@ -51,222 +51,170 @@
                 <li><a href="#use-cases" class="nav-link">מקרי שימוש</a></li>
                 <li><a href="/pages/poc.html" class="nav-link">POC</a></li>
                 <li><a href="/pages/security.html" class="nav-link">אבטחה</a></li>
-                <li><a href="#contact" class="nav-link">צור קשר</a></li>
+                <li><a href="#contact" class="nav-link btn-secondary"
+                        style="padding: 0.5rem 1.5rem; border-radius: 50px;">צור קשר</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero">
-        <div class="hero-gradient"></div>
-        <div class="container hero-content">
-            <p class="hero-tagline">Power Your Organization with AI</p>
-            <h1 class="hero-title">הפכו תהליכים ארגוניים <span class="hero-accent">לאוטומטיים</span> עם AI מות אם אישית
-            </h1>
-            <p class="hero-subtitle">
-                לא עוד כלים ענן שצריך לבנות בעצמכם. אנחנו מלווים אתכם צעד אחר צעד: מיפוי צרכים, בניית POC, והטמעה מלאה
-                בארגון.
-            </p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">קובעים שיחת היכרות</a>
-                <a href="#use-cases" class="btn btn-secondary">דוגמאות ומקרי שימוש</a>
-            </div>
-            <div class="hero-proof">
-                <div class="hero-proof-item">POC משותף</div>
-                <div class="hero-proof-item">הטמעה בארגון</div>
-                <div class="hero-proof-item">עלויות נשלטות</div>
-            </div>
-        </div>
-    </section>
+        <div class="hero-bg-img"></div>
+        <div class="hero-overlay"></div>
 
-    <!-- Outcomes Section -->
-    <section id="outcomes">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">מה יוצא מזה?</h2>
-                <p class="section-subtitle">תוצאות מוחשיות שאתם יכולים למדוד</p>
+        <div class="container"
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; min-height: 80vh;">
+
+            <!-- Left: Visual (On Desktop) -->
+            <div style="display: none; height: 100%; align-items: center; justify-content: center;"
+                id="hero-visual-desktop">
+                <!-- Can place 3D element here later, for now keeping clear for background visibility -->
             </div>
 
-            <div class="grid-3" id="outcomes-content">
-                <!-- Content loaded from Markdown -->
+            <!-- Right: Content -->
+            <div class="hero-content">
+                <span class="hero-tag">AI Automation for Enterprise</span>
+                <h1 class="hero-title">
+                    אוטומציה ארגונית ש<span class="text-gradient">באמת עובדת</span>
+                </h1>
+                <p>
+                    אנחנו לא עוד כלי ענן גנרי. PowOrg בונים אתכם פתרונות AI מקצה לקצה:
+                    ממיפוי הצרכים, דרך בניית POC מהיר, ועד להטמעה מלאה ומאובטחת בארגון.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="#contact" class="btn btn-primary">
+                        קבעו פגישת אפיון
+                        <span style="font-size: 1.2em;">→</span>
+                    </a>
+                    <a href="#use-cases" class="btn btn-secondary">
+                        ראו דוגמאות
+                    </a>
+                </div>
+
+                <div style="margin-top: 3rem; display: flex; gap: 2rem; opacity: 0.7; font-size: 0.9rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <img src="/assets/icons/check.svg" style="width: 20px;"> POC תוך 14 יום
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <img src="/assets/icons/shield.svg" style="width: 20px;"> אבטחה בסטנדרט בנקאי
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
     <!-- Process Section -->
-    <section id="process">
+    <section id="process" class="section-spacer">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">איך עובדים איתנו?</h2>
-                <p class="section-subtitle">תהליך ברור עם מחויבות לתוצאה</p>
-            </div>
+            <h2 class="section-title">איך זה עובד?</h2>
+            <p class="section-desc">תהליך מובנה ומקצועי שמבטיח תוצאות</p>
 
-            <div class="process-steps" id="process-content">
-                <!-- Content loaded from Markdown -->
-            </div>
+            <!-- Will be populated by JS from Markdown -->
+            <div id="process-content"></div>
         </div>
     </section>
 
-    <!--  Capabilities Section -->
-    <section id="capabilities">
+    <!-- Use Cases Section (Bento Grid) -->
+    <section id="use-cases" class="section-spacer">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">אילו יכולות AI אנחנו מביאים?</h2>
-                <p class="section-subtitle">טכנולוגיה מתקדמת מותאמת לצרכים שלכם</p>
+            <div style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 3rem;">
+                <div>
+                    <h2 class="section-title" style="text-align: right; margin: 0;">מקרי שימוש</h2>
+                    <p style="margin: 0; color: var(--accent-cyan);">פתרונות שכבר רצים בארגונים</p>
+                </div>
             </div>
 
-            <div class="grid-3" id="capabilities-content">
-                <!-- Content loaded from Markdown -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Use Cases Section -->
-    <section id="use-cases">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">מקרי שימוש</h2>
-                <p class="section-subtitle">דוגמאות ממשיות מארגונים כמוכם</p>
-            </div>
-
-            <div class="grid-4" id="use-cases-gallery">
-                <!-- Use cases loaded dynamically -->
+            <div class="bento-grid" id="use-cases-gallery">
+                <!-- JS will populate -->
             </div>
         </div>
     </section>
 
     <!-- Security Section -->
-    <section id="security">
+    <section id="security" class="section-spacer">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">אבטחה ושליטה</h2>
-                <p class="section-subtitle">המידע שלכם נשאר אצלכם. תמיד.</p>
-            </div>
-
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-icon">
-                        <img src="/assets/icons/lock.svg" alt="" aria-hidden="true">
-                    </div>
-                    <h3 class="card-title">הצפנה מלאה</h3>
-                    <p class="card-description">
-                        כל המידע מוצפן בתעבורה ובמנוחה. תקני אבטחה מובילים.
+            <div class="glass-card"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 4rem;">
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">אבטחה ללא פשרות</h2>
+                    <p>
+                        המידע שלכם הוא הנכס היקר ביותר. אנחנו מציעים פריסה גמישה:
+                        On-Premise מלא, ענן פרטי, או היברידי. הכל תחת תקני האבטחה המחמירים ביותר.
                     </p>
+
+                    <ul
+                        style="list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                        <li style="display: flex; gap: 1rem; align-items: center;">
+                            <div
+                                style="width: 24px; height: 24px; background: var(--accent-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">
+                                ✓</div>
+                            הצפנה מקצה לקצה
+                        </li>
+                        <li style="display: flex; gap: 1rem; align-items: center;">
+                            <div
+                                style="width: 24px; height: 24px; background: var(--accent-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">
+                                ✓</div>
+                            ציות ל-GDPR ותקני פרטיות
+                        </li>
+                    </ul>
+
+                    <a href="/pages/security.html" class="btn btn-secondary">פרטים טכניים מלאים</a>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">
-                        <img src="/assets/icons/building.svg" alt="" aria-hidden="true">
+                <div style="position: relative;">
+                    <img src="/assets/icons/shield.svg" style="width: 100%; opacity: 0.2; transform: rotate(-15deg);">
+                    <div
+                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                        <div style="font-size: 5rem; font-weight: 900; color: var(--accent-cyan);">100%</div>
+                        <div>שליטה במידע</div>
                     </div>
-                    <h3 class="card-title">On-Premise או ענן</h3>
-                    <p class="card-description">
-                        אתם בוחרים: הכל אצלכם באתר, ענן פרטי, או היברידי.
-                    </p>
                 </div>
-
-                <div class="card">
-                    <div class="card-icon">
-                        <img src="/assets/icons/shield.svg" alt="" aria-hidden="true">
-                    </div>
-                    <h3 class="card-title">ציות מלא</h3>
-                    <p class="card-description">
-                        עמידה ב-GDPR, חוק הגנת הפרטיות, ותקני ISO 27001.
-                    </p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: var(--space-7);">
-                <a href="/pages/security.html" class="btn btn-secondary">קראו עוד על אבטחה</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why PowOrg Section -->
-    <section id="why">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">למה PowOrg?</h2>
-            </div>
-
-            <div id="why-content" style="max-width: 800px; margin: 0 auto;">
-                <!-- Content loaded from Markdown -->
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="section-spacer">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">בואו נדבר</h2>
-                <p class="section-subtitle">שיחת היכרות ללא התחייבות</p>
-            </div>
-
-            <div class="grid-2" style="max-width: 1000px; margin: 0 auto; align-items: start;">
-                <!-- Contact Form -->
-                <div>
-                    <form id="contact-form">
-                        <div id="form-message"></div>
-
-                        <div class="form-group">
-                            <label for="name" class="form-label">שם מלא</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="organization" class="form-label">ארגון</label>
-                            <input type="text" id="organization" name="organization" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="role" class="form-label">תפקיד</label>
-                            <input type="text" id="role" name="role" class="form-input">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contact" class="form-label">אימייל או טלפון</label>
-                            <input type="text" id="contact" name="contact" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message" class="form-label">איזה תהליך הכי כואב אצלכם?</label>
-                            <textarea id="message" name="message" class="form-textarea" rows="4"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            שלחו פנייה
-                        </button>
-                    </form>
+            <div class="glass-card" style="max-width: 900px; margin: 0 auto; overflow: visible;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="text-gradient" style="font-size: 3rem;">מוכנים להתקדם?</h2>
+                    <p>בואו נבדוק יחד איפה AI יכול לחסוך לכם זמן וכסף</p>
                 </div>
 
-                <!-- Contact Info -->
-                <div>
-                    <div class="card">
-                        <h3 class="card-title">דרכי התקשרות נוספות</h3>
+                <form id="contact-form" style="max-width: 600px; margin: 0 auto;">
+                    <div id="form-message"></div>
 
-                        <div style="margin: var(--space-5) 0;">
-                            <a id="whatsapp-btn" href="#" class="btn btn-primary"
-                                style="width: 100%; justify-content: center;">
-                                💬 פנו בוואטסאפ
-                            </a>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="שם מלא" required>
                         </div>
-
-                        <p class="card-description">
-                            <strong>Email:</strong><br>
-                            <a href="mailto:info@poworg.com">info@poworg.com</a>
-                        </p>
-
-                        <p class="card-description">
-                            <strong>LinkedIn:</strong><br>
-                            <a href="https://linkedin.com/company/poworg" target="_blank"
-                                rel="noopener">linkedin.com/company/poworg</a>
-                        </p>
-
-                        <p class="card-description"
-                            style="margin-top: var(--space-6); font-size: 0.9375rem; color: var(--subtle);">
-                            זמן תגובה: בדרך כלל תוך 24 שעות
-                        </p>
+                        <div>
+                            <input type="text" id="organization" name="organization" class="form-input"
+                                placeholder="שם הארגון" required>
+                        </div>
                     </div>
+
+                    <input type="text" id="contact" name="contact" class="form-input" placeholder="אימייל או טלפון"
+                        required>
+
+                    <textarea id="message" name="message" class="form-textarea" rows="4"
+                        placeholder="ספרו לנו בקצרה על האתגר..."></textarea>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        שלחו פרטים ונחזור בהקדם
+                    </button>
+                </form>
+
+                <div
+                    style="text-align: center; margin-top: 3rem; border-top: 1px solid var(--glass-border); padding-top: 2rem;">
+                    <p style="margin-bottom: 1rem;">מעדיפים וואטסאפ?</p>
+                    <a id="whatsapp-btn" href="#" class="btn btn-secondary" style="display: inline-flex;">
+                        <img src="/assets/icons/chat.svg" style="width: 20px; filter: brightness(10);"> צ'אט מהיר
+                        בוואטסאפ
+                    </a>
                 </div>
             </div>
         </div>
@@ -274,20 +222,20 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 PowOrg. כל הזכויות שמורות.</p>
-            <p style="margin-top: var(--space-3);">
-                <a href="/pages/security.html">אבטחה ופרטיות</a> ·
-                <a href="/pages/poc.html">תהליך POC</a>
-            </p>
+        <div class="container">
+            <div class="nav-brand" style="margin-bottom: 1rem;">PowOrg</div>
+            <p>&copy; 2026 כל הזכויות שמורות.</p>
         </div>
     </footer>
 
     <!-- Use Case Modal -->
-    <div id="use-case-modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeUseCaseModal()" aria-label="סגור">×</button>
-            <div class="modal-body">
+    <div id="use-case-modal" class="modal"
+        style="display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; padding: 2rem;">
+        <div class="modal-content glass-card"
+            style="width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; position: relative;">
+            <button class="modal-close" onclick="closeUseCaseModal()"
+                style="position: absolute; top: 1.5rem; left: 1.5rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">×</button>
+            <div class="modal-body" style="padding: 1rem;">
                 <!-- Content loaded dynamically -->
             </div>
         </div>
