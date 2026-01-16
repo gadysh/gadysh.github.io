@@ -1,5 +1,5 @@
 /**
- * מערכת אנימציות עם GSAP
+ * מערכת אנימציות - גרסה עדינה ומקצועית
  * תמיכה מלאה ב-prefers-reduced-motion
  */
 
@@ -13,10 +13,9 @@ export function initAnimations() {
         return;
     }
 
-    // כיבוי אנימציות אם המשתמש מבקש reduced motion
+    // כיבוי מלא של אנימציות אם המשתמש מבקש reduced motion
     if (prefersReducedMotion) {
-        gsap.globalTimeline.timeScale(0);
-        console.log('Reduced motion detected - animations disabled');
+        console.log('Reduced motion detected - all animations disabled');
         return;
     }
 
@@ -25,112 +24,65 @@ export function initAnimations() {
         gsap.registerPlugin(ScrollTrigger);
         initScrollAnimations();
     }
-
-    // אנימציית Hero
-    initHeroAnimation();
 }
 
-// אנימציות גלילה
+// אנימציות גלילה - עדינות בלבד
 function initScrollAnimations() {
-    // Fade in כללי לכל הסקשנים
-    gsap.utils.toArray('section').forEach(section => {
+    // אנימציה עדינה לסקשנים
+    gsap.utils.toArray('section').forEach((section, index) => {
+        // דלג על hero - הוא לא צריך אנימציה
+        if (section.id === 'hero') return;
+
         gsap.from(section, {
             scrollTrigger: {
                 trigger: section,
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
+                start: 'top 85%',
+                toggleActions: 'play none none none', // רק פעם אחת
             },
             opacity: 0,
-            y: 50,
-            duration: 0.8,
+            y: 12, // תזוזה קטנה מאוד
+            duration: 0.6,
             ease: 'power2.out'
         });
     });
 
-    // אנימציה לכרטיסים
+    // אנימציה לכרטיסים - עדינה מאוד
     gsap.utils.toArray('.card').forEach((card, index) => {
         gsap.from(card, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top 85%',
-                toggleActions: 'play none none reverse'
+                start: 'top 90%',
+                toggleActions: 'play none none none',
             },
             opacity: 0,
-            y: 40,
-            duration: 0.6,
-            delay: index * 0.1,
+            y: 8,
+            duration: 0.5,
+            delay: index * 0.05, // stagger קל
             ease: 'power2.out'
         });
-    });
-
-    // Sticky section (Process)
-    const processSection = document.querySelector('#process');
-    if (processSection) {
-        ScrollTrigger.create({
-            trigger: processSection,
-            start: 'top top',
-            end: 'bottom center',
-            pin: '.process-sticky',
-            pinSpacing: false
-        });
-    }
-}
-
-// אנימציית רקע Hero - gradient mesh עדין
-function initHeroAnimation() {
-    const hero = document.querySelector('#hero');
-    if (!hero) return;
-
-    // אנימציית gradient רקע
-    const gradientAnimation = gsap.to('.hero-gradient', {
-        backgroundPosition: '100% 100%',
-        duration: 20,
-        ease: 'none',
-        repeat: -1,
-        yoyo: true
-    });
-
-    // אנימציית כותרת
-    gsap.from('.hero-title', {
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        ease: 'power3.out'
-    });
-
-    gsap.from('.hero-subtitle', {
-        opacity: 0,
-        y: 20,
-        duration: 1,
-        delay: 0.3,
-        ease: 'power3.out'
-    });
-
-    gsap.from('.hero-cta', {
-        opacity: 0,
-        y: 20,
-        duration: 1,
-        delay: 0.6,
-        ease: 'power3.out'
     });
 }
 
 // Smooth scroll לעוגנים (רק אם לא reduced motion)
 export function initSmoothScroll() {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion) {
+        // אפילו ללא GSAP, smooth scroll native מכובה ב-CSS
+        return;
+    }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (href === '#') return;
+            if (href === '#' || !href) return;
 
             e.preventDefault();
             const target = document.querySelector(href);
 
             if (target) {
-                if (typeof gsap !== 'undefined') {
+                if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+                    gsap.registerPlugin(ScrollToPlugin);
                     gsap.to(window, {
-                        duration: 1,
+                        duration: 0.8,
                         scrollTo: { y: target, offsetY: 80 },
                         ease: 'power2.inOut'
                     });
@@ -142,9 +94,14 @@ export function initSmoothScroll() {
     });
 }
 
-// אנימציה לפתיחת modal
+// אנימציה לפתיחת modal - עדינה מאוד
 export function animateModal(modal, show = true) {
     if (prefersReducedMotion) {
+        modal.style.display = show ? 'flex' : 'none';
+        return;
+    }
+
+    if (typeof gsap === 'undefined') {
         modal.style.display = show ? 'flex' : 'none';
         return;
     }
@@ -153,11 +110,11 @@ export function animateModal(modal, show = true) {
         modal.style.display = 'flex';
         gsap.fromTo(modal,
             { opacity: 0 },
-            { opacity: 1, duration: 0.3, ease: 'power2.out' }
+            { opacity: 1, duration: 0.25, ease: 'power2.out' }
         );
         gsap.fromTo('.modal-content',
-            { scale: 0.9, y: 20 },
-            { scale: 1, y: 0, duration: 0.4, ease: 'back.out(1.2)' }
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }
         );
     } else {
         gsap.to(modal, {
@@ -169,27 +126,8 @@ export function animateModal(modal, show = true) {
     }
 }
 
-// Hover effects עדינים
+// Hover effects עדינים (CSS handles most, this is backup)
 export function initHoverEffects() {
-    if (prefersReducedMotion) return;
-
-    // כפתורים
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('mouseenter', function () {
-            gsap.to(this, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
-        });
-        btn.addEventListener('mouseleave', function () {
-            gsap.to(this, { scale: 1, duration: 0.3, ease: 'power2.out' });
-        });
-    });
-
-    // כרטיסים
-    document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('mouseenter', function () {
-            gsap.to(this, { y: -5, duration: 0.3, ease: 'power2.out' });
-        });
-        card.addEventListener('mouseleave', function () {
-            gsap.to(this, { y: 0, duration: 0.3, ease: 'power2.out' });
-        });
-    });
+    // רוב ה-hover effects מטופלים ב-CSS
+    // זה רק בשביל edge cases אם צריך
 }

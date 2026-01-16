@@ -61,14 +61,20 @@
         <div class="hero-gradient"></div>
         <div class="container hero-content">
             <p class="hero-tagline">Power Your Organization with AI</p>
-            <h1 class="hero-title">הפכו תהליכים ארגוניים לאוטומטיים עם AI מותאם אישית</h1>
+            <h1 class="hero-title">הפכו תהליכים ארגוניים <span class="hero-accent">לאוטומטיים</span> עם AI מות אם אישית
+            </h1>
             <p class="hero-subtitle">
-                לא עוד כלים ענן שצריך לבנות בעצמכם. אנחנו מלווים אתכם צעד אחר צעד:
-                מיפוי צרכים, בניית POC, והטמעה מלאה בארגון.
+                לא עוד כלים ענן שצריך לבנות בעצמכם. אנחנו מלווים אתכם צעד אחר צעד: מיפוי צרכים, בניית POC, והטמעה מלאה
+                בארגון.
             </p>
             <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">קבעו שיחת היכרות</a>
-                <a href="#use-cases" class="btn btn-secondary">מקרי שימוש</a>
+                <a href="#contact" class="btn btn-primary">קובעים שיחת היכרות</a>
+                <a href="#use-cases" class="btn btn-secondary">דוגמאות ומקרי שימוש</a>
+            </div>
+            <div class="hero-proof">
+                <div class="hero-proof-item">POC משותף</div>
+                <div class="hero-proof-item">הטמעה בארגון</div>
+                <div class="hero-proof-item">עלויות נשלטות</div>
             </div>
         </div>
     </section>
@@ -95,13 +101,13 @@
                 <p class="section-subtitle">תהליך ברור עם מחויבות לתוצאה</p>
             </div>
 
-            <div id="process-content">
+            <div class="process-steps" id="process-content">
                 <!-- Content loaded from Markdown -->
             </div>
         </div>
     </section>
 
-    <!-- Capabilities Section -->
+    <!--  Capabilities Section -->
     <section id="capabilities">
         <div class="container">
             <div class="section-header">
@@ -139,7 +145,9 @@
 
             <div class="grid-3">
                 <div class="card">
-                    <div class="card-icon">🔒</div>
+                    <div class="card-icon">
+                        <img src="/assets/icons/lock.svg" alt="" aria-hidden="true">
+                    </div>
                     <h3 class="card-title">הצפנה מלאה</h3>
                     <p class="card-description">
                         כל המידע מוצפן בתעבורה ובמנוחה. תקני אבטחה מובילים.
@@ -147,7 +155,9 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-icon">🏢</div>
+                    <div class="card-icon">
+                        <img src="/assets/icons/building.svg" alt="" aria-hidden="true">
+                    </div>
                     <h3 class="card-title">On-Premise או ענן</h3>
                     <p class="card-description">
                         אתם בוחרים: הכל אצלכם באתר, ענן פרטי, או היברידי.
@@ -155,7 +165,9 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-icon">📋</div>
+                    <div class="card-icon">
+                        <img src="/assets/icons/shield.svg" alt="" aria-hidden="true">
+                    </div>
                     <h3 class="card-title">ציות מלא</h3>
                     <p class="card-description">
                         עמידה ב-GDPR, חוק הגנת הפרטיות, ותקני ISO 27001.
@@ -163,7 +175,7 @@
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 2rem;">
+            <div style="text-align: center; margin-top: var(--space-7);">
                 <a href="/pages/security.html" class="btn btn-secondary">קראו עוד על אבטחה</a>
             </div>
         </div>
@@ -232,7 +244,7 @@
                     <div class="card">
                         <h3 class="card-title">דרכי התקשרות נוספות</h3>
 
-                        <div style="margin: 1.5rem 0;">
+                        <div style="margin: var(--space-5) 0;">
                             <a id="whatsapp-btn" href="#" class="btn btn-primary"
                                 style="width: 100%; justify-content: center;">
                                 💬 פנו בוואטסאפ
@@ -251,7 +263,7 @@
                         </p>
 
                         <p class="card-description"
-                            style="margin-top: 2rem; font-size: 0.9rem; color: var(--color-text-tertiary);">
+                            style="margin-top: var(--space-6); font-size: 0.9375rem; color: var(--subtle);">
                             זמן תגובה: בדרך כלל תוך 24 שעות
                         </p>
                     </div>
@@ -264,7 +276,7 @@
     <footer>
         <div class="container footer-content">
             <p>&copy; 2026 PowOrg. כל הזכויות שמורות.</p>
-            <p style="margin-top: 0.5rem;">
+            <p style="margin-top: var(--space-3);">
                 <a href="/pages/security.html">אבטחה ופרטיות</a> ·
                 <a href="/pages/poc.html">תהליך POC</a>
             </p>

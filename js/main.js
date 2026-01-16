@@ -99,7 +99,9 @@ async function initUseCasesGallery() {
 
     gallery.innerHTML = useCases.map(useCase => `
     <article class="use-case-card card" data-use-case="${useCase.id}">
-      <div class="card-icon">${useCase.icon}</div>
+      <div class="card-icon">
+        <img src="${useCase.iconPath}" alt="" aria-hidden="true">
+      </div>
       <h3 class="card-title">${useCase.title}</h3>
       <p class="card-description">${useCase.oneLiner}</p>
       ${useCase.tags.length > 0 ? `
