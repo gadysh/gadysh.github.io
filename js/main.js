@@ -1,6 +1,6 @@
 import { initAnimations } from './animations.js';
 
-// --- Configuration & Data ---
+// --- Configuration & Data (Use Cases remain data-driven for gallery) ---
 
 const useCases = [
     {
@@ -44,11 +44,10 @@ const useCases = [
 // --- Core Functions ---
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Animations (GSAP)
-    initAnimations();
+    // 1. Initialize Animations (GSAP) - will be triggered after content load
 
-    // 2. Load Process Content (Markdown)
-    loadMarkedContent('/content/home.md', 'process-content');
+    // 2. Load & Parse Home Content (The Big Parser)
+    loadAndParseHome();
 
     // 3. Render Use Cases Gallery
     initUseCasesGallery();
@@ -58,31 +57,118 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Loads Markdown content, parses it, and injects it into a container.
+ * Main Content Parser
+ * Fetches Markdown, splits by H2 sections, and populates DOM.
  */
-async function loadMarkedContent(url, containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
+async function loadAndParseHome() {
     try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const response = await fetch('/content/home.md');
+        if (!response.ok) throw new Error('Failed to load home.md');
         const text = await response.text();
 
-        // Configure marked for security and clean output
-        // Assuming marked is loaded globally via CDN script tag in index.html
-        if (typeof marked !== 'undefined') {
-            container.innerHTML = marked.parse(text);
-        } else {
-            container.innerHTML = "<p>Markdown parser not loaded.</p>";
-            console.error('Marked.js library not found.');
+        // Check if marked is available
+        if (typeof marked === 'undefined') {
+            console.error('Marked.js not loaded');
+            return;
         }
 
+        // --- Parsing Strategy ---
+        // 1. Convert entire MD to HTML tokens/tree is hard with simple splitting.
+        // 2. We will split by "## " (H2) to get sections.
+
+        const sections = text.split(/^##\s+/gm);
+
+        sections.forEach(section => {
+            const lines = section.trim().split('\n');
+            const sectionTitle = lines[0].trim().toLowerCase();
+            const sectionBody = lines.slice(1).join('\n'); // Everything after title
+
+            if (sectionTitle.includes('hero')) {
+                parseHero(sectionBody);
+            } else if (sectionTitle.includes('outcomes')) {
+                parseOutcomes(sectionBody);
+            } else if (sectionTitle.includes('process')) {
+                parseProcess(sectionBody);
+            } else if (sectionTitle.includes('contact')) {
+                parseContact(sectionBody);
+            }
+        });
+
+        // Initialize animations *after* DOM is populated
+        initAnimations();
+
     } catch (error) {
-        console.error('Error loading content:', error);
-        container.innerHTML = `<p style="color:red; text-align:center;">שגיאה בטעינת התוכן. אנא נסה לרענן.</p>`;
+        console.error('Error parsing home content:', error);
     }
 }
+
+function parseHero(mdContent) {
+    // Expected format:
+    // ### כותרת
+    // Text...
+    // ### תת כותרת
+    // Text...
+    // ### כפתור ראשי
+    // Text...
+    // ### כפתור משני
+    // Text...
+
+    const titleMatch = mdContent.match(/### כותרת\s+([\s\S]*?)(?=###|$)/);
+    const subtitleMatch = mdContent.match(/### תת כותרת\s+([\s\S]*?)(?=###|$)/);
+    const btnPrimaryMatch = mdContent.match(/### כפתור ראשי\s+([\s\S]*?)(?=###|$)/);
+    const btnSecondaryMatch = mdContent.match(/### כפתור משני\s+([\s\S]*?)(?=###|$)/);
+
+    if (titleMatch) document.getElementById('hero-title').innerHTML = marked.parseInline(titleMatch[1].trim());
+    if (subtitleMatch) document.getElementById('hero-subtitle').innerHTML = marked.parseInline(subtitleMatch[1].trim());
+    if (btnPrimaryMatch) document.getElementById('hero-btn-primary').innerText = btnPrimaryMatch[1].trim();
+    if (btnSecondaryMatch) document.getElementById('hero-btn-secondary').innerText = btnSecondaryMatch[1].trim();
+}
+
+function parseOutcomes(mdContent) {
+    // Expected format: Multiple "### Title \n Text" blocks
+    const container = document.getElementById('outcomes-grid');
+    if (!container) return;
+
+    // Split by H3 keys
+    const items = mdContent.split(/^###\s+/gm).slice(1); // skip empty first part
+
+    let html = '';
+    items.forEach(item => {
+        const lines = item.trim().split('\n');
+        const title = lines[0].trim();
+        const text = lines.slice(1).join('\n').trim();
+
+        html += `
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">${title}</h3>
+                <p style="color: var(--text-muted);">${text}</p>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
+function parseProcess(mdContent) {
+    // Expected: HTML cards or MD. Since we put HTML in MD for cards, 
+    // we can just render it. If it was clean MD, we'd wrap it.
+    // Our home.md currently creates <div class="clean-card">...</div>
+
+    const container = document.getElementById('process-content');
+    if (container) {
+        // marked will parse the HTML inside MD correctly usually
+        container.innerHTML = marked.parse(mdContent);
+    }
+}
+
+function parseContact(mdContent) {
+    const titleMatch = mdContent.match(/### כותרת\s+([\s\S]*?)(?=###|$)/);
+    const textMatch = mdContent.match(/### טקסט\s+([\s\S]*?)(?=###|$)/);
+
+    if (titleMatch) document.getElementById('contact-title').innerHTML = marked.parseInline(titleMatch[1].trim());
+    if (textMatch) document.getElementById('contact-subtitle').innerHTML = marked.parseInline(textMatch[1].trim());
+}
+
 
 /**
  * Renders the Use Cases cards into the Bento Grid.
@@ -92,11 +178,10 @@ function initUseCasesGallery() {
     if (!gallery) return;
 
     gallery.innerHTML = useCases.map((useCase, index) => {
-        // Stagger animation delay based on index
         return `
             <div class="clean-card use-case-card" onclick="openUseCaseModal('${useCase.title}', '${useCase.description}')">
                 <div class="icon-box-clean">
-                    <img src="assets/icons/${useCase.icon}" alt="${useCase.title}" onerror="this.src='/assets/icons/layers.svg'">
+                    <img src="assets/icons/${useCase.icon}" alt="${useCase.title}" onerror="this.onerror=null; this.src='/assets/icons/box.svg'">
                 </div>
                 <h3>${useCase.title}</h3>
                 <p>${useCase.description}</p>
@@ -119,7 +204,6 @@ function initContactForm() {
         e.preventDefault();
         const msgContainer = document.getElementById('form-message');
 
-        // Simulate API call
         msgContainer.innerHTML = '<span style="color: var(--primary);">שולח...</span>';
 
         setTimeout(() => {
@@ -129,12 +213,12 @@ function initContactForm() {
     });
 }
 
-// --- Global Modal Helpers (accessible from HTML) ---
+// --- Global Modal Helpers ---
 
 window.openUseCaseModal = function (title, description) {
     const modal = document.getElementById('use-case-modal');
     const modalBody = modal.querySelector('.modal-body');
-    const modalTitle = modal.querySelector('span'); // Simple hook
+    const modalTitle = modal.querySelector('span');
 
     if (modal && modalBody) {
         modalTitle.innerText = title;
@@ -157,7 +241,6 @@ window.closeUseCaseModal = function () {
     }
 };
 
-// Close modal when clicking outside
 window.onclick = function (event) {
     const modal = document.getElementById('use-case-modal');
     if (event.target == modal) {
