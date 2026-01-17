@@ -261,8 +261,8 @@ section {
   background-size: cover;
   background-position: center left;
   z-index: 0;
-  mask-image: linear-gradient(to right, black 50%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%);
+  /* Mask removed to restore vibrancy as requested */
+  opacity: 1;
 }
 
 /* 2. Process Section - "The Flow" Background */
@@ -274,45 +274,31 @@ section {
     radial-gradient(circle at 0% 100%, rgba(79, 70, 229, 0.03) 0%, transparent 25%);
 }
 
-
-
 /* 3. Use Cases - "The Grid" Background */
 #use-cases {
   background-color: #ffffff;
 }
 
-/* Technical dot pattern */
-
-
-/* 4. Security - "The Shield" Background */
-#security {
-  background: linear-gradient(135deg, #F9FAFB 0%, #EFF6FF 100%);
-  /* Subtle blueish tint */
+/* 4. Security & Contact - Organic Layouts */
+.organic-shape {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.05);
+  transition: border-radius 0.5s ease;
 }
 
-/* Geometric shapes */
+.organic-shape:hover {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
 
-
-/* 5. Contact - "The Connection" Background */
 #contact {
   background-color: #ffffff;
   border-top: 1px solid var(--border-light);
-}
-
-#contact::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  background-image: url('../assets/img/Human-AI Synergy.png');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.15;
-  z-index: 0;
-  pointer-events: none;
+  overflow: hidden;
+  /* Ensure organic shapes don't overflow if large */
 }
 
 /* Re-using glass-abstract.png as a "Process Sculpture" */

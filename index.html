@@ -120,28 +120,26 @@
     </section>
 
     <!-- 5. Security & Trust -->
-    <section id="security">
-        <div class="security-bg-img"></div>
+    <section id="security" style="background: linear-gradient(135deg, #F9FAFB 0%, #EFF6FF 100%);">
         <div class="container">
-            <div class="clean-card"
-                style="flex-direction: row; align-items: center; justify-content: space-between; background: linear-gradient(to left, #ffffff, #F3F4F6);">
-                <div style="flex: 1; padding: 1rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <!-- Text Content -->
+                <div>
                     <div class="icon-box-clean" style="background: white;">
                         <img src="/assets/icons/lock.svg" style="opacity: 1;">
                     </div>
                     <h2>אבטחה בראש סדר העדיפויות</h2>
-                    <p style="margin-bottom: 2rem;">
+                    <p style="margin-bottom: 2rem; color: var(--text-muted); line-height: 1.6;">
                         אנחנו מבינים Enterprise. המידע לא יוצא החוצה לאימון מודלים.
                         הטמעה בתוך הרשת הארגונית, ניהול הרשאות מלא, ולוגים מפורטים.
                     </p>
                     <a href="/pages/security.html" class="btn btn-secondary">סקירת אבטחה טכנית</a>
                 </div>
-                <div style="flex: 1; display: flex; justify-content: center; opacity: 0.1;">
-                    <!-- decorative shield simplified -->
-                    <svg width="300" height="300" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
-                    </svg>
+
+                <!-- Organic Visual -->
+                <div>
+                    <div class="organic-shape" style="background-image: url('/assets/img/The Invisible Shield.png');">
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,45 +147,57 @@
 
     <!-- 6. Contact Section -->
     <section id="contact">
-        <div class="container">
-            <div class="section-head">
-                <h2 id="contact-title"><!-- Dynamic --></h2>
-                <p id="contact-subtitle"><!-- Dynamic --></p>
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+
+            <!-- Organic Visual (Left) -->
+            <div>
+                <div class="organic-shape"
+                    style="background-image: url('/assets/img/Human-AI Synergy.png');  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;">
+                </div>
             </div>
 
-            <div class="clean-card" style="max-width: 600px; margin: 0 auto; box-shadow: var(--shadow-2xl);">
-                <form id="contact-form">
-                    <div id="form-message"></div>
+            <!-- Form Content (Right) -->
+            <div>
+                <div class="section-head" style="text-align: right; max-width: 100%; margin-bottom: 2rem;">
+                    <h2 id="contact-title"><!-- Dynamic --></h2>
+                    <p id="contact-subtitle"><!-- Dynamic --></p>
+                </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="clean-card" style="max-width: 600px; margin: 0 auto; box-shadow: var(--shadow-2xl);">
+                    <form id="contact-form">
+                        <div id="form-message"></div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">שם
+                                    מלא</label>
+                                <input type="text" name="name" class="form-input-clean" required>
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">ארגון</label>
+                                <input type="text" name="organization" class="form-input-clean" required>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label
-                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">שם
-                                מלא</label>
-                            <input type="text" name="name" class="form-input-clean" required>
+                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">אימייל
+                                עסקי</label>
+                            <input type="email" name="contact" class="form-input-clean" required>
                         </div>
+
                         <div class="form-group">
                             <label
-                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">ארגון</label>
-                            <input type="text" name="organization" class="form-input-clean" required>
+                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">מה
+                                תרצו לאוטומט?</label>
+                            <textarea name="message" class="form-input-clean" rows="4"></textarea>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label
-                            style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">אימייל
-                            עסקי</label>
-                        <input type="email" name="contact" class="form-input-clean" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">מה
-                            תרצו לאוטומט?</label>
-                        <textarea name="message" class="form-input-clean" rows="4"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">שלח פרטים</button>
-                </form>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">שלח פרטים</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
