@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="אבטחה, פרטיות ושליטה בפתרונות AI ארגוניים: הרשאות, לוגים, הצפנה, פריסה היברידית או On-Premise." />
+  <meta name="keywords" content="אבטחה, פרטיות, AI ארגוני, הצפנה, On-Premise, GDPR, ISO 27001" />
+
+  <meta property="og:title" content="PowOrg - אבטחה ופרטיות" />
+  <meta property="og:description" content="המידע שלכם נשאר אצלכם. עקרונות אבטחה, הרשאות, הצפנה, ציות ופריסה." />
+  <meta property="og:image" content="/assets/img/og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <title>PowOrg - אבטחה ופרטיות</title>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+
+  <!-- Google Fonts - Heebo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <!-- Marked.js for Markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+
+  <!-- Page-only polish for Markdown rendering -->
+  <style>
+    /* כדי שהתוכן לא יכנס מתחת ל-navbar הקבוע */
+    main { padding-top: 90px; }
+
+    /* ריווח נעים לקריאת Markdown בתוך כרטיס */
+    .md-shell {
+      background: var(--color-bg-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--border-radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .md-content h1 { margin-top: 0; }
+    .md-content h2 { margin-top: 2.2rem; }
+    .md-content h3 { margin-top: 1.6rem; }
+
+    .md-content ul,
+    .md-content ol {
+      margin: 0 0 1.25rem 0;
+      padding-right: 1.25rem;
+      color: var(--color-text-secondary);
+    }
+
+    .md-content li { margin: 0.4rem 0; }
+
+    .md-content hr {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      margin: 2rem 0;
+    }
+
+    .md-content strong { color: var(--color-text-primary); }
+
+    /* שיהיה נוח לקפוץ לכותרות עם navbar קבוע */
+    .md-content h2, .md-content h3, .md-content h4 { scroll-margin-top: 110px; }
+
+    /* הודעת שגיאה טעינה */
+    .load-error {
+      color: var(--color-text-secondary);
+      padding: 1rem 0;
+    }
+
+    /* CTA תחתון */
+    .cta-card {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border-radius: var(--border-radius-lg);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation (זהה לאינדקס, עם לינקים שמתאימים לדפים) -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="nav-brand">PowOrg</a>
+
+      <button class="nav-toggle" aria-label="תפריט ניווט">☰</button>
+
+      <ul class="nav-menu">
+        <li><a href="/#hero" class="nav-link">הבית</a></li>
+        <li><a href="/#process" class="nav-link">התהליך</a></li>
+        <li><a href="/#use-cases" class="nav-link">מקרי שימוש</a></li>
+        <li><a href="/pages/poc.html" class="nav-link">POC</a></li>
+        <li><a href="/pages/security.html" class="nav-link" aria-current="page">אבטחה</a></li>
+        <li><a href="/#contact" class="nav-link">צור קשר</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Page Header -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h1 class="section-title">אבטחה ופרטיות</h1>
+          <p class="section-subtitle">המידע שלכם נשאר אצלכם. תמיד.</p>
+        </div>
+
+        <!-- Markdown Shell -->
+        <div class="md-shell">
+          <article id="security-md" class="md-content">
+            <!-- נטען מ-Markdown -->
+          </article>
+
+          <!-- CTA עוגן כדי שהלינק #contact בתוך ה-Markdown לא יוביל לכלום -->
+          <section id="contact" class="cta-card" aria-label="צור קשר">
+            <h3 class="card-title" style="margin-bottom: 0.5rem;">יש שאלות נוספות על אבטחה?</h3>
+            <p class="card-description" style="margin-bottom: 0;">
+              נשמח לענות ולפרט לפי הדרישות של הארגון שלכם.
+            </p>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="/#contact">עברו לטופס יצירת קשר</a>
+              <a class="btn btn-secondary" href="/#contact">קבעו שיחת היכרות</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 PowOrg. כל הזכויות שמורות.</p>
+      <p style="margin-top: 0.5rem;">
+        <a href="/pages/security.html">אבטחה ופרטיות</a> ·
+        <a href="/pages/poc.html">תהליך POC</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Page Script (ללא תלות ב-main.js כדי לא לשבור עמודים אחרים) -->
+  <script type="module">
+    // תפריט מובייל
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('.nav-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => menu.classList.toggle('active'));
+    }
+
+    // Markdown rendering
+    const target = document.getElementById('security-md');
+
+    // הגדרות Marked: שומר על התנהגות סטנדרטית (שורה ריקה = פסקה)
+    if (window.marked) {
+      marked.setOptions({
+        gfm: true,
+        breaks: false
+      });
+    }
+
+    async function loadSecurityMarkdown() {
+      try {
+        const res = await fetch('/content/security.md', { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+
+        const md = await res.text();
+        const html = window.marked ? marked.parse(md) : md;
+
+        // להסיר את הכותרת הראשונה (# ...) מתוך ה-Markdown כדי לא להכפיל כותרת דף
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+
+        const firstH1 = tmp.querySelector('h1');
+        if (firstH1) firstH1.remove();
+
+        target.innerHTML = tmp.innerHTML;
+
+        // טיפול בסיסי בלינק #contact מתוך markdown: יש אצלנו section עם id=contact, אז זה עובד.
+      } catch (err) {
+        target.innerHTML = `
+          <div class="load-error">
+            לא הצלחנו לטעון כרגע את תוכן האבטחה (security.md).<br/>
+            ודאו שהקובץ קיים בנתיב: <strong>/content/security.md</strong>
+          </div>
+        `;
+      }
+    }
+
+    loadSecurityMarkdown();
+  </script>
+</body>
+</html>
