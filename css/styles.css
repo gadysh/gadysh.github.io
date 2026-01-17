@@ -464,31 +464,130 @@ section {
 }
 
 /* Responsive */
+/* Responsive & Mobile Design */
 @media (max-width: 1024px) {
-  .hero-visual-bg {
-    width: 100%;
-    height: 50%;
-    top: auto;
-    bottom: 0;
-    mask-image: linear-gradient(to top, black, transparent);
-    -webkit-mask-image: linear-gradient(to top, black, transparent);
+
+  /* 1. Typography & Spacing */
+  :root {
+    --header-height: 70px;
+    /* Slightly smaller header */
   }
 
-  #hero {
-    flex-direction: column;
-    text-align: center;
-    padding-top: 2rem;
-    justify-content: center;
+  body {
+    font-size: 16px;
   }
 
-  .nav-menu {
-    display: none;
+  h1 {
+    font-size: 2.5rem;
+    /* Smaller hero title */
+    line-height: 1.2;
   }
 
+  h2 {
+    font-size: 2rem;
+  }
+
+  /* 2. Layout - General */
+  .container {
+    padding: 0 1.5rem;
+    /* Less padding on sides */
+  }
+
+  section {
+    padding: 4rem 0;
+    /* Reduced vertical spacing */
+    overflow: hidden;
+    /* Prevent horizontal scroll */
+  }
+
+  /* 3. Navigation - Mobile Menu */
   .nav-toggle {
     display: block;
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-main);
+    z-index: 1001;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6rem 2rem 2rem 2rem;
+    gap: 1.5rem;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    /* Hidden by default */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+    /* Slide in */
+  }
+
+  /* 4. Hero Section */
+  #hero .container {
+    grid-template-columns: 1fr;
+    /* Stack vertically */
+    gap: 2rem;
+    text-align: center;
+    padding-top: 2rem;
+  }
+
+  .hero-visual-bg {
+    width: 100%;
+    height: 40vh;
+    top: auto;
+    bottom: 0px;
+    opacity: 0.15;
+    /* visual noise only */
+    mask-image: linear-gradient(to top, black, transparent);
+    -webkit-mask-image: linear-gradient(to top, black, transparent);
+  }
+
+  /* Center hero content */
+  #hero h1,
+  #hero p,
+  #hero div {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
+
+  #hero h1 span {
+    display: block;
+    /* Break line on mobile */
+    margin-top: 0.5rem;
+  }
+
+  /* 5. Grids (Outcomes, Bento, Sections) */
+  #outcomes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .bento-grid-clean {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* 6. Components */
+  .clean-card {
+    padding: 1.5rem;
+  }
+
+  .section-head p {
+    font-size: 1rem;
+    padding: 0 1rem;
   }
 }

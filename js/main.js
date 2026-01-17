@@ -44,17 +44,52 @@ const useCases = [
 // --- Core Functions ---
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Animations (GSAP) - will be triggered after content load
-
-    // 2. Load & Parse Home Content (The Big Parser)
+    // 1. Initialize Animations (GSAP)
+    // 2. Load & Parse Home Content
     loadAndParseHome();
 
-    // 3. Render Use Cases Gallery
+    // 3. Render Use Cases
     initUseCasesGallery();
 
-    // 4. Contact Form Handler
+    // 4. Contact Form
     initContactForm();
+
+    // 5. Mobile Menu Logic
+    initMobileMenu();
 });
+
+/**
+ * Mobile Navigation Toggle
+ */
+function initMobileMenu() {
+    const toggleBtn = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (!toggleBtn || !navMenu) return;
+
+    // Toggle menu on click
+    toggleBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        toggleBtn.innerText = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Close menu when clicking a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            toggleBtn.innerText = '☰';
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target) && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            toggleBtn.innerText = '☰';
+        }
+    });
+}
 
 /**
  * Main Content Parser
@@ -71,10 +106,6 @@ async function loadAndParseHome() {
             console.error('Marked.js not loaded');
             return;
         }
-
-        // --- Parsing Strategy ---
-        // 1. Convert entire MD to HTML tokens/tree is hard with simple splitting.
-        // 2. We will split by "## " (H2) to get sections.
 
         const sections = text.split(/^##\s+/gm);
 
@@ -103,16 +134,6 @@ async function loadAndParseHome() {
 }
 
 function parseHero(mdContent) {
-    // Expected format:
-    // ### כותרת
-    // Text...
-    // ### תת כותרת
-    // Text...
-    // ### כפתור ראשי
-    // Text...
-    // ### כפתור משני
-    // Text...
-
     const titleMatch = mdContent.match(/### כותרת\s+([\s\S]*?)(?=###|$)/);
     const subtitleMatch = mdContent.match(/### תת כותרת\s+([\s\S]*?)(?=###|$)/);
     const btnPrimaryMatch = mdContent.match(/### כפתור ראשי\s+([\s\S]*?)(?=###|$)/);
@@ -125,12 +146,10 @@ function parseHero(mdContent) {
 }
 
 function parseOutcomes(mdContent) {
-    // Expected format: Multiple "### Title \n Text" blocks
     const container = document.getElementById('outcomes-grid');
     if (!container) return;
 
-    // Split by H3 keys
-    const items = mdContent.split(/^###\s+/gm).slice(1); // skip empty first part
+    const items = mdContent.split(/^###\s+/gm).slice(1);
 
     let html = '';
     items.forEach(item => {
@@ -150,13 +169,8 @@ function parseOutcomes(mdContent) {
 }
 
 function parseProcess(mdContent) {
-    // Expected: HTML cards or MD. Since we put HTML in MD for cards, 
-    // we can just render it. If it was clean MD, we'd wrap it.
-    // Our home.md currently creates <div class="clean-card">...</div>
-
     const container = document.getElementById('process-content');
     if (container) {
-        // marked will parse the HTML inside MD correctly usually
         container.innerHTML = marked.parse(mdContent);
     }
 }
@@ -168,7 +182,6 @@ function parseContact(mdContent) {
     if (titleMatch) document.getElementById('contact-title').innerHTML = marked.parseInline(titleMatch[1].trim());
     if (textMatch) document.getElementById('contact-subtitle').innerHTML = marked.parseInline(textMatch[1].trim());
 }
-
 
 /**
  * Renders the Use Cases cards into the Bento Grid.
