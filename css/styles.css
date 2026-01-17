@@ -294,6 +294,13 @@ section {
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 }
 
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
 #contact {
   background-color: #ffffff;
   border-top: 1px solid var(--border-light);
@@ -565,6 +572,18 @@ section {
   .bento-grid-clean {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  /* Force split layouts to stack on mobile */
+  .split-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Adjust organic shape height for mobile */
+  .organic-shape {
+    height: 250px;
+    margin-bottom: 1rem;
   }
 
   /* 6. Components */
