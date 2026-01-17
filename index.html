@@ -31,11 +31,12 @@
             <a href="/" class="nav-brand">PowOrg</a>
             <button class="nav-toggle">☰</button>
             <ul class="nav-menu">
-                <li><a href="#hero" class="nav-link">בית</a></li>
-                <li><a href="#process" class="nav-link">התהליך</a></li>
-                <li><a href="#use-cases" class="nav-link">פתרונות</a></li>
-                <li><a href="/pages/security.html" class="nav-link">אבטחה</a></li>
-                <li><a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; color: white;">צור קשר</a>
+                <li><a href="#hero" class="nav-link" id="nav-home"><!-- Dynamic --></a></li>
+                <li><a href="#process" class="nav-link" id="nav-process"><!-- Dynamic --></a></li>
+                <li><a href="#use-cases" class="nav-link" id="nav-solutions"><!-- Dynamic --></a></li>
+                <li><a href="/pages/security.html" class="nav-link" id="nav-security"><!-- Dynamic --></a></li>
+                <li><a href="#contact" class="btn btn-primary" id="nav-contact"
+                        style="padding: 0.6rem 1.5rem; color: white;"><!-- Dynamic --></a>
                 </li>
             </ul>
         </div>
@@ -64,10 +65,12 @@
 
                 <div style="margin-top: 3rem; display: flex; gap: 2rem; font-size: 0.9rem; color: var(--text-muted);">
                     <div style="display: flex; align-items: center; gap: 8px;">
-                        <img src="/assets/icons/check.svg" style="width: 18px; opacity: 0.6;"> התממשקות ל-ERP/CRM
+                        <img src="/assets/icons/check.svg" style="width: 18px; opacity: 0.6;"> <span
+                            id="hero-tech1"><!-- Dynamic --></span>
                     </div>
                     <div style="display: flex; align-items: center; gap: 8px;">
-                        <img src="/assets/icons/shield.svg" style="width: 18px; opacity: 0.6;"> On-Prem / VPC
+                        <img src="/assets/icons/shield.svg" style="width: 18px; opacity: 0.6;"> <span
+                            id="hero-tech2"><!-- Dynamic --></span>
                     </div>
                 </div>
             </div>
@@ -92,8 +95,8 @@
         <div class="process-bg-img"></div>
         <div class="container">
             <div class="section-head">
-                <h2>איך עובד התהליך?</h2>
-                <p>בלי זעזועים לארגון. הטמעה מדורגת ובטוחה.</p>
+                <h2 id="process-title"><!-- Dynamic --></h2>
+                <p id="process-subtitle"><!-- Dynamic --></p>
             </div>
             <!-- Markdown Content Loaded Here -->
             <div id="process-content" class="bento-grid-clean"></div>
@@ -107,10 +110,10 @@
             <div class="section-head"
                 style="text-align: right; max-width: 100%; display: flex; justify-content: space-between; align-items: end;">
                 <div>
-                    <h2>פתרונות שכבר עובדים</h2>
-                    <p>סוכנים שחוסכים אלפי שעות עבודה בחודש</p>
+                    <h2 id="usecases-title"><!-- Dynamic --></h2>
+                    <p id="usecases-subtitle"><!-- Dynamic --></p>
                 </div>
-                <a href="#contact" class="btn btn-link">כל הפתרונות ←</a>
+                <a href="#contact" class="btn btn-link" id="usecases-link"><!-- Dynamic --></a>
             </div>
 
             <div id="use-cases-gallery" class="bento-grid-clean">
@@ -170,33 +173,31 @@
 
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                                 <div class="form-group">
-                                    <label
-                                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">שם
-                                        מלא</label>
+                                    <label id="label-name"
+                                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;"><!-- Dynamic --></label>
                                     <input type="text" name="name" class="form-input-clean" required>
                                 </div>
                                 <div class="form-group">
-                                    <label
-                                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">ארגון</label>
+                                    <label id="label-org"
+                                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;"><!-- Dynamic --></label>
                                     <input type="text" name="organization" class="form-input-clean" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label
-                                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">אימייל
-                                    עסקי</label>
+                                <label id="label-email"
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;"><!-- Dynamic --></label>
                                 <input type="email" name="contact" class="form-input-clean" required>
                             </div>
 
                             <div class="form-group">
-                                <label
-                                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;">מה
-                                    תרצו לאוטומט?</label>
+                                <label id="label-msg"
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;"><!-- Dynamic --></label>
                                 <textarea name="message" class="form-input-clean" rows="4"></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">שלח פרטים</button>
+                            <button type="submit" id="submit-btn" class="btn btn-primary"
+                                style="width: 100%;"><!-- Dynamic --></button>
                         </form>
                     </div>
                 </div>
@@ -207,7 +208,7 @@
     <footer class="footer-clean">
         <div class="container">
             <div class="nav-brand" style="margin-bottom: 1rem;">PowOrg</div>
-            <p style="font-size: 0.9rem;">&copy; 2026 כל הזכויות שמורות.</p>
+            <p id="footer-copy" style="font-size: 0.9rem;"><!-- Dynamic --></p>
         </div>
     </footer>
 

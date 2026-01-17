@@ -114,14 +114,24 @@ async function loadAndParseHome() {
             const sectionTitle = lines[0].trim().toLowerCase();
             const sectionBody = lines.slice(1).join('\n'); // Everything after title
 
-            if (sectionTitle.includes('hero')) {
+            if (sectionTitle.includes('heroextras')) {
+                parseHeroExtras(sectionBody);
+            } else if (sectionTitle.includes('hero')) { // Standard Hero
                 parseHero(sectionBody);
+            } else if (sectionTitle.includes('navbar')) {
+                parseNavbar(sectionBody);
+            } else if (sectionTitle.includes('sectionheaders')) {
+                parseSectionHeaders(sectionBody);
+            } else if (sectionTitle.includes('contactform')) {
+                parseContactForm(sectionBody);
+            } else if (sectionTitle.includes('contact')) { // Standard Contact
+                parseContact(sectionBody);
             } else if (sectionTitle.includes('outcomes')) {
                 parseOutcomes(sectionBody);
             } else if (sectionTitle.includes('process')) {
                 parseProcess(sectionBody);
-            } else if (sectionTitle.includes('contact')) {
-                parseContact(sectionBody);
+            } else if (sectionTitle.includes('footer')) {
+                parseFooter(sectionBody);
             }
         });
 
@@ -131,6 +141,69 @@ async function loadAndParseHome() {
     } catch (error) {
         console.error('Error parsing home content:', error);
     }
+}
+
+/** 
+ * Helper to parse key-value lists like:
+ * ### Key
+ * Value
+ */
+function parseKeyValue(mdContent) {
+    const items = {};
+    const parts = mdContent.split(/^###\s+/gm).slice(1);
+    parts.forEach(part => {
+        const lines = part.trim().split('\n');
+        const key = lines[0].trim().toLowerCase();
+        const value = lines.slice(1).join('\n').trim();
+        items[key] = value;
+    });
+    return items;
+}
+
+function parseNavbar(mdContent) {
+    const lines = mdContent.trim().split('\n').map(l => l.replace(/^-\s+/, '').trim()).filter(l => l);
+    // Assumes order: Home, Process, Solutions, Security, Contact
+    if (lines[0]) document.getElementById('nav-home').innerText = lines[0];
+    if (lines[1]) document.getElementById('nav-process').innerText = lines[1];
+    if (lines[2]) document.getElementById('nav-solutions').innerText = lines[2];
+    if (lines[3]) document.getElementById('nav-security').innerText = lines[3];
+    if (lines[4]) document.getElementById('nav-contact').innerText = lines[4];
+}
+
+function parseHeroExtras(mdContent) {
+    const data = parseKeyValue(mdContent);
+    // Tag is currently hardcoded in HTML as a div but user requested full extraction.
+    // If we wanted to parse tag we would need an ID for it.
+    // For now dealing with the Tech IDs we added.
+    if (data['tech1']) document.getElementById('hero-tech1').innerText = data['tech1'];
+    if (data['tech2']) document.getElementById('hero-tech2').innerText = data['tech2'];
+}
+
+function parseSectionHeaders(mdContent) {
+    const data = parseKeyValue(mdContent);
+
+    if (data['processtitle']) document.getElementById('process-title').innerText = data['processtitle'];
+    if (data['processsubtitle']) document.getElementById('process-subtitle').innerText = data['processsubtitle'];
+
+    if (data['usecasestitle']) document.getElementById('usecases-title').innerText = data['usecasestitle'];
+    if (data['usecasessubtitle']) document.getElementById('usecases-subtitle').innerText = data['usecasessubtitle'];
+    if (data['usecaseslink']) document.getElementById('usecases-link').innerText = data['usecaseslink'];
+}
+
+function parseContactForm(mdContent) {
+    const data = parseKeyValue(mdContent);
+
+    if (data['namelabel']) document.getElementById('label-name').innerText = data['namelabel'];
+    if (data['orglabel']) document.getElementById('label-org').innerText = data['orglabel'];
+    if (data['emaillabel']) document.getElementById('label-email').innerText = data['emaillabel'];
+    if (data['msglabel']) document.getElementById('label-msg').innerText = data['msglabel'];
+    if (data['submitbtn']) document.getElementById('submit-btn').innerText = data['submitbtn'];
+}
+
+function parseFooter(mdContent) {
+    const data = parseKeyValue(mdContent);
+    // Note: marked.parseInline handles HTML entities like &copy;
+    if (data['copy']) document.getElementById('footer-copy').innerHTML = marked.parseInline(data['copy']);
 }
 
 function parseHero(mdContent) {
