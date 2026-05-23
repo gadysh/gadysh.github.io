@@ -177,12 +177,13 @@ function parseKeyValue(mdContent) {
 
 function parseNavbar(mdContent) {
     const lines = mdContent.trim().split('\n').map(l => l.replace(/^-\s+/, '').trim()).filter(l => l);
-    // Assumes order: Home, Process, Solutions, Security, Contact
+    // Assumes order: Home, Process, Solutions, POC, Security, Contact
     if (lines[0]) document.getElementById('nav-home').innerText = lines[0];
     if (lines[1]) document.getElementById('nav-process').innerText = lines[1];
     if (lines[2]) document.getElementById('nav-solutions').innerText = lines[2];
-    if (lines[3]) document.getElementById('nav-security').innerText = lines[3];
-    if (lines[4]) document.getElementById('nav-contact').innerText = lines[4];
+    if (lines[3]) document.getElementById('nav-poc').innerText = lines[3];
+    if (lines[4]) document.getElementById('nav-security').innerText = lines[4];
+    if (lines[5]) document.getElementById('nav-contact').innerText = lines[5];
 }
 
 function parseHeroExtras(mdContent) {
@@ -351,10 +352,10 @@ function showSuccessToast(message) {
     toast.style.position = 'fixed';
     toast.style.bottom = '2rem';
     toast.style.right = '2rem';
-    toast.style.background = 'rgba(16, 185, 129, 0.15)';
+    toast.style.background = 'rgba(8, 145, 178, 0.15)';
     toast.style.backdropFilter = 'blur(12px)';
-    toast.style.border = '1px solid rgba(16, 185, 129, 0.3)';
-    toast.style.color = '#34d399';
+    toast.style.border = '1px solid rgba(8, 145, 178, 0.3)';
+    toast.style.color = 'var(--primary)';
     toast.style.padding = '1.25rem 2.25rem';
     toast.style.borderRadius = '16px';
     toast.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.6)';
@@ -371,10 +372,10 @@ function showSuccessToast(message) {
     toast.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
 
     toast.innerHTML = `
-        <span style="font-size: 1.5rem; filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.4));">✨</span>
+        <span style="font-size: 1.5rem; color: var(--primary); font-weight: 700;">&#10003;</span>
         <div>
             <strong style="color: #ffffff; font-weight: 700;">הפנייה התקבלה בהצלחה!</strong>
-            <div style="font-size: 0.9rem; color: #a7f3d0; margin-top: 4px;">${message}</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">${message}</div>
         </div>
     `;
 
@@ -400,6 +401,123 @@ function showSuccessToast(message) {
 
 // --- Global Modal Helpers ---
 
+// Case study modal content generator
+function getCaseStudyHtml(modalId) {
+    const cases = {
+        'backoffice': {
+            challenge: 'ארגונים המעבדים עשרות עסקאות ביום מבזבזים אלפי שעות עבודה בחודש על הקמה ידנית של עסקאות, העתקת נתונים בין מערכות ERP ו-CRM, ושליחת עדכונים ידנית למנהלים. התהליך חשוף לטעויות אנוש, עיכובים ואובדן מידע.',
+            solutions: [
+                'סוכן AI קורא ומפענח מסמכי לקוח (הסכמים, הזמנות, אימיילים) באופן אוטומטי ומאובטח',
+                'מקים עסקה חדשה ב-CRM, מעדכן מלאי ב-ERP ומארכב את המסמכים \u2013 הכל ללא מגע יד אדם',
+                'שולח דוח מסכם אוטומטי למנהל האחראי עם כל פרטי העסקה'
+            ],
+            metrics: [
+                { value: '-70%', label: 'קיצור זמן טיפול' },
+                { value: '10 דק\'', label: 'לעסקה מלאה' },
+                { value: '0', label: 'גיוס כ"א נוסף' }
+            ],
+            security: 'כל התהליך רץ בתוך גבולות ה-VPC המאובטח של הארגון. אף נתון לא יוצא החוצה.'
+        },
+        'documents': {
+            challenge: 'צוותי כספים ורכש מעבדים מאות חשבוניות, חוזים וטפסים בחודש. הזנה ידנית של נתונים מקבצי PDF וסריקות לתוך מערכות ה-ERP גוזלת זמן יקר, חשופה לטעויות ויוצרת צווארי בקבוק תפעוליים.',
+            solutions: [
+                'סוכן AI סורק ומפענח מסמכים מכל סוג \u2013 PDF, Excel, Word, סריקות ותמונות',
+                'מסווג אוטומטית את סוג המסמך, שולף טבלאות וסעיפים ומזין ישירות לבסיס הנתונים',
+                'מבצע הכל מקומית ללא העלאת קבצים רגישים לענן חיצוני'
+            ],
+            metrics: [
+                { value: '95%', label: 'דיוק שליפת נתונים' },
+                { value: 'x20', label: 'מהיר מעיבוד ידני' },
+                { value: '0', label: 'טעויות הזנה' }
+            ],
+            security: 'עיבוד מקומי מלא בתוך ה-VPC. אף מסמך לא נשלח לשרתים חיצוניים.'
+        },
+        'audio': {
+            challenge: 'ישיבות הנהלה ושיחות שירות מייצרות תובנות עסקיות קריטיות שנאבדות ברגע שהפגישה מסתיימת. תמלול ידני גוזל שעות, סיכומים לא מדויקים ומשימות נופלות בין הכיסאות.',
+            solutions: [
+                'תמלול אוטומטי מדויק בעברית ובאנגלית עם זיהוי דוברים (Speaker Diarization)',
+                'ניתוח כוונות, סנטימנט והפקת סיכומי מנהלים ורשימות משימות אוטומטיות',
+                'יצירת כרטיסי משימות ישירות ב-Jira או Monday והפצה אוטומטית לצוותים'
+            ],
+            metrics: [
+                { value: '100%', label: 'כיסוי משימות' },
+                { value: '3 דק\'', label: 'לסיכום פגישה' },
+                { value: '0', label: 'משימות שנפלו' }
+            ],
+            security: 'תמלול וניתוח מקומיים בלבד. ההקלטות לעולם לא עוזבות את הרשת הארגונית.'
+        },
+        'internal-agents': {
+            challenge: 'עובדים מבזבזים זמן יקר בחיפוש מידע במערכות ידע פנימיות, מסמכי נהלים ומדיניות. התשובות מפוזרות בין עשרות מערכות ומעכבות קבלת החלטות קריטיות.',
+            solutions: [
+                'סוכן AI פנימי עם גישה מאובטחת למאגרי ידע, נהלים ומסמכי מדיניות ארגוניים',
+                'מענה מדויק ומבוסס מקורות עם אימות הרשאות (RBAC) לכל עובד',
+                'חיפוש וקטורי מתקדם (RAG) שמחזיר תשובות מנומקות עם קישור למסמך המקורי'
+            ],
+            metrics: [
+                { value: '-80%', label: 'זמן חיפוש מידע' },
+                { value: '24/7', label: 'זמינות מלאה' },
+                { value: 'RBAC', label: 'בקרת הרשאות מלאה' }
+            ],
+            security: 'הסוכן פועל בתוך הרשת הפנימית בלבד. אף מידע ארגוני לא נחשף כלפי חוץ.'
+        },
+        'external-agents': {
+            challenge: 'מוקדי שירות עמוסים, זמני תגובה ארוכים ולקוחות מתוסכלים. כל פנייה דורשת מנציג אנושי לבדוק ידנית מספר מערכות, לבצע פעולות ולתעד \u2013 תהליך יקר ואיטי.',
+            solutions: [
+                'סוכן AI שמטפל בפניות לקוחות בוואטסאפ, צ\'אט באתר ומייל \u2013 מאמת זהות ומבצע פעולות',
+                'מתחבר למערכות השילוח, CRM ו-ERP לביצוע עדכונים בזמן אמת',
+                'פותח כרטיסי שירות אוטומטיים ב-ServiceNow/Zendesk עם מלוא פרטי השיחה'
+            ],
+            metrics: [
+                { value: '-60%', label: 'עומס מוקד שירות' },
+                { value: '30 שנ\'', label: 'זמן תגובה ממוצע' },
+                { value: '24/7', label: 'זמינות ללקוחות' }
+            ],
+            security: 'פרטי הלקוח מוגנים בתוך ה-VPC. הסוכן פועל מאחורי הפיירוול הארגוני.'
+        }
+    };
+
+    const c = cases[modalId];
+    if (!c) return '';
+
+    const metricsHtml = c.metrics.map((m, i) => {
+        const colors = ['var(--primary)', 'var(--primary)', 'var(--accent)'];
+        const bgs = ['rgba(8, 145, 178, 0.06)', 'rgba(8, 145, 178, 0.06)', 'rgba(14, 116, 144, 0.06)'];
+        const borders = ['rgba(8, 145, 178, 0.15)', 'rgba(8, 145, 178, 0.15)', 'rgba(14, 116, 144, 0.15)'];
+        return `<div style="text-align: center; padding: 1.5rem; background: ${bgs[i]}; border: 1px solid ${borders[i]}; border-radius: 12px;">
+            <div style="font-size: 2.5rem; font-weight: 800; color: ${colors[i]}; margin-bottom: 0.25rem;">${m.value}</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">${m.label}</div>
+        </div>`;
+    }).join('');
+
+    const solutionsHtml = c.solutions.map(s =>
+        `<li style="display: flex; align-items: center; gap: 10px; font-size: 1rem; color: var(--text-main);"><span style="color: var(--primary); font-weight: 700;">&#10003;</span> ${s}</li>`
+    ).join('');
+
+    return `
+        <div class="case-study" style="direction: rtl; text-align: right;">
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.02em;">האתגר</h4>
+                <p style="font-size: 1.05rem; color: var(--text-main); line-height: 1.7; margin: 0;">${c.challenge}</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.02em;">הפתרון</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                    ${solutionsHtml}
+                </ul>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+                ${metricsHtml}
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; padding: 1rem 1.25rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-light); border-radius: 10px; margin-bottom: 2rem;">
+                <span style="font-size: 1.1rem; color: var(--primary);">&#9679;</span>
+                <span style="font-size: 0.9rem; color: var(--text-muted);">${c.security}</span>
+            </div>
+            <a href="#contact" onclick="closeUseCaseModal()" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.05rem;">קבע פגישת אפיון</a>
+        </div>
+    `;
+}
+
+
 window.openUseCaseModal = function (modalId, title, description) {
     const modal = document.getElementById('use-case-modal');
     const modalBody = modal.querySelector('.modal-body');
@@ -407,188 +525,16 @@ window.openUseCaseModal = function (modalId, title, description) {
 
     if (modal && modalBody) {
         modalTitle.innerText = title;
-        
-        let detailsHtml = '';
-        if (modalId === 'backoffice') {
-            detailsHtml = `
-                <div class="modal-workflow-grid" style="direction: rtl; text-align: right;">
-                    <div style="grid-column: 1 / -1; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
-                        <span style="font-size: 1.8rem; filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.4));">🏆</span>
-                        <div>
-                            <strong style="color: #34d399; font-size: 1.1rem; display: block; margin-bottom: 4px;">סיפור מקרה מנצח: יעילות תפעולית יוצאת דופן</strong>
-                            <p style="font-size: 0.95rem; color: #a7f3d0; margin: 0; line-height: 1.5;">הקמת עסקה אוטומטית מלאה בתוך <strong>10 דקות בלבד</strong>, חיסכון ישיר של <strong>אלפי דקות עבודה ידניות בחודש</strong> לארגון, ואיפשור צמיחה עסקית מהירה ללא צורך בגיוס כוח אדם נוסף.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="workflow-step-card input-card">
-                        <div class="step-badge">קלט (Input)</div>
-                        <div class="step-details">
-                            <strong>קובץ הזמנה / אימייל לקוח:</strong>
-                            <pre class="step-preview-code LTR">Request: "Reconcile SKU-9087 in SAP ERP and update CRM"</pre>
-                            <p>קריאה ועיבוד אוטומטי של אימייל לקוח המבקש סנכרון רכש, או משימת קניות בפורמט JSON/XML.</p>
-                        </div>
-                    </div>
-                    <div class="workflow-step-card process-card">
-                        <div class="step-badge">תהליך פנימי (VPC Workflow)</div>
-                        <div class="step-details">
-                            <strong>אורקסטרציה מקומית מאובטחת:</strong>
-                            <ul class="step-bullets">
-                                <li>אימות הרשאות RBAC של המשתמש מול <strong>Okta/Active Directory</strong></li>
-                                <li>שאילתה מאובטחת ומקומית דרך ה-API הפנימי של SAP ERP לבדיקת מלאי וזמינות פריטים</li>
-                                <li>פנייה לעדכון מהיר של Opportunity ב-Salesforce</li>
-                                <li>רישום והפקת לוגיקה ל-SIEM הארגוני</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="workflow-step-card output-card">
-                        <div class="step-badge">פלט (Output)</div>
-                        <div class="step-details">
-                            <strong>תוצרים ועדכון מערכות:</strong>
-                            <pre class="step-preview-code LTR" style="color: #10b981;">{ "sap_status": "Reconciled", "salesforce_update": "Opportunity Draft Created" }</pre>
-                            <p>המלאי ב-SAP מעודכן, CRM מסונכרן במלואו, וטיוטת מייל מנוסחת מוכנה ב-Drafts של ה-Outbox ללא זליגת נתונים.</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } else if (modalId === 'documents') {
-            detailsHtml = `
-                <div class="modal-workflow-grid" style="direction: rtl; text-align: right;">
-                    <div class="workflow-step-card input-card">
-                        <div class="step-badge">קלט (Input)</div>
-                        <div class="step-details">
-                            <strong>מסמכים סרוקים וקבצי רכש:</strong>
-                            <pre class="step-preview-code LTR">PDF, Word, Excel, TIFF, JPEG scans of complex corporate documents</pre>
-                            <p>קליטת חשבוניות רכש מורכבות, חוזי לקוחות מרובי דפים, טבלאות נתונים ארוכות או צילומי שטרות מטען ללא כל הגבלת פורמט.</p>
-                        </div>
-                    </div>
-                    <div class="workflow-step-card process-card">
-                        <div class="step-badge">תהליך פנימי (VPC Workflow)</div>
-                        <div class="step-details">
-                            <strong>עיבוד והבנה מקומית:</strong>
-                            <ul class="step-bullets">
-                                <li>הפעלת מנוע OCR ו-Parser מרחבי (Spatial layout analysis) מאובטח פנימית</li>
-                                <li>סיווג סוג המסמך ושליפת טבלאות וסעיפים ללא כל העלאת קבצים רגישים לעננים ציבוריים</li>
-                                <li>מיפוי השדות לפורמט בסיס הנתונים הארגוני באמצעות מודל שפה סגור</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="workflow-step-card output-card">
-                        <div class="step-badge">פלט (Output)</div>
-                        <div class="step-details">
-                            <strong>נתונים מובנים ומערכות יעד:</strong>
-                            <pre class="step-preview-code LTR" style="color: #10b981;">{ "vendor": "Intel Corp", "invoice_total": "$145,200", "tables_parsed": 1 }</pre>
-                            <p>פקודת יומן מוזנת אוטומטית לבסיס הנתונים (SQL Server / Oracle / ERP), קובץ JSON מובנה וקובץ ארכיון מסווג ומאורגן מופק לרשת.</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } else if (modalId === 'audio') {
-            detailsHtml = `
-                <div class="modal-workflow-grid" style="direction: rtl; text-align: right;">
-                    <div class="workflow-step-card input-card">
-                        <div class="step-badge">קלט (Input)</div>
-                        <div class="step-details">
-                            <strong>קבצי שמע ושיחות מוקלטות:</strong>
-                            <pre class="step-preview-code LTR">MP3, WAV, M4A raw meeting recordings or customer service calls</pre>
-                            <p>הקלטת פגישת התנעה שבועית, ישיבת הנהלה ארוכה או שיחת שירות מורכבת מול נציגי החברה.</p>
-                        </div>
-                    </div>
-                    <div class="workflow-step-card process-card">
-                        <div class="step-badge">תהליך פנימי (VPC Workflow)</div>
-                        <div class="step-details">
-                            <strong>תמלול וניתוח כוונות:</strong>
-                            <ul class="step-bullets">
-                                <li>מנוע תמלול מקומי רגיש לרעשים והפרעות (Speech-to-Text) מייצר טקסט עברית/אנגלית מדויק</li>
-                                <li>חלוקה אוטומטית לדוברים (Diarization) וזיהוי כוונות וסנטימנט</li>
-                                <li>ניתוח מרובה סוכנים להפקת תובנות, סיכומים ורשימת משימות</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="workflow-step-card output-card">
-                        <div class="step-badge">פלט (Output)</div>
-                        <div class="step-details">
-                            <strong>סיכומים וכרטיסי Jira:</strong>
-                            <pre class="step-preview-code LTR" style="color: #10b981;">{ "actions": ["CTO to approve spec", "Dev to deploy"], "summary_length": "250 words" }</pre>
-                            <p>סיכום פגישה מנהלים, חלוקת משימות אוטומטית (Action Items) ויצירת כרטיסים ישירות ב-Jira או Monday.</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } else if (modalId === 'internal-agents') {
-            detailsHtml = `
-                <div class="modal-workflow-grid" style="direction: rtl; text-align: right;">
-                    <div class="workflow-step-card input-card">
-                        <div class="step-badge">קלט (Input)</div>
-                        <div class="step-details">
-                            <strong>שאילתה פנימית של עובד / בקשת פיתוח:</strong>
-                            <pre class="step-preview-code LTR">Query: "Check liability limits in CISO Security Policy v2"</pre>
-                            <p>עובד בארגון מבצע חיפוש מהיר של מדיניות CISO, מסמך HR או מדריך אינטגרציה טכנולוגי.</p>
-                        </div>
-                    </div>
-                    <div class="workflow-step-card process-card">
-                        <div class="step-badge">תהליך פנימי (VPC Workflow)</div>
-                        <div class="step-details">
-                            <strong>חיפוש וקטורי מאובטח (RAG):</strong>
-                            <ul class="step-bullets">
-                                <li>סוכן ה-AI מבצע חיפוש וקטורי (Vector Search) בבסיס הנתונים המקומי המאובטח</li>
-                                <li>הצלבת המידע מול הגדרות הרשאה של העובד (RBAC Validation)</li>
-                                <li>עיבוד מקומי וניסוח מענה מדויק ומבוסס מקורות ללא העלאת נתונים לרשת הציבורית</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="workflow-step-card output-card">
-                        <div class="step-badge">פלט (Output)</div>
-                        <div class="step-details">
-                            <strong>מענה מנומק עם סימוכין:</strong>
-                            <pre class="step-preview-code LTR" style="color: #10b981;">{ "source_verified": "CISO_v2.pdf", "compliance_checked": true }</pre>
-                            <p>תשובה מקצועית, מדויקת ועמידה בנהלים, קישורים לפסקאות הרלוונטיות במסמכים המקוריים, וחסכון בזמן יקר של מנהלי הידע.</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } else if (modalId === 'external-agents') {
-            detailsHtml = `
-                <div class="modal-workflow-grid" style="direction: rtl; text-align: right;">
-                    <div class="workflow-step-card input-card">
-                        <div class="step-badge">קלט (Input)</div>
-                        <div class="step-details">
-                            <strong>פניית לקוח קצה בערוצי השירות:</strong>
-                            <pre class="step-preview-code LTR">Client: "Update shipping address for Order #9021 and open support ticket"</pre>
-                            <p>פנייה של לקוח דרך הוואטסאפ, הצ'אט באתר או המייל בבקשה לביצוע פעולות קצה או פתרון תקלה.</p>
-                        </div>
-                    </div>
-                    <div class="workflow-step-card process-card">
-                        <div class="step-badge">תהליך פנימי (VPC Workflow)</div>
-                        <div class="step-details">
-                            <strong>אורקסטרציה ואימות זהות:</strong>
-                            <ul class="step-bullets">
-                                <li>בדיקה ואימות פרטי המשתמש מול ה-CRM ללא חשיפת פרטי PII</li>
-                                <li>סוכן ה-AI מתחבר באמצעות APIs מאובטחים למערכת השילוח או ה-ERP לביצוע הפעולה המבוקשת</li>
-                                <li>פתיחת כרטיס שירות ייעודי (Zendesk / ServiceNow) עם כל פרטי השיחה</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="workflow-step-card output-card">
-                        <div class="step-badge">פלט (Output)</div>
-                        <div class="step-details">
-                            <strong>ביצוע פעולה ודיווח:</strong>
-                            <pre class="step-preview-code LTR" style="color: #10b981;">{ "order_updated": true, "ticket_id": "SRV-9082" }</pre>
-                            <p>הכתובת עודכנה בהצלחה ב-ERP, כרטיס שירות נפתח ב-ServiceNow, והודעת אישור נשלחה ללקוח באופן אוטומטי ומאובטח.</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
+        const detailsHtml = getCaseStudyHtml(modalId);
         modalBody.innerHTML = `
             <p style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6; color: var(--text-light);">${description}</p>
             ${detailsHtml}
         `;
-        
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
 };
+
 
 window.closeUseCaseModal = function () {
     const modal = document.getElementById('use-case-modal');
@@ -618,218 +564,9 @@ window.switchPersona = function (personaId) {
     });
 };
 
-// --- Agent Sandbox Playground Logic ---
-let activePlaygroundPreset = 'ingest';
-let isPlaygroundRunning = false;
 
-window.selectPlaygroundPreset = function (presetId) {
-    if (isPlaygroundRunning) return;
-    activePlaygroundPreset = presetId;
 
-    // Toggle active preset chip UI
-    const chips = document.querySelectorAll('.preset-chip');
-    chips.forEach(chip => {
-        if (chip.id === `preset-${presetId}`) {
-            chip.classList.add('active');
-        } else {
-            chip.classList.remove('active');
-        }
-    });
 
-    // Reset presentation stage to idle view or update workspace metadata based on preset selection
-    const statusText = document.getElementById('stage-status-text');
-    if (statusText) {
-        if (presetId === 'ingest') {
-            statusText.innerText = 'במה במצב משרת: ממתינה להפעלת קליטת מסמכים';
-        } else if (presetId === 'cv') {
-            statusText.innerText = 'במה במצב משרת: ממתינה להפעלת מיון קורות חיים';
-        } else if (presetId === 'audit') {
-            statusText.innerText = 'במה במצב משרת: ממתינה להפעלת בקרת חוזים';
-        }
-    }
-};
-
-window.startPlaygroundAnimation = function () {
-    if (isPlaygroundRunning) return;
-    isPlaygroundRunning = true;
-
-    const startBtn = document.getElementById('playground-start-btn');
-    if (startBtn) {
-        startBtn.disabled = true;
-        startBtn.innerText = 'מריץ סימולציה...';
-    }
-
-    const idleView = document.getElementById('stage-idle-view');
-    const activeElements = document.getElementById('stage-active-elements');
-    const statusDot = document.getElementById('stage-status-dot');
-    const statusText = document.getElementById('stage-status-text');
-
-    if (idleView) idleView.style.display = 'none';
-    if (activeElements) activeElements.style.display = 'block';
-    if (statusDot) statusDot.style.background = '#3b82f6'; // running blue
-
-    // Data depending on active preset
-    let dataName = 'הסכם_לקוח.pdf';
-    let dataCust = 'שלמה כהן';
-    let dataVal = '54,000 ₪';
-    let dataProd = 'חבילת Enterprise';
-    let erpText = 'SAP ERP';
-    let erpSubText = '✓ סונכרן מלאי';
-    let crmText = 'Salesforce CRM';
-    let crmSubText = '✓ הוקמה עסקה';
-    let mailText = 'טיוטת מייל נשלחה למנהל!';
-
-    if (activePlaygroundPreset === 'cv') {
-        dataName = 'John_Doe_CV.pdf';
-        dataCust = "ג'ון דו (DevOps)";
-        dataVal = 'התאמה: 9.4/10';
-        dataProd = 'Kubernetes, Terraform';
-        erpText = 'HR Systems';
-        erpSubText = '✓ נרשם מועמד';
-        crmText = 'Comeet ATS';
-        crmSubText = '✓ מסמך הועלה';
-        mailText = 'פרופיל אנונימי נשלח לגיוס!';
-    } else if (activePlaygroundPreset === 'audit') {
-        dataName = 'חוזה_שירות_ספק.pdf';
-        dataCust = "חברת גוגל בע\"מ";
-        dataVal = 'חריגה: שיפוי';
-        dataProd = 'הגבלת אחריות: מאושר';
-        erpText = 'Vector Contract DB';
-        erpSubText = '✓ סעיפים נסרקו';
-        crmText = 'Legal Salesforce';
-        crmSubText = '✓ חוזה עודכן';
-        mailText = 'דוח חריגות מוכן לאישור!';
-    }
-
-    // Reset Elements
-    gsap.set("#anim-pdf-doc", { opacity: 0, scale: 1, x: 0, y: 0 });
-    gsap.set("#anim-scanner-chamber", { opacity: 0, scale: 0.8 });
-    gsap.set("#anim-laser-sweep", { display: 'none', y: '0%' });
-    gsap.set("#anim-robot-agent", { opacity: 0, scale: 0.8 });
-    gsap.set("#anim-extracted-data", { opacity: 0, y: 20 });
-    gsap.set("#anim-core-systems", { opacity: 0 });
-    gsap.set("#system-box-sap", { scale: 1, borderColor: "var(--border-light)", background: "rgba(17, 24, 39, 0.85)" });
-    gsap.set("#system-box-crm", { scale: 1, borderColor: "var(--border-light)", background: "rgba(17, 24, 39, 0.85)" });
-    gsap.set("#anim-archive-cabinet", { opacity: 0, y: 20 });
-    gsap.set("#anim-mail-envelope", { opacity: 0, scale: 0.5, x: 0, y: 0 });
-
-    // Set texts dynamically
-    const docNameEl = document.querySelector('#anim-pdf-doc span');
-    if (docNameEl) docNameEl.innerText = dataName;
-
-    const sapBoxTitle = document.querySelector('#system-box-sap span:nth-child(2)');
-    const sapBoxSub = document.getElementById('sap-status-label');
-    if (sapBoxTitle) sapBoxTitle.innerText = erpText;
-    if (sapBoxSub) {
-        sapBoxSub.innerText = 'ממתין לסנכרון';
-        sapBoxSub.style.color = 'var(--text-muted)';
-    }
-
-    const crmBoxTitle = document.querySelector('#system-box-crm span:nth-child(2)');
-    const crmBoxSub = document.getElementById('crm-status-label');
-    if (crmBoxTitle) crmBoxTitle.innerText = crmText;
-    if (crmBoxSub) {
-        crmBoxSub.innerText = 'ממתין לעדכון';
-        crmBoxSub.style.color = 'var(--text-muted)';
-    }
-
-    const mailTextEl = document.querySelector('#anim-mail-envelope span');
-    if (mailTextEl) mailTextEl.innerText = mailText;
-
-    // Reset Extracted Fields
-    document.getElementById("extracted-cust-name").innerText = "-";
-    document.getElementById("extracted-deal-val").innerText = "-";
-    document.getElementById("extracted-prod-list").innerText = "-";
-
-    const tl = gsap.timeline();
-
-    // 1. Ingestion: Doc flies to Scanner Chamber
-    if (statusText) statusText.innerText = 'במה במצב ריצה: קולט מסמך מקור מאובטח...';
-    
-    tl.to("#anim-scanner-chamber", { opacity: 1, scale: 1, duration: 0.6 })
-      .to("#anim-pdf-doc", { opacity: 1, duration: 0.4 }, "-=0.2")
-      .to("#anim-pdf-doc", { 
-          x: "-220px", 
-          y: "0px", 
-          scale: 0.35, 
-          opacity: 0.4, 
-          rotation: 15, 
-          duration: 1.3, 
-          ease: "power2.inOut" 
-      })
-      .to("#anim-pdf-doc", { opacity: 0, duration: 0.2 })
-
-      // 2. Scan & PII Masking & AI agent blinking
-      .call(() => {
-          if (statusText) statusText.innerText = 'במה במצב ריצה: סורק, מנתח ומנקה PII מקומית...';
-          const laser = document.getElementById("anim-laser-sweep");
-          if (laser) laser.style.display = "block";
-      })
-      .to("#anim-laser-sweep", { y: "160px", duration: 0.8, repeat: 1, yoyo: true })
-      .to("#anim-robot-agent", { opacity: 1, scale: 1, duration: 0.6 }, "-=0.4")
-      .call(() => {
-          const laser = document.getElementById("anim-laser-sweep");
-          if (laser) laser.style.display = "none";
-      })
-      .to(["#anim-eye-left", "#anim-eye-right"], { scaleY: 0.1, duration: 0.15, repeat: 3, yoyo: true, transformOrigin: "center" })
-      .to("#anim-extracted-data", { opacity: 1, y: 0, duration: 0.6 })
-      .call(() => {
-          document.getElementById("extracted-cust-name").innerText = dataCust;
-          document.getElementById("extracted-deal-val").innerText = dataVal;
-          document.getElementById("extracted-prod-list").innerText = dataProd;
-      })
-      .to("#anim-robot-agent", { scale: 1.05, duration: 0.4, repeat: 1, yoyo: true })
-
-      // 3. System Sync
-      .call(() => {
-          if (statusText) statusText.innerText = `במה במצב ריצה: מסנכרן ${erpText} ו-${crmText}...`;
-      })
-      .to("#anim-core-systems", { opacity: 1, duration: 0.6 })
-      .to("#system-box-sap", { scale: 1.1, borderColor: "var(--primary)", duration: 0.5, repeat: 1, yoyo: true })
-      .call(() => {
-          if (sapBoxSub) {
-              sapBoxSub.innerHTML = `<strong style="color: #10b981;">${erpSubText}</strong>`;
-              document.getElementById("system-box-sap").style.borderColor = "#10b981";
-              document.getElementById("system-box-sap").style.background = "rgba(16, 185, 129, 0.08)";
-          }
-      })
-      .to("#system-box-crm", { scale: 1.1, borderColor: "var(--accent)", duration: 0.5, repeat: 1, yoyo: true })
-      .call(() => {
-          if (crmBoxSub) {
-              crmBoxSub.innerHTML = `<strong style="color: #10b981;">${crmSubText}</strong>`;
-              document.getElementById("system-box-crm").style.borderColor = "#10b981";
-              document.getElementById("system-box-crm").style.background = "rgba(16, 185, 129, 0.08)";
-          }
-      })
-
-      // 4. Archive original doc
-      .call(() => {
-          if (statusText) statusText.innerText = 'במה במצב ריצה: מארכב קובץ מקור ב-Secure VPC Archive...';
-      })
-      .to("#anim-archive-cabinet", { opacity: 1, y: 0, duration: 0.6 })
-      .to("#anim-archive-cabinet", { scale: 1.1, duration: 0.4, yoyo: true, repeat: 1 })
-      .call(() => {
-          const cabinetIcon = document.getElementById("archive-cabinet-icon");
-          if (cabinetIcon) cabinetIcon.innerText = "🗄️";
-      })
-
-      // 5. Done and fly mail out
-      .call(() => {
-          if (statusText) statusText.innerText = 'במה במצב ריצה: מנסח ומשגר דוח משתמש...';
-      })
-      .to("#anim-mail-envelope", { opacity: 1, scale: 1, duration: 0.6 })
-      .to("#anim-mail-envelope", { x: "280px", y: "-180px", scale: 0.2, opacity: 0, duration: 1.3, ease: "power2.in" })
-      .call(() => {
-          if (statusDot) statusDot.style.background = '#10b981'; // green success
-          if (statusText) statusText.innerText = 'משימה הושלמה בהצלחה!';
-          
-          if (startBtn) {
-              startBtn.disabled = false;
-              startBtn.innerText = 'הפעל סימולציה מונפשת';
-          }
-          isPlaygroundRunning = false;
-      });
-};
 
 // --- ROI Calculator Logic ---
 window.calculateROI = function () {
@@ -864,10 +601,10 @@ window.calculateROI = function () {
     const paybackDisp = document.getElementById('roi-payback');
     if (annualSavings > 1500000) {
         paybackDisp.innerText = 'פחות מ-4 שבועות!';
-        paybackDisp.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
+        paybackDisp.style.background = 'linear-gradient(135deg, var(--primary), var(--primary))';
     } else if (annualSavings > 750000) {
         paybackDisp.innerText = 'פחות מ-2 חודשים';
-        paybackDisp.style.background = 'linear-gradient(135deg, #3b82f6, #60a5fa)';
+        paybackDisp.style.background = 'linear-gradient(135deg, #3b82f6, var(--primary))';
     } else {
         paybackDisp.innerText = 'פחות מ-3 חודשים';
         paybackDisp.style.background = 'linear-gradient(135deg, #8b5cf6, #c084fc)';

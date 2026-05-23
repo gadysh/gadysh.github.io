@@ -7,15 +7,15 @@
     <title>PowOrg - אוטומציה ארגונית חכמה</title>
     <meta name="description" content="הפכו תהליכים ידניים לאוטומטיים בעזרת AI Agents. הטמעה ארגונית בטוחה ומפוקחת.">
 
-    <!-- Fonts: Urbanist + Heebo (fallback) -->
+    <!-- Fonts: Inter + Heebo (fallback) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Urbanist:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/icons/favicon.png">
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
@@ -28,15 +28,19 @@
     <!-- 1. Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="/" class="nav-brand">PowOrg</a>
+            <a href="/" class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
+                <img src="/assets/img/poworg-logo.jpg" alt="PowOrg" style="height: 52px; width: 52px; border-radius: 10px; object-fit: cover;">
+                <span>PowOrg</span>
+            </a>
             <button class="nav-toggle">☰</button>
             <ul class="nav-menu">
                 <li><a href="#hero" class="nav-link" id="nav-home"><!-- Dynamic --></a></li>
                 <li><a href="#process" class="nav-link" id="nav-process"><!-- Dynamic --></a></li>
                 <li><a href="#use-cases" class="nav-link" id="nav-solutions"><!-- Dynamic --></a></li>
+                <li><a href="/pages/poc.html" class="nav-link" id="nav-poc"><!-- Dynamic --></a></li>
                 <li><a href="/pages/security.html" class="nav-link" id="nav-security"><!-- Dynamic --></a></li>
                 <li><a href="#contact" class="btn btn-primary" id="nav-contact"
-                        style="padding: 0.6rem 1.5rem; color: white;"><!-- Dynamic --></a>
+                        style="padding: 0.6rem 1.5rem; color: #ffffff;"><!-- Dynamic --></a>
                 </li>
             </ul>
         </div>
@@ -52,7 +56,7 @@
             <!-- Content (Right) -->
             <div>
                 <div class="tag-clean"
-                    style="margin-bottom: 1.5rem; background: #EFF6FF; color: #2563EB; border: none;">
+                    style="margin-bottom: 1.5rem; background: rgba(8, 145, 178, 0.08); color: #0891b2; border: 1px solid rgba(8, 145, 178, 0.15);">
                     Power Your Organization With AI Automation
                 </div>
                 <h1 id="hero-title"><!-- Dynamic --></h1>
@@ -98,22 +102,22 @@
                 <p>בחרו את נקודת המבט הרלוונטית עבורכם כדי לראות כיצד PowOrg מייצרת ערך ישיר לארגון שלכם.</p>
             </div>
             <div class="persona-nav">
-                <button class="persona-btn active" onclick="switchPersona('cto')">
-                    <span class="p-title">ה-CTO / ארכיטקט</span>
-                    <span class="p-sub">ביצועים ואינטגרציות פנימיות</span>
+                <button class="persona-btn active" onclick="switchPersona('business')">
+                    <span class="p-title">Business Owner</span>
+                    <span class="p-sub">ROI, SLA והתייעלות תפעולית</span>
                 </button>
                 <button class="persona-btn" onclick="switchPersona('ciso')">
-                    <span class="p-title">ה-CISO / מנהל אבטחה</span>
+                    <span class="p-title">CISO / מנהל אבטחה</span>
                     <span class="p-sub">שליטה מלאה, On-Prem & בקרה</span>
                 </button>
-                <button class="persona-btn" onclick="switchPersona('business')">
-                    <span class="p-title">ה-Business Owner</span>
-                    <span class="p-sub">ROI, SLA והתייעלות תפעולית</span>
+                <button class="persona-btn" onclick="switchPersona('cto')">
+                    <span class="p-title">CTO / ארכיטקט</span>
+                    <span class="p-sub">ביצועים וארכיטקטורה</span>
                 </button>
             </div>
             <div class="persona-panes">
-                <!-- CTO Pane -->
-                <div id="pane-cto" class="persona-pane active">
+                <!-- CTO Pane (shown when CTO tab clicked, but placed first in DOM) -->
+                <div id="pane-cto" class="persona-pane">
                     <div class="persona-content-grid">
                         <!-- Column 1: Text -->
                         <div>
@@ -138,9 +142,9 @@
                         <div class="code-window">
                             <div class="code-header">
                                 <div class="code-tabs">
-                                    <span class="code-tab active">🚀 orchestrator.py</span>
-                                    <span class="code-tab">🔒 secure_egress.py</span>
-                                    <span class="code-tab">⚙️ config.json</span>
+                                    <span class="code-tab active">orchestrator.py</span>
+                                    <span class="code-tab">secure_egress.py</span>
+                                    <span class="code-tab">config.json</span>
                                 </div>
                                 <div class="code-dots">
                                     <span class="code-dot red"></span>
@@ -185,15 +189,15 @@ result = finance_agent.execute(
                             <p style="margin-bottom: 1.5rem;">בניגוד לפתרונות SaaS ששואבים את המידע שלכם לענן חיצוני, המערכת שלנו פועלת ישירות בתוך גבולות האבטחה שלכם (On-Premise / VPC), ומאפשרת לכם ליהנות מכוח ה-AI בביטחון מלא ובשליטה מוחלטת.</p>
                             <ul style="list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 12px; padding: 0;">
                                 <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: #10b981;">✔</span>
+                                    <span style="color: var(--primary);">✔</span>
                                     <span>הפלטפורמה יושבת בתוך הארגון ומדברת עם מערכות המידע הפנימיות באופן סגור</span>
                                 </li>
                                 <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: #10b981;">✔</span>
+                                    <span style="color: var(--primary);">✔</span>
                                     <span>לוגי בקרה מלאים ואינטגרציה חלקה ל-SIEM הארגוני (Splunk / Elastic)</span>
                                 </li>
                                 <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: #10b981;">✔</span>
+                                    <span style="color: var(--primary);">✔</span>
                                     <span>היציאה היחידה היא למודל שפה בצורה פרטית ומאובטחת דרך Private Link Gateway</span>
                                 </li>
                             </ul>
@@ -202,7 +206,7 @@ result = finance_agent.execute(
                         <!-- Column 2: CISO Security Audit Checklist Card -->
                         <div class="ciso-checklist-card">
                             <div class="checklist-header">
-                                <div class="checklist-title">🛡️ בקרת אבטחה ארגונית - דוח תאימות (Compliance Audit)</div>
+                                <div class="checklist-title">בקרת אבטחה ארגונית - דוח תאימות (Compliance Audit)</div>
                                 <div class="checklist-dots">
                                     <span class="code-dot red"></span>
                                     <span class="code-dot yellow"></span>
@@ -255,8 +259,8 @@ result = finance_agent.execute(
                     </div>
                 </div>
 
-                <!-- Business Owner Pane -->
-                <div id="pane-business" class="persona-pane">
+                <!-- Business Owner Pane (shown when Business tab clicked) -->
+                <div id="pane-business" class="persona-pane active">
                     <div class="persona-content-grid">
                         <!-- Column 1: Text -->
                         <div>
@@ -264,15 +268,15 @@ result = finance_agent.execute(
                             <p style="margin-bottom: 1.5rem;">אנו מתמקדים בהגדלת יעילות תפעולית מוחשית עבור הארגון שלכם. במקום סיסמאות באוויר - אנו מייצרים התייעלות מדידה שמקצרת זמני SLA, חוסכת אלפי שעות עבודה ידניות ומאפשרת לצוותים שלכם לצמוח ללא הגדלת מצבת כוח האדם.</p>
                             <ul style="list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 12px; padding: 0;">
                                 <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: #8b5cf6;">✔</span>
+                                    <span style="color: var(--accent);">✔</span>
                                     <span>קיצור של עד 70% בזמן הטיפול במשימות תפעוליות חוזרות</span>
                                 </li>
                                 <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: #8b5cf6;">✔</span>
+                                    <span style="color: var(--accent);">✔</span>
                                     <span>החזר השקעה מלא (Payback Period) בתוך פחות מ-3 חודשים</span>
                                 </li>
                                 <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: #8b5cf6;">✔</span>
+                                    <span style="color: var(--accent);">✔</span>
                                     <span>בניית POC פונקציונלי עובד על הנתונים שלך תוך 4-8 שבועות בלבד</span>
                                 </li>
                             </ul>
@@ -281,7 +285,7 @@ result = finance_agent.execute(
                         <!-- Column 2: Business Impact Dashboard Card -->
                         <div class="business-impact-card">
                             <div class="impact-header">
-                                <div class="impact-title">📈 מנהלת ביצועים ואימפקט - PowOrg ROI Dashboard</div>
+                                <div class="impact-title">מנהלת ביצועים ואימפקט - PowOrg ROI Dashboard</div>
                                 <div class="checklist-dots">
                                     <span class="code-dot red"></span>
                                     <span class="code-dot yellow"></span>
@@ -328,177 +332,35 @@ result = finance_agent.execute(
             </div>
             <!-- Markdown Content Loaded Here -->
             <div id="process-content" class="bento-grid-clean"></div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="/pages/poc.html" class="btn btn-secondary" style="padding: 0.8rem 2.5rem; border-color: var(--primary); color: var(--primary); font-weight: 600;">למידע מלא על תהליך ה-POC המהיר ←</a>
+            </div>
         </div>
     </section>
 
-    <!-- 3.5 Agent Simulator Section -->
-    <section id="simulator" class="section-spacer" style="background-color: var(--bg-subtle); overflow: hidden;">
+    <!-- 3.5 Technology Partners Section -->
+    <section id="tech-partners" style="padding: 4rem 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
         <div class="container">
-            <div class="section-head">
-                <h2>במת אוטומציה מונפשת (AI Automation Stage)</h2>
-                <p>בחרו תהליך עסקי והפעילו את ההדמיה כדי לראות את סוכני ה-AI מבצעים את המשימות בתוך גבולות ה-VPC המאובטח שלכם בזמן אמת, בקצב נינוח ומרהיב.</p>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-light); letter-spacing: 0.1em; text-transform: uppercase;">מתחבר למערכות הארגון שלך</p>
             </div>
-            <div class="simulator-container" style="display: grid; grid-template-columns: 1fr 2.2fr; gap: 2.5rem; align-items: stretch;">
-                
-                <!-- Sidebar Selector (Right in Hebrew RTL) -->
-                <div class="sandbox-input-pane" style="display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; min-height: 480px;">
-                    <div>
-                        <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: #ffffff;">בחירת תהליך ארגוני</h3>
-                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem;">לחצו על התהליך כדי להציג את נתיב האוטומציה שלו:</p>
-                        
-                        <div class="presets-container" style="display: flex; flex-direction: column; gap: 1rem;">
-                            <!-- Option 1: Ingestion & Deal creation (MAIN) -->
-                            <button class="preset-chip active" id="preset-ingest" onclick="selectPlaygroundPreset('ingest')" style="background: rgba(255, 255, 255, 0.015); border: 1px solid var(--border-light); border-radius: 12px; padding: 16px; text-align: right; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 6px; width: 100%;">
-                                <span class="chip-title" style="font-size: 1.05rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-                                    📂 קליטת מסמכי לקוח והקמת עסקה
-                                </span>
-                                <span class="chip-desc" style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">
-                                    סריקה ופענוח הסכמים חתומים, בדיקת מלאי ב-SAP, סנכרון CRM Salesforce ושליחת מייל.
-                                </span>
-                            </button>
-                            
-                            <!-- Future Placeholder 1 -->
-                            <button class="preset-chip" id="preset-cv" onclick="selectPlaygroundPreset('cv')" style="background: rgba(255, 255, 255, 0.015); border: 1px solid var(--border-light); border-radius: 12px; padding: 16px; text-align: right; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 6px; width: 100%; opacity: 0.6;">
-                                <span class="chip-title" style="font-size: 1.05rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-                                    👥 מיון קורות חיים והסתרת PII
-                                </span>
-                                <span class="chip-desc" style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">
-                                    סריקת קבצי CV, הסתרת פרטי מזהים רגישים מקומית וניתוח התאמה מול הגדרות המשרה.
-                                </span>
-                            </button>
-
-                            <!-- Future Placeholder 2 -->
-                            <button class="preset-chip" id="preset-audit" onclick="selectPlaygroundPreset('audit')" style="background: rgba(255, 255, 255, 0.015); border: 1px solid var(--border-light); border-radius: 12px; padding: 16px; text-align: right; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 6px; width: 100%; opacity: 0.6;">
-                                <span class="chip-title" style="font-size: 1.05rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-                                    ⚖️ בקרת חוזים והשוואת מדיניות
-                                </span>
-                                <span class="chip-desc" style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">
-                                    סריקת חוזה, זיהוי חריגות ממדיניות השיפוי הארגונית וניסוח סעיף חלופי מתקן.
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-primary" id="playground-start-btn" onclick="startPlaygroundAnimation()" style="width: 100%; padding: 1.1rem; font-size: 1.1rem; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700;">
-                        <span>הפעל סימולציה מונפשת</span> &larr;
-                    </button>
-                </div>
-                
-                <!-- Presentation Workspace (Left/Center in Hebrew RTL) -->
-                <div class="sandbox-dashboard" style="position: relative; background: #050811; border: 1px solid var(--border-light); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; height: 500px; box-shadow: var(--shadow-xl);">
-                    <!-- Stage Top Info Header -->
-                    <div class="sandbox-tab-header" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; border-bottom: 1px solid var(--border-light); background: rgba(255, 255, 255, 0.02);">
-                        <span style="font-size: 0.85rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px;">
-                            <span class="status-indicator" id="stage-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #6b7280; display: inline-block;"></span>
-                            <span id="stage-status-text">במה במצב המשרת: ממתינה להפעלה</span>
-                        </span>
-                        <span style="font-size: 0.8rem; font-family: monospace; color: var(--text-light); direction: ltr;">VPC Secure Env (GCP Vertex AI)</span>
-                    </div>
-                    
-                    <!-- The Animation Workspace Stage -->
-                    <div id="playground-stage-viewport" style="flex: 1; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(circle at center, #0b1120 0%, #030712 100%); padding: 2rem;">
-                        
-                        <!-- 1. Idle Cover View (Visible by default) -->
-                        <div id="stage-idle-view" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; max-width: 460px; z-index: 10;">
-                            <div class="float-effect" style="font-size: 4rem; filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.35));">🤖</div>
-                            <h4 style="font-size: 1.4rem; color: #ffffff; font-weight: 700; margin: 0;">האורקסטרטור מוכן לפעולה</h4>
-                            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; margin: 0;">לחצו על "הפעל סימולציה מונפשת" כדי לחזות בתהליך מלא של קליטת מסמכים, ניתוח AI, סנכרון CRM/ERP, ארכוב ודיווח - הכל באנימציות עשירות ישירות בתוך ה-VPC שלכם.</p>
-                        </div>
-                        
-                        <!-- 2. Active Animation Stage Elements (Hidden by default, structured for CSS/GSAP) -->
-                        <div id="stage-active-elements" style="display: none; width: 100%; height: 100%; position: relative;">
-                            
-                            <!-- PDF Document Icon (Floating & Moving) -->
-                            <div id="anim-pdf-doc" style="position: absolute; right: 10%; top: 40%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 20; opacity: 0; pointer-events: none;">
-                                <div class="float-effect" style="position: relative; width: 70px; height: 90px; background: rgba(30, 41, 59, 0.9); border: 2px solid rgba(239, 68, 68, 0.5); border-radius: 8px; box-shadow: 0 0 25px rgba(239, 68, 68, 0.25); display: flex; align-items: center; justify-content: center; font-size: 2.2rem;">
-                                    📄
-                                    <div style="position: absolute; bottom: 8px; left: 8px; background: #ef4444; color: white; font-size: 0.55rem; font-weight: 800; padding: 2px 4px; border-radius: 3px; font-family: sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">SIGNED</div>
-                                </div>
-                                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">הסכם_לקוח.pdf</span>
-                            </div>
-
-                            <!-- Secure Scanner Chamber -->
-                            <div id="anim-scanner-chamber" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0; z-index: 15;">
-                                <div class="system-node-box" style="width: 180px; height: 180px; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; border-radius: 16px;">
-                                    <div class="scan-laser" id="anim-laser-sweep" style="display: none;"></div>
-                                    <span style="font-size: 3rem;">📥</span>
-                                    <span style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin-top: 10px;">סורק מאובטח VPC</span>
-                                </div>
-                            </div>
-
-                            <!-- Cute Robot AI Agent -->
-                            <div id="anim-robot-agent" style="position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0; z-index: 16;">
-                                <div class="float-effect" style="display: flex; flex-direction: column; align-items: center;">
-                                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.45));">
-                                        <!-- Antenna -->
-                                        <rect x="47" y="10" width="6" height="15" rx="3" fill="#3b82f6"/>
-                                        <circle cx="50" cy="8" r="5" fill="#a78bfa" class="glow-node"/>
-                                        <!-- Ears -->
-                                        <rect x="18" y="38" width="8" height="24" rx="4" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
-                                        <rect x="74" y="38" width="8" height="24" rx="4" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
-                                        <!-- Head -->
-                                        <rect x="24" y="25" width="52" height="46" rx="14" fill="#0f172a" stroke="#3b82f6" stroke-width="3"/>
-                                        <!-- Screen / Face -->
-                                        <rect x="32" y="33" width="36" height="26" rx="8" fill="#020617" stroke="#1e293b" stroke-width="2"/>
-                                        <!-- Eyes (Glowing) -->
-                                        <circle cx="43" cy="46" r="4" fill="#10b981" id="anim-eye-left" style="transform-origin: 43px 46px;"/>
-                                        <circle cx="57" cy="46" r="4" fill="#10b981" id="anim-eye-right" style="transform-origin: 57px 46px;"/>
-                                        <!-- Mouth -->
-                                        <path d="M44 54 H56" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
-                                    </svg>
-                                    <span style="font-size: 0.9rem; font-weight: 700; color: #ffffff; margin-top: 8px;">סוכן ה-AI מפענח...</span>
-                                </div>
-                            </div>
-
-                            <!-- Extracted Data Panel (Showing during extraction) -->
-                            <div id="anim-extracted-data" style="position: absolute; left: 50%; top: 78%; transform: translateX(-50%); width: 85%; max-width: 380px; background: rgba(17, 24, 39, 0.95); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 10px; padding: 10px 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); opacity: 0; z-index: 17; direction: rtl; text-align: right;">
-                                <div style="font-size: 0.72rem; font-weight: 700; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; margin-bottom: 6px;">נתונים שחולצו מקומית (PII Safe)</div>
-                                <div id="extracted-fields-list" style="display: flex; flex-direction: column; gap: 4px;">
-                                    <div style="font-size: 0.82rem; color: #ffffff; display: flex; justify-content: space-between;"><span style="color: var(--text-muted);">לקוח:</span> <strong style="color: #60a5fa;" id="extracted-cust-name">-</strong></div>
-                                    <div style="font-size: 0.82rem; color: #ffffff; display: flex; justify-content: space-between;"><span style="color: var(--text-muted);">סכום עסקה:</span> <strong style="color: #10b981;" id="extracted-deal-val">-</strong></div>
-                                    <div style="font-size: 0.82rem; color: #ffffff; display: flex; justify-content: space-between;"><span style="color: var(--text-muted);">מוצרים:</span> <strong style="color: #a78bfa;" id="extracted-prod-list">-</strong></div>
-                                </div>
-                            </div>
-
-                            <!-- Core Systems (SAP ERP, CRM Salesforce) -->
-                            <div id="anim-core-systems" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 8%; opacity: 0; pointer-events: none; z-index: 12;">
-                                <!-- SAP ERP Box (Right side) -->
-                                <div class="system-node-box float-effect" id="system-box-sap" style="width: 130px; height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
-                                    <span style="font-size: 2.2rem;">💼</span>
-                                    <span style="font-size: 0.82rem; font-weight: 700; color: #ffffff;">SAP ERP</span>
-                                    <span style="font-size: 0.65rem; color: var(--text-muted);" id="sap-status-label">מלאי ורכש</span>
-                                </div>
-
-                                <!-- Salesforce CRM Box (Left side) -->
-                                <div class="system-node-box float-effect" id="system-box-crm" style="width: 130px; height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
-                                    <span style="font-size: 2.2rem;">☁️</span>
-                                    <span style="font-size: 0.82rem; font-weight: 700; color: #ffffff;">Salesforce CRM</span>
-                                    <span style="font-size: 0.65rem; color: var(--text-muted);" id="crm-status-label">עסקאות לקוח</span>
-                                </div>
-                            </div>
-
-                            <!-- Secure Archive Cabinet -->
-                            <div id="anim-archive-cabinet" style="position: absolute; left: 15%; top: 70%; display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0; z-index: 14;">
-                                <div class="system-node-box" id="system-box-archive" style="width: 100px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 0.75rem;">
-                                    <span style="font-size: 1.8rem;" id="archive-cabinet-icon">🗄️</span>
-                                    <span style="font-size: 0.75rem; font-weight: 700; color: #ffffff;">ארכיון מאובטח</span>
-                                    <span style="font-size: 0.58rem; color: #10b981;">VPC ARCHIVE</span>
-                                </div>
-                            </div>
-
-                            <!-- Email Outbox Envelope -->
-                            <div id="anim-mail-envelope" style="position: absolute; left: 50%; top: 40%; display: flex; flex-direction: column; align-items: center; gap: 4px; opacity: 0; z-index: 22; pointer-events: none;">
-                                <div class="float-effect" style="font-size: 3.2rem; filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.45));">✉️</div>
-                                <span style="font-size: 0.72rem; color: #34d399; font-weight: 700;">טיוטה נשלחה למשתמש!</span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
+            <div class="tech-partners-grid">
+                <img src="/assets/img/partners/google-cloud.svg" alt="Google Cloud" class="partner-logo" title="Google Cloud">
+                <img src="/assets/img/partners/microsoft.svg" alt="Microsoft" class="partner-logo" title="Microsoft">
+                <img src="/assets/img/partners/aws.svg" alt="AWS" class="partner-logo" title="AWS">
+                <img src="/assets/img/partners/salesforce.svg" alt="Salesforce" class="partner-logo" title="Salesforce">
+                <img src="/assets/img/partners/sap.svg" alt="SAP" class="partner-logo" title="SAP">
+                <img src="/assets/img/partners/oracle.svg" alt="Oracle" class="partner-logo" title="Oracle">
+                <img src="/assets/img/partners/servicenow.svg" alt="ServiceNow" class="partner-logo" title="ServiceNow">
+                <img src="/assets/img/partners/zendesk.svg" alt="Zendesk" class="partner-logo" title="Zendesk">
+                <img src="/assets/img/partners/jira.svg" alt="Jira" class="partner-logo" title="Jira">
+                <img src="/assets/img/partners/monday.svg" alt="Monday.com" class="partner-logo" title="Monday.com">
+                <img src="/assets/img/partners/slack.svg" alt="Slack" class="partner-logo" title="Slack">
+                <img src="/assets/img/partners/hubspot.svg" alt="HubSpot" class="partner-logo" title="HubSpot">
             </div>
         </div>
     </section>
+
 
     <!-- 4. Use Cases Section -->
     <section id="use-cases">
@@ -527,39 +389,42 @@ result = finance_agent.execute(
             </div>
             
             <div class="split-layout" style="align-items: center; gap: 4rem;">
-                <!-- Column 1: Organic Shape animation (Left) -->
+                <!-- Column 1: Clean Image (Left) -->
                 <div style="display: flex; justify-content: center;">
                     <div class="organic-shape"
-                        style="background-image: url('/assets/img/The Invisible Shield.png'); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; width: 100%; max-width: 440px; height: 440px;">
+                        style="background-image: url('/assets/img/security-shield.png'); width: 100%; max-width: 440px; height: 440px;">
                     </div>
                 </div>
 
                 <!-- Column 2: 5 Golden sentences right aligned in RTL (Right) -->
                 <div style="display: flex; flex-direction: column; gap: 1.5rem; text-align: right; direction: rtl;">
-                    <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, #ffffff, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">מעטפת הגנה הרמטית למידע הארגוני</h3>
+                    <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">מעטפת הגנה הרמטית למידע הארגוני</h3>
                     
                     <ul class="security-golden-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.25rem;">
                         <li style="display: flex; align-items: start; gap: 12px; font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                            <span style="color: var(--primary); font-size: 1.3rem; line-height: 1;">🛡️</span>
+                            <span style="color: var(--primary); font-size: 1rem; line-height: 1; font-weight: 700;">&#10003;</span>
                             <span>פלטפורמת PowOrg מיועדת לארגונים המציבים את ריבונות הנתונים ואבטחת המידע בראש סדר העדיפויות.</span>
                         </li>
                         <li style="display: flex; align-items: start; gap: 12px; font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                            <span style="color: var(--primary); font-size: 1.3rem; line-height: 1;">🛡️</span>
+                            <span style="color: var(--primary); font-size: 1rem; line-height: 1; font-weight: 700;">&#10003;</span>
                             <span>כלל סוכני ה-AI והרכיבים הטכנולוגיים של המערכת פועלים ישירות ובאופן מלא בתוך גבולות הרשת הארגונית שלכם (On-Premise / Secure VPC Boundary).</span>
                         </li>
                         <li style="display: flex; align-items: start; gap: 12px; font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                            <span style="color: var(--primary); font-size: 1.3rem; line-height: 1;">🛡️</span>
+                            <span style="color: var(--primary); font-size: 1rem; line-height: 1; font-weight: 700;">&#10003;</span>
                             <span>המערכת מתממשקת באופן מאובטח ומקומי למערכות הליבה הפנימיות (כגון ERP, CRM ובסיסי נתונים), ללא יציאה של נתונים רגישים מחוץ לכותלי החברה.</span>
                         </li>
                         <li style="display: flex; align-items: start; gap: 12px; font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                            <span style="color: var(--primary); font-size: 1.3rem; line-height: 1;">🛡️</span>
+                            <span style="color: var(--primary); font-size: 1rem; line-height: 1; font-weight: 700;">&#10003;</span>
                             <span>התקשורת החיצונית מוגבלת אך ורק לחיבור מאובטח ומוצפן מול מודל השפה דרך ערוץ ייעודי ופרטי (כגון Google Cloud Interconnect / Private Service Connect לעבודה מול GCP Vertex AI, או חיבורים פרטיים מקבילים ב-AWS ו-Azure לפי סביבת הלקוח), המבטיח אפס שמירת נתונים (Zero Data Retention) וללא כל שימוש במידע שלכם לצורך אימון מודלים.</span>
                         </li>
                         <li style="display: flex; align-items: start; gap: 12px; font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                            <span style="color: var(--primary); font-size: 1.3rem; line-height: 1;">🛡️</span>
+                            <span style="color: var(--primary); font-size: 1rem; line-height: 1; font-weight: 700;">&#10003;</span>
                             <span>גישה זו מייצרת מעטפת הגנה הרמטית ("Security Envelope") המאפשרת לארגון ליהנות מיתרונות ה-AI ללא חשיפה או סיכון של המידע העסקי הרגיש ביותר שלכם.</span>
                         </li>
                     </ul>
+                    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                        <a href="/pages/security.html" class="btn btn-secondary" style="padding: 0.8rem 2rem; border-color: var(--primary); color: var(--primary); font-weight: 600;">קרא את אמנת האבטחה המלאה ←</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -626,7 +491,7 @@ result = finance_agent.execute(
 
                     <div class="roi-metric-box">
                         <div class="roi-metric-label">זמן החזר השקעה (Payback Period)</div>
-                        <div class="roi-metric-value" style="font-size: 2rem; background: linear-gradient(135deg, #10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" id="roi-payback">פחות מ-3 חודשים</div>
+                        <div class="roi-metric-value" style="font-size: 2rem; background: linear-gradient(135deg, var(--primary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" id="roi-payback">פחות מ-3 חודשים</div>
                         <div class="roi-metric-desc">על פיתוח והטמעת ה-POC הראשוני</div>
                     </div>
                 </div>
@@ -700,16 +565,16 @@ result = finance_agent.execute(
 
     <!-- Modal -->
     <div id="use-case-modal" class="modal"
-        style="display: none; position: fixed; inset: 0; z-index: 2000; align-items: center; justify-content: center; background: rgba(0,0,0,0.85);">
+        style="display: none; position: fixed; inset: 0; z-index: 2000; align-items: center; justify-content: center; background: rgba(0,0,0,0.5);">
         <div class="modal-content clean-card"
-            style="width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 0; background: #080c16; border: 2px solid var(--border-light); box-shadow: 0 0 40px rgba(0,0,0,0.9);">
+            style="width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 0; background: #ffffff; border: 1px solid var(--border-light); box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
             <div
                 style="background: var(--bg-subtle); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light);">
-                <span style="font-weight: 700; color: #ffffff;">פירוט מקרה שימוש</span>
+                <span style="font-weight: 700; color: var(--text-main);">פירוט מקרה שימוש</span>
                 <button onclick="closeUseCaseModal()"
-                    style="background: none; border: none; font-size: 2rem; cursor: pointer; color: #ffffff; line-height: 1; padding: 0 8px; transition: color 0.2s;"
+                    style="background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text-main); line-height: 1; padding: 0 8px; transition: color 0.2s;"
                     onmouseover="this.style.color='var(--primary)'"
-                    onmouseout="this.style.color='#ffffff'">×</button>
+                    onmouseout="this.style.color='var(--text-main)'">×</button>
             </div>
             <div class="modal-body" style="padding: 2rem;">
                 <!-- Dynamic Content -->

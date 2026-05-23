@@ -116,17 +116,20 @@
 <body>
   <nav class="navbar">
     <div class="container nav-container">
-      <a href="/" class="nav-brand">PowOrg</a>
+      <a href="/" class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
+        <img src="/assets/img/poworg-logo.jpg" alt="PowOrg" style="height: 52px; width: 52px; border-radius: 10px; object-fit: cover;">
+        <span>PowOrg</span>
+      </a>
 
       <button class="nav-toggle" aria-label="תפריט ניווט">☰</button>
 
       <ul class="nav-menu">
         <li><a href="/#hero" class="nav-link">הבית</a></li>
         <li><a href="/#process" class="nav-link">התהליך</a></li>
-        <li><a href="/#use-cases" class="nav-link">מקרי שימוש</a></li>
+        <li><a href="/#use-cases" class="nav-link">פתרונות</a></li>
         <li><a href="/pages/poc.html" class="nav-link">POC</a></li>
         <li><a href="/pages/security.html" class="nav-link active" aria-current="page">אבטחה</a></li>
-        <li><a href="/#contact" class="nav-link">צור קשר</a></li>
+        <li><a href="/#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; color: #ffffff;">צור קשר</a></li>
       </ul>
     </div>
   </nav>
