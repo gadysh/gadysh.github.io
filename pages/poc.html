@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="תהליך ה-POC (Proof of Concept) של PowOrg: איך אנחנו מביאים ערך מוחשי וחיסכון ארגוני תוך 6-8 שבועות בלבד." />
+
+  <title>PowOrg - תהליך ה-POC</title>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+
+  <!-- Fonts: עדיף לעברית - Heebo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+
+  <style>
+    /* התאמה לפונט עברי בלי לשבור את האתר */
+    body { font-family: 'Heebo', -apple-system, sans-serif; }
+
+    /* שלא יכנס מתחת לנאבבר הקבוע */
+    main { padding-top: var(--header-height); }
+
+    /* כותרת עמוד קטנה ומקצועית */
+    .page-hero {
+      padding: 4.5rem 0 2.5rem 0;
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero .container { position: relative; z-index: 2; }
+
+    .page-hero h1 {
+      font-size: clamp(2.4rem, 3.2vw, 3.2rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .page-hero p {
+      max-width: 70ch;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    /* מעטפת הדף */
+    .poc-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    /* כרטיס תוכן Markdown – מבוסס clean-card שלך */
+    .md-card {
+      padding: 2.25rem;
+    }
+
+    /* טיפוגרפיה ל-Markdown (Prose) */
+    .md-content h2 {
+      font-size: 1.6rem;
+      margin: 2.1rem 0 0.75rem 0;
+    }
+    .md-content h3 {
+      font-size: 1.25rem;
+      margin: 1.6rem 0 0.6rem 0;
+      color: var(--primary);
+    }
+    .md-content p {
+      margin: 0 0 1rem 0;
+      max-width: 75ch;
+    }
+    .md-content ul, .md-content ol {
+      margin: 0 0 1.1rem 0;
+      padding-right: 1.25rem;
+      color: var(--text-muted);
+    }
+    .md-content li { margin: 0.35rem 0; }
+    .md-content hr {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      margin: 2rem 0;
+    }
+    .md-content strong { color: var(--text-main); }
+
+    /* כדי שקפיצה לכותרות לא תכנס מתחת לנאבבר */
+    .md-content h2, .md-content h3, .md-content h4 { scroll-margin-top: 110px; }
+
+    /* CTA תחתון יפה */
+    .cta-card {
+      margin-top: 1.75rem;
+      padding: 1.75rem;
+      border-radius: var(--radius-card);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    /* מובייל */
+    @media (max-width: 1024px) {
+      .page-hero { padding: 3.5rem 0 2rem 0; }
+      .md-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="nav-brand">PowOrg</a>
+
+      <button class="nav-toggle" aria-label="תפריט ניווט">☰</button>
+
+      <ul class="nav-menu">
+        <li><a href="/#hero" class="nav-link">הבית</a></li>
+        <li><a href="/#process" class="nav-link">התהליך</a></li>
+        <li><a href="/#use-cases" class="nav-link">מקרי שימוש</a></li>
+        <li><a href="/pages/poc.html" class="nav-link active" aria-current="page">POC</a></li>
+        <li><a href="/pages/security.html" class="nav-link">אבטחה</a></li>
+        <li><a href="/#contact" class="nav-link">צור קשר</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-hero">
+      <div class="container">
+        <h1>תהליך ה-POC של PowOrg</h1>
+        <p>ממילים למעשים: פיילוט מותאם אישית שמוכיח היתכנות טכנולוגית, מציג אינטגרציה מעשית ומחשב ROI אמיתי בתוך 6 עד 8 שבועות.</p>
+      </div>
+    </header>
+
+    <section style="padding-top: 2.5rem;">
+      <div class="container poc-layout">
+
+        <article class="clean-card md-card">
+          <div id="poc-md" class="md-content"></div>
+
+          <section class="cta-card" aria-label="צור קשר">
+            <h3 style="margin:0 0 0.5rem 0;">רוצים לבדוק היתכנות לתהליך בארגון שלכם?</h3>
+            <p style="margin:0;">נשמח לקיים שיחת ייעוץ ללא התחייבות, למפות את התהליך ולבנות תוכנית POC ממוקדת.</p>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="/#contact">עברו לטופס יצירת קשר</a>
+              <a class="btn btn-secondary" href="/#contact">קבעו שיחת היכרות</a>
+            </div>
+          </section>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-clean">
+    <div class="container">
+      <p>&copy; 2026 PowOrg. כל הזכויות שמורות.</p>
+      <p style="margin-top: 0.5rem;">
+        <a href="/pages/security.html">אבטחה ופרטיות</a> ·
+        <a href="/pages/poc.html">תהליך POC</a>
+      </p>
+    </div>
+  </footer >
+
+  <script type="module">
+    // מובייל-מניו
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('.nav-menu');
+    if (toggle && menu) toggle.addEventListener('click', () => menu.classList.toggle('active'));
+
+    // Markdown
+    const target = document.getElementById('poc-md');
+    if (window.marked) marked.setOptions({ gfm: true, breaks: false });
+
+    async function loadPocMarkdown() {
+      try {
+        const res = await fetch('/content/poc.md', { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+
+        const md = await res.text();
+        const html = window.marked ? marked.parse(md) : md;
+
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+
+        // להסיר H1 ראשון כדי לא להכפיל כותרת
+        const firstH1 = tmp.querySelector('h1');
+        if (firstH1) firstH1.remove();
+
+        target.innerHTML = tmp.innerHTML;
+      } catch (err) {
+        target.innerHTML = `
+          <p style="color: var(--text-muted);">
+            לא הצלחנו לטעון את תוכן ה-POC. ודאו שהקובץ קיים בנתיב: <strong>/content/poc.md</strong>
+          </p>
+        `;
+      }
+    }
+
+    loadPocMarkdown();
+  </script>
+</body>
+</html>

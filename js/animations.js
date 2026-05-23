@@ -28,23 +28,30 @@ function initHeroAnimations() {
         x: -50,
         scale: 1.05
     })
-        .from(".hero-content h1", {
+        .from("#hero .tag-clean", {
             duration: 1,
             y: 30,
             opacity: 0,
             delay: -1
         })
-        .from(".hero-content p", {
+        .from("#hero-title", {
+            duration: 1,
+            y: 30,
+            opacity: 0,
+            delay: -0.8
+        })
+        .from("#hero-subtitle", {
             duration: 1,
             y: 20,
             opacity: 0,
             delay: -0.8
         })
-        .from(".hero-actions", {
+        .from("#hero .btn", {
             duration: 0.8,
             y: 20,
             opacity: 0,
-            delay: -0.6
+            delay: -0.6,
+            stagger: 0.1
         });
 }
 
@@ -65,6 +72,9 @@ function initSectionHeaders() {
 }
 
 function initStaggeredReveals() {
+    // Set initial state via JS to support progressive enhancement (no blank cards if JS is disabled)
+    gsap.set(".clean-card", { autoAlpha: 0, y: 30 });
+
     // Reveal .clean-card elements in batches/grids
     ScrollTrigger.batch(".clean-card", {
         onEnter: batch => gsap.to(batch, {
@@ -75,7 +85,7 @@ function initStaggeredReveals() {
             ease: "power2.out",
             overwrite: true
         }),
-        start: "top 90%"
+        start: "top 95%"
     });
 
     // Also handle simple fade-ins for isolated elements
