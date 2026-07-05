@@ -1,63 +1,40 @@
 import { initAnimations } from './animations.js';
+import { t, getContent, initLangToggle } from './i18n.js';
 
-// --- Configuration & Data (Use Cases remain data-driven for gallery) ---
-
-const useCases = [
-    {
-        icon: 'grid.svg',
-        title: 'אוטומציית בק-אופיס',
-        description: 'ייעול תהליכים פנימיים, סנכרון נתונים דו-כיווני בין מערכות הליבה (ERP, CRM) וביצוע משימות אדמיניסטרטיביות מורכבות ללא מגע יד אדם.',
-        modalId: 'backoffice'
-    },
-    {
-        icon: 'document.svg',
-        title: 'עיבוד מסמכים חכם',
-        description: 'ניתוח, סיווג ושליפת נתונים מובנים ומדויקים מקבצים וטפסים מכל סוג (PDF, Excel, Word, סריקות ותמונות) ישירות לבסיסי הנתונים.',
-        modalId: 'documents'
-    },
-    {
-        icon: 'voice.svg',
-        title: 'תובנות שמע והקלטות',
-        description: 'תמלול אוטומטי, ניתוח כוונות וסנטימנט, והפקת תוצרים מעשיים (סיכומים, Action Items וכרטיסי משימות) מתוך פגישות מוקלטות ושיחות שירות.',
-        modalId: 'audio'
-    },
-    {
-        icon: 'shield.svg',
-        title: 'סוכני AI פנימיים',
-        description: 'סוכנים חכמים המקבלים גישה למאגרי ידע פנימיים ונהלים ארגוניים לשירות מהיר של עובדים, בקרת איכות ותמיכה בתהליכי פיתוח פנימיים.',
-        modalId: 'internal-agents'
-    },
-    {
-        icon: 'users.svg',
-        title: 'סוכני AI חיצוניים',
-        description: 'סוכני שיחה ותמיכה קדמית ללקוחות קצה, המבצעים פעולות קצה במערכות, תיאום פגישות, הסבר מוצרים ופתיחת קריאות שירות בצורה מאובטחת.',
-        modalId: 'external-agents'
-    }
-];
+// Use-case gallery + intake-agent chat copy come from the bilingual
+// content dictionary in i18n.js (default English, Hebrew via the navbar toggle).
+const useCases = getContent().useCases;
 
 
 // --- Core Functions ---
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Animations (GSAP)
-    // 2. Load & Parse Home Content
-    loadAndParseHome();
+    // 1. Apply the current language to every static [data-i18n] element
+    //    and wire up the navbar language toggle.
+    initLangToggle();
+
+    // 2. Initialize scroll/entrance animations (GSAP)
+    initAnimations();
 
     // 3. Render Use Cases
     initUseCasesGallery();
 
-    // 4. Contact Form
+    // 4. Contact Form / Intake Agent
     initContactForm();
 
     // 5. Mobile Menu Logic
     initMobileMenu();
 
-    // 6. Calculate Initial ROI Values
+    // 6. "Talk to our CEO now" / "Check your fit now" CTAs scattered around the
+    //    site — jump to the contact section and focus the intake agent's input.
+    initAgentCtas();
+
+    // 7. Calculate Initial ROI Values
     setTimeout(() => {
         if (window.calculateROI) window.calculateROI();
     }, 200);
 
-    // 7. Modal backdrop click & ESC key close
+    // 8. Modal backdrop click & ESC key close
     const modal = document.getElementById('use-case-modal');
     if (modal) {
         modal.addEventListener('click', (e) => {
@@ -107,173 +84,19 @@ function initMobileMenu() {
 }
 
 /**
- * Main Content Parser
- * Fetches Markdown, splits by H2 sections, and populates DOM.
+ * "Talk to our CEO now" / "Check your fit now" — every CTA marked with the
+ * .cta-agent class jumps to #contact and puts the cursor straight into the
+ * intake agent's chat input, instead of just landing on the section.
  */
-async function loadAndParseHome() {
-    try {
-        const response = await fetch('/content/home.md');
-        if (!response.ok) throw new Error('Failed to load home.md');
-        const text = await response.text();
-
-        // Check if marked is available
-        if (typeof marked === 'undefined') {
-            console.error('Marked.js not loaded');
-            return;
-        }
-
-        const sections = text.split(/^##\s+/gm);
-
-        sections.forEach(section => {
-            const lines = section.trim().split('\n');
-            const sectionTitle = lines[0].trim().toLowerCase();
-            const sectionBody = lines.slice(1).join('\n'); // Everything after title
-
-            if (sectionTitle.includes('heroextras')) {
-                parseHeroExtras(sectionBody);
-            } else if (sectionTitle.includes('hero')) { // Standard Hero
-                parseHero(sectionBody);
-            } else if (sectionTitle.includes('navbar')) {
-                parseNavbar(sectionBody);
-            } else if (sectionTitle.includes('sectionheaders')) {
-                parseSectionHeaders(sectionBody);
-            } else if (sectionTitle.includes('contactform')) {
-                parseContactForm(sectionBody);
-            } else if (sectionTitle.includes('contact')) { // Standard Contact
-                parseContact(sectionBody);
-            } else if (sectionTitle.includes('outcomes')) {
-                parseOutcomes(sectionBody);
-            } else if (sectionTitle.includes('process')) {
-                parseProcess(sectionBody);
-            } else if (sectionTitle.includes('footer')) {
-                parseFooter(sectionBody);
-            }
+function initAgentCtas() {
+    document.querySelectorAll('.cta-agent').forEach((el) => {
+        el.addEventListener('click', () => {
+            setTimeout(() => {
+                const input = document.getElementById('agent-input');
+                if (input && !input.disabled) input.focus();
+            }, 500);
         });
-
-        // Initialize animations *after* DOM is populated
-        initAnimations();
-
-    } catch (error) {
-        console.error('Error parsing home content:', error);
-    }
-}
-
-/** 
- * Helper to parse key-value lists like:
- * ### Key
- * Value
- */
-function parseKeyValue(mdContent) {
-    const items = {};
-    const parts = mdContent.split(/^###\s+/gm).slice(1);
-    parts.forEach(part => {
-        const lines = part.trim().split('\n');
-        const key = lines[0].trim().toLowerCase();
-        const value = lines.slice(1).join('\n').trim();
-        items[key] = value;
     });
-    return items;
-}
-
-function parseNavbar(mdContent) {
-    const lines = mdContent.trim().split('\n').map(l => l.replace(/^-\s+/, '').trim()).filter(l => l);
-    // Assumes order: Home, Process, Solutions, POC, Security, Contact
-    if (lines[0]) document.getElementById('nav-home').innerText = lines[0];
-    if (lines[1]) document.getElementById('nav-process').innerText = lines[1];
-    if (lines[2]) document.getElementById('nav-solutions').innerText = lines[2];
-    if (lines[3]) document.getElementById('nav-poc').innerText = lines[3];
-    if (lines[4]) document.getElementById('nav-security').innerText = lines[4];
-    if (lines[5]) document.getElementById('nav-contact').innerText = lines[5];
-}
-
-function parseHeroExtras(mdContent) {
-    const data = parseKeyValue(mdContent);
-    // Tag is currently hardcoded in HTML as a div but user requested full extraction.
-    // If we wanted to parse tag we would need an ID for it.
-    // For now dealing with the Tech IDs we added.
-    if (data['tech1']) document.getElementById('hero-tech1').innerText = data['tech1'];
-    if (data['tech2']) document.getElementById('hero-tech2').innerText = data['tech2'];
-}
-
-function parseSectionHeaders(mdContent) {
-    const data = parseKeyValue(mdContent);
-
-    if (data['processtitle']) document.getElementById('process-title').innerText = data['processtitle'];
-    if (data['processsubtitle']) document.getElementById('process-subtitle').innerText = data['processsubtitle'];
-
-    if (data['usecasestitle']) document.getElementById('usecases-title').innerText = data['usecasestitle'];
-    if (data['usecasessubtitle']) document.getElementById('usecases-subtitle').innerText = data['usecasessubtitle'];
-    
-    const usecasesLink = document.getElementById('usecases-link');
-    if (usecasesLink && data['usecaseslink']) {
-        usecasesLink.innerText = data['usecaseslink'];
-    }
-}
-
-function parseContactForm(mdContent) {
-    const data = parseKeyValue(mdContent);
-
-    if (data['namelabel']) document.getElementById('label-name').innerText = data['namelabel'];
-    if (data['orglabel']) document.getElementById('label-org').innerText = data['orglabel'];
-    if (data['emaillabel']) document.getElementById('label-email').innerText = data['emaillabel'];
-    if (data['msglabel']) document.getElementById('label-msg').innerText = data['msglabel'];
-    if (data['submitbtn']) document.getElementById('submit-btn').innerText = data['submitbtn'];
-}
-
-function parseFooter(mdContent) {
-    const data = parseKeyValue(mdContent);
-    // Note: marked.parseInline handles HTML entities like &copy;
-    if (data['copy']) document.getElementById('footer-copy').innerHTML = marked.parseInline(data['copy']);
-}
-
-function parseHero(mdContent) {
-    const titleMatch = mdContent.match(/### כותרת\s+([\s\S]*?)(?=###|$)/);
-    const subtitleMatch = mdContent.match(/### תת כותרת\s+([\s\S]*?)(?=###|$)/);
-    const btnPrimaryMatch = mdContent.match(/### כפתור ראשי\s+([\s\S]*?)(?=###|$)/);
-    const btnSecondaryMatch = mdContent.match(/### כפתור משני\s+([\s\S]*?)(?=###|$)/);
-
-    if (titleMatch) document.getElementById('hero-title').innerHTML = marked.parseInline(titleMatch[1].trim());
-    if (subtitleMatch) document.getElementById('hero-subtitle').innerHTML = marked.parseInline(subtitleMatch[1].trim());
-    if (btnPrimaryMatch) document.getElementById('hero-btn-primary').innerText = btnPrimaryMatch[1].trim();
-    if (btnSecondaryMatch) document.getElementById('hero-btn-secondary').innerText = btnSecondaryMatch[1].trim();
-}
-
-function parseOutcomes(mdContent) {
-    const container = document.getElementById('outcomes-grid');
-    if (!container) return;
-
-    const items = mdContent.split(/^###\s+/gm).slice(1);
-
-    let html = '';
-    items.forEach(item => {
-        const lines = item.trim().split('\n');
-        const title = lines[0].trim();
-        const text = lines.slice(1).join('\n').trim();
-
-        html += `
-            <div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">${title}</h3>
-                <p style="color: var(--text-muted);">${text}</p>
-            </div>
-        `;
-    });
-
-    container.innerHTML = html;
-}
-
-function parseProcess(mdContent) {
-    const container = document.getElementById('process-content');
-    if (container) {
-        container.innerHTML = marked.parse(mdContent);
-    }
-}
-
-function parseContact(mdContent) {
-    const titleMatch = mdContent.match(/### כותרת\s+([\s\S]*?)(?=###|$)/);
-    const textMatch = mdContent.match(/### טקסט\s+([\s\S]*?)(?=###|$)/);
-
-    if (titleMatch) document.getElementById('contact-title').innerHTML = marked.parseInline(titleMatch[1].trim());
-    if (textMatch) document.getElementById('contact-subtitle').innerHTML = marked.parseInline(textMatch[1].trim());
 }
 
 /**
@@ -283,16 +106,16 @@ function initUseCasesGallery() {
     const gallery = document.getElementById('use-cases-gallery');
     if (!gallery) return;
 
-    gallery.innerHTML = useCases.map((useCase, index) => {
+    gallery.innerHTML = useCases.map((useCase) => {
         return `
-            <div class="clean-card use-case-card" onclick="openUseCaseModal('${useCase.modalId}', '${useCase.title}', '${useCase.description.replace(/'/g, "\\'")}')">
+            <div class="clean-card use-case-card" onclick="openUseCaseModal('${useCase.modalId}')">
                 <div class="icon-box-clean">
-                    <img src="assets/icons/${useCase.icon}" alt="${useCase.title}" onerror="this.onerror=null; this.src='/assets/icons/box.svg'">
+                    <img src="assets/icons/${useCase.icon}" alt="${useCase.title}" onerror="this.onerror=null; this.src='assets/icons/box.svg'">
                 </div>
                 <h3>${useCase.title}</h3>
                 <p>${useCase.description}</p>
                 <div style="margin-top: auto; padding-top: 1rem; font-size: 0.9rem; font-weight: 600; color: var(--primary);">
-                    קרא עוד &larr;
+                    ${t('usecases.readmore')} &rarr;
                 </div>
             </div>
         `;
@@ -300,29 +123,249 @@ function initUseCasesGallery() {
 }
 
 /**
- * Handles the contact form submission.
+ * Handles the conversational Intake Agent chat & form submission.
+ * Steps: name -> organization -> business email -> which process matters most
+ * (quick-reply options) -> a free-text field ("tell us a bit about your
+ * process", per Founder feedback) -> summary & handoff to Poppy.
  */
 async function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const msgContainer = document.getElementById('form-message');
-        if (msgContainer) {
-            msgContainer.innerHTML = '<span style="color: var(--primary); font-weight: 500;">שולח פנייה מאובטחת...</span>';
+    const chat = getContent().chat;
+
+    const agentMessages = document.getElementById('agent-messages');
+    const agentInput = document.getElementById('agent-input');
+    const agentSendBtn = document.getElementById('agent-send-btn');
+    const agentTyping = document.getElementById('agent-typing');
+    const agentQuickOptions = document.getElementById('agent-quick-options');
+
+    const hiddenName = document.getElementById('hidden-name');
+    const hiddenOrg = document.getElementById('hidden-org');
+    const hiddenEmail = document.getElementById('hidden-email');
+    const hiddenMessage = document.getElementById('hidden-message');
+    const hiddenProcessDetails = document.getElementById('hidden-process-details');
+
+    if (!agentMessages || !agentInput || !agentSendBtn) return;
+
+    // Steps: 0 name, 1 org, 2 email, 3 process (quick options), 4 free text, 5 done
+    let currentStep = 0;
+    const userData = {
+        name: '',
+        organization: '',
+        contact: '',
+        message: '',
+        processDetails: '',
+    };
+
+    function appendMessage(sender, text) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `bubble ${sender}`;
+        msgDiv.style.maxWidth = '80%';
+        msgDiv.style.padding = '0.8rem 1.1rem';
+        msgDiv.style.borderRadius = '14px';
+        msgDiv.style.fontSize = '0.95rem';
+        msgDiv.style.lineHeight = '1.5';
+        msgDiv.style.boxShadow = 'var(--shadow-xs)';
+        msgDiv.style.transition = 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+        msgDiv.style.opacity = '0';
+        msgDiv.style.transform = 'translateY(10px)';
+
+        if (sender === 'agent') {
+            msgDiv.style.alignSelf = 'flex-start';
+            msgDiv.style.background = 'var(--bg-subtle)';
+            msgDiv.style.border = '1px solid var(--border-light)';
+            msgDiv.style.color = 'var(--text-main)';
+        } else {
+            msgDiv.style.alignSelf = 'flex-end';
+            msgDiv.style.background = 'linear-gradient(135deg, var(--primary), var(--accent))';
+            msgDiv.style.color = '#030712';
+            msgDiv.style.fontWeight = '500';
         }
 
-        const formData = new FormData(form);
-        const rawData = Object.fromEntries(formData.entries());
+        msgDiv.innerText = text;
+        agentMessages.appendChild(msgDiv);
+
+        // Trigger reflow & animation
+        msgDiv.offsetHeight;
+        msgDiv.style.opacity = '1';
+        msgDiv.style.transform = 'translateY(0)';
+
+        agentMessages.scrollTop = agentMessages.scrollHeight;
+    }
+
+    function showTyping(show) {
+        if (agentTyping) {
+            agentTyping.style.display = show ? 'flex' : 'none';
+            if (show) {
+                agentMessages.appendChild(agentTyping);
+                agentMessages.scrollTop = agentMessages.scrollHeight;
+            }
+        }
+    }
+
+    async function agentSay(text, delay = 800) {
+        showTyping(true);
+        await new Promise(r => setTimeout(r, delay));
+        showTyping(false);
+        appendMessage('agent', text);
+    }
+
+    async function nextStep() {
+        if (currentStep === 0) {
+            await agentSay(chat.welcome);
+            await agentSay(chat.askName);
+            enableInput(true, chat.namePlaceholder);
+        } else if (currentStep === 1) {
+            await agentSay(chat.greet(userData.name));
+            enableInput(true, chat.orgPlaceholder);
+        } else if (currentStep === 2) {
+            await agentSay(chat.askEmail);
+            enableInput(true, chat.emailPlaceholder);
+        } else if (currentStep === 3) {
+            await agentSay(chat.askProcess);
+            showQuickOptions(chat.quickOptions);
+        } else if (currentStep === 4) {
+            // Founder feedback: an explicit free-text step, framed simply,
+            // so a visitor can describe their process/need in their own words.
+            await agentSay(chat.askFreeText);
+            enableInput(true, chat.freeTextPlaceholder);
+        } else if (currentStep === 5) {
+            await agentSay(chat.processing(userData.name));
+            showTyping(true);
+            await new Promise(r => setTimeout(r, 1500));
+            showTyping(false);
+
+            if (hiddenName) hiddenName.value = userData.name;
+            if (hiddenOrg) hiddenOrg.value = userData.organization;
+            if (hiddenEmail) hiddenEmail.value = userData.contact;
+            if (hiddenMessage) hiddenMessage.value = userData.message;
+            if (hiddenProcessDetails) hiddenProcessDetails.value = userData.processDetails;
+
+            await agentSay(chat.matchFound);
+            await agentSay(chat.followUp);
+
+            form.dispatchEvent(new Event('submit'));
+        }
+    }
+
+    function enableInput(enable, placeholder = "") {
+        agentInput.disabled = !enable;
+        agentInput.placeholder = placeholder;
+        if (enable) {
+            agentInput.focus();
+        } else {
+            agentInput.value = "";
+        }
+        agentSendBtn.disabled = !enable;
+    }
+
+    function showQuickOptions(options) {
+        if (!agentQuickOptions) return;
+        agentQuickOptions.innerHTML = '';
+        agentQuickOptions.style.display = 'flex';
+
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'quick-option-btn';
+            btn.style.padding = '0.5rem 1rem';
+            btn.style.background = 'var(--bg-card)';
+            btn.style.border = '1px solid var(--border-light)';
+            btn.style.borderRadius = '100px';
+            btn.style.color = 'var(--text-muted)';
+            btn.style.fontSize = '0.85rem';
+            btn.style.cursor = 'pointer';
+            btn.style.transition = 'all 0.2s';
+
+            btn.addEventListener('mouseover', () => {
+                btn.style.borderColor = 'var(--primary)';
+                btn.style.color = 'var(--text-main)';
+                btn.style.background = 'var(--accent-glow)';
+            });
+            btn.addEventListener('mouseout', () => {
+                btn.style.borderColor = 'var(--border-light)';
+                btn.style.color = 'var(--text-muted)';
+                btn.style.background = 'var(--bg-card)';
+            });
+
+            btn.addEventListener('click', () => {
+                agentQuickOptions.style.display = 'none';
+                handleUserInput(opt);
+            });
+            agentQuickOptions.appendChild(btn);
+            btn.innerText = opt;
+        });
+
+        enableInput(true, chat.quickOptionsPlaceholder);
+    }
+
+    function handleUserInput(text) {
+        if (!text.trim()) return;
+
+        appendMessage('user', text);
+        enableInput(false);
+
+        if (currentStep === 0) {
+            userData.name = text;
+            currentStep = 1;
+            nextStep();
+        } else if (currentStep === 1) {
+            userData.organization = text;
+            currentStep = 2;
+            nextStep();
+        } else if (currentStep === 2) {
+            if (!text.includes('@') || !text.includes('.')) {
+                agentSay(chat.emailInvalid).then(() => {
+                    enableInput(true, chat.emailPlaceholder);
+                });
+            } else {
+                userData.contact = text;
+                currentStep = 3;
+                nextStep();
+            }
+        } else if (currentStep === 3) {
+            userData.message = text;
+            currentStep = 4;
+            nextStep();
+        } else if (currentStep === 4) {
+            userData.processDetails = text;
+            currentStep = 5;
+            nextStep();
+        }
+    }
+
+    agentSendBtn.addEventListener('click', () => {
+        const val = agentInput.value;
+        if (!val.trim()) return;
+        agentInput.value = '';
+        handleUserInput(val);
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
         const data = {
-            ...rawData,
+            name: userData.name,
+            organization: userData.organization,
+            contact: userData.contact,
+            message: userData.message,
+            process_details: userData.processDetails,
             _captcha: "false",
-            _subject: `פנייה חדשה מ-PowOrg - ${rawData.organization || rawData.name}`
+            _subject: `${chat.subjectPrefix} - ${userData.organization || userData.name}`
         };
 
         try {
-            const response = await fetch('https://formsubmit.co/ajax/gadysh@gmail.com', {
+            // NOTE: FormSubmit's AJAX endpoint (formsubmit.co/ajax/<recipient>) is required for
+            // programmatic fetch() submits — the plain (non-ajax) endpoint expects a real
+            // <form> POST + redirect and silently drops AJAX requests. This is already wired
+            // correctly below. Content-Type must be application/json for the ajax endpoint.
+            //
+            // Endpoint uses the activated FormSubmit alias (Founder-provided, 2026-07-04,
+            // Issue #163/#170) instead of the raw recipient email: the alias already encodes
+            // the confirmed recipient, so no email address needs to appear here or in the
+            // request body. Keep using the alias — do not revert to an email-address endpoint.
+            const response = await fetch('https://formsubmit.co/ajax/el/jodebi', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -331,27 +374,37 @@ async function initContactForm() {
                 body: JSON.stringify(data)
             });
 
-            if (response.ok) {
-                if (msgContainer) msgContainer.innerHTML = '';
-                form.reset();
-                showSuccessToast('הפנייה שלך נרשמה בהצלחה. נציג טכנולוגי יחזור אליך תוך 24 שעות.');
+            // FormSubmit can return HTTP 200 while still reporting failure in the JSON body
+            // (e.g. a brand-new/unconfirmed recipient address is held pending its one-time
+            // activation click). Checking response.ok alone would show a false "success" toast
+            // to the visitor while the lead is silently dropped, so also inspect the payload.
+            let result = null;
+            try {
+                result = await response.json();
+            } catch (parseErr) {
+                // Non-JSON body — fall through to the ok-status check below.
+            }
+            const formSubmitOk = response.ok && (result === null || String(result.success) !== 'false');
+
+            if (formSubmitOk) {
+                showSuccessToast(chat.successToastTitle, chat.successToastBody);
             } else {
-                throw new Error('FormSubmit returned status ' + response.status);
+                throw new Error('FormSubmit status ' + response.status + (result ? ' — ' + JSON.stringify(result) : ''));
             }
         } catch (error) {
             console.error('Contact form submission error:', error);
-            if (msgContainer) {
-                msgContainer.innerHTML = '<span style="color: #ef4444; font-weight: bold;">אירעה שגיאה בשליחת הטופס. אנא נסה שוב או פנה אלינו ישירות ל-gadysh@gmail.com</span>';
-            }
+            await agentSay(chat.submitError);
         }
     });
+
+    nextStep();
 }
 
-function showSuccessToast(message) {
+function showSuccessToast(title, message) {
     const toast = document.createElement('div');
     toast.style.position = 'fixed';
     toast.style.bottom = '2rem';
-    toast.style.right = '2rem';
+    toast.style.insetInlineEnd = '2rem';
     toast.style.background = 'rgba(8, 145, 178, 0.15)';
     toast.style.backdropFilter = 'blur(12px)';
     toast.style.border = '1px solid rgba(8, 145, 178, 0.3)';
@@ -360,9 +413,6 @@ function showSuccessToast(message) {
     toast.style.borderRadius = '16px';
     toast.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.6)';
     toast.style.zIndex = '9999';
-    toast.style.direction = 'rtl';
-    toast.style.textAlign = 'right';
-    toast.style.fontFamily = 'Heebo, sans-serif';
     toast.style.fontSize = '1.05rem';
     toast.style.display = 'flex';
     toast.style.alignItems = 'center';
@@ -374,7 +424,7 @@ function showSuccessToast(message) {
     toast.innerHTML = `
         <span style="font-size: 1.5rem; color: var(--primary); font-weight: 700;">&#10003;</span>
         <div>
-            <strong style="color: #ffffff; font-weight: 700;">הפנייה התקבלה בהצלחה!</strong>
+            <strong style="color: #ffffff; font-weight: 700;">${title}</strong>
             <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">${message}</div>
         </div>
     `;
@@ -401,106 +451,30 @@ function showSuccessToast(message) {
 
 // --- Global Modal Helpers ---
 
-// Case study modal content generator
-function getCaseStudyHtml(modalId) {
-    const cases = {
-        'backoffice': {
-            challenge: 'ארגונים המעבדים עשרות עסקאות ביום מבזבזים אלפי שעות עבודה בחודש על הקמה ידנית של עסקאות, העתקת נתונים בין מערכות ERP ו-CRM, ושליחת עדכונים ידנית למנהלים. התהליך חשוף לטעויות אנוש, עיכובים ואובדן מידע.',
-            solutions: [
-                'סוכן AI קורא ומפענח מסמכי לקוח (הסכמים, הזמנות, אימיילים) באופן אוטומטי ומאובטח',
-                'מקים עסקה חדשה ב-CRM, מעדכן מלאי ב-ERP ומארכב את המסמכים \u2013 הכל ללא מגע יד אדם',
-                'שולח דוח מסכם אוטומטי למנהל האחראי עם כל פרטי העסקה'
-            ],
-            metrics: [
-                { value: '-70%', label: 'קיצור זמן טיפול' },
-                { value: '10 דק\'', label: 'לעסקה מלאה' },
-                { value: '0', label: 'גיוס כ"א נוסף' }
-            ],
-            security: 'כל התהליך רץ בתוך גבולות ה-VPC המאובטח של הארגון. אף נתון לא יוצא החוצה.'
-        },
-        'documents': {
-            challenge: 'צוותי כספים ורכש מעבדים מאות חשבוניות, חוזים וטפסים בחודש. הזנה ידנית של נתונים מקבצי PDF וסריקות לתוך מערכות ה-ERP גוזלת זמן יקר, חשופה לטעויות ויוצרת צווארי בקבוק תפעוליים.',
-            solutions: [
-                'סוכן AI סורק ומפענח מסמכים מכל סוג \u2013 PDF, Excel, Word, סריקות ותמונות',
-                'מסווג אוטומטית את סוג המסמך, שולף טבלאות וסעיפים ומזין ישירות לבסיס הנתונים',
-                'מבצע הכל מקומית ללא העלאת קבצים רגישים לענן חיצוני'
-            ],
-            metrics: [
-                { value: '95%', label: 'דיוק שליפת נתונים' },
-                { value: 'x20', label: 'מהיר מעיבוד ידני' },
-                { value: '0', label: 'טעויות הזנה' }
-            ],
-            security: 'עיבוד מקומי מלא בתוך ה-VPC. אף מסמך לא נשלח לשרתים חיצוניים.'
-        },
-        'audio': {
-            challenge: 'ישיבות הנהלה ושיחות שירות מייצרות תובנות עסקיות קריטיות שנאבדות ברגע שהפגישה מסתיימת. תמלול ידני גוזל שעות, סיכומים לא מדויקים ומשימות נופלות בין הכיסאות.',
-            solutions: [
-                'תמלול אוטומטי מדויק בעברית ובאנגלית עם זיהוי דוברים (Speaker Diarization)',
-                'ניתוח כוונות, סנטימנט והפקת סיכומי מנהלים ורשימות משימות אוטומטיות',
-                'יצירת כרטיסי משימות ישירות ב-Jira או Monday והפצה אוטומטית לצוותים'
-            ],
-            metrics: [
-                { value: '100%', label: 'כיסוי משימות' },
-                { value: '3 דק\'', label: 'לסיכום פגישה' },
-                { value: '0', label: 'משימות שנפלו' }
-            ],
-            security: 'תמלול וניתוח מקומיים בלבד. ההקלטות לעולם לא עוזבות את הרשת הארגונית.'
-        },
-        'internal-agents': {
-            challenge: 'עובדים מבזבזים זמן יקר בחיפוש מידע במערכות ידע פנימיות, מסמכי נהלים ומדיניות. התשובות מפוזרות בין עשרות מערכות ומעכבות קבלת החלטות קריטיות.',
-            solutions: [
-                'סוכן AI פנימי עם גישה מאובטחת למאגרי ידע, נהלים ומסמכי מדיניות ארגוניים',
-                'מענה מדויק ומבוסס מקורות עם אימות הרשאות (RBAC) לכל עובד',
-                'חיפוש וקטורי מתקדם (RAG) שמחזיר תשובות מנומקות עם קישור למסמך המקורי'
-            ],
-            metrics: [
-                { value: '-80%', label: 'זמן חיפוש מידע' },
-                { value: '24/7', label: 'זמינות מלאה' },
-                { value: 'RBAC', label: 'בקרת הרשאות מלאה' }
-            ],
-            security: 'הסוכן פועל בתוך הרשת הפנימית בלבד. אף מידע ארגוני לא נחשף כלפי חוץ.'
-        },
-        'external-agents': {
-            challenge: 'מוקדי שירות עמוסים, זמני תגובה ארוכים ולקוחות מתוסכלים. כל פנייה דורשת מנציג אנושי לבדוק ידנית מספר מערכות, לבצע פעולות ולתעד \u2013 תהליך יקר ואיטי.',
-            solutions: [
-                'סוכן AI שמטפל בפניות לקוחות בוואטסאפ, צ\'אט באתר ומייל \u2013 מאמת זהות ומבצע פעולות',
-                'מתחבר למערכות השילוח, CRM ו-ERP לביצוע עדכונים בזמן אמת',
-                'פותח כרטיסי שירות אוטומטיים ב-ServiceNow/Zendesk עם מלוא פרטי השיחה'
-            ],
-            metrics: [
-                { value: '-60%', label: 'עומס מוקד שירות' },
-                { value: '30 שנ\'', label: 'זמן תגובה ממוצע' },
-                { value: '24/7', label: 'זמינות ללקוחות' }
-            ],
-            security: 'פרטי הלקוח מוגנים בתוך ה-VPC. הסוכן פועל מאחורי הפיירוול הארגוני.'
-        }
-    };
-
-    const c = cases[modalId];
-    if (!c) return '';
-
-    const metricsHtml = c.metrics.map((m, i) => {
+function getCaseStudyHtml(useCase) {
+    const metricsHtml = useCase.metrics.map((m, i) => {
         const colors = ['var(--primary)', 'var(--primary)', 'var(--accent)'];
         const bgs = ['rgba(8, 145, 178, 0.06)', 'rgba(8, 145, 178, 0.06)', 'rgba(14, 116, 144, 0.06)'];
         const borders = ['rgba(8, 145, 178, 0.15)', 'rgba(8, 145, 178, 0.15)', 'rgba(14, 116, 144, 0.15)'];
         return `<div style="text-align: center; padding: 1.5rem; background: ${bgs[i]}; border: 1px solid ${borders[i]}; border-radius: 12px;">
-            <div style="font-size: 2.5rem; font-weight: 800; color: ${colors[i]}; margin-bottom: 0.25rem;">${m.value}</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: ${colors[i]}; margin-bottom: 0.25rem;">${m.value}</div>
             <div style="font-size: 0.85rem; color: var(--text-muted);">${m.label}</div>
         </div>`;
     }).join('');
 
-    const solutionsHtml = c.solutions.map(s =>
+    const solutionsHtml = useCase.solutions.map(s =>
         `<li style="display: flex; align-items: center; gap: 10px; font-size: 1rem; color: var(--text-main);"><span style="color: var(--primary); font-weight: 700;">&#10003;</span> ${s}</li>`
     ).join('');
 
     return `
-        <div class="case-study" style="direction: rtl; text-align: right;">
+        <div class="case-study">
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6; color: var(--text-light);">${useCase.description}</p>
             <div style="margin-bottom: 2rem;">
-                <h4 style="font-size: 1.1rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.02em;">האתגר</h4>
-                <p style="font-size: 1.05rem; color: var(--text-main); line-height: 1.7; margin: 0;">${c.challenge}</p>
+                <h4 style="font-size: 1.1rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.02em;">${t('usecase.modal.challenge')}</h4>
+                <p style="font-size: 1.05rem; color: var(--text-main); line-height: 1.7; margin: 0;">${useCase.challenge}</p>
             </div>
             <div style="margin-bottom: 2rem;">
-                <h4 style="font-size: 1.1rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.02em;">הפתרון</h4>
+                <h4 style="font-size: 1.1rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.02em;">${t('usecase.modal.solution')}</h4>
                 <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
                     ${solutionsHtml}
                 </ul>
@@ -510,28 +484,38 @@ function getCaseStudyHtml(modalId) {
             </div>
             <div style="display: flex; align-items: center; gap: 10px; padding: 1rem 1.25rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-light); border-radius: 10px; margin-bottom: 2rem;">
                 <span style="font-size: 1.1rem; color: var(--primary);">&#9679;</span>
-                <span style="font-size: 0.9rem; color: var(--text-muted);">${c.security}</span>
+                <span style="font-size: 0.9rem; color: var(--text-muted);">${useCase.security}</span>
             </div>
-            <a href="#contact" onclick="closeUseCaseModal()" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.05rem;">קבע פגישת אפיון</a>
+            <a href="#contact" onclick="closeUseCaseModal()" class="btn btn-primary cta-agent" style="width: 100%; padding: 1rem; font-size: 1.05rem;">${t('usecase.modal.cta')}</a>
         </div>
     `;
 }
 
 
-window.openUseCaseModal = function (modalId, title, description) {
+window.openUseCaseModal = function (modalId) {
+    const useCase = useCases.find((u) => u.modalId === modalId);
+    if (!useCase) return;
+
     const modal = document.getElementById('use-case-modal');
     const modalBody = modal.querySelector('.modal-body');
     const modalTitle = modal.querySelector('span');
 
     if (modal && modalBody) {
-        modalTitle.innerText = title;
-        const detailsHtml = getCaseStudyHtml(modalId);
-        modalBody.innerHTML = `
-            <p style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6; color: var(--text-light);">${description}</p>
-            ${detailsHtml}
-        `;
+        modalTitle.innerText = useCase.title;
+        modalBody.innerHTML = getCaseStudyHtml(useCase);
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
+
+        // The CTA rendered inside the modal also needs the CTA-focus wiring.
+        const cta = modalBody.querySelector('.cta-agent');
+        if (cta) {
+            cta.addEventListener('click', () => {
+                setTimeout(() => {
+                    const input = document.getElementById('agent-input');
+                    if (input && !input.disabled) input.focus();
+                }, 500);
+            });
+        }
     }
 };
 
@@ -543,29 +527,6 @@ window.closeUseCaseModal = function () {
         document.body.style.overflow = 'auto';
     }
 };
-
-window.switchPersona = function (personaId) {
-    const buttons = document.querySelectorAll('.persona-nav .persona-btn');
-    buttons.forEach(btn => {
-        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(personaId)) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
-
-    const panes = document.querySelectorAll('.persona-panes .persona-pane');
-    panes.forEach(pane => {
-        if (pane.id === `pane-${personaId}`) {
-            pane.classList.add('active');
-        } else {
-            pane.classList.remove('active');
-        }
-    });
-};
-
-
-
 
 
 // --- ROI Calculator Logic ---
@@ -595,18 +556,18 @@ window.calculateROI = function () {
 
     // Update result displays
     document.getElementById('roi-annual-savings').innerText = `₪ ${annualSavings.toLocaleString()}`;
-    document.getElementById('roi-hours-saved').innerText = `${annualHoursSaved.toLocaleString()} שעות`;
+    document.getElementById('roi-hours-saved').innerText = `${annualHoursSaved.toLocaleString()} ${t('roi.hours.unit')}`;
 
     // Payback period display based on savings size
     const paybackDisp = document.getElementById('roi-payback');
     if (annualSavings > 1500000) {
-        paybackDisp.innerText = 'פחות מ-4 שבועות!';
+        paybackDisp.innerText = t('roi.payback.fast');
         paybackDisp.style.background = 'linear-gradient(135deg, var(--primary), var(--primary))';
     } else if (annualSavings > 750000) {
-        paybackDisp.innerText = 'פחות מ-2 חודשים';
+        paybackDisp.innerText = t('roi.payback.mid');
         paybackDisp.style.background = 'linear-gradient(135deg, #3b82f6, var(--primary))';
     } else {
-        paybackDisp.innerText = 'פחות מ-3 חודשים';
+        paybackDisp.innerText = t('roi.payback.slow');
         paybackDisp.style.background = 'linear-gradient(135deg, #8b5cf6, #c084fc)';
     }
     paybackDisp.style.webkitBackgroundClip = 'text';

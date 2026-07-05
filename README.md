@@ -1,6 +1,8 @@
 # PowOrg - אתר תדמית
 
-אתר תדמית מודרני לשירות AI ארגוני עם ליווי POC והטמעה מלאה.
+אתר תדמית מודרני, מהיר ודו-לשוני עבור PowOrg - פתרונות AI ארגוניים מבוקרי-אדם.
+
+> **עדכון 2026-07-03 (Issue #79 / #141):** האתר מעוצב בעיצוב כהה ומקצועי (Dark/Teal Theme). השפה הדיפולטיבית היא **אנגלית**, עם כפתור החלפה ל**עברית** בסרגל הניווט. 
 
 ## 🌐 כתובת האתר
 
@@ -17,84 +19,43 @@ gadysh.github.io/
 │   ├── poc.html           # עמוד תהליך POC
 │   └── security.html      # עמוד אבטחה ופרטיות
 ├── css/
-│   └── styles.css         # כל העיצוב (RTL, responsive, dark theme)
+│   └── styles.css         # כל העיצוב (RTL, responsive, dark theme, animations)
 ├── js/
-│   ├── main.js           # לוגיקה ראשית
-│   ├── content-loader.js # טעינת Markdown
-│   └── animations.js     # אנימציות GSAP
+│   ├── main.js           # לוגיקה ראשית (אתחול, ROI, סוכנת גיוס)
+│   └── i18n.js           # מנוע תרגום קל ותוכן עמוד הבית (עברית/אנגלית)
 ├── content/
-│   ├── home.md           # תוכן עמוד הבית
-│   ├── poc.md            # תוכן POC
-│   ├── security.md       # תוכן אבטחה
-│   └── usecases/         # תיקיית מקרי שימוש
-│       ├── 001-customer-service.md
-│       ├── 002-legal-docs.md
-│       ├── ...
-│       └── 008-quality-control.md
+│   ├── poc.md            # תוכן POC (עברית)
+│   ├── poc.en.md         # תוכן POC (אנגלית)
+│   ├── security.md       # תוכן אבטחה (עברית)
+│   └── security.en.md    # תוכן אבטחה (אנגלית)
 ├── data/
 │   └── site.json         # קונפיגורציה (מספר וואטסאפ, מייל, וכו')
 └── assets/
     ├── img/
+    │   ├── team/         # תמונות הצוות (Poppy, Maya, Mark, Dave)
     │   └── og-image.png  # תמונת שיתוף לרשתות חברתיות
     └── icons/
-        └── favicon.svg   # אייקון האתר
+        └── favicon.png   # אייקון האתר
 ```
 
 ## ✏️ איך לערוך תוכן?
 
-### שינוי טקסטים בעמודים
+### שינוי טקסטים בעמוד הבית
 
-כל התוכן נמצא בקבצי **Markdown** בתיקיית `content/`. 
+כל התוכן של עמוד הבית (כולל כותרות, פסקאות, תועלות, מקרי בוחן, ותבניות של סוכנת הגיוס) שמור ישירות במנוע התרגום הדו-לשוני ב-`js/i18n.js`.
+1. פתחו את `js/i18n.js`.
+2. ערכו את המחרוזות בתוך `strings.en` עבור הגרסה האנגלית או בתוך `strings.he` עבור הגרסה העברית.
+3. שמרו את הקובץ.
 
-**לעריכת עמוד הבית:**
-1. פתחו את `content/home.md`
-2. ערכו את הטקסטים (הכותרות מסומנות ב-`##`)
-3. שמרו את הקובץ
-4. בצעו commit ו-push ל-GitHub
+### שינוי טקסטים בעמודי המשנה (POC / Security)
 
-**לעריכת עמוד POC:**
-- ערכו את `content/poc.md`
-
-**לעריכת עמוד אבטחה:**
-- ערכו את `content/security.md`
-
-### הוספת מקרה שימוש חדש
-
-1. צרו קובץ חדש בתיקיית `content/usecases/`
-2. קראו לו: `009-שם-המקרה.md` (המספר הבא ברצף)
-3. השתמשו במבנה הבא:
-
-```markdown
-<!-- icon: 🎯 -->
-<!-- tags: תג1, תג2, תג3 -->
-
-# כותרת מקרה השימוש
-
-> משפט אחד שמסכם את מה שזה עושה
-
-## מה נכנס?
-
-- רשימה של inputs
-- דוגמאות למה שהמערכת מקבלת
-
-## מה יוצא?
-
-- רשימה של outputs
-- מה המערכת מספקת
-
-## איך מודדים הצלחה?
-
-- מדדי הצלחה כמותיים
-- ROI, זמן, דיוק וכו'
-```
-
-4. הוסיפו את שם הקובץ לרשימה ב-`js/content-loader.js` בפונקציה `loadUseCases()` (בשורה שמתחילה ב-`const files = [...]`)
-5. שמרו, commit, push
+תוכן עמודי המשנה נטען דינמית מקבצי ה-Markdown בתיקיית `content/`:
+- **לעריכת עמוד ה-POC:** ערכו את `content/poc.en.md` (אנגלית) ו-`content/poc.md` (עברית).
+- **לעריכת עמוד האבטחה:** ערכו את `content/security.en.md` (אנגלית) ו-`content/security.md` (עברית).
 
 ### עדכון פרטי התקשרות
 
 ערכו את `data/site.json`:
-
 ```json
 {
   "contact": {
@@ -106,114 +67,20 @@ gadysh.github.io/
 }
 ```
 
-- **whatsapp**: מספר בפורמט בינלאומי ללא + (972...)
-- **whatsappMessage**: ההודעה שנפתחת אוטומטית בוואטסאפ
+## 🚀 פריסה (Deploy)
 
-### החלפת תמונות
-
-**תמונת Open Graph (שיתוף ברשתות חברתיות):**
-- החליפו את `assets/img/og-image.png` בתמונה חדשה
-- גודל מומלץ: 1200x630 פיקסלים
-
-**אייקון האתר (favicon):**
-- החליפו את `assets/icons/favicon.svg`
-
-## 🚀 איך לפרוס (Deploy)?
-
-האתר מתעדכן **אוטומטית** בכל push ל-branch `main`:
-
-1. ערכו את הקבצים הרצויים
-2. בצעו commit:
-   ```bash
-   git add .
-   git commit -m "עדכון תוכן"
-   ```
-3. העלו ל-GitHub:
-   ```bash
-   git push origin main
-   ```
-4. המתינו 1-2 דקות - האתר יתעדכן אוטומטית!
-
-## 🧪 בדיקה מקומית
-
-לפני העלאה ל-GitHub, תוכלו לראות את האתר מקומית:
-
-### אופציה 1: Python HTTP Server
-```bash
-# בתיקיית הפרויקט, הריצו:
-python -m http.server 8000
-
-# פתחו בדפדפן:
-# http://localhost:8000
-```
-
-### אופציה 2: VS Code Live Server
-1. התקינו את הרחבת "Live Server" ב-VS Code
-2. לחצו ימין על `index.html` → "Open with Live Server"
-
-## 🎨 התאמות עיצוב
-
-### שינוי צבעים
-
-ערכו את `css/styles.css` בתחילת הקובץ (`:root`):
-
-```css
-:root {
-  --color-accent-primary: #00d4ff;    /* תכלת */
-  --color-accent-secondary: #7c3aed;  /* סגול */
-  /* ... */
-}
-```
-
-### שינוי פונט
-
-הפונט הנוכחי: **Heebo** (עברית מודרנית)
-
-להחלפה:
-1. חפשו פונט ב-[Google Fonts](https://fonts.google.com/?subset=hebrew)
-2. העתיקו את ה-`<link>` החדש ל-`<head>` בכל קובץ HTML
-3. עדכנו ב-`css/styles.css`:
-   ```css
-   --font-family: 'שם-הפונט-החדש', sans-serif;
-   ```
+האתר מתעדכן **אוטומטית** בכל push ל-branch `master` של הריפו:
+1. בצעו commit לשינויים שלכם.
+2. העלו ל-GitHub לבראנץ' `master`.
+3. האתר יתעדכן בתוך פחות מדקה.
 
 ## 🔧 טכנולוגיות
 
-- **HTML5** - מבנה סמנטי
-- **CSS3** - עיצוב RTL responsive
-- **JavaScript (ES6 Modules)** - לוגיקה
-- **Marked.js** - המרת Markdown ל-HTML
-- **GSAP + ScrollTrigger** - אנימציות
-- **Google Fonts (Heebo)** - טיפוגרפיה
-
-## 📱 תמיכה בדפדפנים
-
-- Chrome/Edge - ✅
-- Firefox - ✅
-- Safari - ✅
-- Mobile browsers - ✅
-
-## ♿ נגישות
-
-- תמיכה מלאה ב-`prefers-reduced-motion`
-- ARIA labels על כפתורים
-- ניווט במקלדת
-- צבעים בניגודיות גבוהה
-
-## 🔒 אבטחה
-
-- כל התוכן סטטי - אין חשיפה למאגר נתונים
-- HTTPS אוטומטי דרך GitHub Pages
-- אין cookies או tracking מובנה
-
-## 📞 תמיכה
-
-שאלות? פנו אל:
-- **Email**: info@poworg.com
-- **WhatsApp**: [לפי המספר שהוגדר ב-site.json]
+- **HTML5** - מבנה סמנטי מבוסס SEO
+- **CSS3 (Vanilla)** - עיצוב רספונסיבי מלא ותומך RTL/LTR
+- **JavaScript (Vanilla ES6)** - מנוע i18n עצמאי וניהול שיחת סוכנת הגיוס (Poppy)
+- **Marked.js** - המרת קבצי ה-Markdown של עמודי המשנה ל-HTML בזמן ריצה
+- **GSAP** - מעברים ואנימציות עדינות
 
 ---
-
-**גרסה**: 1.0  
-**עדכון אחרון**: 2026-01-16  
-**פותח על ידי**: Antigravity AI
+**פותח על ידי**: PowOrg AI & Founders

@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowOrg - אוטומציה ארגונית חכמה</title>
-    <meta name="description" content="הפכו תהליכים ידניים לאוטומטיים בעזרת AI Agents. הטמעה ארגונית בטוחה ומפוקחת.">
+    <title>PowOrg | Document-to-Action for organizations</title>
+    <meta name="description" content="PowOrg turns business documents into approved actions inside the systems you already use, running on your own infrastructure, with a person checking every step.">
 
-    <!-- Fonts: Inter + Heebo (fallback) -->
+    <!-- Fonts: Inter + Heebo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="icon" type="image/png" href="/assets/icons/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
@@ -25,530 +25,494 @@
 
 <body>
 
-    <!-- 1. Navbar -->
+    <!-- ═══════════════════════════════════════════════════
+         1. NAVBAR
+    ═══════════════════════════════════════════════════ -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="/" class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
-                <img src="/assets/img/poworg-logo.jpg" alt="PowOrg" style="height: 52px; width: 52px; border-radius: 10px; object-fit: cover;">
+            <a href="./" class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
+                <img src="assets/img/poworg-logo.jpg" alt="PowOrg" style="height: 44px; width: 44px; border-radius: 8px; object-fit: cover;">
                 <span>PowOrg</span>
             </a>
             <button class="nav-toggle">☰</button>
             <ul class="nav-menu">
-                <li><a href="#hero" class="nav-link" id="nav-home"><!-- Dynamic --></a></li>
-                <li><a href="#process" class="nav-link" id="nav-process"><!-- Dynamic --></a></li>
-                <li><a href="#use-cases" class="nav-link" id="nav-solutions"><!-- Dynamic --></a></li>
-                <li><a href="/pages/poc.html" class="nav-link" id="nav-poc"><!-- Dynamic --></a></li>
-                <li><a href="/pages/security.html" class="nav-link" id="nav-security"><!-- Dynamic --></a></li>
-                <li><a href="#contact" class="btn btn-primary" id="nav-contact"
-                        style="padding: 0.6rem 1.5rem; color: #ffffff;"><!-- Dynamic --></a>
-                </li>
+                <li><a href="#hero" class="nav-link" data-i18n="nav.home"></a></li>
+                <li><a href="#process" class="nav-link" data-i18n="nav.process"></a></li>
+                <li><a href="#use-cases" class="nav-link" data-i18n="nav.solutions"></a></li>
+                <li><a href="#team" class="nav-link" data-i18n="nav.team"></a></li>
+                <li><a href="pages/poc.html" class="nav-link" data-i18n="nav.poc"></a></li>
+                <li><a href="pages/security.html" class="nav-link" data-i18n="nav.security"></a></li>
+                <li><button type="button" id="lang-toggle-btn" class="lang-toggle-btn" aria-label="Switch language"></button></li>
+                <li><a href="#contact" class="btn btn-primary nav-cta cta-agent" data-i18n="nav.contact"></a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- 2. Hero Section -->
-    <section id="hero">
-        <!-- Background Image (Generated 3D) -->
-        <div class="hero-visual-bg"></div>
 
-        <div class="container"
-            style="position: relative; z-index: 10; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;">
-            <!-- Content (Right) -->
-            <div>
-                <div class="tag-clean"
-                    style="margin-bottom: 1.5rem; background: rgba(8, 145, 178, 0.08); color: #0891b2; border: 1px solid rgba(8, 145, 178, 0.15);">
-                    Power Your Organization With AI Automation
-                </div>
-                <h1 id="hero-title"><!-- Dynamic --></h1>
-                <p id="hero-subtitle" style="margin-bottom: 2.5rem; max-width: 600px;"><!-- Dynamic --></p>
+    <!-- ═══════════════════════════════════════════════════
+         2. HERO — Dark, full-viewport, above-the-fold value prop
+    ═══════════════════════════════════════════════════ -->
+    <section id="hero" class="hero-dark">
+        <!-- Subtle grid overlay -->
+        <div class="hero-grid-overlay"></div>
+        <!-- Radial glow -->
+        <div class="hero-glow-orb"></div>
 
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#contact" id="hero-btn-primary" class="btn btn-primary"><!-- Dynamic --></a>
-                    <a href="#use-cases" id="hero-btn-secondary" class="btn btn-secondary"><!-- Dynamic --></a>
-                </div>
-
-                <div style="margin-top: 3rem; display: flex; gap: 2rem; font-size: 0.9rem; color: var(--text-muted);">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <img src="/assets/icons/check.svg" style="width: 18px; opacity: 0.6;"> <span
-                            id="hero-tech1"><!-- Dynamic --></span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <img src="/assets/icons/shield.svg" style="width: 18px; opacity: 0.6;"> <span
-                            id="hero-tech2"><!-- Dynamic --></span>
-                    </div>
-                </div>
+        <div class="container hero-inner">
+            <!-- Badge -->
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span data-i18n="hero.badge"></span>
             </div>
 
-            <!-- Visual Placeholder (Left) - keeps space for the bg image visual part -->
-            <div></div>
+            <!-- Headline -->
+            <h1 id="hero-title" class="hero-headline" data-i18n="hero.title"></h1>
+
+            <!-- Sub-headline -->
+            <p id="hero-subtitle" class="hero-sub" data-i18n="hero.subtitle"></p>
+
+            <!-- CTA row -->
+            <div class="hero-ctas">
+                <a href="#contact" class="btn btn-hero-primary cta-agent" data-i18n="hero.cta.primary"></a>
+                <a href="#process" class="btn btn-hero-ghost" data-i18n="hero.cta.secondary"></a>
+            </div>
+
+            <!-- Trust pills -->
+            <div class="hero-trust-row">
+                <div class="trust-pill">
+                    <img src="assets/icons/check.svg" style="width: 15px; opacity: 0.7;">
+                    <span data-i18n="hero.tech1"></span>
+                </div>
+                <div class="trust-pill">
+                    <img src="assets/icons/shield.svg" style="width: 15px; opacity: 0.7;">
+                    <span data-i18n="hero.tech2"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll cue -->
+        <div class="scroll-cue">
+            <div class="scroll-cue-line"></div>
         </div>
     </section>
 
-    <!-- 2.5 Outcomes Section (Restored) -->
-    <section id="outcomes" class="section-spacer" style="background: var(--bg-subtle); padding-top: 4rem; padding-bottom: 4rem; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+
+    <!-- ═══════════════════════════════════════════════════
+         2.5 PROBLEM → SOLUTION STRIP
+         Short, honest, no buzzwords.
+    ═══════════════════════════════════════════════════ -->
+    <section id="problem-solution" class="problem-strip">
         <div class="container">
-            <div id="outcomes-grid"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; text-align: center;">
-                <!-- Dynamic Content -->
+            <div class="problem-grid">
+                <div>
+                    <h3 data-i18n="problem.title"></h3>
+                    <p data-i18n="problem.body"></p>
+                </div>
+                <div>
+                    <h3 data-i18n="solution.title"></h3>
+                    <p data-i18n="solution.body"></p>
+                </div>
+                <div>
+                    <h3 data-i18n="promise.title"></h3>
+                    <p data-i18n="promise.body"></p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2.5rem;">
+                <a href="#contact" class="btn btn-outline-primary cta-agent" data-i18n="strip.cta"></a>
             </div>
         </div>
     </section>
 
-    <!-- 2.7 Persona Section -->
-    <section id="personas" class="section-spacer">
+
+    <!-- ═══════════════════════════════════════════════════
+         3. FIT SECTION — plain-language value, no role picker.
+         (Replaces the old tabbed "choose your role" persona
+         switcher, which the Founder found confusing/distracting.)
+    ═══════════════════════════════════════════════════ -->
+    <section id="fit" class="section-light">
         <div class="container">
             <div class="section-head">
-                <h2>פתרונות AI מותאמים לתפקיד שלך</h2>
-                <p>בחרו את נקודת המבט הרלוונטית עבורכם כדי לראות כיצד PowOrg מייצרת ערך ישיר לארגון שלכם.</p>
+                <h2 data-i18n="fit.title"></h2>
+                <p data-i18n="fit.subtitle"></p>
             </div>
-            <div class="persona-nav">
-                <button class="persona-btn active" onclick="switchPersona('business')">
-                    <span class="p-title">Business Owner</span>
-                    <span class="p-sub">ROI, SLA והתייעלות תפעולית</span>
-                </button>
-                <button class="persona-btn" onclick="switchPersona('ciso')">
-                    <span class="p-title">CISO / מנהל אבטחה</span>
-                    <span class="p-sub">שליטה מלאה, On-Prem & בקרה</span>
-                </button>
-                <button class="persona-btn" onclick="switchPersona('cto')">
-                    <span class="p-title">CTO / ארכיטקט</span>
-                    <span class="p-sub">ביצועים וארכיטקטורה</span>
-                </button>
+            <div class="fit-grid">
+                <div class="clean-card fit-card">
+                    <div class="icon-box-clean">
+                        <img src="assets/icons/check.svg" alt="">
+                    </div>
+                    <h3 data-i18n="fit.card1.title"></h3>
+                    <p data-i18n="fit.card1.body"></p>
+                </div>
+                <div class="clean-card fit-card">
+                    <div class="icon-box-clean">
+                        <img src="assets/icons/lock.svg" alt="">
+                    </div>
+                    <h3 data-i18n="fit.card2.title"></h3>
+                    <p data-i18n="fit.card2.body"></p>
+                </div>
+                <div class="clean-card fit-card">
+                    <div class="icon-box-clean">
+                        <img src="assets/icons/grid.svg" alt="">
+                    </div>
+                    <h3 data-i18n="fit.card3.title"></h3>
+                    <p data-i18n="fit.card3.body"></p>
+                </div>
             </div>
-            <div class="persona-panes">
-                <!-- CTO Pane (shown when CTO tab clicked, but placed first in DOM) -->
-                <div id="pane-cto" class="persona-pane">
-                    <div class="persona-content-grid">
-                        <!-- Column 1: Text -->
-                        <div>
-                            <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">ביצועים, אינטגרציה וארכיטקטורה ללא פשרות</h3>
-                            <p style="margin-bottom: 1.5rem;">כאנשי טכנולוגיה, אנו מבינים שאתם צריכים מערכות יציבות שלא מוסיפות latency מיותר, מתממשקות ישירות ל-APIs הפנימיים הקיימים שלכם (ERP, CRM, DBs) ומאפשרות שליטה מלאה בקוד ובמודלים.</p>
-                            <ul style="list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 12px; padding: 0;">
-                                <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: var(--primary);">✔</span>
-                                    <span>ארכיטקטורת Multi-Agent מבוזרת עם Latency אופטימלי</span>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: var(--primary);">✔</span>
-                                    <span>התקנה מקומית מלאה (Self-Hosted) או ב-VPC מאובטח</span>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: var(--primary);">✔</span>
-                                    <span>SDK חזק וגמיש למפתחים כולל תמיכה מלאה ב-Python</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Column 2: IDE Code Window -->
-                        <div class="code-window">
-                            <div class="code-header">
-                                <div class="code-tabs">
-                                    <span class="code-tab active">orchestrator.py</span>
-                                    <span class="code-tab">secure_egress.py</span>
-                                    <span class="code-tab">config.json</span>
-                                </div>
-                                <div class="code-dots">
-                                    <span class="code-dot red"></span>
-                                    <span class="code-dot yellow"></span>
-                                    <span class="code-dot green"></span>
-                                </div>
-                            </div>
-                            <pre class="code-body"><code><span class="t-kw">from</span> poworg <span class="t-kw">import</span> AgentOrchestrator
- 
-<span class="t-comment"># Initialize secure self-hosted orchestrator (VPC / On-Premise)</span>
-orchestrator = AgentOrchestrator(
-    api_key=<span class="t-str">"po_live_..."</span>,
-    vpc_endpoint=<span class="t-str">"https://api.internal.poworg.com"</span>,
-    data_residency=<span class="t-str">"local-network-only"</span>
-)
- 
-<span class="t-comment"># Spawn specialized ERP automation agent locally</span>
-finance_agent = orchestrator.spawn_agent(
-    role=<span class="t-str">"ERP Ledger Automation"</span>,
-    llm=<span class="t-str">"azure-private-gpt-4o"</span>,
-    strict_pii_masking=<span class="t-kw">True</span>
-)
- 
-<span class="t-comment"># Execute workflow locally inside your firewall</span>
-result = finance_agent.execute(
-    task=<span class="t-str">"Reconcile invoices from yesterday"</span>,
-    tools=[<span class="t-str">"sap_api"</span>, <span class="t-str">"postgres_read"</span>]
-)
- 
-<span class="t-func">print</span>(<span class="t-str">f"Workflow Complete. Status: {result.status}"</span>)</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CISO Pane -->
-                <div id="pane-ciso" class="persona-pane">
-                    <div class="persona-content-grid">
-                        <!-- Column 1: Text -->
-                        <div>
-                            <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">ריבונות נתונים מוחלטת ושליטה מלאה (Sovereign AI)</h3>
-                            <p style="margin-bottom: 1.5rem;">אנו מבינים שאבטחת מידע בארגוני Enterprise היא תנאי סף לקיום המערכת. PowOrg נבנתה מראש בגישת Security-First, מתוך הבנה שהמידע הארגוני שלכם הוא הנכס היקר ביותר שלכם.</p>
-                            <p style="margin-bottom: 1.5rem;">בניגוד לפתרונות SaaS ששואבים את המידע שלכם לענן חיצוני, המערכת שלנו פועלת ישירות בתוך גבולות האבטחה שלכם (On-Premise / VPC), ומאפשרת לכם ליהנות מכוח ה-AI בביטחון מלא ובשליטה מוחלטת.</p>
-                            <ul style="list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 12px; padding: 0;">
-                                <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: var(--primary);">✔</span>
-                                    <span>הפלטפורמה יושבת בתוך הארגון ומדברת עם מערכות המידע הפנימיות באופן סגור</span>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: var(--primary);">✔</span>
-                                    <span>לוגי בקרה מלאים ואינטגרציה חלקה ל-SIEM הארגוני (Splunk / Elastic)</span>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: var(--primary);">✔</span>
-                                    <span>היציאה היחידה היא למודל שפה בצורה פרטית ומאובטחת דרך Private Link Gateway</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <!-- Column 2: CISO Security Audit Checklist Card -->
-                        <div class="ciso-checklist-card">
-                            <div class="checklist-header">
-                                <div class="checklist-title">בקרת אבטחה ארגונית - דוח תאימות (Compliance Audit)</div>
-                                <div class="checklist-dots">
-                                    <span class="code-dot red"></span>
-                                    <span class="code-dot yellow"></span>
-                                    <span class="code-dot green"></span>
-                                </div>
-                            </div>
-                            <div class="checklist-body">
-                                <div class="checklist-item">
-                                    <div class="chk-checkbox active">✓</div>
-                                    <div class="chk-details">
-                                        <div class="chk-label">גבול אבטחה מקומי (Local VPC Boundary)</div>
-                                        <div class="chk-desc">כל רכיבי האורקסטרטור והסוכנים רצים בתוך On-Premise או VPC פנימי.</div>
-                                    </div>
-                                    <span class="chk-badge badge-blue">LOCAL ONLY</span>
-                                </div>
-                                <div class="checklist-item">
-                                    <div class="chk-checkbox active">✓</div>
-                                    <div class="chk-details">
-                                        <div class="chk-label">סינון מידע רגיש (Local PII Data Masking)</div>
-                                        <div class="chk-desc">הסתרת שמות, מספרי אשראי ומידע אישי מקומית לפני יציאה החוצה.</div>
-                                    </div>
-                                    <span class="chk-badge badge-green">AUTOMATED</span>
-                                </div>
-                                <div class="checklist-item">
-                                    <div class="chk-checkbox active">✓</div>
-                                    <div class="chk-details">
-                                        <div class="chk-label">בקרת הרשאות (Role-Based Access Control)</div>
-                                        <div class="chk-desc">חיבור מלא ל-Active Directory ו-Okta להגבלת הרשאות קריאה/כתיבה.</div>
-                                    </div>
-                                    <span class="chk-badge badge-indigo">COMPLIANT</span>
-                                </div>
-                                <div class="checklist-item">
-                                    <div class="chk-checkbox active">✓</div>
-                                    <div class="chk-details">
-                                        <div class="chk-label">אי-שמירת נתונים (Zero Retention Policy)</div>
-                                        <div class="chk-desc">חיבור פרטי (Azure Private Link) למודלי שפה ללא שמירה או אימון.</div>
-                                    </div>
-                                    <span class="chk-badge badge-purple">SECURE</span>
-                                </div>
-                                <div class="checklist-item">
-                                    <div class="chk-checkbox active">✓</div>
-                                    <div class="chk-details">
-                                        <div class="chk-label">ניטור ובקרה (Enterprise SIEM Integration)</div>
-                                        <div class="chk-desc">סנכרון מלא של לוגי ריצה למערכות SIEM כגון Splunk ו-Elastic.</div>
-                                    </div>
-                                    <span class="chk-badge badge-blue">SIEM SYNC</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Business Owner Pane (shown when Business tab clicked) -->
-                <div id="pane-business" class="persona-pane active">
-                    <div class="persona-content-grid">
-                        <!-- Column 1: Text -->
-                        <div>
-                            <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">תוצאות עסקיות מוחשיות ו-ROI מהיום הראשון</h3>
-                            <p style="margin-bottom: 1.5rem;">אנו מתמקדים בהגדלת יעילות תפעולית מוחשית עבור הארגון שלכם. במקום סיסמאות באוויר - אנו מייצרים התייעלות מדידה שמקצרת זמני SLA, חוסכת אלפי שעות עבודה ידניות ומאפשרת לצוותים שלכם לצמוח ללא הגדלת מצבת כוח האדם.</p>
-                            <ul style="list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 12px; padding: 0;">
-                                <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: var(--accent);">✔</span>
-                                    <span>קיצור של עד 70% בזמן הטיפול במשימות תפעוליות חוזרות</span>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: var(--accent);">✔</span>
-                                    <span>החזר השקעה מלא (Payback Period) בתוך פחות מ-3 חודשים</span>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: var(--accent);">✔</span>
-                                    <span>בניית POC פונקציונלי עובד על הנתונים שלך תוך 4-8 שבועות בלבד</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <!-- Column 2: Business Impact Dashboard Card -->
-                        <div class="business-impact-card">
-                            <div class="impact-header">
-                                <div class="impact-title">מנהלת ביצועים ואימפקט - PowOrg ROI Dashboard</div>
-                                <div class="checklist-dots">
-                                    <span class="code-dot red"></span>
-                                    <span class="code-dot yellow"></span>
-                                    <span class="code-dot green"></span>
-                                </div>
-                            </div>
-                            <div class="impact-body">
-                                <div class="impact-row">
-                                    <div class="impact-stat purple">-70%</div>
-                                    <div class="impact-details">
-                                        <div class="impact-label">יעילות תפעולית מוגברת</div>
-                                        <div class="impact-desc">צמצום משמעותי בזמן SLA וביטול צווארי בקבוק תפעוליים בארגון.</div>
-                                    </div>
-                                </div>
-                                <div class="impact-row">
-                                    <div class="impact-stat green">&lt; 3M</div>
-                                    <div class="impact-details">
-                                        <div class="impact-label">החזר השקעה מהיר (ROI)</div>
-                                        <div class="impact-desc">התייעלות כלכלית מדידה וחיסכון כספי ישיר החל מהרבעון הראשון להטמעה.</div>
-                                    </div>
-                                </div>
-                                <div class="impact-row">
-                                    <div class="impact-stat blue">4-8W</div>
-                                    <div class="impact-details">
-                                        <div class="impact-label">זמן הגעה ל-POC עובד</div>
-                                        <div class="impact-desc">מערכת פיילוט מלאה ומאובטחת המדגימה ערך עסקי ממשי על הנתונים שלכם.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div style="text-align: center; margin-top: 2.5rem;">
+                <a href="#contact" class="btn btn-primary cta-agent" data-i18n="fit.cta"></a>
             </div>
         </div>
     </section>
 
-    <!-- 3. Process Section -->
-    <section id="process">
+
+    <!-- ═══════════════════════════════════════════════════
+         4. HOW IT WORKS — Process Steps (D2A flow)
+         Plain-language steps — no insider terms like "gate".
+    ═══════════════════════════════════════════════════ -->
+    <section id="process" class="section-subtle">
         <div class="process-bg-img"></div>
         <div class="container">
             <div class="section-head">
-                <h2 id="process-title"><!-- Dynamic --></h2>
-                <p id="process-subtitle"><!-- Dynamic --></p>
+                <h2 data-i18n="process.title"></h2>
+                <p data-i18n="process.subtitle"></p>
             </div>
-            <!-- Markdown Content Loaded Here -->
-            <div id="process-content" class="bento-grid-clean"></div>
+            <div class="how-it-works-grid">
+                <div class="clean-card how-step">
+                    <div class="step-number">01</div>
+                    <h3 data-i18n="process.step1.title"></h3>
+                    <p data-i18n="process.step1.body"></p>
+                </div>
+                <div class="clean-card how-step">
+                    <div class="step-number">02</div>
+                    <h3 data-i18n="process.step2.title"></h3>
+                    <p data-i18n="process.step2.body"></p>
+                </div>
+                <div class="clean-card how-step">
+                    <div class="step-number">03</div>
+                    <h3 data-i18n="process.step3.title"></h3>
+                    <p data-i18n="process.step3.body"></p>
+                </div>
+            </div>
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="/pages/poc.html" class="btn btn-secondary" style="padding: 0.8rem 2.5rem; border-color: var(--primary); color: var(--primary); font-weight: 600;">למידע מלא על תהליך ה-POC המהיר ←</a>
+                <a href="pages/poc.html" class="btn btn-outline-primary" data-i18n="process.link"></a>
             </div>
         </div>
     </section>
 
-    <!-- 3.5 Technology Partners Section -->
-    <section id="tech-partners" style="padding: 4rem 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+
+    <!-- ═══════════════════════════════════════════════════
+         4.5 TECH STACK STRIP — What we're built on (NOT partner logos)
+         NOTE: These are the cloud/AI providers the platform runs on.
+    ═══════════════════════════════════════════════════ -->
+    <section id="tech-partners" class="tech-strip">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-light); letter-spacing: 0.1em; text-transform: uppercase;">מתחבר למערכות הארגון שלך</p>
-            </div>
+            <p class="tech-strip-label" data-i18n="tech.label"></p>
             <div class="tech-partners-grid">
-                <img src="/assets/img/partners/google-cloud.svg" alt="Google Cloud" class="partner-logo" title="Google Cloud">
-                <img src="/assets/img/partners/microsoft.svg" alt="Microsoft" class="partner-logo" title="Microsoft">
-                <img src="/assets/img/partners/aws.svg" alt="AWS" class="partner-logo" title="AWS">
-                <img src="/assets/img/partners/salesforce.svg" alt="Salesforce" class="partner-logo" title="Salesforce">
-                <img src="/assets/img/partners/sap.svg" alt="SAP" class="partner-logo" title="SAP">
-                <img src="/assets/img/partners/oracle.svg" alt="Oracle" class="partner-logo" title="Oracle">
-                <img src="/assets/img/partners/servicenow.svg" alt="ServiceNow" class="partner-logo" title="ServiceNow">
-                <img src="/assets/img/partners/zendesk.svg" alt="Zendesk" class="partner-logo" title="Zendesk">
-                <img src="/assets/img/partners/jira.svg" alt="Jira" class="partner-logo" title="Jira">
-                <img src="/assets/img/partners/monday.svg" alt="Monday.com" class="partner-logo" title="Monday.com">
-                <img src="/assets/img/partners/slack.svg" alt="Slack" class="partner-logo" title="Slack">
-                <img src="/assets/img/partners/hubspot.svg" alt="HubSpot" class="partner-logo" title="HubSpot">
+                <img src="assets/img/partners/google-cloud.svg" alt="Google Cloud" class="partner-logo" title="Google Cloud: Document AI, Vertex AI, Vision">
+                <img src="assets/img/partners/microsoft.svg" alt="Microsoft" class="partner-logo" title="Microsoft: .NET, IIS, SQL Server">
+                <img src="assets/img/partners/aws.svg" alt="AWS" class="partner-logo" title="AWS Bedrock: Gemini/Claude inference, Amazon Transcribe">
             </div>
         </div>
     </section>
 
 
-    <!-- 4. Use Cases Section -->
-    <section id="use-cases">
+    <!-- ═══════════════════════════════════════════════════
+         5. USE CASES GALLERY
+    ═══════════════════════════════════════════════════ -->
+    <section id="use-cases" class="section-light">
         <div class="usecases-bg-img"></div>
         <div class="container">
-            <div class="section-head"
-                style="text-align: right; max-width: 100%; display: flex; justify-content: space-between; align-items: end;">
-                <div>
-                    <h2 id="usecases-title"><!-- Dynamic --></h2>
-                    <p id="usecases-subtitle"><!-- Dynamic --></p>
-                </div>
+            <div class="section-head">
+                <h2 data-i18n="usecases.title"></h2>
+                <p data-i18n="usecases.subtitle"></p>
             </div>
-
-            <div id="use-cases-gallery" class="bento-grid-clean">
-                <!-- JS Populated -->
+            <div id="use-cases-gallery" class="bento-grid-clean"></div>
+            <div style="text-align: center; margin-top: 2.5rem; font-size: 1rem; color: var(--text-muted);">
+                <span data-i18n="usecases.cta"></span><a href="#contact" class="cta-agent" style="color: var(--primary); font-weight: 600;" data-i18n="usecases.cta.link"></a>
             </div>
         </div>
     </section>
 
-    <!-- 5. Security & Trust Upgraded -->
-    <section id="trust-center" style="background: linear-gradient(135deg, var(--bg-page) 0%, var(--bg-subtle) 100%);">
+
+    <!-- ═══════════════════════════════════════════════════
+         6. SECURITY & TRUST
+    ═══════════════════════════════════════════════════ -->
+    <section id="trust-center" class="section-subtle">
         <div class="container">
             <div class="section-head">
-                <h2>ארכיטקטורה מאובטחת ושקיפות נתונים</h2>
-                <p>הסוכנים של PowOrg רצים ישירות בתוך גבולות הרשת הארגונית שלכם (Self-Hosted). שום מידע עסקי או אישי אינו נשמר בענן חיצוני או משמש לאימון מודלים.</p>
+                <h2 data-i18n="trust.title"></h2>
+                <p data-i18n="trust.body"></p>
             </div>
-            
+
             <div class="split-layout" style="align-items: center; gap: 4rem;">
-                <!-- Column 1: Clean Image (Left) -->
                 <div style="display: flex; justify-content: center;">
                     <div class="organic-shape"
-                        style="background-image: url('/assets/img/security-shield.png'); width: 100%; max-width: 440px; height: 440px;">
+                        style="background-image: url('assets/img/security-shield.png'); width: 100%; max-width: 440px; height: 440px;">
                     </div>
                 </div>
 
-                <!-- Column 2: 5 Golden sentences right aligned in RTL (Right) -->
-                <div style="display: flex; flex-direction: column; gap: 1.5rem; text-align: right; direction: rtl;">
-                    <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">מעטפת הגנה הרמטית למידע הארגוני</h3>
-                    
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);" data-i18n="trust.heading"></h3>
+
                     <ul class="security-golden-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.25rem;">
-                        <li style="display: flex; align-items: start; gap: 12px; font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                            <span style="color: var(--primary); font-size: 1rem; line-height: 1; font-weight: 700;">&#10003;</span>
-                            <span>פלטפורמת PowOrg מיועדת לארגונים המציבים את ריבונות הנתונים ואבטחת המידע בראש סדר העדיפויות.</span>
+                        <li style="display: flex; align-items: start; gap: 12px; font-size: 1.05rem; line-height: 1.6; color: var(--text-main);">
+                            <span style="color: var(--primary); font-weight: 700;">&#10003;</span>
+                            <span data-i18n="trust.item1"></span>
                         </li>
-                        <li style="display: flex; align-items: start; gap: 12px; font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                            <span style="color: var(--primary); font-size: 1rem; line-height: 1; font-weight: 700;">&#10003;</span>
-                            <span>כלל סוכני ה-AI והרכיבים הטכנולוגיים של המערכת פועלים ישירות ובאופן מלא בתוך גבולות הרשת הארגונית שלכם (On-Premise / Secure VPC Boundary).</span>
+                        <li style="display: flex; align-items: start; gap: 12px; font-size: 1.05rem; line-height: 1.6; color: var(--text-main);">
+                            <span style="color: var(--primary); font-weight: 700;">&#10003;</span>
+                            <span data-i18n="trust.item2"></span>
                         </li>
-                        <li style="display: flex; align-items: start; gap: 12px; font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                            <span style="color: var(--primary); font-size: 1rem; line-height: 1; font-weight: 700;">&#10003;</span>
-                            <span>המערכת מתממשקת באופן מאובטח ומקומי למערכות הליבה הפנימיות (כגון ERP, CRM ובסיסי נתונים), ללא יציאה של נתונים רגישים מחוץ לכותלי החברה.</span>
+                        <li style="display: flex; align-items: start; gap: 12px; font-size: 1.05rem; line-height: 1.6; color: var(--text-main);">
+                            <span style="color: var(--primary); font-weight: 700;">&#10003;</span>
+                            <span data-i18n="trust.item3"></span>
                         </li>
-                        <li style="display: flex; align-items: start; gap: 12px; font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                            <span style="color: var(--primary); font-size: 1rem; line-height: 1; font-weight: 700;">&#10003;</span>
-                            <span>התקשורת החיצונית מוגבלת אך ורק לחיבור מאובטח ומוצפן מול מודל השפה דרך ערוץ ייעודי ופרטי (כגון Google Cloud Interconnect / Private Service Connect לעבודה מול GCP Vertex AI, או חיבורים פרטיים מקבילים ב-AWS ו-Azure לפי סביבת הלקוח), המבטיח אפס שמירת נתונים (Zero Data Retention) וללא כל שימוש במידע שלכם לצורך אימון מודלים.</span>
+                        <li style="display: flex; align-items: start; gap: 12px; font-size: 1.05rem; line-height: 1.6; color: var(--text-main);">
+                            <span style="color: var(--primary); font-weight: 700;">&#10003;</span>
+                            <span data-i18n="trust.item4"></span>
                         </li>
-                        <li style="display: flex; align-items: start; gap: 12px; font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                            <span style="color: var(--primary); font-size: 1rem; line-height: 1; font-weight: 700;">&#10003;</span>
-                            <span>גישה זו מייצרת מעטפת הגנה הרמטית ("Security Envelope") המאפשרת לארגון ליהנות מיתרונות ה-AI ללא חשיפה או סיכון של המידע העסקי הרגיש ביותר שלכם.</span>
+                        <li style="display: flex; align-items: start; gap: 12px; font-size: 1.05rem; line-height: 1.6; color: var(--text-main);">
+                            <span style="color: var(--primary); font-weight: 700;">&#10003;</span>
+                            <span data-i18n="trust.item5"></span>
                         </li>
                     </ul>
-                    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
-                        <a href="/pages/security.html" class="btn btn-secondary" style="padding: 0.8rem 2rem; border-color: var(--primary); color: var(--primary); font-weight: 600;">קרא את אמנת האבטחה המלאה ←</a>
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="pages/security.html" class="btn btn-outline-primary" data-i18n="trust.link"></a>
+                        <a href="#contact" class="btn btn-primary cta-agent" data-i18n="trust.cta"></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5.5 ROI Calculator Section -->
-    <section id="roi-calculator" class="section-spacer" style="background-color: var(--bg-subtle);">
+
+    <!-- ═══════════════════════════════════════════════════
+         7. ROI CALCULATOR
+    ═══════════════════════════════════════════════════ -->
+    <section id="roi-calculator" class="section-light">
         <div class="container">
             <div class="section-head">
-                <h2>מחשבון ROI ארגוני מבוסס תרחישים</h2>
-                <p>הזינו את הנתונים המשוערים של הארגון וראו את החיסכון השנתי ואת זמן החזר ההשקעה הצפוי.</p>
+                <h2 data-i18n="roi.title"></h2>
+                <p data-i18n="roi.subtitle"></p>
             </div>
             <div class="roi-card-layout clean-card">
-                <!-- Inputs -->
                 <div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 2rem; background: none; -webkit-text-fill-color: initial;">פרמטרים ארגוניים</h3>
-                    
+                    <h3 style="font-size: 1.4rem; margin-bottom: 2rem; background: none; -webkit-text-fill-color: initial;" data-i18n="roi.params.title"></h3>
                     <div class="slider-group">
                         <div class="slider-header">
-                            <span class="slider-label">מספר עובדים במשימות ידניות:</span>
+                            <span class="slider-label" data-i18n="roi.employees"></span>
                             <span class="slider-value" id="val-employees">25</span>
                         </div>
                         <input type="range" class="roi-slider" id="employees-slider" min="5" max="250" value="25" oninput="calculateROI()">
                     </div>
-
                     <div class="slider-group">
                         <div class="slider-header">
-                            <span class="slider-label">שעות שבועיות ממוצעות לעובד במשימות אלו:</span>
+                            <span class="slider-label" data-i18n="roi.hours"></span>
                             <span class="slider-value" id="val-hours">15</span>
                         </div>
                         <input type="range" class="roi-slider" id="hours-slider" min="2" max="40" value="15" oninput="calculateROI()">
                     </div>
-
                     <div class="slider-group">
                         <div class="slider-header">
-                            <span class="slider-label">עלות שכר שעתית ממוצעת (כולל סוציאליות):</span>
+                            <span class="slider-label" data-i18n="roi.wage"></span>
                             <span class="slider-value" id="val-wage">₪ 80</span>
                         </div>
                         <input type="range" class="roi-slider" id="wage-slider" min="40" max="250" value="80" oninput="calculateROI()">
                     </div>
-
                     <div class="slider-group">
                         <div class="slider-header">
-                            <span class="slider-label">אחוז אוטומציה מבוקש:</span>
+                            <span class="slider-label" data-i18n="roi.auto"></span>
                             <span class="slider-value" id="val-auto">75%</span>
                         </div>
                         <input type="range" class="roi-slider" id="auto-slider" min="30" max="95" value="75" step="5" oninput="calculateROI()">
                     </div>
                 </div>
-
-                <!-- Results Display -->
                 <div class="roi-results-pane">
                     <div class="roi-metric-box">
-                        <div class="roi-metric-label">חיסכון כספי שנתי משוער</div>
+                        <div class="roi-metric-label" data-i18n="roi.savings.label"></div>
                         <div class="roi-metric-value" id="roi-annual-savings">₪ 1,170,000</div>
-                        <div class="roi-metric-desc">מבוסס על אופטימיזציה של שעות העבודה</div>
+                        <div class="roi-metric-desc" data-i18n="roi.savings.desc"></div>
                     </div>
-
                     <div class="roi-metric-box">
-                        <div class="roi-metric-label">שעות עבודה שנתיות שנחסכו</div>
-                        <div class="roi-metric-value accent" id="roi-hours-saved">14,625 שעות</div>
-                        <div class="roi-metric-desc">אותן ניתן להפנות למשימות מנוע צמיחה</div>
+                        <div class="roi-metric-label" data-i18n="roi.hours.label"></div>
+                        <div class="roi-metric-value accent" id="roi-hours-saved">14,625</div>
+                        <div class="roi-metric-desc" data-i18n="roi.hours.desc"></div>
                     </div>
-
                     <div class="roi-metric-box">
-                        <div class="roi-metric-label">זמן החזר השקעה (Payback Period)</div>
-                        <div class="roi-metric-value" style="font-size: 2rem; background: linear-gradient(135deg, var(--primary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" id="roi-payback">פחות מ-3 חודשים</div>
-                        <div class="roi-metric-desc">על פיתוח והטמעת ה-POC הראשוני</div>
+                        <div class="roi-metric-label" data-i18n="roi.payback.label"></div>
+                        <div class="roi-metric-value" style="font-size: 2rem; background: linear-gradient(135deg, var(--primary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" id="roi-payback"></div>
+                        <div class="roi-metric-desc" data-i18n="roi.payback.desc"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. Contact Section -->
-    <!-- 6. Contact Section -->
-    <section id="contact">
+
+    <!-- ═══════════════════════════════════════════════════
+         8. TEAM — AI agents running PowOrg
+         (Positioned below all D2A content per approval #16)
+    ═══════════════════════════════════════════════════ -->
+    <section id="team" class="section-subtle">
         <div class="container">
-            <div class="split-layout">
-                <!-- Organic Visual (Left) -->
-                <div>
+            <div class="section-head">
+                <h2 data-i18n="team.title"></h2>
+                <p data-i18n="team.body"></p>
+            </div>
+
+            <!-- Group photo — auto-hides until image is committed -->
+            <div style="margin: 0 auto 3rem; max-width: 940px;">
+                <picture>
+                    <source srcset="assets/img/team/team-group.webp" type="image/webp">
+                    <img src="assets/img/team/team-group.png" alt="PowOrg team" loading="lazy"
+                        onerror="this.closest('div').style.display='none'"
+                        style="width: 100%; border-radius: var(--radius-card); box-shadow: var(--shadow-xl);">
+                </picture>
+            </div>
+
+            <div class="team-grid">
+                <!-- Founder card: markup/CSS ready, but the photo (assets/img/team/gadi.png)
+                     has not been committed to the repo yet — the onerror hook below hides the
+                     <img> element cleanly (same graceful-degrade pattern as the other team
+                     photos) instead of ever rendering a broken image. Drop the file in place
+                     and this card renders automatically, no further changes needed. -->
+                <div class="team-card">
+                    <picture>
+                        <source srcset="assets/img/team/gadi.webp" type="image/webp">
+                        <img src="assets/img/team/gadi.png" alt="Gadi, PowOrg Founder" loading="lazy"
+                            onerror="this.style.display='none'"
+                            style="width: 100%; max-width: 180px; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin: 0 auto 1.25rem; display: block; box-shadow: var(--shadow-md);">
+                    </picture>
+                    <h3 class="team-name" data-i18n="team.gadi.name"></h3>
+                    <div class="team-role" data-i18n="team.gadi.role"></div>
+                    <p class="team-bio" data-i18n="team.gadi.bio"></p>
+                </div>
+                <div class="team-card">
+                    <picture>
+                        <source srcset="assets/img/team/poppy.webp" type="image/webp">
+                        <img src="assets/img/team/poppy.png" alt="Poppy, PowOrg CEO" loading="lazy"
+                            onerror="this.style.display='none'"
+                            style="width: 100%; max-width: 180px; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin: 0 auto 1.25rem; display: block; box-shadow: var(--shadow-md);">
+                    </picture>
+                    <h3 class="team-name" data-i18n="team.poppy.name"></h3>
+                    <div class="team-role" data-i18n="team.poppy.role"></div>
+                    <p class="team-bio" data-i18n="team.poppy.bio"></p>
+                </div>
+                <div class="team-card">
+                    <picture>
+                        <source srcset="assets/img/team/maya.webp" type="image/webp">
+                        <img src="assets/img/team/maya.png" alt="Maya, VP People &amp; Operations" loading="lazy"
+                            onerror="this.style.display='none'"
+                            style="width: 100%; max-width: 180px; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin: 0 auto 1.25rem; display: block; box-shadow: var(--shadow-md);">
+                    </picture>
+                    <h3 class="team-name" data-i18n="team.maya.name"></h3>
+                    <div class="team-role" data-i18n="team.maya.role"></div>
+                    <p class="team-bio" data-i18n="team.maya.bio"></p>
+                </div>
+                <div class="team-card">
+                    <picture>
+                        <source srcset="assets/img/team/mark.webp" type="image/webp">
+                        <img src="assets/img/team/mark.png" alt="Mark, Marketing Lead" loading="lazy"
+                            onerror="this.style.display='none'"
+                            style="width: 100%; max-width: 180px; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin: 0 auto 1.25rem; display: block; box-shadow: var(--shadow-md);">
+                    </picture>
+                    <h3 class="team-name" data-i18n="team.mark.name"></h3>
+                    <div class="team-role" data-i18n="team.mark.role"></div>
+                    <p class="team-bio" data-i18n="team.mark.bio"></p>
+                </div>
+                <div class="team-card">
+                    <picture>
+                        <source srcset="assets/img/team/dave.webp" type="image/webp">
+                        <img src="assets/img/team/dave.png" alt="Dave, CTO / Lead Architect" loading="lazy"
+                            onerror="this.style.display='none'"
+                            style="width: 100%; max-width: 180px; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin: 0 auto 1.25rem; display: block; box-shadow: var(--shadow-md);">
+                    </picture>
+                    <h3 class="team-name" data-i18n="team.dave.name"></h3>
+                    <div class="team-role" data-i18n="team.dave.role"></div>
+                    <p class="team-bio" data-i18n="team.dave.bio"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════
+         9. CONTACT — "Let's talk" CTA
+         FormSubmit wiring preserved (functional infrastructure).
+         Submission endpoint uses the activated FormSubmit alias (js/main.js) —
+         no recipient email address appears anywhere in this file or in main.js.
+    ═══════════════════════════════════════════════════ -->
+    <section id="contact" class="section-contact">
+        <div class="container">
+            <div class="contact-layout">
+                <!-- Left col: visual -->
+                <div class="contact-visual">
                     <div class="organic-shape"
-                        style="background-image: url('/assets/img/Human-AI Synergy.png');  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;">
+                        style="background-image: url('assets/img/Human-AI Synergy.png'); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; height: 380px;">
+                    </div>
+                    <div class="contact-copy-block">
+                        <h2 class="contact-headline" data-i18n="contact.title"></h2>
+                        <p class="contact-sub" data-i18n="contact.subtitle"></p>
                     </div>
                 </div>
 
-                <!-- Form Content (Right) -->
-                <div>
-                    <div class="section-head" style="text-align: right; max-width: 100%; margin-bottom: 2rem;">
-                        <h2 id="contact-title"><!-- Dynamic --></h2>
-                        <p id="contact-subtitle"><!-- Dynamic --></p>
-                    </div>
-
-                    <div class="clean-card" style="max-width: 600px; margin: 0 auto; box-shadow: var(--shadow-2xl);">
-                        <form id="contact-form">
-                            <div id="form-message"></div>
-
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                                <div class="form-group">
-                                    <label id="label-name"
-                                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;"><!-- Dynamic --></label>
-                                    <input type="text" name="name" class="form-input-clean" required>
+                <!-- Right col: conversational intake agent -->
+                <div class="contact-form-wrap">
+                    <div class="clean-card intake-agent-card" style="box-shadow: var(--shadow-2xl); height: 500px; display: flex; flex-direction: column; padding: 0; overflow: hidden; background: var(--bg-card); border-color: var(--border-light);">
+                        <!-- Agent Header -->
+                        <div class="intake-agent-header" style="display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-light); background: rgba(255,255,255,0.01);">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div class="agent-avatar-wrap" style="position: relative; width: 42px; height: 42px;">
+                                    <picture>
+                                        <source srcset="assets/img/team/poppy.webp" type="image/webp">
+                                        <img src="assets/img/team/poppy.png" alt="Poppy" class="agent-avatar" onerror="this.onerror=null; this.src='assets/icons/users.svg'" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
+                                    </picture>
+                                    <span class="agent-status-dot online" style="position: absolute; bottom: 0; inset-inline-start: 0; width: 10px; height: 10px; border-radius: 50%; background: #10b981; border: 2px solid var(--bg-card);"></span>
                                 </div>
-                                <div class="form-group">
-                                    <label id="label-org"
-                                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;"><!-- Dynamic --></label>
-                                    <input type="text" name="organization" class="form-input-clean" required>
+                                <div class="agent-info" style="display: flex; flex-direction: column;">
+                                    <span class="agent-name" style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);" data-i18n="agent.name"></span>
+                                    <span class="agent-role" style="font-size: 0.75rem; color: var(--text-muted);" data-i18n="agent.role"></span>
                                 </div>
                             </div>
+                            <div class="agent-badge" style="font-size: 0.7rem; font-weight: 700; color: var(--primary); background: var(--accent-glow); padding: 4px 10px; border-radius: 100px; border: 1px solid rgba(6, 182, 212, 0.2);">SECURE</div>
+                        </div>
 
-                            <div class="form-group">
-                                <label id="label-email"
-                                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;"><!-- Dynamic --></label>
-                                <input type="email" name="contact" class="form-input-clean" required>
+                        <!-- Chat Messages Area -->
+                        <div class="intake-agent-messages" id="agent-messages" style="flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem;">
+                            <!-- Messages will be added dynamically by JS -->
+                        </div>
+
+                        <!-- Typing Indicator -->
+                        <div class="intake-agent-typing" id="agent-typing" style="display: none; padding: 0.5rem 1.5rem 1rem; gap: 4px; align-items: center;">
+                            <span class="typing-dot" style="width: 6px; height: 6px; background: var(--text-light); border-radius: 50%; animation: typing-wave 1.4s infinite ease-in-out;"></span>
+                            <span class="typing-dot" style="width: 6px; height: 6px; background: var(--text-light); border-radius: 50%; animation: typing-wave 1.4s infinite ease-in-out; animation-delay: 0.2s;"></span>
+                            <span class="typing-dot" style="width: 6px; height: 6px; background: var(--text-light); border-radius: 50%; animation: typing-wave 1.4s infinite ease-in-out; animation-delay: 0.4s;"></span>
+                        </div>
+
+                        <!-- User Input Bar -->
+                        <div class="intake-agent-input-container" style="border-top: 1px solid var(--border-light); background: rgba(0,0,0,0.15); padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 10px;">
+                            <!-- Quick reply options -->
+                            <div class="quick-options" id="agent-quick-options" style="display: none; flex-wrap: wrap; gap: 8px; justify-content: flex-start;">
                             </div>
-
-                            <div class="form-group">
-                                <label id="label-msg"
-                                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;"><!-- Dynamic --></label>
-                                <textarea name="message" class="form-input-clean" rows="4"></textarea>
+                            <div class="input-row" style="display: flex; gap: 10px; width: 100%;">
+                                <input type="text" id="agent-input" class="agent-chat-input" data-i18n-placeholder="agent.input.placeholder" style="flex: 1; padding: 0.8rem 1.25rem; background: var(--bg-input); border: 1px solid var(--border-light); border-radius: 10px; color: var(--text-main); font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onkeydown="if(event.key === 'Enter') document.getElementById('agent-send-btn').click()">
+                                <button type="button" id="agent-send-btn" class="agent-send-button" style="width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #030712; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="agent-send-icon">
+                                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    </svg>
+                                </button>
                             </div>
+                        </div>
 
-                            <button type="submit" id="submit-btn" class="btn btn-primary"
-                                style="width: 100%;"><!-- Dynamic --></button>
+                        <!-- Original Form (Hidden but preserves functional submission infrastructure) -->
+                        <form id="contact-form" style="display: none;">
+                            <input type="text" name="name" id="hidden-name">
+                            <input type="text" name="organization" id="hidden-org">
+                            <input type="email" name="contact" id="hidden-email">
+                            <textarea name="message" id="hidden-message"></textarea>
+                            <textarea name="process_details" id="hidden-process-details"></textarea>
+                            <button type="submit" id="submit-btn"></button>
                         </form>
                     </div>
                 </div>
@@ -556,33 +520,41 @@ result = finance_agent.execute(
         </div>
     </section>
 
+
+    <!-- ═══════════════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════════════ -->
     <footer class="footer-clean">
-        <div class="container">
-            <div class="nav-brand" style="margin-bottom: 1rem;">PowOrg</div>
-            <p id="footer-copy" style="font-size: 0.9rem;"><!-- Dynamic --></p>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div class="nav-brand" style="font-size: 1.4rem;">PowOrg</div>
+            <p id="footer-copy" style="font-size: 0.9rem; margin: 0;" data-i18n-html="footer.copy"></p>
+            <div style="display: flex; gap: 1.5rem; font-size: 0.85rem;">
+                <a href="pages/security.html" style="color: var(--text-muted);" data-i18n="footer.security"></a>
+                <a href="#contact" style="color: var(--text-muted);" class="cta-agent" data-i18n="footer.contact"></a>
+            </div>
         </div>
     </footer>
 
-    <!-- Modal -->
+
+    <!-- ═══════════════════════════════════════════════════
+         USE CASE MODAL
+    ═══════════════════════════════════════════════════ -->
     <div id="use-case-modal" class="modal"
-        style="display: none; position: fixed; inset: 0; z-index: 2000; align-items: center; justify-content: center; background: rgba(0,0,0,0.5);">
+        style="display: none; position: fixed; inset: 0; z-index: 2000; align-items: center; justify-content: center; background: rgba(0,0,0,0.7);">
         <div class="modal-content clean-card"
-            style="width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 0; background: #ffffff; border: 1px solid var(--border-light); box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
-            <div
-                style="background: var(--bg-subtle); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light);">
-                <span style="font-weight: 700; color: var(--text-main);">פירוט מקרה שימוש</span>
+            style="width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 0; background: var(--bg-card); border: 1px solid var(--border-light); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <div style="background: var(--bg-subtle); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light);">
+                <span style="font-weight: 700; color: var(--text-main); font-size: 1.1rem;">&nbsp;</span>
                 <button onclick="closeUseCaseModal()"
-                    style="background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text-main); line-height: 1; padding: 0 8px; transition: color 0.2s;"
+                    style="background: none; border: none; font-size: 2.2rem; cursor: pointer; color: var(--text-muted); line-height: 1; padding: 0 8px; transition: color 0.2s;"
                     onmouseover="this.style.color='var(--primary)'"
-                    onmouseout="this.style.color='var(--text-main)'">×</button>
+                    onmouseout="this.style.color='var(--text-muted)'">×</button>
             </div>
-            <div class="modal-body" style="padding: 2rem;">
-                <!-- Dynamic Content -->
-            </div>
+            <div class="modal-body" style="padding: 2rem;"><!-- Dynamic --></div>
         </div>
     </div>
 
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="תהליך ה-POC (Proof of Concept) של PowOrg: איך אנחנו מביאים ערך מוחשי וחיסכון ארגוני תוך 6-8 שבועות בלבד." />
+  <meta name="description" content="PowOrg's pilot project: how we prove real, measurable value and savings for your organization in just 6-8 weeks.">
 
-  <title>PowOrg - תהליך ה-POC</title>
+  <title>PowOrg - Pilot project</title>
 
-  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
 
-  <!-- Fonts: עדיף לעברית - Heebo -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
 
   <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
 
   <style>
-    /* התאמה לפונט עברי בלי לשבור את האתר */
-    body { font-family: 'Heebo', -apple-system, sans-serif; }
+    body { font-family: 'Inter', 'Heebo', -apple-system, sans-serif; }
 
-    /* שלא יכנס מתחת לנאבבר הקבוע */
     main { padding-top: var(--header-height); }
 
-    /* כותרת עמוד קטנה ומקצועית */
     .page-hero {
       padding: 4.5rem 0 2.5rem 0;
       background: var(--bg-subtle);
@@ -47,7 +43,6 @@
       color: var(--text-muted);
     }
 
-    /* מעטפת הדף */
     .poc-layout {
       display: grid;
       grid-template-columns: 1fr;
@@ -55,12 +50,10 @@
       margin-top: 2.5rem;
     }
 
-    /* כרטיס תוכן Markdown – מבוסס clean-card שלך */
     .md-card {
       padding: 2.25rem;
     }
 
-    /* טיפוגרפיה ל-Markdown (Prose) */
     .md-content h2 {
       font-size: 1.6rem;
       margin: 2.1rem 0 0.75rem 0;
@@ -76,7 +69,7 @@
     }
     .md-content ul, .md-content ol {
       margin: 0 0 1.1rem 0;
-      padding-right: 1.25rem;
+      padding-inline-start: 1.25rem;
       color: var(--text-muted);
     }
     .md-content li { margin: 0.35rem 0; }
@@ -87,10 +80,8 @@
     }
     .md-content strong { color: var(--text-main); }
 
-    /* כדי שקפיצה לכותרות לא תכנס מתחת לנאבבר */
     .md-content h2, .md-content h3, .md-content h4 { scroll-margin-top: 110px; }
 
-    /* CTA תחתון יפה */
     .cta-card {
       margin-top: 1.75rem;
       padding: 1.75rem;
@@ -106,7 +97,6 @@
       margin-top: 1rem;
     }
 
-    /* מובייל */
     @media (max-width: 1024px) {
       .page-hero { padding: 3.5rem 0 2rem 0; }
       .md-card { padding: 1.5rem; }
@@ -117,20 +107,21 @@
 <body>
   <nav class="navbar">
     <div class="container nav-container">
-      <a href="/" class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
-        <img src="/assets/img/poworg-logo.jpg" alt="PowOrg" style="height: 52px; width: 52px; border-radius: 10px; object-fit: cover;">
+      <a href="../index.html" class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
+        <img src="../assets/img/poworg-logo.jpg" alt="PowOrg" style="height: 52px; width: 52px; border-radius: 10px; object-fit: cover;">
         <span>PowOrg</span>
       </a>
 
-      <button class="nav-toggle" aria-label="תפריט ניווט">☰</button>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
 
       <ul class="nav-menu">
-        <li><a href="/#hero" class="nav-link">הבית</a></li>
-        <li><a href="/#process" class="nav-link">התהליך</a></li>
-        <li><a href="/#use-cases" class="nav-link">פתרונות</a></li>
-        <li><a href="/pages/poc.html" class="nav-link active" aria-current="page">POC</a></li>
-        <li><a href="/pages/security.html" class="nav-link">אבטחה</a></li>
-        <li><a href="/#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; color: #ffffff;">צור קשר</a></li>
+        <li><a href="../index.html#hero" class="nav-link" data-i18n="nav.home"></a></li>
+        <li><a href="../index.html#process" class="nav-link" data-i18n="nav.process"></a></li>
+        <li><a href="../index.html#use-cases" class="nav-link" data-i18n="nav.solutions"></a></li>
+        <li><a href="poc.html" class="nav-link active" aria-current="page" data-i18n="nav.poc"></a></li>
+        <li><a href="security.html" class="nav-link" data-i18n="nav.security"></a></li>
+        <li><button type="button" id="lang-toggle-btn" class="lang-toggle-btn" aria-label="Switch language"></button></li>
+        <li><a href="../index.html#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; color: #ffffff;" data-i18n="nav.contact"></a></li>
       </ul>
     </div>
   </nav>
@@ -138,8 +129,8 @@
   <main>
     <header class="page-hero">
       <div class="container">
-        <h1>תהליך ה-POC של PowOrg</h1>
-        <p>ממילים למעשים: פיילוט מותאם אישית שמוכיח היתכנות טכנולוגית, מציג אינטגרציה מעשית ומחשב ROI אמיתי בתוך 6 עד 8 שבועות.</p>
+        <h1 data-i18n="page.poc.h1"></h1>
+        <p data-i18n="page.poc.lead"></p>
       </div>
     </header>
 
@@ -149,12 +140,12 @@
         <article class="clean-card md-card">
           <div id="poc-md" class="md-content"></div>
 
-          <section class="cta-card" aria-label="צור קשר">
-            <h3 style="margin:0 0 0.5rem 0;">רוצים לבדוק היתכנות לתהליך בארגון שלכם?</h3>
-            <p style="margin:0;">נשמח לקיים שיחת ייעוץ ללא התחייבות, למפות את התהליך ולבנות תוכנית POC ממוקדת.</p>
+          <section class="cta-card" aria-label="Contact">
+            <h3 style="margin:0 0 0.5rem 0;" data-i18n="page.poc.cta.title"></h3>
+            <p style="margin:0;" data-i18n="page.poc.cta.body"></p>
             <div class="cta-actions">
-              <a class="btn btn-primary" href="/#contact">עברו לטופס יצירת קשר</a>
-              <a class="btn btn-secondary" href="/#contact">קבעו שיחת היכרות</a>
+              <a class="btn btn-primary" href="../index.html#contact" data-i18n="page.poc.cta.primary"></a>
+              <a class="btn btn-secondary" href="../index.html#contact" data-i18n="page.poc.cta.secondary"></a>
             </div>
           </section>
         </article>
@@ -165,27 +156,32 @@
 
   <footer class="footer-clean">
     <div class="container">
-      <p>&copy; 2026 PowOrg. כל הזכויות שמורות.</p>
+      <p data-i18n-html="page.footer.rights"></p>
       <p style="margin-top: 0.5rem;">
-        <a href="/pages/security.html">אבטחה ופרטיות</a> ·
-        <a href="/pages/poc.html">תהליך POC</a>
+        <a href="security.html" data-i18n="page.footer.security"></a> ·
+        <a href="poc.html" data-i18n="page.footer.poc"></a>
       </p>
     </div>
-  </footer >
+  </footer>
 
   <script type="module">
-    // מובייל-מניו
+    import { getLang, initLangToggle } from '../js/i18n.js';
+
+    initLangToggle();
+
+    // Mobile menu
     const toggle = document.querySelector('.nav-toggle');
     const menu = document.querySelector('.nav-menu');
     if (toggle && menu) toggle.addEventListener('click', () => menu.classList.toggle('active'));
 
-    // Markdown
+    // Markdown content — English by default, Hebrew source file when toggled.
     const target = document.getElementById('poc-md');
     if (window.marked) marked.setOptions({ gfm: true, breaks: false });
 
     async function loadPocMarkdown() {
+      const file = getLang() === 'he' ? '../content/poc.md' : '../content/poc.en.md';
       try {
-        const res = await fetch('/content/poc.md', { cache: 'no-store' });
+        const res = await fetch(file, { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
 
         const md = await res.text();
@@ -194,7 +190,6 @@
         const tmp = document.createElement('div');
         tmp.innerHTML = html;
 
-        // להסיר H1 ראשון כדי לא להכפיל כותרת
         const firstH1 = tmp.querySelector('h1');
         if (firstH1) firstH1.remove();
 
@@ -202,7 +197,7 @@
       } catch (err) {
         target.innerHTML = `
           <p style="color: var(--text-muted);">
-            לא הצלחנו לטעון את תוכן ה-POC. ודאו שהקובץ קיים בנתיב: <strong>/content/poc.md</strong>
+            We couldn't load the pilot project content. Make sure the file exists at: <strong>${file}</strong>
           </p>
         `;
       }

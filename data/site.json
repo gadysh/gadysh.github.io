@@ -22,8 +22,9 @@
     { "title": "הבית", "href": "#hero" },
     { "title": "התהליך", "href": "#process" },
     { "title": "מקרי שימוש", "href": "#use-cases" },
-    { "title": "POC", "href": "/pages/poc.html" },
-    { "title": "אבטחה", "href": "/pages/security.html" },
+    { "title": "מי אנחנו", "href": "#team" },
+    { "title": "POC", "href": "pages/poc.html" },
+    { "title": "אבטחה", "href": "pages/security.html" },
     { "title": "צור קשר", "href": "#contact" }
   ]
 }
