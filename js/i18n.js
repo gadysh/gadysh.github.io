@@ -20,26 +20,26 @@ export const strings = {
     'nav.process': 'How it works',
     'nav.solutions': 'Solutions',
     'nav.team': 'Team',
-    'nav.poc': 'Pilot project',
+    'nav.poc': 'Proof of capability',
     'nav.security': 'Security',
     'nav.contact': 'Talk to our CEO',
     'lang.toggle': 'HE',
     'lang.toggle.aria': 'Switch site language to Hebrew',
 
     // Hero
-    'hero.badge': 'Human-approved automation · runs on your own systems',
-    'hero.title': 'Documents in. Approved action out.',
-    'hero.subtitle': 'PowOrg turns your everyday business documents into approved actions inside the systems you already use, with a person checking every important step.',
+    'hero.badge': 'Autonomous company operation · Governed by human control',
+    'hero.title': 'Run your company autonomously. Maintain absolute control.',
+    'hero.subtitle': 'PowOrg is an installable Operating Kernel that runs business operations autonomously under your complete control and on your own infrastructure.',
     'hero.cta.primary': 'Check your fit now',
     'hero.cta.secondary': 'See how it works',
-    'hero.tech1': 'Connects to the CRM, ERP, and databases you already use',
-    'hero.tech2': 'Runs on your own infrastructure, with human approval built in',
+    'hero.tech1': 'Integrates with your existing databases, CRM, and ERP systems',
+    'hero.tech2': 'Runs securely within your own infrastructure boundary',
 
     // Problem / Solution / Promise strip
     'problem.title': 'The problem we solve',
-    'problem.body': 'Growing teams process hundreds of documents, invoices, and calls by hand every day. Every manual entry is a delay, every mistake has a cost, and a lot of the AI tools on the market live in someone else’s cloud, outside your control.',
-    'solution.title': 'Our solution',
-    'solution.body': 'Document-to-Action (D2A) connects AI to the documents and processes you already run. It works on your own infrastructure, and a person always checks the result before anything is written back to your systems.',
+    'problem.body': 'Modern businesses waste thousands of hours on manual process orchestration, data syncing, and routine administration. Many AI tools are generic, reside in external clouds, and operate without strict governance or control.',
+    'solution.title': 'The PowOrg Kernel',
+    'solution.body': 'The PowOrg Operating Kernel models your company’s roles and workflows in code. It runs autonomous AI agents on your own servers, with a unified control surface for the founder to oversee and approve every action.',
     'promise.title': 'Our promise',
     'promise.body': 'We don’t sell pilots that quietly disappear. Every project starts with plain, agreed success criteria, so you know exactly what "done" looks like before we start building.',
     'strip.cta': 'Talk to our CEO now',
@@ -71,7 +71,7 @@ export const strings = {
 
     // Use cases
     'usecases.title': 'Solutions already at work',
-    'usecases.subtitle': 'Each one is a Document-to-Action solution that runs inside your organization’s own network.',
+    'usecases.subtitle': 'Proven capabilities deployed inside your network, serving as building blocks for your autonomous operations.',
     'usecases.readmore': 'Read more',
     'usecases.cta': 'Not sure which one fits you? ',
     'usecases.cta.link': 'Talk to our CEO now →',
@@ -168,24 +168,24 @@ export const strings = {
     'nav.process': 'איך זה עובד',
     'nav.solutions': 'פתרונות',
     'nav.team': 'הצוות',
-    'nav.poc': 'פיילוט',
+    'nav.poc': 'הוכחת יכולת',
     'nav.security': 'אבטחה',
     'nav.contact': 'דברו עם המנכ"לית',
     'lang.toggle': 'EN',
     'lang.toggle.aria': 'החלפת שפת האתר לאנגלית',
 
-    'hero.badge': 'אוטומציה עם אישור אנושי · פועלת על התשתיות שלכם',
-    'hero.title': 'מסמך נכנס. פעולה מאושרת יוצאת.',
-    'hero.subtitle': 'PowOrg הופכת את המסמכים העסקיים היומיומיים שלכם לפעולות מאושרות במערכות שאתם כבר משתמשים בהן, כשאדם בודק כל שלב חשוב בדרך.',
+    'hero.badge': 'ניהול חברה אוטונומי · בפיקוח ובקרה אנושית',
+    'hero.title': 'להריץ חברה באופן אוטונומי. לשמור על שליטה מוחלטת.',
+    'hero.subtitle': 'PowOrg הוא גרעין הפעלה (Operating Kernel) להתקנה שמריץ את התהליכים העסקיים שלכם באופן אוטונומי, על גבי התשתיות שלכם ובשליטתכם המלאה.',
     'hero.cta.primary': 'בדקו התאמה עכשיו',
     'hero.cta.secondary': 'ראו איך זה עובד',
-    'hero.tech1': 'מתחברת ל-CRM, ERP ובסיסי הנתונים שכבר יש לכם',
-    'hero.tech2': 'פועלת על התשתית שלכם, עם אישור אנושי מובנה',
+    'hero.tech1': 'מתחבר למערכות הליבה, בסיסי הנתונים וה-ERP הקיימים שלכם',
+    'hero.tech2': 'רץ באופן מאובטח בתוך גבול התשתית של הארגון שלכם',
 
     'problem.title': 'הבעיה שאנחנו פותרים',
-    'problem.body': 'צוותים גדלים מעבדים מדי יום מאות מסמכים, חשבוניות ושיחות באופן ידני. כל הקלדה היא עיכוב, כל טעות עולה כסף, והרבה מכלי ה-AI בשוק פשוט יושבים בענן של מישהו אחר, מחוץ לשליטתכם.',
-    'solution.title': 'הפתרון שלנו',
-    'solution.body': 'Document-to-Action (D2A) מחברת AI למסמכים ולתהליכים שכבר יש לכם. היא פועלת על התשתית שלכם, ואדם תמיד בודק את התוצאה לפני שהיא נכתבת בחזרה למערכות שלכם.',
+    'problem.body': 'ארגונים מודרניים מבזבזים אלפי שעות על ניתוב תהליכים ידני, סנכרון נתונים ואדמיניסטרציה שגרתית. כלי AI רבים בשוק הם כלליים מדי, פועלים בעננים חיצוניים ומעובדים ללא מנגנוני פיקוח ובקרה קשיחים.',
+    'solution.title': 'גרעין הפעלה (Operating Kernel)',
+    'solution.body': 'גרעין ההפעלה של PowOrg ממדל את תפקידי ותהליכי הארגון בקוד. הוא מריץ סוכני AI אוטונומיים על השרתים שלכם, ומספק משטח שליטה אחיד המאפשר למייסד לפקח ולשריין כל פעולה.',
     'promise.title': 'ההבטחה שלנו',
     'promise.body': 'אנחנו לא מוכרים פיילוטים שנעלמים בשקט. כל פרויקט מתחיל בקריטריוני הצלחה ברורים ומוסכמים, כך שאתם יודעים בדיוק איך נראית "הצלחה" עוד לפני שמתחילים לבנות.',
     'strip.cta': 'דברו עם המנכ"לית שלנו עכשיו',
@@ -213,7 +213,7 @@ export const strings = {
     'tech.label': 'בנוי על תשתית AI וענן מוכחת',
 
     'usecases.title': 'תרחישים שכבר עובדים',
-    'usecases.subtitle': 'כל אחד מהם הוא פתרון D2A שרץ בתוך הרשת של הארגון עצמו.',
+    'usecases.subtitle': 'פתרונות מוכחים המותקנים בתוך הרשת שלכם ומשמשים כאבני בניין להפעלה אוטונומית של הארגון.',
     'usecases.readmore': 'קראו עוד',
     'usecases.cta': 'לא בטוחים מה מתאים לכם? ',
     'usecases.cta.link': 'דברו עם המנכ"לית שלנו עכשיו ←',
@@ -390,6 +390,23 @@ export const content = {
         ],
         security: 'Customer details are protected inside your network. The assistant runs behind your organizational firewall.',
       },
+      {
+        icon: 'grid.svg', modalId: 'proof1-placeholder',
+        title: 'Autonomous Portfolio Company (Proof-1)',
+        description: 'PowOrg’s first brand-independent proof business, built to run end-to-end with zero human employees. Launching soon.',
+        challenge: 'Demonstrating that the PowOrg Operating Kernel can run an entire commercial business—from marketing to delivery—independently, without human operations.',
+        solutions: [
+          'Operating under its own distinct brand and decoupled domain',
+          'All customer intake, ordering, and service orchestrated by the kernel',
+          'Founder exercises high-level governance via the Control Surface'
+        ],
+        metrics: [
+          { value: 'Zero', label: 'human employees' },
+          { value: 'Independent', label: 'brand and domain' },
+          { value: 'Incubating', label: 'launching soon' }
+        ],
+        security: 'Operated under private, isolated company credentials.'
+      },
     ],
     chat: {
       welcome: 'Hi! I’m Poppy, PowOrg’s AI CEO. I’m here to help figure out what an automation setup could look like for your organization.',
@@ -507,6 +524,23 @@ export const content = {
           { value: 'מתג עצירה', label: 'אפשר לכבות מיידית' },
         ],
         security: 'פרטי הלקוח מוגנים בתוך הרשת שלכם. הסוכן פועל מאחורי חומת האש הארגונית.',
+      },
+      {
+        icon: 'grid.svg', modalId: 'proof1-placeholder',
+        title: 'חברת פורטפוליו אוטונומית (Proof-1)',
+        description: 'עסק ההוכחה העצמאי הראשון של PowOrg, הבנוי לפעול מקצה לקצה ללא עובדים אנושיים. יושק בקרוב.',
+        challenge: 'להוכיח שגרעין ההפעלה של PowOrg מסוגל לנהל עסק מסחרי שלם — משיווק ועד אספקה — באופן עצמאי לחלוטין וללא מעורבות תפעולית אנושית.',
+        solutions: [
+          'פעילות תחת מותג עצמאי ודומיין מנותק לחלוטין',
+          'ניהול פניות, הזמנות ושירות לקוחות המנוהלים ישירות על ידי הקרנל',
+          'פיקוח ובקרה של המייסד דרך משטח השליטה בלבד'
+        ],
+        metrics: [
+          { value: 'אפס', label: 'עובדים אנושיים' },
+          { value: 'עצמאי', label: 'מותג ודומיין נפרדים' },
+          { value: 'בהקמה', label: 'יושק בקרוב' }
+        ],
+        security: 'פועל תחת מערך הרשאות ופרטי גישה מבודדים לחלוטין.'
       },
     ],
     chat: {
