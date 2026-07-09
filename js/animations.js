@@ -20,39 +20,45 @@ export function initAnimations() {
 }
 
 function initHeroAnimations() {
-    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const buttons = document.querySelectorAll("#hero .btn");
+    
+    // Temporarily disable CSS transitions to prevent conflicts with GSAP animation
+    buttons.forEach(btn => btn.style.transition = 'none');
 
-    heroTl.from(".hero-visual-bg", {
+    const heroTl = gsap.timeline({ 
+        defaults: { ease: "power3.out" },
+        onComplete: () => {
+            // Restore original CSS transitions for hover effects
+            buttons.forEach(btn => btn.style.transition = '');
+        }
+    });
+
+    heroTl.from(".hero-glow-orb", {
         duration: 1.5,
         opacity: 0,
-        x: -50,
-        scale: 1.05
+        scale: 0.8
     })
-        .from("#hero .tag-clean", {
+        .from(".hero-badge", {
             duration: 1,
             y: 30,
-            opacity: 0,
-            delay: -1
-        })
+            opacity: 0
+        }, "-=1")
         .from("#hero-title", {
             duration: 1,
             y: 30,
-            opacity: 0,
-            delay: -0.8
-        })
+            opacity: 0
+        }, "-=0.8")
         .from("#hero-subtitle", {
             duration: 1,
             y: 20,
-            opacity: 0,
-            delay: -0.8
-        })
-        .from("#hero .btn", {
+            opacity: 0
+        }, "-=0.8")
+        .from(buttons, {
             duration: 0.8,
             y: 20,
             opacity: 0,
-            delay: -0.6,
             stagger: 0.1
-        });
+        }, "-=0.6");
 }
 
 function initSectionHeaders() {
