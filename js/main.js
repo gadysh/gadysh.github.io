@@ -351,21 +351,18 @@ async function initContactForm() {
             contact: userData.contact,
             message: userData.message,
             process_details: userData.processDetails,
-            _captcha: "false",
-            _subject: `${chat.subjectPrefix} - ${userData.organization || userData.name}`
+            // Honeypot: a real visitor never sees or fills this, so any value server-side
+            // marks the submit as spam. Sent empty here on purpose.
+            _gotcha: ''
         };
 
         try {
-            // NOTE: FormSubmit's AJAX endpoint (formsubmit.co/ajax/<recipient>) is required for
-            // programmatic fetch() submits — the plain (non-ajax) endpoint expects a real
-            // <form> POST + redirect and silently drops AJAX requests. This is already wired
-            // correctly below. Content-Type must be application/json for the ajax endpoint.
-            //
-            // Endpoint uses the activated FormSubmit alias (Founder-provided, 2026-07-04,
-            // Issue #163/#170) instead of the raw recipient email: the alias already encodes
-            // the confirmed recipient, so no email address needs to appear here or in the
-            // request body. Keep using the alias — do not revert to an email-address endpoint.
-            const response = await fetch('https://formsubmit.co/ajax/el/jodebi', {
+            // Owned lead-intake endpoint (Issue #214), a Vercel serverless function on the
+            // existing poworg-control-tower project. Replaces the broken FormSubmit AJAX path
+            // (Issue #208: FormSubmit's slash-alias 404'd on the CORS preflight, so leads were
+            // silently lost). No recipient mailbox address appears here or anywhere in client
+            // JS — the endpoint opens a lead Issue and notifies the Founder server-side.
+            const response = await fetch('https://poworg-control-tower.vercel.app/api/lead', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -374,22 +371,13 @@ async function initContactForm() {
                 body: JSON.stringify(data)
             });
 
-            // FormSubmit can return HTTP 200 while still reporting failure in the JSON body
-            // (e.g. a brand-new/unconfirmed recipient address is held pending its one-time
-            // activation click). Checking response.ok alone would show a false "success" toast
-            // to the visitor while the lead is silently dropped, so also inspect the payload.
-            let result = null;
-            try {
-                result = await response.json();
-            } catch (parseErr) {
-                // Non-JSON body — fall through to the ok-status check below.
-            }
-            const formSubmitOk = response.ok && (result === null || String(result.success) !== 'false');
-
-            if (formSubmitOk) {
+            // The endpoint returns 2xx only when the lead was actually persisted (Issue filed +
+            // Founder notification queued). A missing/invalid server PAT fails loud with 503, so
+            // response.ok is an honest success signal — no silent-drop path here.
+            if (response.ok) {
                 showSuccessToast(chat.successToastTitle, chat.successToastBody);
             } else {
-                throw new Error('FormSubmit status ' + response.status + (result ? ' — ' + JSON.stringify(result) : ''));
+                throw new Error('Lead endpoint status ' + response.status);
             }
         } catch (error) {
             console.error('Contact form submission error:', error);
