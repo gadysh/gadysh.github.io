@@ -2524,6 +2524,16 @@ section {
   box-shadow: var(--shadow-lg);
 }
 
+.team-avatar {
+  width: 112px;
+  height: 112px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  box-shadow: 0 12px 30px rgba(8, 145, 178, 0.16);
+}
+
 .team-name {
   font-size: 1.2rem;
   font-weight: 700;
@@ -2542,6 +2552,15 @@ section {
   font-size: 0.9rem;
   color: var(--text-muted);
   margin: 0;
+}
+
+.team-disclosure {
+  max-width: 860px;
+  margin: 2rem auto 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  text-align: center;
 }
 
 /* ---- CONTACT SECTION ---- */
@@ -2711,4 +2730,4 @@ section {
   .nav-menu.active {
     transform: translateX(0);
   }
-}
+}
