@@ -64,7 +64,7 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
             </span>
           </div>
           <div class="flow-card-text">
-            <strong>איש הקשר בודק את הסיכום ללקוח ומאשר אותו לפני השליחה</strong> (ברירת מחדל שאפשר לשנות).
+            <strong>איש הקשר בודק את הסיכום ללקוח ומאשר אותו לפני השליחה.</strong> זו ברירת מחדל שאפשר לשנות.
           </div>
         </li>
 
@@ -203,21 +203,21 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
       <details class="faq-item">
         <summary class="faq-question">איפה רצה המערכת?</summary>
         <div class="faq-answer">
-          <p>אפשר לבנות את הפתרון על התשתית שלנו או בענן שהארגון כבר עובד איתו, כמו <bdi>Google Cloud</bdi>,‏ <bdi>Microsoft Azure</bdi> או <bdi>AWS</bdi>. הבחירה נעשית לפי המערכות והדרישות שלכם.</p>
+          <p>אפשר לבנות את הפתרון על התשתית שלנו, או בענן שהארגון כבר עובד איתו, כמו <bdi>Google Cloud</bdi>,‏ <bdi>Microsoft Azure</bdi> או <bdi>AWS</bdi>. הבחירה נעשית לפי המערכות, הדרישות והתקציב שלכם.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary class="faq-question">מי מאשר את הפעולות והתוצרים?</summary>
+        <summary class="faq-question">מי מאשר פעולות ותוצרים?</summary>
         <div class="faq-answer">
-          <p>מגדירים יחד אילו תוצרים נשלחים אוטומטית ומתי נדרש אישור אדם. כברירת מחדל, סיכום ללקוח נבדק ומאושר ע״י איש הקשר לפני השליחה.</p>
+          <p>מגדירים יחד אילו פעולות מותרות, מתי אדם מאשר, ומה מתועד. בתרחיש הזה איש הקשר בודק את הסיכום ללקוח ומאשר אותו לפני השליחה. זו ברירת מחדל, ואפשר לשנות אותה.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary class="faq-question">איך מתחברים למערכות הקיימות?</summary>
+        <summary class="faq-question">איך מתחברים למערכות?</summary>
         <div class="faq-answer">
-          <p>החיבור נעשה דרך ממשקים סטנדרטיים למערכת הטלפוניה, לכלי הפגישות ולמערכות ה־<bdi>CRM</bdi> של הארגון, בתיאום עם ספק המערכת או צוות המחשוב.</p>
+          <p>ההקלטה מגיעה ממערכת הטלפוניה, מכלי הפגישות או מהעלאה, והתיעוד מתויק ב־<bdi>CRM</bdi> ובמערכות. בודקים יחד איזו גישה אפשרית, ישירות או דרך ספק המערכות.</p>
         </div>
       </details>
     </div>
@@ -225,7 +225,7 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
 </section>
 
 <!-- 10 & 11. CTA & Next Steps (Spec §3.4, סעיפים 10-11) -->
-{% include cta-band.html title="רוצים לבדוק איך תוצרי שיחות ייראו אצלכם?" from="scenario:recording-to-outputs" %}
+{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" from="scenario:recording-to-outputs" %}
 
 <section class="section" id="next-steps">
   <div class="container">

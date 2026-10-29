@@ -78,7 +78,7 @@ description: "טופס, חשבונית, בקשה או חוזה נקראים ונ
 </section>
 
 <!-- 10 & 11. CTA & Next Steps (Spec §3.4, סעיפים 10-11) -->
-{% include cta-band.html title="רוצים לבדוק איך עיבוד מסמכים אוטומטי ייראה אצלכם?" from="scenario:documents-across-systems" %}
+{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" from="scenario:documents-across-systems" %}
 
 <section class="section" id="next-steps">
   <div class="container">

@@ -78,7 +78,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
 </section>
 
 <!-- 10 & 11. CTA & Next Steps (Spec §3.4, סעיפים 10-11) -->
-{% include cta-band.html title="רוצים לבדוק איך צ׳אט ידע ארגוני ייראה אצלכם?" from="scenario:knowledge-chat-actions" %}
+{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" from="scenario:knowledge-chat-actions" %}
 
 <section class="section" id="next-steps">
   <div class="container">

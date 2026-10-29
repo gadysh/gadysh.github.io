@@ -78,7 +78,7 @@ description: "לקוחות פונים בערוץ שהם כבר משתמשים ב
 </section>
 
 <!-- 10 & 11. CTA & Next Steps (Spec §3.4, סעיפים 10-11) -->
-{% include cta-band.html title="רוצים לבדוק איך שירות ב־WhatsApp ייראה אצלכם?" from="scenario:whatsapp-service-actions" %}
+{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" from="scenario:whatsapp-service-actions" %}
 
 <section class="section" id="next-steps">
   <div class="container">

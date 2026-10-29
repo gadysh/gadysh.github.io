@@ -78,7 +78,7 @@ description: "הנציג מקבל בזמן השיחה את המידע, את הנ
 </section>
 
 <!-- 10 & 11. CTA & Next Steps (Spec §3.4, סעיפים 10-11) -->
-{% include cta-band.html title="רוצים לבדוק איך סיוע לנציגים ייראה אצלכם?" from="scenario:agent-assist-onboarding" %}
+{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" from="scenario:agent-assist-onboarding" %}
 
 <section class="section" id="next-steps">
   <div class="container">
