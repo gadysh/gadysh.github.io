@@ -1,0 +1,60 @@
+---
+layout: base
+lang: he
+title: "פנייה לבירור | PowOrg"
+description: "בואו נדבר על העבודה בארגון שלכם. אפשר להגיע עם תהליך שכבר בראש, או רק עם רצון לבדוק איפה AI יכול לעזור."
+translations:
+  en: "/en/contact/"
+---
+
+<section class="section" style="padding-block-end: var(--space-8);">
+  <div class="container">
+    {% include breadcrumb.html %}
+
+    <div style="margin-block-start: var(--space-4); max-inline-size: 80ch;">
+      <h1>בואו נדבר על העבודה בארגון שלכם</h1>
+      <p class="text-lead">
+        אפשר להגיע עם תהליך שכבר בראש, או רק עם רצון לבדוק איפה <bdi>AI</bdi> יכול לעזור.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="contact-main">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- 7/12: The Form -->
+      <div class="contact-col-form">
+        {% include contact-form.html %}
+      </div>
+
+      <!-- 5/12: What Happens Next & Direct Mail -->
+      <div class="contact-col-info">
+        <div class="info-card">
+          <h3>מה יקרה אחר כך</h3>
+          <ol class="info-steps-list">
+            <li>
+              <strong>1. נקרא את הפנייה.</strong>
+            </li>
+            <li>
+              <strong>2. נחזור אליכם במייל.</strong>
+              <p>אם נראה שיש על מה לדבר, נציע שיחת היכרות ומועדים אפשריים.</p>
+            </li>
+            <li>
+              <strong>3. נקיים שיחת בירור משותפת.</strong>
+              <p>נבין את העבודה בארגון שלכם ונבחן יחד כיוונים מעשיים.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="info-card" style="margin-block-start: var(--space-6);">
+          <h3>מעדיפים מייל ישיר?</h3>
+          <p style="color: var(--muted); margin-block-end: var(--space-4);">
+            אפשר גם לשלוח לנו הודעה ישירה בדואר אלקטרוני:
+          </p>
+          <a href="mailto:{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}" class="btn btn-secondary" dir="ltr">{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

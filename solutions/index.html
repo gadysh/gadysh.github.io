@@ -1,0 +1,44 @@
+---
+layout: base
+lang: he
+title: "תחומי פתרון ותרחישים | PowOrg"
+description: "אינדקס מלא של כל תחומי הפתרון ותרחישי היכולת של PowOrg."
+is_solutions_index: true
+---
+
+<div class="container section">
+  {% include breadcrumb.html %}
+
+  <div class="section-header" style="margin-block-start: var(--space-4);">
+    <h1>תחומי פתרון ותרחישים</h1>
+    <p class="text-lead">TODO-COPY: מבוא אינדקס הפתרונות (§2.1, §3.3)</p>
+  </div>
+
+  <section class="section" id="all-domains">
+    <div class="section-header">
+      <h2>תחומי פתרון</h2>
+    </div>
+    <div class="domains-grid">
+      {% for domain in site.data.domains %}
+        {% if domain.published == true %}
+          {% include domain-card.html domain=domain %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section section-alt" id="all-scenarios">
+    <div class="section-header">
+      <h2>כל תרחישי היכולת</h2>
+    </div>
+    <div class="scenarios-grid">
+      {% for scenario in site.data.scenarios %}
+        {% if scenario.published == true %}
+          {% include scenario-card.html scenario=scenario %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+{% include cta-band.html title="רוצים לבדוק איזה פתרון מתאים לארגון שלכם?" %}

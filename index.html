@@ -1,396 +1,239 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+---
+layout: base
+lang: he
+title: "PowOrg | פתרונות AI לעבודה בארגון, פיתוח והטמעה"
+description: "PowOrg מזהה איפה AI יכול לקחת חלק בעבודה אצלכם, מפתחת את הפתרון ומטמיעה אותו במערכות ובעבודה של הצוותים."
+redirect_from:
+  - /pages/poc.html
+  - /pages/security.html
+  - /pages/poc
+  - /pages/security
+translations:
+  en: "/en/"
+---
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowOrg | An autonomous company, documented</title>
-    <meta name="description" content="PowOrg is a real company run by coordinated AI capabilities under human authority gates. We document how it actually works — including what breaks — and how the method becomes a bounded department.">
+<!-- 1. Hero / Fold 1 (Spec §3.2, סעיף 1) -->
+<section class="hero" id="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <h1>פתרונות <bdi>AI</bdi> שעובדים בתוך התהליכים והמערכות של הארגון</h1>
+      <p class="text-lead">
+        PowOrg מזהה איפה <bdi>AI</bdi> יכול לקחת חלק בעבודה אצלכם, מפתחת את הפתרון ומטמיעה אותו במערכות ובעבודה של הצוותים. אפשר להתחיל מתהליך שכבר הגדרתם, או לבחון יחד איפה נכון להתחיל.
+      </p>
+      <div class="hero-actions">
+        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary">לשיחת בירור</a>
+        <a href="#domains" class="btn btn-secondary">לתחומי הפתרון</a>
+      </div>
+    </div>
 
-    <!-- Open Graph / social sharing -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://poworg.com/">
-    <meta property="og:title" content="PowOrg | An autonomous company, documented">
-    <meta property="og:description" content="A real company run by coordinated AI capabilities under human authority gates. We document how it actually works — including what breaks.">
-    <meta property="og:image" content="https://poworg.com/assets/img/poworg_og_premium.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PowOrg | An autonomous company, documented">
-    <meta name="twitter:description" content="A real company run by coordinated AI capabilities under human authority gates. We document how it actually works — including what breaks.">
-    <meta name="twitter:image" content="https://poworg.com/assets/img/poworg_og_premium.png">
-
-    <!-- Fonts: Inter + Heebo -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/ScrollTrigger.min.js"></script>
-    <script type="module" src="js/analytics.js"></script>
-</head>
-
-<body>
-
-    <!-- ═══════════════════════════════════════════════════
-         1. NAVBAR
-    ═══════════════════════════════════════════════════ -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="./" class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
-                <img src="assets/img/poworg-logo.jpg" alt="PowOrg" style="height: 44px; width: 44px; border-radius: 8px; object-fit: cover;">
-                <span>PowOrg</span>
-            </a>
-            <button class="nav-toggle">☰</button>
-            <ul class="nav-menu">
-                <li><a href="#hero" class="nav-link" data-i18n="nav.home"></a></li>
-                <li><a href="#process" class="nav-link" data-i18n="nav.process"></a></li>
-                <li><a href="#events" class="nav-link" data-i18n="nav.events"></a></li>
-                <li><a href="#department" class="nav-link" data-i18n="nav.department"></a></li>
-                <li><a href="#team" class="nav-link" data-i18n="nav.team"></a></li>
-                <li><a href="#evidence" class="nav-link" data-i18n="nav.evidence"></a></li>
-                <li><button type="button" id="lang-toggle-btn" class="lang-toggle-btn" aria-label="Switch language"></button></li>
-                <li><a href="#contact" class="btn btn-primary nav-cta cta-agent" data-i18n="nav.contact"></a></li>
-            </ul>
+    <!-- Abstract Flow Diagram (Spec §5.5) -->
+    <div class="hero-flow-diagram" aria-hidden="true">
+      <div class="flow-abstract-title">
+        <span>זרימת עבודה מבוקרת</span>
+        <span style="color: var(--teal-700); font-weight: 700;">מערכות ואדם</span>
+      </div>
+      <div class="flow-abstract-steps">
+        <div class="flow-step-item">
+          <span class="flow-step-num">1</span>
+          <span>קלט: פנייה, מסמך או הקלטה</span>
         </div>
-    </nav>
-
-
-    <!-- ═══════════════════════════════════════════════════
-         2. HERO — identity statement, not a sales pitch
-    ═══════════════════════════════════════════════════ -->
-    <section id="hero" class="hero-dark">
-        <div class="hero-grid-overlay"></div>
-        <div class="hero-glow-orb"></div>
-
-        <div class="container hero-inner">
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                <span data-i18n="hero.badge"></span>
-            </div>
-
-            <h1 id="hero-title" class="hero-headline" data-i18n="hero.title"></h1>
-
-            <p id="hero-subtitle" class="hero-sub" data-i18n="hero.subtitle"></p>
-
-            <div class="hero-ctas">
-                <a href="#process" class="btn btn-hero-primary" data-i18n="hero.cta.primary"></a>
-                <a href="#events" class="btn btn-hero-ghost" data-i18n="hero.cta.secondary"></a>
-            </div>
-
-            <div class="hero-trust-row">
-                <div class="trust-pill">
-                    <img src="assets/icons/shield.svg" style="width: 15px; opacity: 0.7;">
-                    <span data-i18n="hero.tech1"></span>
-                </div>
-                <div class="trust-pill">
-                    <img src="assets/icons/book.svg" style="width: 15px; opacity: 0.7;">
-                    <span data-i18n="hero.tech2"></span>
-                </div>
-            </div>
+        <div class="flow-step-item">
+          <span class="flow-step-num">2</span>
+          <span>הבנת כוונה וחילוץ נתונים מובנים</span>
         </div>
-
-        <div class="scroll-cue">
-            <div class="scroll-cue-line"></div>
+        <div class="flow-step-item">
+          <span class="flow-step-num">3</span>
+          <span>בדיקה ואימות מול מערכות הליבה</span>
         </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════════════
-         3. HOW THE COMPANY ACTUALLY WORKS — 5 mechanism steps
-    ═══════════════════════════════════════════════════ -->
-    <section id="process" class="section-subtle">
-        <div class="process-bg-img"></div>
-        <div class="container">
-            <div class="section-head">
-                <h2 data-i18n="process.title"></h2>
-                <p data-i18n="process.subtitle"></p>
-            </div>
-            <div class="how-it-works-grid">
-                <div class="clean-card how-step">
-                    <div class="step-number">01</div>
-                    <h3 data-i18n="process.step1.title"></h3>
-                    <p data-i18n="process.step1.body"></p>
-                </div>
-                <div class="clean-card how-step">
-                    <div class="step-number">02</div>
-                    <h3 data-i18n="process.step2.title"></h3>
-                    <p data-i18n="process.step2.body"></p>
-                </div>
-                <div class="clean-card how-step">
-                    <div class="step-number">03</div>
-                    <h3 data-i18n="process.step3.title"></h3>
-                    <p data-i18n="process.step3.body"></p>
-                </div>
-                <div class="clean-card how-step">
-                    <div class="step-number">04</div>
-                    <h3 data-i18n="process.step4.title"></h3>
-                    <p data-i18n="process.step4.body"></p>
-                </div>
-                <div class="clean-card how-step">
-                    <div class="step-number">05</div>
-                    <h3 data-i18n="process.step5.title"></h3>
-                    <p data-i18n="process.step5.body"></p>
-                </div>
-            </div>
+        <div class="flow-step-item" data-human="true">
+          <span class="flow-step-num">4</span>
+          <span>אישור אדם במקרה חריג או רגיש</span>
+          <span class="flow-step-tag">בקרה</span>
         </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════════════
-         4. WHAT ACTUALLY HAPPENED — three verified events
-    ═══════════════════════════════════════════════════ -->
-    <section id="events" class="section-light">
-        <div class="container">
-            <div class="section-head">
-                <h2 data-i18n="events.title"></h2>
-                <p data-i18n="events.subtitle"></p>
-            </div>
-            <div class="fit-grid">
-                <div class="clean-card fit-card">
-                    <div class="icon-box-clean">
-                        <img src="assets/icons/zap.svg" alt="">
-                    </div>
-                    <h3 data-i18n="events.card1.title"></h3>
-                    <p data-i18n="events.card1.body"></p>
-                </div>
-                <div class="clean-card fit-card">
-                    <div class="icon-box-clean">
-                        <img src="assets/icons/lock.svg" alt="">
-                    </div>
-                    <h3 data-i18n="events.card2.title"></h3>
-                    <p data-i18n="events.card2.body"></p>
-                </div>
-                <div class="clean-card fit-card">
-                    <div class="icon-box-clean">
-                        <img src="assets/icons/check.svg" alt="">
-                    </div>
-                    <h3 data-i18n="events.card3.title"></h3>
-                    <p data-i18n="events.card3.body"></p>
-                </div>
-            </div>
+        <div class="flow-step-item">
+          <span class="flow-step-num">5</span>
+          <span>ביצוע פעולה, עדכון מערכות ותיעוד</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- 2. Two Entry Paths (Spec §3.2, סעיף 2) -->
+<section class="section section-alt" id="entry-paths">
+  <div class="container">
+    <div class="section-header">
+      <h2>שתי דרכי פתיחה</h2>
+    </div>
 
-    <!-- ═══════════════════════════════════════════════════
-         5. FROM COMPANY TO DEPARTMENT — the packaging direction
-    ═══════════════════════════════════════════════════ -->
-    <section id="department" class="section-subtle">
-        <div class="container" style="max-width: 860px;">
-            <div class="section-head">
-                <h2 data-i18n="department.title"></h2>
-            </div>
-            <p style="font-size: 1.15rem; line-height: 1.8; color: var(--text-main); text-align: center;" data-i18n="department.body1"></p>
-            <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-muted); text-align: center; margin-top: 1.25rem;" data-i18n="department.body2"></p>
-        </div>
-    </section>
+    <div class="entry-grid">
+      {% include entry-card.html title="יש לכם תהליך מסוים בראש?" desc="ספרו לנו מה קורה בו היום, ונבחן איך AI יכול לבצע, לסייע או לקצר אותו." intent="defined_process" button_text="לשיחה על תהליך מוגדר" %}
+      {% include entry-card.html title="רוצים להבין איפה AI מתאים אצלכם?" desc="לא צריך להגיע עם בעיה מוגדרת. נמפה יחד את העבודה בארגון ונזהה איפה כדאי להתחיל." intent="explore" button_text="למיפוי משותף ובחינת כיוונים" %}
+    </div>
+  </div>
+</section>
 
+<!-- 3. Solution Domains (Spec §3.2, סעיף 3) -->
+<section class="section" id="domains">
+  <div class="container">
+    <div class="section-header">
+      <h2>איפה <bdi>AI</bdi> יכול לעבוד אצלכם</h2>
+    </div>
 
-    <!-- ═══════════════════════════════════════════════════
-         6. WHAT THE HUMAN STILL DOES
-    ═══════════════════════════════════════════════════ -->
-    <section id="human" class="section-light">
-        <div class="container" style="max-width: 860px;">
-            <div class="section-head">
-                <h2 data-i18n="human.title"></h2>
-            </div>
-            <p style="font-size: 1.15rem; line-height: 1.8; color: var(--text-main); text-align: center;" data-i18n="human.body1"></p>
-            <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-muted); text-align: center; margin-top: 1.25rem;" data-i18n="human.body2"></p>
-        </div>
-    </section>
+    <div class="domains-grid">
+      {% for domain in site.data.domains %}
+        {% if domain.published == true %}
+          {% include domain-card.html domain=domain %}
+        {% endif %}
+      {% endfor %}
+    </div>
 
+    <div style="margin-block-start: var(--space-6); text-align: center;">
+      <p class="text-muted" style="margin-inline: auto;">התחומים והתרחישים הם דוגמאות. אנחנו בונים גם פתרונות שלא מופיעים כאן.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- ═══════════════════════════════════════════════════
-         7. EVIDENCE & LIMITS — honest state
-    ═══════════════════════════════════════════════════ -->
-    <section id="team" class="section-subtle">
-        <div class="container">
-            <div class="section-head">
-                <h2 data-i18n="team.title"></h2>
-                <p data-i18n="team.subtitle"></p>
-            </div>
-            <div class="team-grid">
-                <article class="team-card">
-                    <picture><source srcset="assets/img/team/gadi.webp" type="image/webp"><img src="assets/img/team/gadi.png" alt="Gadi" class="team-avatar"></picture>
-                    <h3 class="team-name" data-i18n="team.gadi.name"></h3>
-                    <p class="team-role" data-i18n="team.gadi.role"></p>
-                    <p class="team-bio" data-i18n="team.gadi.bio"></p>
-                </article>
-                <article class="team-card">
-                    <picture><source srcset="assets/img/team/poppy.webp" type="image/webp"><img src="assets/img/team/poppy.png" alt="Poppy" class="team-avatar"></picture>
-                    <h3 class="team-name" data-i18n="team.poppy.name"></h3>
-                    <p class="team-role" data-i18n="team.poppy.role"></p>
-                    <p class="team-bio" data-i18n="team.poppy.bio"></p>
-                </article>
-                <article class="team-card">
-                    <picture><source srcset="assets/img/team/dave.webp" type="image/webp"><img src="assets/img/team/dave.png" alt="Dave" class="team-avatar"></picture>
-                    <h3 class="team-name" data-i18n="team.dave.name"></h3>
-                    <p class="team-role" data-i18n="team.dave.role"></p>
-                    <p class="team-bio" data-i18n="team.dave.bio"></p>
-                </article>
-                <article class="team-card">
-                    <picture><source srcset="assets/img/team/mark.webp" type="image/webp"><img src="assets/img/team/mark.png" alt="Mark" class="team-avatar"></picture>
-                    <h3 class="team-name" data-i18n="team.mark.name"></h3>
-                    <p class="team-role" data-i18n="team.mark.role"></p>
-                    <p class="team-bio" data-i18n="team.mark.bio"></p>
-                </article>
-                <article class="team-card">
-                    <picture><source srcset="assets/img/team/maya.webp" type="image/webp"><img src="assets/img/team/maya.png" alt="Maya" class="team-avatar"></picture>
-                    <h3 class="team-name" data-i18n="team.maya.name"></h3>
-                    <p class="team-role" data-i18n="team.maya.role"></p>
-                    <p class="team-bio" data-i18n="team.maya.bio"></p>
-                </article>
-            </div>
-            <p class="team-disclosure" data-i18n="team.disclosure"></p>
-        </div>
-    </section>
+<!-- 4. Scenarios (Spec §3.2, סעיף 4) -->
+<section class="section section-alt" id="scenarios">
+  <div class="container">
+    <div class="section-header">
+      <h2>מה זה יכול לעשות בפועל</h2>
+    </div>
 
-    <section id="evidence" class="section-subtle">
-        <div class="container">
-            <div class="section-head">
-                <h2 data-i18n="evidence.title"></h2>
-                <p data-i18n="evidence.subtitle"></p>
-            </div>
-            <div class="fit-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div class="clean-card fit-card">
-                    <div class="icon-box-clean">
-                        <img src="assets/icons/check.svg" alt="">
-                    </div>
-                    <h3 data-i18n="evidence.live.title"></h3>
-                    <p data-i18n="evidence.live.body"></p>
-                </div>
-                <div class="clean-card fit-card">
-                    <div class="icon-box-clean">
-                        <img src="assets/icons/tool.svg" alt="">
-                    </div>
-                    <h3 data-i18n="evidence.building.title"></h3>
-                    <p data-i18n="evidence.building.body"></p>
-                </div>
-                <div class="clean-card fit-card">
-                    <div class="icon-box-clean">
-                        <img src="assets/icons/help.svg" alt="">
-                    </div>
-                    <h3 data-i18n="evidence.notyet.title"></h3>
-                    <p data-i18n="evidence.notyet.body"></p>
-                </div>
-                <div class="clean-card fit-card">
-                    <div class="icon-box-clean">
-                        <img src="assets/icons/document.svg" alt="">
-                    </div>
-                    <h3 data-i18n="evidence.history.title"></h3>
-                    <p data-i18n="evidence.history.body"></p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="scenarios-grid">
+      {% for scenario in site.data.scenarios %}
+        {% if scenario.published == true %}
+          {% include scenario-card.html scenario=scenario %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
+<!-- 5. What Sets Us Apart (Spec §3.2, סעיף 5) -->
+<section class="section" id="difference">
+  <div class="container">
+    <div class="section-header">
+      <h2>מה מבדיל אותנו</h2>
+    </div>
 
-    <!-- ═══════════════════════════════════════════════════
-         8. FOLLOW / ASK — conversational, no sales
-         Submits to the owned lead-intake endpoint (Issue #214): a Vercel serverless
-         function wired in js/main.js. No recipient email address appears in this file.
-    ═══════════════════════════════════════════════════ -->
-    <section id="contact" class="section-contact">
-        <div class="container">
-            <div class="contact-layout">
-                <!-- Left col: copy -->
-                <div class="contact-visual">
-                    <div class="organic-shape"
-                        style="background-image: url('assets/img/Human-AI Synergy.png'); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; height: 380px;">
-                    </div>
-                    <div class="contact-copy-block">
-                        <h2 class="contact-headline" data-i18n="contact.title"></h2>
-                        <p class="contact-sub" data-i18n="contact.subtitle"></p>
-                        <p style="margin-top: 1rem;">
-                            <a href="https://www.linkedin.com/company/poworg" target="_blank" rel="noopener"
-                               style="color: var(--primary); font-weight: 600;" data-i18n="contact.linkedin"></a>
-                        </p>
-                    </div>
-                </div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <h3>הבנה של <bdi>AI</bdi></h3>
+        <p>מה מודלים יודעים לעשות היום, איפה הם טועים, ואיך בונים סביבם בקרה.</p>
+      </div>
 
-                <!-- Right col: conversational agent -->
-                <div class="contact-form-wrap">
-                    <div class="clean-card intake-agent-card" style="box-shadow: var(--shadow-2xl); height: 500px; display: flex; flex-direction: column; padding: 0; overflow: hidden; background: var(--bg-card); border-color: var(--border-light);">
-                        <!-- Agent Header -->
-                        <div class="intake-agent-header" style="display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-light); background: rgba(255,255,255,0.01);">
-                            <div style="display: flex; align-items: center; gap: 12px;">
-                                <div class="agent-avatar-wrap" style="position: relative; width: 42px; height: 42px;">
-                                    <picture>
-                                        <source srcset="assets/img/team/poppy.webp" type="image/webp">
-                                        <img src="assets/img/team/poppy.png" alt="Poppy" class="agent-avatar" onerror="this.onerror=null; this.src='assets/icons/users.svg'" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
-                                    </picture>
-                                    <span class="agent-status-dot online" style="position: absolute; bottom: 0; inset-inline-start: 0; width: 10px; height: 10px; border-radius: 50%; background: #10b981; border: 2px solid var(--bg-card);"></span>
-                                </div>
-                                <div class="agent-info" style="display: flex; flex-direction: column;">
-                                    <span class="agent-name" style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);" data-i18n="agent.name"></span>
-                                    <span class="agent-role" style="font-size: 0.75rem; color: var(--text-muted);" data-i18n="agent.role"></span>
-                                </div>
-                            </div>
-                        </div>
+      <div class="pillar-card">
+        <h3>היכרות עם העבודה בארגון</h3>
+        <p>תהליכים, הרשאות, חריגים ומה שקורה כשהמערכת לא יודעת.</p>
+      </div>
 
-                        <!-- Chat Messages Area -->
-                        <div class="intake-agent-messages" id="agent-messages" style="flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem;">
-                        </div>
+      <div class="pillar-card">
+        <h3>פיתוח והטמעה</h3>
+        <p>חיבור למערכות הקיימות, בדיקה עם המשתמשים ושיפור אחרי העלייה לאוויר.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-                        <!-- Typing Indicator -->
-                        <div class="intake-agent-typing" id="agent-typing" style="display: none; padding: 0.5rem 1.5rem 1rem; gap: 4px; align-items: center;">
-                            <span class="typing-dot" style="width: 6px; height: 6px; background: var(--text-light); border-radius: 50%; animation: typing-wave 1.4s infinite ease-in-out;"></span>
-                            <span class="typing-dot" style="width: 6px; height: 6px; background: var(--text-light); border-radius: 50%; animation: typing-wave 1.4s infinite ease-in-out; animation-delay: 0.2s;"></span>
-                            <span class="typing-dot" style="width: 6px; height: 6px; background: var(--text-light); border-radius: 50%; animation: typing-wave 1.4s infinite ease-in-out; animation-delay: 0.4s;"></span>
-                        </div>
+<!-- 6. How We Work Brief (Spec §3.2, סעיף 6) -->
+<section class="section section-alt" id="process">
+  <div class="container">
+    <div class="section-header">
+      <h2>איך עובדים</h2>
+    </div>
 
-                        <!-- User Input Bar -->
-                        <div class="intake-agent-input-container" style="border-top: 1px solid var(--border-light); background: rgba(0,0,0,0.15); padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 10px;">
-                            <div class="quick-options" id="agent-quick-options" style="display: none; flex-wrap: wrap; gap: 8px; justify-content: flex-start;">
-                            </div>
-                            <div class="input-row" style="display: flex; gap: 10px; width: 100%;">
-                                <input type="text" id="agent-input" class="agent-chat-input" data-i18n-placeholder="agent.input.placeholder" style="flex: 1; padding: 0.8rem 1.25rem; background: var(--bg-input); border: 1px solid var(--border-light); border-radius: 10px; color: var(--text-main); font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onkeydown="if(event.key === 'Enter') document.getElementById('agent-send-btn').click()">
-                                <button type="button" id="agent-send-btn" class="agent-send-button" style="width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #030712; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="agent-send-icon">
-                                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+    <div class="work-steps-row">
+      <div class="work-step-col">
+        <span class="step-num-badge">1</span>
+        <h4>היכרות</h4>
+      </div>
+      <div class="work-step-col">
+        <span class="step-num-badge">2</span>
+        <h4>איתור הזדמנויות ותיחום</h4>
+      </div>
+      <div class="work-step-col">
+        <span class="step-num-badge">3</span>
+        <h4>פיתוח וחיבור למערכות</h4>
+      </div>
+      <div class="work-step-col">
+        <span class="step-num-badge">4</span>
+        <h4>הטמעה עם המשתמשים</h4>
+      </div>
+      <div class="work-step-col">
+        <span class="step-num-badge">5</span>
+        <h4>מדידה, שיפור והרחבה</h4>
+      </div>
+    </div>
 
-                        <!-- Original Form (Hidden but preserves functional submission infrastructure) -->
-                        <form id="contact-form" style="display: none;">
-                            <input type="text" name="name" id="hidden-name">
-                            <input type="text" name="organization" id="hidden-org">
-                            <input type="email" name="contact" id="hidden-email">
-                            <textarea name="message" id="hidden-message"></textarea>
-                            <textarea name="process_details" id="hidden-process-details"></textarea>
-                            <button type="submit" id="submit-btn"></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4); margin-block-start: var(--space-6);">
+      <p class="text-muted" style="margin: 0;">הדרך וההיקף נקבעים יחד, לפי הארגון.</p>
+      <a href="{{ '/how-we-work/' | relative_url }}" class="btn btn-secondary">איך עובדים ›</a>
+    </div>
+  </div>
+</section>
 
+<!-- 7. Technology (Spec §3.2, סעיף 7) -->
+<section class="section" id="technology">
+  <div class="container" style="text-align: center;">
+    <div class="section-header">
+      <h2>טכנולוגיה לפי הארגון</h2>
+    </div>
+    <p class="text-lead" style="margin-inline: auto;">
+      אפשר לבנות את הפתרון על התשתית שלנו, או בענן שהארגון כבר עובד איתו, כמו <bdi>Google Cloud</bdi>,‏ <bdi>Microsoft Azure</bdi> או <bdi>AWS</bdi>. הבחירה נעשית לפי המערכות, הדרישות והתקציב שלכם.
+    </p>
+  </div>
+</section>
 
-    <!-- ═══════════════════════════════════════════════════
-         FOOTER
-    ═══════════════════════════════════════════════════ -->
-    <footer class="footer-clean">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <div class="nav-brand" style="font-size: 1.4rem;">PowOrg</div>
-            <p id="footer-copy" style="font-size: 0.9rem; margin: 0;" data-i18n-html="footer.copy"></p>
-            <div style="display: flex; gap: 1.5rem; font-size: 0.85rem;">
-                <a href="https://www.linkedin.com/company/poworg" target="_blank" rel="noopener" style="color: var(--text-muted);">LinkedIn</a>
-                <a href="#contact" style="color: var(--text-muted);" class="cta-agent" data-i18n="footer.contact"></a>
-            </div>
-        </div>
-    </footer>
+<!-- 8. Who It Is For (Spec §3.2, סעיף 8, Background Sand) -->
+<section class="section section-sand" id="fit">
+  <div class="container">
+    <div class="section-header">
+      <h2>למי זה מתאים</h2>
+      <p>מתאים במיוחד לארגונים ש־</p>
+    </div>
 
-    <script type="module" src="js/main.js"></script>
-</body>
+    <div class="fit-grid">
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>יש בהם עבודה אנושית משמעותית שחוזרת על עצמה</div>
+      </div>
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>יש מי שמוביל את המהלך מבפנים</div>
+      </div>
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>יש אחראי מחשוב או ספק מערכות זמין</div>
+      </div>
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>מוכנים להנגיש מידע ולהשקיע במהלך</div>
+      </div>
+    </div>
 
-</html>
+    <p class="text-muted" style="margin: 0; font-size: 1.05rem; margin-block-start: var(--space-4);">
+      גודל הארגון פחות חשוב. אפשר להגיע גם בלי בעיה מוגדרת.
+    </p>
+  </div>
+</section>
+
+<!-- 9. Who Is Behind (Spec §3.2, סעיף 9, Plain Text, NO photo) -->
+<section class="section section-sand" id="founder">
+  <div class="container">
+    <div class="section-header">
+      <h2>מי עומד מאחורי</h2>
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); padding: var(--space-8); max-inline-size: 80ch;">
+      <h3 style="margin-block-end: var(--space-2);">גדי, מייסד PowOrg</h3>
+      <p class="text-muted" style="margin-block-end: var(--space-4);">
+        ניסיון בפיתוח, במערכות ליבה ובאינטגרציות ארגוניות.
+      </p>
+      <a href="{{ '/how-we-work/#about' | relative_url }}" class="domain-card-link">מי אנחנו ›</a>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CTA Band (Spec §3.2, סעיף 10) -->
+{% include cta-band.html %}
