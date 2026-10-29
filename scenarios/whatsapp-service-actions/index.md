@@ -13,7 +13,7 @@ description: "לקוחות פונים בערוץ שהם כבר משתמשים ב
     <div class="section-header">
       <h2>העבודה היום</h2>
     </div>
-    <p class="text-lead" style="max-inline-size: 70ch;">
+    <p class="text-lead content-measure-70">
       TODO-COPY: העבודה היום בשירות ופעולות ב־WhatsApp (§3.5 תרחיש S1)
     </p>
   </div>
@@ -32,7 +32,7 @@ description: "לקוחות פונים בערוץ שהם כבר משתמשים ב
 <!-- 5 & 7. Deliverables & Requirements (Spec §3.4, סעיפים 5, 7) -->
 <section class="section section-alt" id="deliverables-and-requirements">
   <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+    <div class="deliverables-grid">
       <div>
         <div class="section-header">
           <h2>מה אפשר לקבל</h2>

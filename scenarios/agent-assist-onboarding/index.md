@@ -3,8 +3,8 @@ layout: scenario
 lang: he
 scenario: agent-assist-onboarding
 domain: customers
-title: "גם נציג חדש יודע מה לענות ומה לעשות"
-description: "הנציג מקבל בזמן השיחה את המידע, את הנוהל ואת הצעד הבא. נציג חדש לומד מתוך הידע והמקרים של הארגון."
+title: "סיוע לנציגים בזמן אמת והכשרת נציגים חדשים"
+description: "הסוכן מציע לנציג את המידע הנכון תוך כדי השיחה, ומקצר את זמן ההכשרה של נציגים חדשים."
 ---
 
 <!-- 3. Work Today (Spec §3.4, סעיף 3) -->
@@ -13,7 +13,7 @@ description: "הנציג מקבל בזמן השיחה את המידע, את הנ
     <div class="section-header">
       <h2>העבודה היום</h2>
     </div>
-    <p class="text-lead" style="max-inline-size: 70ch;">
+    <p class="text-lead content-measure-70">
       TODO-COPY: העבודה היום בסיוע והכשרת נציגים (§3.5 תרחיש S2)
     </p>
   </div>
@@ -32,7 +32,7 @@ description: "הנציג מקבל בזמן השיחה את המידע, את הנ
 <!-- 5 & 7. Deliverables & Requirements (Spec §3.4, סעיפים 5, 7) -->
 <section class="section section-alt" id="deliverables-and-requirements">
   <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+    <div class="deliverables-grid">
       <div>
         <div class="section-header">
           <h2>מה אפשר לקבל</h2>
@@ -73,7 +73,7 @@ description: "הנציג מקבל בזמן השיחה את המידע, את הנ
     <div class="section-header">
       <h2>שאלות נפוצות</h2>
     </div>
-    <p class="todo-copy">TODO-COPY: שאלות ותשובות על סיוע והכשרת נציגים (§3.5 תרחיש S2)</p>
+    <p class="todo-copy">TODO-COPY: שאלות ותשובות בסיוע לנציגים (§3.5 תרחיש S2)</p>
   </div>
 </section>
 

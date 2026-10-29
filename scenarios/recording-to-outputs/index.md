@@ -13,7 +13,7 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
     <div class="section-header">
       <h2>העבודה היום</h2>
     </div>
-    <p class="text-lead" style="max-inline-size: 70ch;">
+    <p class="text-lead content-measure-70">
       אחרי שיחה או פגישה, מישהו צריך לסכם, לשלוח ללקוח, לתעד במערכת ולתכנן את ההמשך. לעתים קרובות זה נעשה חלקית, באיחור או לא נעשה. הידע מהשיחות כמעט לא משמש ללמידה.
     </p>
   </div>
@@ -93,14 +93,14 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
 <!-- 5 & 7. What You Get & What We Need From You (Spec §3.4, סעיפים 5, 7) -->
 <section class="section section-alt" id="deliverables">
   <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+    <div class="deliverables-grid">
       
       <!-- What You Get -->
       <div>
         <div class="section-header">
           <h2>מה אפשר לקבל</h2>
         </div>
-        <div class="fit-grid" style="grid-template-columns: 1fr;">
+        <div class="fit-grid fit-grid-single">
           <div class="fit-item">
             <span class="fit-icon" aria-hidden="true">✓</span>
             <div>סיכום ללקוח, עם ההצעות והפרטים שעלו</div>
@@ -129,7 +129,7 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
         <div class="section-header">
           <h2>מה צריך מצדכם</h2>
         </div>
-        <div class="fit-grid" style="grid-template-columns: 1fr;">
+        <div class="fit-grid fit-grid-single">
           <div class="fit-item">
             <span class="fit-icon" aria-hidden="true">✓</span>
             <div>מקור הקלטות</div>
@@ -156,7 +156,7 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
       <h2>התאמה לארגון שלכם</h2>
     </div>
 
-    <div class="fit-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+    <div class="fit-grid fit-grid-auto">
       <div class="pillar-card">
         <h3>סוגי שיחות</h3>
         <p>מכירה, שירות, פגישות פנימיות וראיונות.</p>
@@ -177,7 +177,7 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
         <p>חיבור ל־<bdi>CRM</bdi>, למערכות ניהול משימות ולתיקיות מסמכים.</p>
       </div>
 
-      <div class="pillar-card" style="grid-column: 1 / -1;">
+      <div class="pillar-card col-span-full">
         <h3>שילוב בעבודה</h3>
         <p>איך משלבים את ההקלטה בעבודה ובמפגש עם הלקוח, כולל הסבר ללקוח והסכמה להקלטה לפי הכללים שחלים על הארגון.</p>
       </div>
@@ -194,7 +194,7 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
 
 <!-- 9. FAQ (Spec §3.4, סעיף 9) -->
 <section class="section section-alt" id="faq">
-  <div class="container" style="max-inline-size: 80ch;">
+  <div class="container container-measure-80">
     <div class="section-header">
       <h2>שאלות נפוצות</h2>
     </div>

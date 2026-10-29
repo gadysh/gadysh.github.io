@@ -3,8 +3,8 @@ layout: scenario
 lang: he
 scenario: knowledge-chat-actions
 domain: knowledge-and-teams
-title: "תשובות מהידע של הארגון ופעולות במערכות, מתוך שיחה אחת"
-description: "עובדים שואלים בשפה חופשית ומקבלים תשובה מתוך הידע של הארגון, עם מקור. הם יכולים גם לבצע פעולות מוגדרות במערכות בלי לחפש מסכים."
+title: "צ׳אט ידע ופעולות לעובדים"
+description: "העובד שואל בשפה טבעית, מקבל תשובה שמבוססת על הידע של הארגון, ויכול לבקש מהסוכן לבצע פעולות במערכות."
 ---
 
 <!-- 3. Work Today (Spec §3.4, סעיף 3) -->
@@ -13,7 +13,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
     <div class="section-header">
       <h2>העבודה היום</h2>
     </div>
-    <p class="text-lead" style="max-inline-size: 70ch;">
+    <p class="text-lead content-measure-70">
       TODO-COPY: העבודה היום בצ׳אט ידע ופעולות לעובדים (§3.5 תרחיש S4)
     </p>
   </div>
@@ -32,7 +32,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
 <!-- 5 & 7. Deliverables & Requirements (Spec §3.4, סעיפים 5, 7) -->
 <section class="section section-alt" id="deliverables-and-requirements">
   <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+    <div class="deliverables-grid">
       <div>
         <div class="section-header">
           <h2>מה אפשר לקבל</h2>

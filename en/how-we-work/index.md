@@ -8,8 +8,8 @@ translations:
 ---
 
 <!-- 1. Header (Spec §3.6, §6.3) -->
-<section class="section" style="padding-block-end: var(--space-8);">
-  <div class="container" style="max-inline-size: 80ch;">
+<section class="section section-hero">
+  <div class="container container-measure-80">
     <h1>How we work and who we are</h1>
     <p class="text-lead">
       Every organization starts from a different place. The path is determined together.
@@ -47,63 +47,63 @@ translations:
       <h2>Possible engagement track</h2>
     </div>
 
-    <ol style="display: flex; flex-direction: column; gap: var(--space-4); list-style: none; padding: 0; margin: 0;">
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">1</span>
-          <h3 style="margin: 0;">Introduction</h3>
+    <ol class="work-track-list">
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">1</span>
+          <h3 class="m-0">Introduction</h3>
         </div>
-        <p style="margin: 0;">A conversation about your organization and how work gets done.</p>
+        <p class="m-0">A conversation about your organization and how work gets done.</p>
         <p class="todo-copy">TODO-COPY: what is required from you in introduction (§3.6 section 3)</p>
       </li>
 
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">2</span>
-          <h3 style="margin: 0;">Finding opportunities and setting scope</h3>
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">2</span>
+          <h3 class="m-0">Finding opportunities and setting scope</h3>
         </div>
-        <p style="margin: 0;">Mapping human workflows together to identify where AI can assist or automate.</p>
+        <p class="m-0">Mapping human workflows together to identify where AI can assist or automate.</p>
         <p class="todo-copy">TODO-COPY: what is required from you in scoping (§3.6 section 3)</p>
       </li>
 
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">3</span>
-          <h3 style="margin: 0;">Solution architecture and technology choices</h3>
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">3</span>
+          <h3 class="m-0">Solution architecture and technology choices</h3>
         </div>
-        <p style="margin: 0;">On our infrastructure or directly in your organization's cloud environment.</p>
+        <p class="m-0">On our infrastructure or directly in your organization's cloud environment.</p>
         <p class="todo-copy">TODO-COPY: what is required from you in architecture (§3.6 section 3)</p>
       </li>
 
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">4</span>
-          <h3 style="margin: 0;">Development and system integration</h3>
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">4</span>
+          <h3 class="m-0">Development and system integration</h3>
         </div>
         <p class="todo-copy">TODO-COPY: what we do in development and system integration (§3.6 section 3)</p>
         <p class="todo-copy">TODO-COPY: what is required from you in integration (§3.6 section 3)</p>
       </li>
 
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">5</span>
-          <h3 style="margin: 0;">Rollout with users</h3>
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">5</span>
+          <h3 class="m-0">Rollout with users</h3>
         </div>
-        <p style="margin: 0;">Including training and operational integration into daily workflows.</p>
+        <p class="m-0">Including training and operational integration into daily workflows.</p>
         <p class="todo-copy">TODO-COPY: what is required from you in rollout (§3.6 section 3)</p>
       </li>
 
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">6</span>
-          <h3 style="margin: 0;">Measurement, improvement and expansion</h3>
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">6</span>
+          <h3 class="m-0">Measurement, improvement and expansion</h3>
         </div>
         <p class="todo-copy">TODO-COPY: what we do in measurement and improvement (§3.6 section 3)</p>
         <p class="todo-copy">TODO-COPY: what is required from you in measurement and improvement (§3.6 section 3)</p>
       </li>
     </ol>
 
-    <p class="text-muted" style="margin-block-start: var(--space-6);">Not every organization goes through all steps, and not in the same order. Scope and engagement are tailored to each case.</p>
+    <p class="text-muted mt-6">Not every organization goes through all steps, and not in the same order. Scope and engagement are tailored to each case.</p>
   </div>
 </section>
 
@@ -114,7 +114,7 @@ translations:
       <h2>Who needs to be involved on your side</h2>
     </div>
 
-    <div class="fit-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+    <div class="fit-grid fit-grid-auto">
       <div class="pillar-card">
         <h3>Internal sponsor</h3>
         <p class="todo-copy">TODO-COPY: role of the internal sponsor (§3.6 section 4)</p>
@@ -131,13 +131,13 @@ translations:
       </div>
     </div>
 
-    <p class="text-muted" style="margin-block-start: var(--space-4);">In a smaller organization, this can be a single person.</p>
+    <p class="text-muted mt-4">In a smaller organization, this can be a single person.</p>
   </div>
 </section>
 
 <!-- 5. Technology (Spec §3.6, §6.3) -->
 <section class="section" id="technology-detail">
-  <div class="container" style="max-inline-size: 80ch;">
+  <div class="container container-measure-80">
     <div class="section-header">
       <h2>Technology that fits your organization</h2>
     </div>
@@ -149,7 +149,7 @@ translations:
 
 <!-- 6. Accountability and Control (Spec §3.6, §6.3) -->
 <section class="section section-alt" id="control">
-  <div class="container" style="max-inline-size: 80ch;">
+  <div class="container container-measure-80">
     <div class="section-header">
       <h2>Accountability and control</h2>
     </div>
@@ -167,14 +167,14 @@ translations:
       <h2>Who we are</h2>
     </div>
 
-    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); padding: var(--space-8); max-inline-size: 80ch;">
-      <h3 style="margin-block-end: var(--space-2);">Gadi, founder of PowOrg</h3>
-      <p class="text-muted" style="margin-block-end: var(--space-6);">
+    <div class="founder-card">
+      <h3 class="mb-2">Gadi, founder of PowOrg</h3>
+      <p class="text-muted mb-6">
         Experience in development, core systems and enterprise integrations.
       </p>
 
       <h4>How we work with AI agents ourselves</h4>
-      <p style="color: var(--muted); margin-block-start: var(--space-2);">
+      <p class="text-muted mt-2">
         AI agents assist with development, research and documentation, under complete human direction and review. Every decision, architectural plan, and quality check remains under human responsibility and judgment.
       </p>
     </div>

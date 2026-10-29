@@ -50,9 +50,9 @@ description: "AI שמלווה את הקשר עם הלקוח, מהפנייה הר
       <h2>מערכות וערוצים</h2>
     </div>
 
-    <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
+    <div class="tag-cloud">
       {% for item in site.data.domains[0].he.systems_and_channels %}
-        <span style="background: var(--surface); border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; font-weight: 500;">{{ item }}</span>
+        <span class="tag-pill">{{ item }}</span>
       {% endfor %}
     </div>
   </div>
@@ -86,10 +86,10 @@ description: "AI שמלווה את הקשר עם הלקוח, מהפנייה הר
 
 <!-- 6. Didn't Find What You Were Looking For (Spec §3.3, סעיף 6) -->
 <section class="section section-sand" id="not-found">
-  <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-6);">
-    <div style="max-inline-size: 65ch;">
-      <h2 style="margin-block-end: var(--space-2);">לא מצאתם את מה שחיפשתם?</h2>
-      <p style="margin: 0; color: var(--muted); font-size: 1.05rem;">
+  <div class="container domain-not-found-wrap">
+    <div class="domain-not-found-text">
+      <h2 class="mb-2">לא מצאתם את מה שחיפשתם?</h2>
+      <p class="text-muted m-0 founder-meta">
         התרחישים כאן הם דוגמאות. ספרו לנו על העבודה בתחום, ונבדוק יחד.
       </p>
     </div>

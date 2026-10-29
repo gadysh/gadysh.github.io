@@ -7,11 +7,11 @@ translations:
   en: "/en/contact/"
 ---
 
-<section class="section" style="padding-block-end: var(--space-8);">
+<section class="section section-hero">
   <div class="container">
     {% include breadcrumb.html %}
 
-    <div style="margin-block-start: var(--space-4); max-inline-size: 80ch;">
+    <div class="hero-content-measure">
       <h1>בואו נדבר על העבודה בארגון שלכם</h1>
       <p class="text-lead">
         אפשר להגיע עם תהליך שכבר בראש, או רק עם רצון לבדוק איפה <bdi>AI</bdi> יכול לעזור.
@@ -47,9 +47,9 @@ translations:
           </ol>
         </div>
 
-        <div class="info-card" style="margin-block-start: var(--space-6);">
+        <div class="info-card mt-6">
           <h3>מעדיפים מייל ישיר?</h3>
-          <p style="color: var(--muted); margin-block-end: var(--space-4);">
+          <p class="info-card-text mb-4">
             אפשר גם לשלוח לנו הודעה ישירה בדואר אלקטרוני:
           </p>
           <a href="mailto:{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}" class="btn btn-secondary" dir="ltr">{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}</a>

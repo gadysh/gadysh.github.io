@@ -3,8 +3,8 @@ layout: scenario
 lang: he
 scenario: documents-across-systems
 domain: operations
-title: "מסמך שנכנס מקדם את התהליך"
-description: "טופס, חשבונית, בקשה או חוזה נקראים ונבדקים מול המערכות, והתהליך מתקדם. רק חריגים מגיעים לטיפול אדם."
+title: "קליטת מסמכים, בדיקה והעברה בין מערכות"
+description: "מסמכים וטפסים נקלטים, נבדקים מול הכללים, מוזנים למערכות הליבה, וחריגים מועברים לטיפול אדם."
 ---
 
 <!-- 3. Work Today (Spec §3.4, סעיף 3) -->
@@ -13,7 +13,7 @@ description: "טופס, חשבונית, בקשה או חוזה נקראים ונ
     <div class="section-header">
       <h2>העבודה היום</h2>
     </div>
-    <p class="text-lead" style="max-inline-size: 70ch;">
+    <p class="text-lead content-measure-70">
       TODO-COPY: העבודה היום בתהליכי מסמכים בין מערכות (§3.5 תרחיש S3)
     </p>
   </div>
@@ -32,7 +32,7 @@ description: "טופס, חשבונית, בקשה או חוזה נקראים ונ
 <!-- 5 & 7. Deliverables & Requirements (Spec §3.4, סעיפים 5, 7) -->
 <section class="section section-alt" id="deliverables-and-requirements">
   <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+    <div class="deliverables-grid">
       <div>
         <div class="section-header">
           <h2>מה אפשר לקבל</h2>
@@ -56,7 +56,7 @@ description: "טופס, חשבונית, בקשה או חוזה נקראים ונ
     <div class="section-header">
       <h2>התאמה לארגון שלכם</h2>
     </div>
-    <p class="todo-copy">TODO-COPY: התאמה לארגון בתהליכי מסמכים (§3.5 תרחיש S3)</p>
+    <p class="todo-copy">TODO-COPY: התאמה לארגון בתהליכי מסמכים בין מערכות (§3.5 תרחיש S3)</p>
   </div>
 </section>
 
@@ -73,7 +73,7 @@ description: "טופס, חשבונית, בקשה או חוזה נקראים ונ
     <div class="section-header">
       <h2>שאלות נפוצות</h2>
     </div>
-    <p class="todo-copy">TODO-COPY: שאלות ותשובות על מסמכים ותהליכים בין מערכות (§3.5 תרחיש S3)</p>
+    <p class="todo-copy">TODO-COPY: שאלות ותשובות על תהליכי מסמכים בין מערכות (§3.5 תרחיש S3)</p>
   </div>
 </section>
 

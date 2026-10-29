@@ -8,8 +8,8 @@ translations:
 ---
 
 <!-- 1. Header (Spec §3.6, סעיף 1) -->
-<section class="section" style="padding-block-end: var(--space-8);">
-  <div class="container" style="max-inline-size: 80ch;">
+<section class="section section-hero">
+  <div class="container container-measure-80">
     <h1>איך עובדים איתנו</h1>
     <p class="text-lead">
       כל ארגון מתחיל ממקום אחר. הדרך נקבעת יחד.
@@ -47,63 +47,63 @@ translations:
       <h2>מסלול עבודה אפשרי</h2>
     </div>
 
-    <ol style="display: flex; flex-direction: column; gap: var(--space-4); list-style: none; padding: 0; margin: 0;">
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">1</span>
-          <h3 style="margin: 0;">היכרות</h3>
+    <ol class="work-track-list">
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">1</span>
+          <h3 class="m-0">היכרות</h3>
         </div>
-        <p style="margin: 0;">שיחה על הארגון והעבודה.</p>
+        <p class="m-0">שיחה על הארגון והעבודה.</p>
         <p class="todo-copy">TODO-COPY: מה נדרש מכם בהיכרות (§3.6 סעיף 3)</p>
       </li>
 
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">2</span>
-          <h3 style="margin: 0;">איתור הזדמנויות ותיחום</h3>
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">2</span>
+          <h3 class="m-0">איתור הזדמנויות ותיחום</h3>
         </div>
-        <p style="margin: 0;">ממפים יחד את העבודה האנושית, ובוחנים מה אפשר להעביר לסוכנים ובמה <bdi>AI</bdi> יכול לסייע.</p>
+        <p class="m-0">ממפים יחד את העבודה האנושית, ובוחנים מה אפשר להעביר לסוכנים ובמה <bdi>AI</bdi> יכול לסייע.</p>
         <p class="todo-copy">TODO-COPY: מה נדרש מכם באיתור הזדמנויות ותיחום (§3.6 סעיף 3)</p>
       </li>
 
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">3</span>
-          <h3 style="margin: 0;">תכנון פתרון ובחירת טכנולוגיה</h3>
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">3</span>
+          <h3 class="m-0">תכנון פתרון ובחירת טכנולוגיה</h3>
         </div>
-        <p style="margin: 0;">על התשתית שלנו או בענן של הארגון.</p>
+        <p class="m-0">על התשתית שלנו או בענן של הארגון.</p>
         <p class="todo-copy">TODO-COPY: מה נדרש מכם בתכנון ובחירת טכנולוגיה (§3.6 סעיף 3)</p>
       </li>
 
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">4</span>
-          <h3 style="margin: 0;">פיתוח וחיבור למערכות</h3>
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">4</span>
+          <h3 class="m-0">פיתוח וחיבור למערכות</h3>
         </div>
         <p class="todo-copy">TODO-COPY: מה עושים בפיתוח וחיבור למערכות (§3.6 סעיף 3)</p>
         <p class="todo-copy">TODO-COPY: מה נדרש מכם בפיתוח וחיבור למערכות (§3.6 סעיף 3)</p>
       </li>
 
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">5</span>
-          <h3 style="margin: 0;">הטמעה עם המשתמשים</h3>
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">5</span>
+          <h3 class="m-0">הטמעה עם המשתמשים</h3>
         </div>
-        <p style="margin: 0;">כולל הדרכה, ושילוב בעבודה ובמפגש עם הלקוחות.</p>
+        <p class="m-0">כולל הדרכה, ושילוב בעבודה ובמפגש עם הלקוחות.</p>
         <p class="todo-copy">TODO-COPY: מה נדרש מכם בהטמעה עם המשתמשים (§3.6 סעיף 3)</p>
       </li>
 
-      <li class="pillar-card" style="display: flex; flex-direction: column; gap: var(--space-2);">
-        <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <span class="step-num-badge" style="margin: 0;">6</span>
-          <h3 style="margin: 0;">מדידה, שיפור והרחבה</h3>
+      <li class="pillar-card work-track-item">
+        <div class="work-track-header">
+          <span class="step-num-badge m-0">6</span>
+          <h3 class="m-0">מדידה, שיפור והרחבה</h3>
         </div>
         <p class="todo-copy">TODO-COPY: מה עושים במדידה, שיפור והרחבה (§3.6 סעיף 3)</p>
         <p class="todo-copy">TODO-COPY: מה נדרש מכם במדידה, שיפור והרחבה (§3.6 סעיף 3)</p>
       </li>
     </ol>
 
-    <p class="text-muted" style="margin-block-start: var(--space-6);">לא כל ארגון עובר את כל הצעדים, ולא באותו סדר. ההיקף ואופן ההתקשרות נקבעים לכל מקרה.</p>
+    <p class="text-muted mt-6">לא כל ארגון עובר את כל הצעדים, ולא באותו סדר. ההיקף ואופן ההתקשרות נקבעים לכל מקרה.</p>
   </div>
 </section>
 
@@ -114,7 +114,7 @@ translations:
       <h2>מי צריך להיות מעורב אצלכם</h2>
     </div>
 
-    <div class="fit-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+    <div class="fit-grid fit-grid-auto">
       <div class="pillar-card">
         <h3>מוביל המהלך</h3>
         <p class="todo-copy">TODO-COPY: תפקיד מוביל המהלך (§3.6 סעיף 4)</p>
@@ -131,13 +131,13 @@ translations:
       </div>
     </div>
 
-    <p class="text-muted" style="margin-block-start: var(--space-4);">בארגון קטן זה יכול להיות אדם אחד.</p>
+    <p class="text-muted mt-4">בארגון קטן זה יכול להיות אדם אחד.</p>
   </div>
 </section>
 
 <!-- 5. Technology (Spec §3.6, סעיף 5) -->
 <section class="section" id="technology-detail">
-  <div class="container" style="max-inline-size: 80ch;">
+  <div class="container container-measure-80">
     <div class="section-header">
       <h2>טכנולוגיה לפי הארגון</h2>
     </div>
@@ -149,7 +149,7 @@ translations:
 
 <!-- 6. Accountability and Control (Spec §3.6, סעיף 6) -->
 <section class="section section-alt" id="control">
-  <div class="container" style="max-inline-size: 80ch;">
+  <div class="container container-measure-80">
     <div class="section-header">
       <h2>אחריות ובקרה</h2>
     </div>
@@ -167,14 +167,14 @@ translations:
       <h2>מי אנחנו</h2>
     </div>
 
-    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); padding: var(--space-8); max-inline-size: 80ch;">
-      <h3 style="margin-block-end: var(--space-2);">גדי, מייסד PowOrg</h3>
-      <p class="text-muted" style="margin-block-end: var(--space-6);">
+    <div class="founder-card">
+      <h3 class="mb-2">גדי, מייסד PowOrg</h3>
+      <p class="text-muted mb-6">
         ניסיון בפיתוח, במערכות ליבה ובאינטגרציות ארגוניות.
       </p>
 
       <h4>איך אנחנו עובדים עם סוכני AI בעצמנו</h4>
-      <p style="color: var(--muted); margin-block-start: var(--space-2);">
+      <p class="text-muted mt-2">
         סוכני <bdi>AI</bdi> מסייעים בפיתוח, במחקר ובתיעוד, תחת הנחיה ובקרה מלאה של אדם. כל החלטה, תכנון ארכיטקטוני ובדיקת איכות נעשים באחריות ושיקול דעת אנושי.
       </p>
     </div>

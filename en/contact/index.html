@@ -7,11 +7,11 @@ translations:
   he: "/contact/"
 ---
 
-<section class="section" style="padding-block-end: var(--space-8);">
+<section class="section section-hero">
   <div class="container">
     {% include breadcrumb.html %}
 
-    <div style="margin-block-start: var(--space-4); max-inline-size: 80ch;">
+    <div class="hero-content-measure">
       <h1>Let's talk about the work in your organization</h1>
       <p class="text-lead">
         You can arrive with a process already in mind, or simply want to explore where AI can help.
@@ -47,9 +47,9 @@ translations:
           </ol>
         </div>
 
-        <div class="info-card" style="margin-block-start: var(--space-6);">
+        <div class="info-card mt-6">
           <h3>Prefer direct email?</h3>
-          <p style="color: var(--muted); margin-block-end: var(--space-4);">
+          <p class="info-card-text mb-4">
             You can also email us directly at:
           </p>
           <a href="mailto:{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}" class="btn btn-secondary">{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}</a>
