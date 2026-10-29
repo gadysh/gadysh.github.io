@@ -1,0 +1,231 @@
+# Interface translations (Hebrew & English)
+# Spec: claude_website_spec_v2.md (§6.2, §6.3)
+
+nav:
+  brand_name:
+    he: "PowOrg"
+    en: "PowOrg"
+  solutions:
+    he: "פתרונות"
+    en: "Solutions"
+  all_solutions:
+    he: "כל הפתרונות והתרחישים"
+    en: "All solutions and scenarios"
+  how_we_work:
+    he: "איך עובדים"
+    en: "How we work"
+  how_we_work_full:
+    he: "איך עובדים ומי אנחנו"
+    en: "How we work and who we are"
+  contact:
+    he: "לשיחת בירור"
+    en: "Get in touch"
+  contact_compact:
+    he: "שיחה"
+    en: "Talk"
+  skip_to_content:
+    he: "דלג לתוכן הראשי"
+    en: "Skip to main content"
+  menu_open:
+    he: "פתח תפריט"
+    en: "Open menu"
+  menu_close:
+    he: "סגור תפריט"
+    en: "Close menu"
+  domain_page:
+    he: "עמוד התחום"
+    en: "Domain page"
+  home:
+    he: "בית"
+    en: "Home"
+
+breadcrumbs:
+  home:
+    he: "בית"
+    en: "Home"
+  solutions:
+    he: "פתרונות"
+    en: "Solutions"
+
+labels:
+  scenario_tag:
+    he: "תרחיש שמותאם לכל ארגון"
+    en: "Scenario tailored to each organization"
+  explore_domain:
+    he: "להעמקה בתחום"
+    en: "Explore domain"
+  explore_scenario:
+    he: "לשיחה על התרחיש הזה"
+    en: "Talk about this scenario"
+  back_to_home:
+    he: "חזרה לדף הבית"
+    en: "Back to home"
+  other_domains:
+    he: "תחומי פתרון נוספים"
+    en: "Other solution areas"
+  work_today:
+    he: "העבודה היום"
+    en: "The work today"
+  how_it_works:
+    he: "איך זה עובד"
+    en: "How it works"
+  what_you_get:
+    he: "מה אפשר לקבל"
+    en: "What you get"
+  what_we_need:
+    he: "מה צריך מצדכם"
+    en: "What we need from you"
+  adaptation:
+    he: "התאמה לארגון שלכם"
+    en: "Tailoring to your organization"
+  faq:
+    he: "שאלות נפוצות"
+    en: "Frequently asked questions"
+  human_gate:
+    he: "אדם"
+    en: "Human"
+  control:
+    he: "בקרה"
+    en: "Control"
+  not_found_heading:
+    he: "לא מצאתם את מה שחיפשתם?"
+    en: "Didn't find what you were looking for?"
+  not_found_desc:
+    he: "התרחישים כאן הם דוגמאות. ספרו לנו על העבודה בתחום, ונבדוק יחד."
+    en: "The scenarios here are examples. Tell us about the work in your domain, and we will explore together."
+
+contact_form:
+  title:
+    he: "בואו נדבר על העבודה בארגון שלכם"
+    en: "Let's talk about the work in your organization"
+  subtitle:
+    he: "אפשר להגיע עם תהליך שכבר בראש, או רק עם רצון לבדוק איפה AI יכול לעזור."
+    en: "You can arrive with a process already in mind, or simply want to explore where AI can help."
+  context_prefix:
+    he: "פנייה בנושא:"
+    en: "Regarding:"
+  remove_context:
+    he: "הסר"
+    en: "Remove"
+  name:
+    he: "שם מלא"
+    en: "Full name"
+  email:
+    he: "אימייל עסקי"
+    en: "Work email"
+  organization:
+    he: "שם הארגון"
+    en: "Organization name"
+  intent_label:
+    he: "מה תרצו לבדוק?"
+    en: "What would you like to explore?"
+  intent_defined_process:
+    he: "יש לנו תהליך מסוים שנרצה לשפר"
+    en: "We have a specific process in mind to improve"
+  intent_explore:
+    he: "רוצים להבין איפה AI יכול לעזור אצלנו"
+    en: "Want to understand where AI can help us"
+  intent_other:
+    he: "משהו אחר"
+    en: "Something else"
+  message:
+    he: "ספרו לנו בכמה מילים"
+    en: "Tell us in a few words"
+  message_hint:
+    he: "לא חובה. אפשר גם לספר בשיחה."
+    en: "Optional. You can also share during our conversation."
+  role:
+    he: "תפקיד"
+    en: "Role"
+  phone:
+    he: "טלפון"
+    en: "Phone"
+  phone_hint:
+    he: "רק אם נוח לכם יותר"
+    en: "Only if you prefer phone"
+  submit:
+    he: "לשליחת הפנייה"
+    en: "Submit"
+  sending:
+    he: "שולחים…"
+    en: "Sending…"
+  privacy_note:
+    he: "השליחה כפופה ל"
+    en: "Submission is subject to our"
+  privacy_link:
+    he: "מדיניות הפרטיות"
+    en: "Privacy Policy"
+  success_title:
+    he: "תודה, הפנייה התקבלה"
+    en: "Thank you, your message has been received"
+  success_desc:
+    he: "נקרא אותה ונחזור אליכם במייל."
+    en: "We will review it and get back to you by email."
+  error_summary:
+    he: "נא לתקן את השדות הבאים לפני השליחה:"
+    en: "Please fix the following fields before submitting:"
+  error_name:
+    he: "נא למלא שם"
+    en: "Please enter your name"
+  error_email:
+    he: "כתובת האימייל לא נראית תקינה"
+    en: "Please enter a valid email address"
+  error_org:
+    he: "נא לציין את שם הארגון"
+    en: "Please enter your organization name"
+  error_general:
+    he: "לא הצלחנו לשלוח את הפנייה. אפשר לנסות שוב, או לשלוח לנו מייל:"
+    en: "We could not submit the request. You can try again or email us directly:"
+  retry:
+    he: "נסו שוב"
+    en: "Try again"
+  mailto_explanation:
+    he: "הכפתור יפתח מייל מוכן לשליחה."
+    en: "This button opens an email draft ready to send."
+  noscript_warning:
+    he: "כדי לשלוח בטופס צריך JavaScript. אפשר לפנות במייל:"
+    en: "JavaScript is required to submit the form. You can reach us via email:"
+  what_happens_next_title:
+    he: "מה יקרה אחר כך"
+    en: "What happens next"
+  what_happens_next_1:
+    he: "נקרא את הפנייה."
+    en: "We will review your inquiry."
+  what_happens_next_2:
+    he: "נחזור אליכם במייל. אם נראה שיש על מה לדבר, נציע שיחת היכרות ומועדים."
+    en: "We will get back to you by email. If there is a fit, we will propose an introductory call."
+  what_happens_next_3:
+    he: "בשיחה נבין את העבודה אצלכם ונבחן יחד כיוונים."
+    en: "In the call, we will understand your organization's workflow and explore directions together."
+  email_alternative_title:
+    he: "מעדיפים מייל ישיר?"
+    en: "Prefer direct email?"
+
+footer:
+  domains_heading:
+    he: "תחומי פתרון"
+    en: "Solution areas"
+  scenarios_heading:
+    he: "תרחישים"
+    en: "Scenarios"
+  company_heading:
+    he: "החברה"
+    en: "Company"
+  info_heading:
+    he: "מידע ונגישות"
+    en: "Information and accessibility"
+  privacy:
+    he: "מדיניות פרטיות"
+    en: "Privacy Policy"
+  accessibility:
+    he: "הצהרת נגישות"
+    en: "Accessibility Statement"
+  linkedin:
+    he: "דף החברה ב־LinkedIn"
+    en: "Company LinkedIn Page"
+  copyright:
+    he: "© 2026 PowOrg. כל הזכויות שמורות."
+    en: "© 2026 PowOrg. All rights reserved."
+  tagline:
+    he: "פתרונות AI לעבודה בארגון, פיתוח והטמעה."
+    en: "AI solutions for organizational work, development and delivery."

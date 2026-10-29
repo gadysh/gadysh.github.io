@@ -1,0 +1,32 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title | default: site.title }}</title>
+{% if page.description %}
+<meta name="description" content="{{ page.description }}">
+{% elsif site.description %}
+<meta name="description" content="{{ site.description }}">
+{% endif %}
+
+<!-- Canonical & Alternate hreflang (Spec §6.3, §6.5) -->
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+{% if page.translations.en %}
+<link rel="alternate" hreflang="en" href="{{ page.translations.en | absolute_url }}">
+{% elsif page_lang == "he" %}
+<link rel="alternate" hreflang="en" href="{{ '/en/' | absolute_url }}">
+{% endif %}
+{% if page.translations.he %}
+<link rel="alternate" hreflang="he" href="{{ page.translations.he | absolute_url }}">
+{% elsif page_lang == "en" %}
+<link rel="alternate" hreflang="he" href="{{ '/' | absolute_url }}">
+{% endif %}
+<link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">
+
+<!-- Google Fonts: Heebo & Inter (Spec §5.2) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Site CSS -->
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+<link rel="icon" type="image/png" href="{{ '/assets/icons/favicon.png' | relative_url }}">

@@ -1,0 +1,7 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<section class="cta-band" id="contact-cta">
+  <div class="container">
+    <h2>{% if include.title %}{{ include.title }}{% elsif page_lang == 'en' %}Want to see what's possible in your organization?{% else %}רוצים לבדוק מה אפשר לעשות אצלכם?{% endif %}</h2>
+    <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% if include.from %}?from={{ include.from }}{% endif %}{% else %}{{ '/contact/' | relative_url }}{% if include.from %}?from={{ include.from }}{% endif %}{% endif %}" class="btn btn-white">{{ site.data.i18n.nav.contact[page_lang] }}</a>
+  </div>
+</section>

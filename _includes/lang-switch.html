@@ -1,0 +1,14 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+{% if page_lang == "he" %}
+  {% if page.translations.en %}
+    <a href="{{ page.translations.en | relative_url }}" class="lang-switch" hreflang="en" lang="en" aria-label="Switch to English website">EN</a>
+  {% else %}
+    <a href="{{ '/en/' | relative_url }}" class="lang-switch" hreflang="en" lang="en" aria-label="Switch to English website">EN</a>
+  {% endif %}
+{% else %}
+  {% if page.translations.he %}
+    <a href="{{ page.translations.he | relative_url }}" class="lang-switch" hreflang="he" lang="he" aria-label="מעבר לאתר בעברית">עברית</a>
+  {% else %}
+    <a href="{{ '/' | relative_url }}" class="lang-switch" hreflang="he" lang="he" aria-label="מעבר לאתר בעברית">עברית</a>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,26 @@
+---
+layout: base
+---
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+{% for s in site.data.scenarios %}
+  {% if s.slug == page.scenario %}
+    {% assign scenario = s %}
+  {% endif %}
+{% endfor %}
+
+<section class="section" style="padding-block-end: var(--space-8);">
+  <div class="container">
+    {% include breadcrumb.html %}
+
+    <div style="margin-block-start: var(--space-4); max-inline-size: 80ch;">
+      <span class="scenario-tag" style="background: var(--teal-50); color: var(--teal-700);">{{ site.data.i18n.labels.scenario_tag[page_lang] }}</span>
+      <h1>{{ page.title | default: scenario[page_lang].title }}</h1>
+      <p class="text-lead">{{ scenario[page_lang].outcome }}</p>
+      <div style="margin-block-start: var(--space-6);">
+        <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% else %}{{ '/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% endif %}" class="btn btn-primary">{{ site.data.i18n.labels.explore_scenario[page_lang] }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ content }}

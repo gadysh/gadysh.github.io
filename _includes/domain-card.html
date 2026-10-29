@@ -1,0 +1,20 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<div class="domain-card">
+  <div class="domain-card-header">
+    <div class="domain-icon">
+      <!-- Icon: {{ include.domain.icon }} -->
+    </div>
+    <h3>{{ include.domain[page_lang].title }}</h3>
+  </div>
+  <p class="domain-framing">{{ include.domain[page_lang].framing }}</p>
+  <ul class="domain-scenarios-list">
+    {% for s_slug in include.domain.scenarios %}
+      {% for scenario in site.data.scenarios %}
+        {% if scenario.slug == s_slug and scenario.published == true %}
+          <li><a href="{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}">{{ scenario[page_lang].title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </ul>
+  <a href="{{ '/solutions/' | append: include.domain.slug | append: '/' | relative_url }}" class="domain-card-link">{{ site.data.i18n.labels.explore_domain[page_lang] }} {{ include.domain[page_lang].title }} ›</a>
+</div>

@@ -1,0 +1,21 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<!DOCTYPE html>
+<html lang="{{ page_lang }}" dir="{% if page_lang == 'he' %}rtl{% else %}ltr{% endif %}">
+<head>
+  {% include head-seo.html %}
+</head>
+<body>
+  <a href="#main-content" class="skip-link">{{ site.data.i18n.nav.skip_to_content[page_lang] }}</a>
+
+  {% include header.html %}
+
+  <main id="main-content">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+  {% include analytics.html %}
+  <script src="{{ '/assets/js/site.js' | relative_url }}"></script>
+</body>
+</html>

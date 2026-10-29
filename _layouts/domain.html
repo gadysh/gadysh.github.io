@@ -1,0 +1,27 @@
+---
+layout: base
+---
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+{% for d in site.data.domains %}
+  {% if d.slug == page.domain %}
+    {% assign domain = d %}
+  {% endif %}
+{% endfor %}
+
+<section class="section" style="padding-block-end: var(--space-8);">
+  <div class="container">
+    {% include breadcrumb.html %}
+
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; margin-block-start: var(--space-4);">
+      <div style="max-inline-size: 75ch;">
+        <h1>{{ page.title | default: domain[page_lang].title }}</h1>
+        <p class="text-lead">{{ domain[page_lang].framing }}</p>
+      </div>
+      <div class="domain-icon" style="inline-size: 56px; block-size: 56px; padding: 12px; border-radius: 12px;">
+        <!-- Icon: {{ domain.icon }} -->
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ content }}

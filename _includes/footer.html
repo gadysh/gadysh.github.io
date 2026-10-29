@@ -1,0 +1,50 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>{{ site.data.i18n.footer.domains_heading[page_lang] }}</h4>
+        <ul class="footer-links">
+          {% for domain in site.data.domains %}
+            {% if domain.published == true %}
+              <li><a href="{{ '/solutions/' | append: domain.slug | append: '/' | relative_url }}">{{ domain[page_lang].title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{{ site.data.i18n.footer.scenarios_heading[page_lang] }}</h4>
+        <ul class="footer-links">
+          {% for scenario in site.data.scenarios %}
+            {% if scenario.published == true %}
+              <li><a href="{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}">{{ scenario[page_lang].title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{{ site.data.i18n.footer.company_heading[page_lang] }}</h4>
+        <ul class="footer-links">
+          <li><a href="{% if page_lang == 'en' %}{{ '/en/how-we-work/' | relative_url }}{% else %}{{ '/how-we-work/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.how_we_work_full[page_lang] }}</a></li>
+          <li><a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.contact[page_lang] }}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{{ site.data.i18n.footer.info_heading[page_lang] }}</h4>
+        <ul class="footer-links">
+          <li><a href="{% if page_lang == 'en' %}{{ '/en/accessibility/' | relative_url }}{% else %}{{ '/accessibility/' | relative_url }}{% endif %}">{{ site.data.i18n.footer.accessibility[page_lang] }}</a></li>
+          <li><a href="{% if page_lang == 'en' %}{{ '/en/privacy/' | relative_url }}{% else %}{{ '/privacy/' | relative_url }}{% endif %}">{{ site.data.i18n.footer.privacy[page_lang] }}</a></li>
+          <li><a href="https://www.linkedin.com/company/poworg" target="_blank" rel="noopener noreferrer">{{ site.data.i18n.footer.linkedin[page_lang] }}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>{{ site.data.i18n.footer.copyright[page_lang] }}</div>
+      <div>{{ site.data.i18n.footer.tagline[page_lang] }}</div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,80 @@
+# Scenarios
+# Spec: claude_website_spec_v2.md (§2.1, §2.2, §3.4, §3.5, §6.2)
+
+- slug: "whatsapp-service-actions"
+  primary_domain: "customers"
+  domains:
+    - "customers"
+  icon: "chat"
+  published: true
+  evidence:
+    approved: false
+  he:
+    title: "שירות ב־WhatsApp שמבצע את הפעולה עבור הלקוח"
+    outcome: "לקוחות פונים בערוץ שהם כבר משתמשים בו. הסוכן מברר, מבצע את הפעולה במערכות, ומעביר לנציג רק את מה שבאמת צריך אדם."
+  en:
+    title: "WhatsApp service that carries out the action for the customer"
+    outcome: "TODO-COPY"
+
+- slug: "agent-assist-onboarding"
+  primary_domain: "customers"
+  domains:
+    - "customers"
+    - "knowledge-and-teams"
+  icon: "users"
+  published: true
+  evidence:
+    approved: false
+  he:
+    title: "גם נציג חדש יודע מה לענות ומה לעשות"
+    outcome: "הנציג מקבל בזמן השיחה את המידע, את הנוהל ואת הצעד הבא. נציג חדש לומד מתוך הידע והמקרים של הארגון."
+  en:
+    title: "Even a new agent knows what to answer and what to do"
+    outcome: "TODO-COPY"
+
+- slug: "documents-across-systems"
+  primary_domain: "operations"
+  domains:
+    - "operations"
+  icon: "document"
+  published: true
+  evidence:
+    approved: false
+  he:
+    title: "מסמך שנכנס מקדם את התהליך"
+    outcome: "טופס, חשבונית, בקשה או חוזה נקראים ונבדקים מול המערכות, והתהליך מתקדם. רק חריגים מגיעים לטיפול אדם."
+  en:
+    title: "An incoming document moves the process forward"
+    outcome: "TODO-COPY"
+
+- slug: "knowledge-chat-actions"
+  primary_domain: "knowledge-and-teams"
+  domains:
+    - "knowledge-and-teams"
+    - "operations"
+  icon: "book"
+  published: true
+  evidence:
+    approved: false
+  he:
+    title: "תשובות מהידע של הארגון ופעולות במערכות, מתוך שיחה אחת"
+    outcome: "עובדים שואלים בשפה חופשית ומקבלים תשובה מתוך הידע של הארגון, עם מקור. הם יכולים גם לבצע פעולות מוגדרות במערכות בלי לחפש מסכים."
+  en:
+    title: "Answers from your organization's knowledge and actions in your systems, in one conversation"
+    outcome: "TODO-COPY"
+
+- slug: "recording-to-outputs"
+  primary_domain: "customers"
+  domains:
+    - "customers"
+    - "knowledge-and-teams"
+  icon: "mic"
+  published: true
+  evidence:
+    approved: false
+  he:
+    title: "כמה תוצרים מהקלטה אחת"
+    outcome: "מהקלטה של שיחת טלפון, פגישה או שיחת מכירה מתקבלים כמה תוצרים: סיכום ללקוח, תיעוד ב־CRM, המלצה להמשך, וניתוח איכות ולמידה."
+  en:
+    title: "Several outputs from one recording"
+    outcome: "TODO-COPY"

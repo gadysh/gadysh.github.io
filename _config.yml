@@ -1,0 +1,25 @@
+# PowOrg Website v2 Configuration
+# Spec: claude_website_spec_v2.md (§6.2)
+
+url: "https://poworg.com"
+baseurl: ""
+lang: "he"
+title: "PowOrg"
+description: "פתרונות AI לעבודה בארגון, פיתוח והטמעה"
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+lead_endpoint: ""
+lead_fallback_email: "gadi@poworg.com"
+analytics: ""
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - ORIGIN.md
+  - _dev
+  - vendor
+  - .bundle
