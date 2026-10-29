@@ -481,6 +481,10 @@ p {
   display: block;
 }
 
+body.drawer-open {
+  overflow: hidden;
+}
+
 .mobile-drawer {
   position: fixed;
   inset-block: 0;
@@ -494,7 +498,8 @@ p {
   padding: var(--space-6);
   overflow-y: auto;
   transform: translateX(100%);
-  transition: transform var(--transition-fast);
+  visibility: hidden;
+  transition: transform var(--transition-fast), visibility var(--transition-fast);
 }
 
 :lang(en) .mobile-drawer {
@@ -503,6 +508,7 @@ p {
 
 .mobile-drawer.is-open {
   transform: translateX(0);
+  visibility: visible;
 }
 
 .drawer-header {
@@ -1333,7 +1339,9 @@ p {
   font-size: 0.85rem;
 }
 
-.form-control {
+.form-control,
+.form-input,
+.form-textarea {
   inline-size: 100%;
   min-block-size: 44px;
   padding: var(--space-3) var(--space-4);
@@ -1344,11 +1352,15 @@ p {
   transition: border-color var(--transition-fast);
 }
 
-.form-control:focus {
+.form-control:focus,
+.form-input:focus,
+.form-textarea:focus {
   border-color: var(--focus);
 }
 
-.form-control.is-invalid {
+.form-control.is-invalid,
+.form-input.is-invalid,
+.form-textarea.is-invalid {
   border-color: var(--error);
   background-color: var(--error-bg);
 }
@@ -1482,4 +1494,261 @@ p {
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+/* ==========================================================================
+   WP2 Component & Utility Classes (Spec §5.2, §5.3, §6.4)
+   Eliminates all inline styles across templates, layouts, and pages.
+   Logical CSS properties only (no physical left / right).
+   ========================================================================== */
+
+/* Accessibility & State Helpers */
+.visually-hidden {
+  position: absolute !important;
+  inline-size: 1px !important;
+  block-size: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+/* Logical Spacing & Layout Utilities */
+.m-0 {
+  margin: 0 !important;
+}
+
+.mb-2 {
+  margin-block-end: var(--space-2) !important;
+}
+
+.mb-4 {
+  margin-block-end: var(--space-4) !important;
+}
+
+.mb-6 {
+  margin-block-end: var(--space-6) !important;
+}
+
+.mt-2 {
+  margin-block-start: var(--space-2) !important;
+}
+
+.mt-4 {
+  margin-block-start: var(--space-4) !important;
+}
+
+.mt-6 {
+  margin-block-start: var(--space-6) !important;
+}
+
+.mt-8 {
+  margin-block-start: var(--space-8) !important;
+}
+
+.ms-4 {
+  margin-inline-start: var(--space-4) !important;
+}
+
+.mx-auto {
+  margin-inline: auto !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.w-full {
+  inline-size: 100% !important;
+}
+
+.col-span-full {
+  grid-column: 1 / -1 !important;
+}
+
+/* Hero Section & Sizing Constraints */
+.section-hero {
+  padding-block-end: var(--space-8);
+}
+
+.hero-content-measure {
+  margin-block-start: var(--space-4);
+  max-inline-size: 80ch;
+}
+
+.container-measure-80 {
+  max-inline-size: 80ch;
+}
+
+.content-measure-70 {
+  max-inline-size: 70ch;
+}
+
+.content-measure-75 {
+  max-inline-size: 75ch;
+}
+
+.content-measure-80 {
+  max-inline-size: 80ch;
+}
+
+/* Hero Abstract Flow Highlight */
+.flow-abstract-highlight {
+  color: var(--teal-700);
+  font-weight: 700;
+}
+
+/* Section Footer Notes & Bars */
+.section-footer-note {
+  margin-block-start: var(--space-6);
+  text-align: center;
+}
+
+.section-footer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-block-start: var(--space-6);
+}
+
+/* Founder Card */
+.founder-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-8);
+  max-inline-size: 80ch;
+}
+
+.founder-meta {
+  font-size: 1.05rem;
+  margin-block-start: var(--space-4);
+}
+
+/* Drawer Section Enhancements */
+.drawer-section-divider {
+  border-block-start: 1px solid var(--border);
+  padding-block-start: var(--space-4);
+}
+
+.drawer-links-direct {
+  margin-inline-start: 0;
+}
+
+/* Domain Layout Components */
+.domain-hero-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  margin-block-start: var(--space-4);
+}
+
+.domain-hero-icon {
+  inline-size: 56px;
+  block-size: 56px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--teal-50);
+  color: var(--teal-700);
+  flex-shrink: 0;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.tag-pill {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.domain-not-found-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+.domain-not-found-text {
+  max-inline-size: 65ch;
+}
+
+/* Scenario Layout Components */
+.scenario-hero-actions {
+  margin-block-start: var(--space-6);
+}
+
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+}
+
+@media (max-width: 767px) {
+  .deliverables-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fit-grid-single {
+  grid-template-columns: 1fr !important;
+}
+
+.fit-grid-auto {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+}
+
+/* How We Work Components */
+.work-track-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.work-track-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.work-track-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* 404 Error Page Components */
+.error-page-wrap {
+  text-align: center;
+  padding-block: var(--space-12);
+}
+
+.error-page-actions {
+  margin-block-start: var(--space-8);
+}
+
+/* Info Card Text & Secondary Buttons */
+.info-card-text {
+  color: var(--muted);
 }
