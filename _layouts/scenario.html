@@ -8,15 +8,15 @@ layout: base
   {% endif %}
 {% endfor %}
 
-<section class="section" style="padding-block-end: var(--space-8);">
+<section class="section section-hero">
   <div class="container">
     {% include breadcrumb.html %}
 
-    <div style="margin-block-start: var(--space-4); max-inline-size: 80ch;">
-      <span class="scenario-tag" style="background: var(--teal-50); color: var(--teal-700);">{{ site.data.i18n.labels.scenario_tag[page_lang] }}</span>
+    <div class="hero-content-measure">
+      <span class="scenario-tag">{{ site.data.i18n.labels.scenario_tag[page_lang] }}</span>
       <h1>{{ page.title | default: scenario[page_lang].title }}</h1>
       <p class="text-lead">{{ scenario[page_lang].outcome }}</p>
-      <div style="margin-block-start: var(--space-6);">
+      <div class="scenario-hero-actions">
         <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% else %}{{ '/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% endif %}" class="btn btn-primary">{{ site.data.i18n.labels.explore_scenario[page_lang] }}</a>
       </div>
     </div>

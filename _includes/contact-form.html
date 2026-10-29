@@ -1,7 +1,7 @@
 {% assign page_lang = page.lang | default: site.lang | default: "he" %}
 <div class="contact-form-container">
   <!-- Context bar (Spec §3.7) -->
-  <div class="contact-context-bar" id="contact-context-bar" style="display: none;">
+  <div class="contact-context-bar is-hidden" id="contact-context-bar">
     <span>{{ site.data.i18n.contact_form.context_prefix[page_lang] }} <strong id="context-label"></strong></span>
     <button type="button" class="btn-remove-context" id="btn-remove-context">{{ site.data.i18n.contact_form.remove_context[page_lang] }}</button>
   </div>
@@ -22,13 +22,13 @@
     <input type="hidden" name="utm_term" id="hidden-utm-term" value="">
 
     <!-- Honeypot (Spec §4.3, §6.6) -->
-    <div style="position: absolute; inline-size: 1px; block-size: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;" aria-hidden="true">
+    <div class="honeypot-field" aria-hidden="true">
       <label for="form-hp">Website</label>
       <input type="text" name="hp" id="form-hp" tabindex="-1" autocomplete="off">
     </div>
 
     <!-- Error Summary (Spec §4.4) -->
-    <div class="form-error-summary" id="form-error-summary" role="alert" style="display: none;" aria-live="assertive">
+    <div class="form-error-summary is-hidden" id="form-error-summary" role="alert" aria-live="assertive">
       <h4>{{ site.data.i18n.contact_form.error_summary[page_lang] }}</h4>
       <ul id="error-list"></ul>
     </div>
@@ -105,13 +105,13 @@
   </form>
 
   <!-- Success Status Panel (Spec §4.4) -->
-  <div class="status-panel status-success" id="state-success" role="status" style="display: none;" tabindex="-1">
+  <div class="status-panel status-success is-hidden" id="state-success" role="status" tabindex="-1">
     <h3>{{ site.data.i18n.contact_form.success_title[page_lang] }}</h3>
     <p>{{ site.data.i18n.contact_form.success_desc[page_lang] }}</p>
   </div>
 
   <!-- Failed Status Panel (Spec §4.4) -->
-  <div class="status-panel status-error" id="state-failed" role="alert" style="display: none;" tabindex="-1">
+  <div class="status-panel status-error is-hidden" id="state-failed" role="alert" tabindex="-1">
     <h3>{{ site.data.i18n.contact_form.error_general[page_lang] }}</h3>
     <div class="status-actions">
       <button type="button" class="btn btn-secondary" id="btn-retry">{{ site.data.i18n.contact_form.retry[page_lang] }}</button>

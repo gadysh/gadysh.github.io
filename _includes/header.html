@@ -95,8 +95,8 @@
       {% endif %}
     {% endfor %}
 
-    <div style="border-block-start: 1px solid var(--border); padding-block-start: var(--space-4);">
-      <ul class="drawer-links" style="margin-inline-start: 0;">
+    <div class="drawer-section-divider">
+      <ul class="drawer-links drawer-links-direct">
         <li><a href="{% if page_lang == 'en' %}{{ '/en/how-we-work/' | relative_url }}{% else %}{{ '/how-we-work/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.how_we_work_full[page_lang] }}</a></li>
         {% if page_lang == 'he' %}
           <li><a href="{{ '/en/' | relative_url }}">English Site</a></li>
@@ -108,6 +108,6 @@
   </nav>
 
   <div class="drawer-footer">
-    <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary" style="inline-size: 100%;">{{ site.data.i18n.nav.contact[page_lang] }}</a>
+    <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary w-full">{{ site.data.i18n.nav.contact[page_lang] }}</a>
   </div>
 </aside>
