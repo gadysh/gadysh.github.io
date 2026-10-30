@@ -81,6 +81,7 @@ function handleRequest(req, res) {
       if (pathname.includes('/500')) activeMode = '500';
       if (pathname.includes('/timeout')) activeMode = 'timeout';
       if (pathname.includes('/disconnect')) activeMode = 'disconnect';
+      if (pathname.includes('/rejected')) activeMode = 'rejected';
 
       const entry = {
         id: `req-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
@@ -111,6 +112,12 @@ function handleRequest(req, res) {
             res.end(JSON.stringify({ status: 'ok_delayed' }));
           }
         }, 16000);
+        return;
+      }
+
+      if (activeMode === 'rejected') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ ok: false, error: 'rejected' }));
         return;
       }
 
