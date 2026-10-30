@@ -108,17 +108,20 @@ contact_form:
     he: "פנייה בנושא:"
     en: "Regarding:"
   remove_context:
-    he: "הסר"
-    en: "Remove"
+    he: "הסר הקשר"
+    en: "Remove context"
   name:
-    he: "שם מלא"
+    he: "שם"
     en: "Full name"
   email:
-    he: "אימייל עסקי"
+    he: "אימייל"
     en: "Work email"
   organization:
-    he: "שם הארגון"
+    he: "ארגון"
     en: "Organization name"
+  required_mark:
+    he: "(חובה)"
+    en: "(Required)"
   intent_label:
     he: "מה תרצו לבדוק?"
     en: "What would you like to explore?"
@@ -147,7 +150,7 @@ contact_form:
     he: "רק אם נוח לכם יותר"
     en: "Only if you prefer phone"
   submit:
-    he: "לשליחת הפנייה"
+    he: "שליחת פנייה"
     en: "Submit"
   sending:
     he: "שולחים…"
@@ -164,9 +167,12 @@ contact_form:
   success_desc:
     he: "נקרא אותה ונחזור אליכם במייל."
     en: "We will review it and get back to you by email."
-  error_summary:
-    he: "נא לתקן את השדות הבאים לפני השליחה:"
-    en: "Please fix the following fields before submitting:"
+  error_summary_title:
+    he: "נא לתקן את השדות המסומנים לפני השליחה"
+    en: "Please fix the marked fields before submitting"
+  error_summary_desc:
+    he: "יש למלא את כל שדות החובה ולוודא שכתובת האימייל תקינה."
+    en: "Please fill all required fields and ensure the email address is valid."
   error_name:
     he: "נא למלא שם"
     en: "Please enter your name"
@@ -176,12 +182,18 @@ contact_form:
   error_org:
     he: "נא לציין את שם הארגון"
     en: "Please enter your organization name"
-  error_general:
-    he: "לא הצלחנו לשלוח את הפנייה. אפשר לנסות שוב, או לשלוח לנו מייל:"
-    en: "We could not submit the request. You can try again or email us directly:"
+  error_failed_title:
+    he: "לא הצלחנו לשלוח את הפנייה"
+    en: "We could not submit your request"
+  error_failed_desc:
+    he: "אפשר לנסות שוב, או לשלוח לנו מייל."
+    en: "You can try again or email us directly."
   retry:
     he: "נסו שוב"
     en: "Try again"
+  send_ready_mail:
+    he: "שליחה במייל מוכן"
+    en: "Send via ready email"
   mailto_explanation:
     he: "הכפתור יפתח מייל מוכן לשליחה."
     en: "This button opens an email draft ready to send."
@@ -201,7 +213,7 @@ contact_form:
     he: "בשיחה נבין את העבודה אצלכם ונבחן יחד כיוונים."
     en: "In the call, we will understand your organization's workflow and explore directions together."
   email_alternative_title:
-    he: "מעדיפים מייל ישיר?"
+    he: "מעדיפים מייל?"
     en: "Prefer direct email?"
 
 footer:
