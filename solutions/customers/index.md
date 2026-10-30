@@ -6,6 +6,12 @@ title: "שירות ומכירות | תחומי פתרון | PowOrg"
 description: "AI שמלווה את הקשר עם הלקוח, מהפנייה הראשונה ועד שיחת ההמשך."
 ---
 
+{% for d in site.data.domains %}
+  {% if d.slug == page.domain %}
+    {% assign current_domain = d %}
+  {% endif %}
+{% endfor %}
+
 <!-- 2. The Work We Can Change (Spec §3.3, סעיף 2) -->
 <section class="section section-alt" id="work-types">
   <div class="container">
@@ -14,7 +20,7 @@ description: "AI שמלווה את הקשר עם הלקוח, מהפנייה הר
     </div>
 
     <div class="fit-grid">
-      {% for type in site.data.domains[0].he.work_types %}
+      {% for type in current_domain.he.work_types %}
         <div class="fit-item">
           <span class="fit-icon" aria-hidden="true">✓</span>
           <div>{{ type }}</div>
@@ -32,7 +38,7 @@ description: "AI שמלווה את הקשר עם הלקוח, מהפנייה הר
     </div>
 
     <div class="scenarios-grid">
-      {% for s_slug in site.data.domains[0].scenarios %}
+      {% for s_slug in current_domain.scenarios %}
         {% for scenario in site.data.scenarios %}
           {% if scenario.slug == s_slug and scenario.published == true %}
             {% include scenario-card.html scenario=scenario %}
@@ -51,7 +57,7 @@ description: "AI שמלווה את הקשר עם הלקוח, מהפנייה הר
     </div>
 
     <div class="tag-cloud">
-      {% for item in site.data.domains[0].he.systems_and_channels %}
+      {% for item in current_domain.he.systems_and_channels %}
         <span class="tag-pill">{{ item }}</span>
       {% endfor %}
     </div>
@@ -68,17 +74,14 @@ description: "AI שמלווה את הקשר עם הלקוח, מהפנייה הר
     <div class="pillars-grid">
       <div class="pillar-card">
         <h3>על אילו פעולות מחליטים</h3>
-        <p class="todo-copy">TODO-COPY: פירוט התאמת פעולות (§3.3 סעיף 5)</p>
       </div>
 
       <div class="pillar-card">
         <h3>מתי אדם נכנס לתהליך</h3>
-        <p class="todo-copy">TODO-COPY: פירוט נקודות בקרה אנושית (§3.3 סעיף 5)</p>
       </div>
 
       <div class="pillar-card">
         <h3>איך מודדים שזה עובד</h3>
-        <p class="todo-copy">TODO-COPY: פירוט מדדי הצלחה (§3.3 סעיף 5)</p>
       </div>
     </div>
   </div>
@@ -106,7 +109,7 @@ description: "AI שמלווה את הקשר עם הלקוח, מהפנייה הר
 
     <div class="entry-grid">
       {% for domain in site.data.domains %}
-        {% if domain.slug != "customers" and domain.published == true %}
+        {% if domain.slug != page.domain and domain.published == true %}
           {% include domain-card.html domain=domain %}
         {% endif %}
       {% endfor %}

@@ -74,17 +74,14 @@ description: "עבודה חוזרת בין מסמכים, מערכות ואנשי
     <div class="pillars-grid">
       <div class="pillar-card">
         <h3>על אילו פעולות מחליטים</h3>
-        <p class="todo-copy">TODO-COPY: פירוט התאמת פעולות בתפעול ומסמכים (§3.3 סעיף 5)</p>
       </div>
 
       <div class="pillar-card">
         <h3>מתי אדם נכנס לתהליך</h3>
-        <p class="todo-copy">TODO-COPY: פירוט טיפול בחריגים ע״י אדם (§3.3 סעיף 5)</p>
       </div>
 
       <div class="pillar-card">
         <h3>איך מודדים שזה עובד</h3>
-        <p class="todo-copy">TODO-COPY: פירוט מדדי ביצוע ובקרה (§3.3 סעיף 5)</p>
       </div>
     </div>
   </div>

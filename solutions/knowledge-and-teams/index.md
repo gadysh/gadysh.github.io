@@ -74,17 +74,14 @@ description: "הידע של הארגון זמין לכל עובד, בזמן שה
     <div class="pillars-grid">
       <div class="pillar-card">
         <h3>על אילו פעולות מחליטים</h3>
-        <p class="todo-copy">TODO-COPY: פירוט הרשאות ופעולות בידע ועובדים (§3.3 סעיף 5)</p>
       </div>
 
       <div class="pillar-card">
         <h3>מתי אדם נכנס לתהליך</h3>
-        <p class="todo-copy">TODO-COPY: פירוט אישור פעולות רגישות ע״י אדם (§3.3 סעיף 5)</p>
       </div>
 
       <div class="pillar-card">
         <h3>איך מודדים שזה עובד</h3>
-        <p class="todo-copy">TODO-COPY: פירוט מדדי זמינות ידע ואיכות תשובות (§3.3 סעיף 5)</p>
       </div>
     </div>
   </div>
