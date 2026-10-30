@@ -230,9 +230,14 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
     </div>
 
     <div class="domains-grid">
-      {% for d in site.data.domains %}{% if d.slug == "customers" %}
+      {% for d in site.data.domains %}{% if d.slug == page.domain %}
       <div class="domain-card">
-        <h3>{{ d.he.title }}</h3>
+        <div class="domain-card-header">
+          <div class="domain-icon">
+            {% include domain-icon.html icon=d.icon %}
+          </div>
+          <h3>{{ d.he.title }}</h3>
+        </div>
         <p class="domain-framing">{{ d.he.framing }}</p>
         <a href="{{ '/solutions/customers/' | relative_url }}" class="domain-card-link">לעמוד התחום ›</a>
       </div>
