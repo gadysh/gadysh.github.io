@@ -55,6 +55,9 @@ labels:
     he: "להעמקה בתחום"
     en: "Explore domain"
   explore_scenario:
+    he: "לעמוד התרחיש"
+    en: "Talk about this scenario"
+  talk_scenario:
     he: "לשיחה על התרחיש הזה"
     en: "Talk about this scenario"
   back_to_home:
@@ -220,6 +223,9 @@ footer:
   accessibility:
     he: "הצהרת נגישות"
     en: "Accessibility Statement"
+  contact:
+    he: "פנייה לבירור"
+    en: "Get in touch"
   linkedin:
     he: "דף החברה ב־LinkedIn"
     en: "Company LinkedIn Page"

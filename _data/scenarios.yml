@@ -15,8 +15,8 @@
     outcome: "לקוחות פונים בערוץ שהם כבר משתמשים בו. הסוכן מברר, מבצע את הפעולה במערכות, ומעביר לנציג רק את מה שבאמת צריך אדם."
   en:
     title: "WhatsApp service that carries out the action for the customer"
-    short: "TODO-COPY"
-    outcome: "TODO-COPY"
+    short: "WhatsApp service and actions"
+    outcome: "Customers reach you on a channel they already use. The agent clarifies the request, carries out the action in your systems, and hands over to a person only what truly needs one."
 
 - slug: "agent-assist-onboarding"
   primary_domain: "customers"
@@ -33,8 +33,8 @@
     outcome: "הנציג מקבל בזמן השיחה את המידע, את הנוהל ואת הצעד הבא. נציג חדש לומד מתוך הידע והמקרים של הארגון."
   en:
     title: "Even a new agent knows what to answer and what to do"
-    short: "TODO-COPY"
-    outcome: "TODO-COPY"
+    short: "Agent assist and onboarding"
+    outcome: "Agents get the information, the procedure and the next step during the call. New agents learn from the organization's knowledge and past cases."
 
 - slug: "documents-across-systems"
   primary_domain: "operations"
@@ -50,8 +50,8 @@
     outcome: "טופס, חשבונית, בקשה או חוזה נקראים ונבדקים מול המערכות, והתהליך מתקדם. רק חריגים מגיעים לטיפול אדם."
   en:
     title: "An incoming document moves the process forward"
-    short: "TODO-COPY"
-    outcome: "TODO-COPY"
+    short: "Documents and processes across systems"
+    outcome: "Forms, invoices, requests and contracts are read and checked against your systems, and the process moves forward. Only exceptions reach a person."
 
 - slug: "knowledge-chat-actions"
   primary_domain: "knowledge-and-teams"
@@ -68,8 +68,8 @@
     outcome: "עובדים שואלים בשפה חופשית ומקבלים תשובה מתוך הידע של הארגון, עם מקור. הם יכולים גם לבצע פעולות מוגדרות במערכות בלי לחפש מסכים."
   en:
     title: "Answers from your organization's knowledge and actions in your systems, in one conversation"
-    short: "TODO-COPY"
-    outcome: "TODO-COPY"
+    short: "Knowledge chat and actions for employees"
+    outcome: "Employees ask in plain language and get an answer from the organization's knowledge, with its source. They can also carry out defined actions in your systems without hunting for screens."
 
 - slug: "recording-to-outputs"
   primary_domain: "customers"
@@ -86,5 +86,5 @@
     outcome: "מהקלטה של שיחת טלפון, פגישה או שיחת מכירה מתקבלים כמה תוצרים: סיכום ללקוח, תיעוד ב־CRM, המלצה להמשך, וניתוח איכות ולמידה."
   en:
     title: "Several outputs from one recording"
-    short: "TODO-COPY"
-    outcome: "TODO-COPY"
+    short: "AI outputs from a call or meeting recording"
+    outcome: "One recording of a phone call, meeting or sales call becomes several outputs: a summary for the customer, a CRM record, a recommended next step, and quality analysis for learning."

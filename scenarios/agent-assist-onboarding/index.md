@@ -196,7 +196,7 @@ description: "הנציג מקבל בזמן השיחה את המידע, את הנ
       <details class="faq-item">
         <summary class="faq-summary">איך מתחברים למערכות?</summary>
         <div class="faq-content">
-          <p class="todo-copy">TODO-COPY: איך מתחברים למערכות</p>
+          <p>הסוכן מתחבר למאגרי הידע ולמערכת שבה הנציג עובד, כמו <bdi>CRM</bdi> או מערכת הטלפוניה. בודקים יחד איזו גישה אפשרית, ישירות או דרך ספק המערכות.</p>
         </div>
       </details>
     </div>

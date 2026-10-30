@@ -1651,6 +1651,10 @@ body.drawer-open {
   max-inline-size: 80ch;
 }
 
+.founder-card-alt {
+  background: var(--surface-alt);
+}
+
 .founder-meta {
   font-size: 1.05rem;
   margin-block-start: var(--space-4);
@@ -1789,6 +1793,21 @@ body.drawer-open {
 
 .lead-line {
   line-height: 1.7;
+}
+
+/* What the client brings to each work step */
+.step-needs {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.step-needs-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--teal-700);
+  margin-block-end: var(--space-1);
 }
 
 

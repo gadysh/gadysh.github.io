@@ -115,7 +115,7 @@
     <h3>{{ site.data.i18n.contact_form.error_general[page_lang] }}</h3>
     <div class="status-actions">
       <button type="button" class="btn btn-secondary" id="btn-retry">{{ site.data.i18n.contact_form.retry[page_lang] }}</button>
-      <a href="mailto:{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}" class="btn btn-primary" id="mailto-fallback-link">{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}</a>
+      <a href="mailto:{{ site.lead_fallback_email | default: 'contact@poworg.com' }}" class="btn btn-primary" id="mailto-fallback-link">{{ site.lead_fallback_email | default: 'contact@poworg.com' }}</a>
     </div>
   </div>
 
@@ -123,7 +123,7 @@
   <noscript>
     <div class="status-panel status-info">
       <p>{{ site.data.i18n.contact_form.noscript_warning[page_lang] }}</p>
-      <a href="mailto:{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}?subject=Inquiry%20via%20PowOrg%20Website" class="btn btn-primary">{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}</a>
+      <a href="mailto:{{ site.lead_fallback_email | default: 'contact@poworg.com' }}?subject=Inquiry%20via%20PowOrg%20Website" class="btn btn-primary">{{ site.lead_fallback_email | default: 'contact@poworg.com' }}</a>
     </div>
   </noscript>
 </div>

@@ -12,7 +12,10 @@ plugins:
   - jekyll-redirect-from
 
 lead_endpoint: ""
-lead_fallback_email: "gadi@poworg.com"
+# Public addresses. Leads, privacy requests and the form fallback go to contact; accessibility to support
+contact_email: "contact@poworg.com"
+support_email: "support@poworg.com"
+lead_fallback_email: "contact@poworg.com"
 analytics: ""
 
 exclude:

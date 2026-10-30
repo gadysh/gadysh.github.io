@@ -30,7 +30,12 @@
     title: "Service and sales"
     framing: "AI that accompanies the customer relationship, from the first inquiry to the follow-up call."
     work_types:
-      - "TODO-COPY"
+      - "Answering and handling recurring requests"
+      - "Assisting agents during calls"
+      - "Onboarding new agents"
+      - "Summarizing and logging calls and meetings"
+      - "Preparing follow-up and sales"
+      - "Analyzing call quality"
     systems_and_channels:
       - "CRM"
       - "ERP"
@@ -66,7 +71,11 @@
     title: "Operations, documents and systems"
     framing: "Repetitive work between documents, systems and people gets done and recorded, and exceptions go to a person."
     work_types:
-      - "TODO-COPY"
+      - "Capturing and extracting documents"
+      - "Checking against system data"
+      - "Updating records and opening tasks"
+      - "Requesting missing information"
+      - "Actions for employees without hunting for screens"
     systems_and_channels:
       - "ERP"
       - "CRM"
@@ -100,7 +109,10 @@
     title: "Knowledge and employees"
     framing: "Your organization's knowledge is available to every employee, when they need it."
     work_types:
-      - "TODO-COPY"
+      - "Answers from procedures and documents, with sources"
+      - "An assistant for agents and new employees"
+      - "Learning from recorded calls"
+      - "Simple system actions from the chat"
     systems_and_channels:
       - "Internal portal"
       - "Knowledge base and procedures"

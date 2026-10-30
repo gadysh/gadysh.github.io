@@ -209,7 +209,7 @@ description: "לקוחות פונים בערוץ שהם כבר משתמשים ב
       <details class="faq-item">
         <summary class="faq-summary">איך מתחברים למערכות?</summary>
         <div class="faq-content">
-          <p class="todo-copy">TODO-COPY: איך מתחברים למערכות</p>
+          <p>הסוכן מתחבר ל־<bdi>WhatsApp</bdi> דרך חשבון עסקי, ולמערכות כמו <bdi>CRM</bdi> ויומן התורים דרך ממשק. בודקים יחד איזו גישה אפשרית, ישירות או דרך ספק המערכות.</p>
         </div>
       </details>
     </div>

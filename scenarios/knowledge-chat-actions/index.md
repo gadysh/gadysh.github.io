@@ -205,7 +205,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
       <details class="faq-item">
         <summary class="faq-summary">איך מתחברים למערכות?</summary>
         <div class="faq-content">
-          <p class="todo-copy">TODO-COPY: איך מתחברים למערכות</p>
+          <p>הצ׳אט מתחבר למאגרי המסמכים ולמערכות שבהן מבצעים פעולות. ההרשאות נלקחות מהמערכות הקיימות של הארגון. בודקים יחד איזו גישה אפשרית, ישירות או דרך ספק המערכות.</p>
         </div>
       </details>
     </div>

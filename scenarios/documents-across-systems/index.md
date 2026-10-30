@@ -213,7 +213,7 @@ description: "טופס, חשבונית, בקשה או חוזה נקראים ונ
       <details class="faq-item">
         <summary class="faq-summary">איך מתחברים למערכות?</summary>
         <div class="faq-content">
-          <p class="todo-copy">TODO-COPY: איך מתחברים למערכות</p>
+          <p>המסמכים נקלטים מתיבת מייל, מתיקייה או מהעלאה, והנתונים נבדקים ומתעדכנים ב־<bdi>CRM</bdi>, ב־<bdi>ERP</bdi> או במערכות אחרות. בודקים יחד איזו גישה אפשרית, ישירות או דרך ספק המערכות.</p>
         </div>
       </details>
     </div>

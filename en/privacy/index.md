@@ -27,4 +27,4 @@ Last updated: October 30, 2026
 <p class="todo-copy">TODO-COPY: referral source attribution without persistent tracking cookies (§3.8, §6.3)</p>
 
 ## Privacy contact
-For questions or requests regarding privacy and personal data, please contact us at: <a href="mailto:{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}">{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}</a>.
+For questions or requests regarding privacy and personal data, please contact us at: <a href="mailto:{{ site.lead_fallback_email | default: 'contact@poworg.com' }}">{{ site.lead_fallback_email | default: 'contact@poworg.com' }}</a>.
