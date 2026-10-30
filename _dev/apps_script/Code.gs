@@ -18,6 +18,8 @@ const INTENTS = ['defined_process', 'explore', 'other'];
 const CONTEXT_TYPES = ['scenario', 'domain', 'page', 'none'];
 const STATUSES = ['new', 'reviewed_fit', 'reviewed_not_now', 'call_scheduled', 'call_held',
   'in_progress', 'won', 'lost', 'paused'];
+// Fixed reasons for reviewed_not_now (spec §4.5)
+const NOT_NOW_REASONS = ['לא ארגון', 'חיפוש עבודה או ספק', 'לא רלוונטי', 'אין יכולת להשקיע כעת', 'אחר'];
 // Leads in these statuses never reached a call or work, so they expire after RETENTION_MONTHS
 const PURGEABLE = ['new', 'reviewed_fit', 'reviewed_not_now'];
 
@@ -30,7 +32,8 @@ const FIELDS = [
   ['utm_source', 200], ['utm_medium', 200], ['utm_campaign', 200], ['utm_content', 200], ['utm_term', 200],
   ['submitted_at', 40], ['form_version', 5]
 ];
-const HEADER = ['received_at', 'status'].concat(FIELDS.map(f => f[0])).concat(['notes']);
+// not_now_reason is last so rows written before it existed keep their columns
+const HEADER = ['received_at', 'status'].concat(FIELDS.map(f => f[0])).concat(['notes', 'not_now_reason']);
 
 const EMAIL_RE = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]{2,}$/;
 
@@ -114,8 +117,10 @@ function notify_(lead) {
     '\nמקור: ' + [lead.landing_page, lead.referrer_host, lead.utm_source, lead.utm_campaign].filter(String).join(' · '),
     'הגיליון: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl()
   ].filter(String);
+  // Sent from Google's no-reply address: mail from gadi@ to its own contact@ alias would skip the inbox
   MailApp.sendEmail({
     to: to,
+    noReply: true,
     replyTo: lead.email,
     subject: 'פנייה חדשה מהאתר: ' + lead.organization.replace(/^'/, ''),
     body: lines.join('\n')
@@ -138,8 +143,9 @@ function setupSheet() {
   const sh = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
   sh.getRange(1, 1, 1, HEADER.length).setValues([HEADER]).setFontWeight('bold');
   sh.setFrozenRows(1);
-  const rule = SpreadsheetApp.newDataValidation().requireValueInList(STATUSES, true).build();
-  sh.getRange(2, 2, sh.getMaxRows() - 1, 1).setDataValidation(rule);
+  const list = values => SpreadsheetApp.newDataValidation().requireValueInList(values, true).build();
+  sh.getRange(2, 2, sh.getMaxRows() - 1, 1).setDataValidation(list(STATUSES));
+  sh.getRange(2, HEADER.length, sh.getMaxRows() - 1, 1).setDataValidation(list(NOT_NOW_REASONS));
   return sh;
 }
 

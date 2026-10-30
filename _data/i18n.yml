@@ -165,8 +165,8 @@ contact_form:
     he: "תודה, הפנייה התקבלה"
     en: "Thank you, your message has been received"
   success_desc:
-    he: "נקרא אותה ונחזור אליכם במייל."
-    en: "We will review it and get back to you by email."
+    he: "נקרא אותה ונחזור אליכם."
+    en: "We will review it and get back to you."
   error_summary_title:
     he: "נא לתקן את השדות המסומנים לפני השליחה"
     en: "Please fix the marked fields before submitting"
@@ -207,8 +207,8 @@ contact_form:
     he: "נקרא את הפנייה."
     en: "We will review your inquiry."
   what_happens_next_2:
-    he: "נחזור אליכם במייל. אם נראה שיש על מה לדבר, נציע שיחת היכרות ומועדים."
-    en: "We will get back to you by email. If there is a fit, we will propose an introductory call."
+    he: "נחזור אליכם. אם נראה שיש על מה לדבר, נציע שיחת היכרות ומועדים."
+    en: "We will get back to you. If there is a fit, we will propose an introductory call."
   what_happens_next_3:
     he: "בשיחה נבין את העבודה אצלכם ונבחן יחד כיוונים."
     en: "In the call, we will understand your organization's workflow and explore directions together."
