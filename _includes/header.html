@@ -26,8 +26,9 @@
                     {% for s_slug in domain.scenarios %}
                       {% for scenario in site.data.scenarios %}
                         {% if scenario.slug == s_slug and scenario.published == true %}
+                          {% assign s_short = scenario[page_lang].short %}
                           <li>
-                            <a href="{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}">{{ scenario[page_lang].title }}</a>
+                            <a href="{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}">{% if s_short == nil or s_short == "" or s_short contains "TODO-COPY" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a>
                           </li>
                         {% endif %}
                       {% endfor %}
@@ -86,7 +87,8 @@
             {% for s_slug in domain.scenarios %}
               {% for scenario in site.data.scenarios %}
                 {% if scenario.slug == s_slug and scenario.published == true %}
-                  <li><a href="{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}">{{ scenario[page_lang].title }}</a></li>
+                  {% assign s_short = scenario[page_lang].short %}
+                  <li><a href="{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}">{% if s_short == nil or s_short == "" or s_short contains "TODO-COPY" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a></li>
                 {% endif %}
               {% endfor %}
             {% endfor %}

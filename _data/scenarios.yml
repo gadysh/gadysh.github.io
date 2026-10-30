@@ -11,9 +11,11 @@
     approved: false
   he:
     title: "שירות ב־WhatsApp שמבצע את הפעולה עבור הלקוח"
+    short: "שירות ופעולות ב־WhatsApp"
     outcome: "לקוחות פונים בערוץ שהם כבר משתמשים בו. הסוכן מברר, מבצע את הפעולה במערכות, ומעביר לנציג רק את מה שבאמת צריך אדם."
   en:
     title: "WhatsApp service that carries out the action for the customer"
+    short: "TODO-COPY"
     outcome: "TODO-COPY"
 
 - slug: "agent-assist-onboarding"
@@ -27,9 +29,11 @@
     approved: false
   he:
     title: "גם נציג חדש יודע מה לענות ומה לעשות"
+    short: "סיוע לנציגים והכשרת נציגים חדשים"
     outcome: "הנציג מקבל בזמן השיחה את המידע, את הנוהל ואת הצעד הבא. נציג חדש לומד מתוך הידע והמקרים של הארגון."
   en:
     title: "Even a new agent knows what to answer and what to do"
+    short: "TODO-COPY"
     outcome: "TODO-COPY"
 
 - slug: "documents-across-systems"
@@ -42,9 +46,11 @@
     approved: false
   he:
     title: "מסמך שנכנס מקדם את התהליך"
+    short: "מסמכים ותהליכים בין מערכות"
     outcome: "טופס, חשבונית, בקשה או חוזה נקראים ונבדקים מול המערכות, והתהליך מתקדם. רק חריגים מגיעים לטיפול אדם."
   en:
     title: "An incoming document moves the process forward"
+    short: "TODO-COPY"
     outcome: "TODO-COPY"
 
 - slug: "knowledge-chat-actions"
@@ -58,9 +64,11 @@
     approved: false
   he:
     title: "תשובות מהידע של הארגון ופעולות במערכות, מתוך שיחה אחת"
+    short: "צ׳אט ידע ופעולות לעובדים"
     outcome: "עובדים שואלים בשפה חופשית ומקבלים תשובה מתוך הידע של הארגון, עם מקור. הם יכולים גם לבצע פעולות מוגדרות במערכות בלי לחפש מסכים."
   en:
     title: "Answers from your organization's knowledge and actions in your systems, in one conversation"
+    short: "TODO-COPY"
     outcome: "TODO-COPY"
 
 - slug: "recording-to-outputs"
@@ -74,7 +82,9 @@
     approved: false
   he:
     title: "כמה תוצרים מהקלטה אחת"
+    short: "תוצרי AI מהקלטת שיחה או פגישה"
     outcome: "מהקלטה של שיחת טלפון, פגישה או שיחת מכירה מתקבלים כמה תוצרים: סיכום ללקוח, תיעוד ב־CRM, המלצה להמשך, וניתוח איכות ולמידה."
   en:
     title: "Several outputs from one recording"
+    short: "TODO-COPY"
     outcome: "TODO-COPY"
