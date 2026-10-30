@@ -17,7 +17,7 @@ lead_endpoint: "https://script.google.com/macros/s/AKfycbwvYhcHrL5NGCV4ueTbWUk_M
 contact_email: "contact@poworg.com"
 support_email: "support@poworg.com"
 lead_fallback_email: "contact@poworg.com"
-analytics: ""
+cloudflare_analytics_token: ""
 
 exclude:
   - Gemfile

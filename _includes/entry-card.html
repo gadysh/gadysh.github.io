@@ -2,5 +2,5 @@
 <div class="entry-card">
   <h3>{{ include.title }}</h3>
   <p>{{ include.desc }}</p>
-  <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}?intent={{ include.intent }}" class="btn btn-secondary">{{ include.button_text }} ›</a>
+  <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}?intent={{ include.intent }}" class="btn btn-secondary" data-track-intent="{{ include.intent }}">{{ include.button_text }} ›</a>
 </div>

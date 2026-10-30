@@ -53,11 +53,11 @@
     <!-- Header Actions -->
     <div class="nav-actions">
       {% include lang-switch.html %}
-      <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary" id="desktop-cta">{{ site.data.i18n.nav.contact[page_lang] }}</a>
+      <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary" id="desktop-cta" data-track-location="header">{{ site.data.i18n.nav.contact[page_lang] }}</a>
 
       <!-- Mobile Controls -->
       <div class="mobile-controls">
-        <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary btn-compact">{{ site.data.i18n.nav.contact_compact[page_lang] }}</a>
+        <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary btn-compact" data-track-location="header">{{ site.data.i18n.nav.contact_compact[page_lang] }}</a>
         <button type="button" class="btn-menu-toggle" id="drawer-toggle-btn" aria-label="{{ site.data.i18n.nav.menu_open[page_lang] }}" aria-expanded="false" aria-controls="mobile-drawer">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
@@ -101,15 +101,15 @@
       <ul class="drawer-links drawer-links-direct">
         <li><a href="{% if page_lang == 'en' %}{{ '/en/how-we-work/' | relative_url }}{% else %}{{ '/how-we-work/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.how_we_work_full[page_lang] }}</a></li>
         {% if page_lang == 'he' %}
-          <li><a href="{{ '/en/' | relative_url }}">English Site</a></li>
+          <li><a href="{{ '/en/' | relative_url }}" class="lang-switch" hreflang="en" lang="en">English Site</a></li>
         {% else %}
-          <li><a href="{{ '/' | relative_url }}">אתר בעברית</a></li>
+          <li><a href="{{ '/' | relative_url }}" class="lang-switch" hreflang="he" lang="he">אתר בעברית</a></li>
         {% endif %}
       </ul>
     </div>
   </nav>
 
   <div class="drawer-footer">
-    <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary w-full">{{ site.data.i18n.nav.contact[page_lang] }}</a>
+    <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary w-full" data-track-location="header">{{ site.data.i18n.nav.contact[page_lang] }}</a>
   </div>
 </aside>

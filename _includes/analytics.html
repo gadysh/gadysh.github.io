@@ -1,3 +1,5 @@
-{% if site.analytics and site.analytics != "" %}
-<!-- Analytics adapter: {{ site.analytics }} -->
+{% if site.cloudflare_analytics_token and site.cloudflare_analytics_token != "" %}
+{% unless page.noindex or page.sitemap == false or page.url contains "styleguide" or page.layout == "styleguide" %}
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cloudflare_analytics_token }}"}'></script>
+{% endunless %}
 {% endif %}

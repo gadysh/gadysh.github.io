@@ -8,7 +8,7 @@ layout: base
   {% endif %}
 {% endfor %}
 
-<section class="section section-hero">
+<section class="section section-hero" data-scenario-slug="{{ page.scenario }}">
   <div class="container">
     {% include breadcrumb.html %}
 
@@ -17,7 +17,7 @@ layout: base
       <h1>{{ page.title | default: scenario[page_lang].title }}</h1>
       <p class="text-lead">{{ scenario[page_lang].outcome }}</p>
       <div class="scenario-hero-actions">
-        <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% else %}{{ '/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% endif %}" class="btn btn-primary">{{ site.data.i18n.labels.talk_scenario[page_lang] }}</a>
+        <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% else %}{{ '/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% endif %}" class="btn btn-primary" data-track-location="scenario-hero">{{ site.data.i18n.labels.talk_scenario[page_lang] }}</a>
       </div>
     </div>
   </div>
