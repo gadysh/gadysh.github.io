@@ -1591,6 +1591,15 @@ body.drawer-open {
   padding-block-end: var(--space-8);
 }
 
+@media (max-width: 640px) {
+  .section-hero {
+    padding-block-start: var(--space-6);
+  }
+  .section-hero .breadcrumb {
+    padding-block: var(--space-2);
+  }
+}
+
 .hero-content-measure {
   margin-block-start: var(--space-4);
   max-inline-size: 80ch;

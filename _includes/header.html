@@ -19,7 +19,7 @@
             {% for domain in site.data.domains %}
               {% if domain.published == true %}
                 <div class="solutions-domain-group">
-                  <a href="{{ '/solutions/' | append: domain.slug | append: '/' | relative_url }}" class="domain-group-title">
+                  <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=domain:{{ domain.slug }}{% else %}{{ '/solutions/' | append: domain.slug | append: '/' | relative_url }}{% endif %}" class="domain-group-title">
                     <span>{{ domain[page_lang].title }}</span>
                   </a>
                   <ul class="domain-scenarios-links">
@@ -28,7 +28,7 @@
                         {% if scenario.slug == s_slug and scenario.published == true %}
                           {% assign s_short = scenario[page_lang].short %}
                           <li>
-                            <a href="{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}">{% if s_short == nil or s_short == "" or s_short contains "TODO-COPY" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a>
+                            <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ scenario.slug }}{% else %}{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}{% endif %}">{% if s_short == nil or s_short == "" or s_short contains "TODO-COPY" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a>
                           </li>
                         {% endif %}
                       {% endfor %}
@@ -40,7 +40,7 @@
           </div>
 
           <div class="solutions-menu-footer">
-            <a href="{{ '/solutions/' | relative_url }}">{{ site.data.i18n.nav.all_solutions[page_lang] }} ›</a>
+            <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=menu:all_solutions{% else %}{{ '/solutions/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.all_solutions[page_lang] }} ›</a>
           </div>
         </div>
       </div>
@@ -83,12 +83,12 @@
         <div>
           <div class="drawer-group-title">{{ domain[page_lang].title }}</div>
           <ul class="drawer-links">
-            <li><a href="{{ '/solutions/' | append: domain.slug | append: '/' | relative_url }}">{{ site.data.i18n.nav.domain_page[page_lang] }}</a></li>
+            <li><a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=domain:{{ domain.slug }}{% else %}{{ '/solutions/' | append: domain.slug | append: '/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.domain_page[page_lang] }}</a></li>
             {% for s_slug in domain.scenarios %}
               {% for scenario in site.data.scenarios %}
                 {% if scenario.slug == s_slug and scenario.published == true %}
                   {% assign s_short = scenario[page_lang].short %}
-                  <li><a href="{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}">{% if s_short == nil or s_short == "" or s_short contains "TODO-COPY" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a></li>
+                  <li><a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ scenario.slug }}{% else %}{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}{% endif %}">{% if s_short == nil or s_short == "" or s_short contains "TODO-COPY" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a></li>
                 {% endif %}
               {% endfor %}
             {% endfor %}
