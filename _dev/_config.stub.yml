@@ -1,0 +1,2 @@
+# Test configuration pointing lead_endpoint to local stub server
+lead_endpoint: "http://127.0.0.1:4005/api/lead"
