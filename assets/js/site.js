@@ -104,7 +104,7 @@ export function getSessionAttribution() {
 
 export function initGlobalTracking() {
   document.addEventListener('click', (e) => {
-    const t = e.target, l = t.closest('.lang-switch'), m = t.closest('#btn-mailto-fallback, .direct-mail-link'), en = t.closest('[data-track-intent]'), c = t.closest('[data-track-location]');
+    const t = e.target, l = t.closest('a[hreflang]'), m = t.closest('#btn-mailto-fallback, .direct-mail-link'), en = t.closest('[data-track-intent]'), c = t.closest('[data-track-location]');
     if (l) return track('lang_switch');
     if (m) return track('email_fallback_click');
     if (en) return track('entry_choice', { intent: en.getAttribute('data-track-intent') });
