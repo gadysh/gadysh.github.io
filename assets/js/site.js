@@ -340,7 +340,9 @@ export function initContactForm() {
   form.addEventListener('submit', submit);
   if (btnRetry) btnRetry.addEventListener('click', (e) => { e.preventDefault(); submit(e); });
 
-  const sParam = urlParams.get('state');
+  // Review-only state switch: works on a local server, ignored on the live site
+  const isLocal = ['127.0.0.1', 'localhost'].includes(window.location.hostname);
+  const sParam = isLocal ? urlParams.get('state') : null;
   if (sParam === 'error') validate();
   else if (sParam === 'success') showSuccess();
   else if (sParam === 'failed') showFailed('demo_test', { name: val(nameInp), email: val(emailInp), organization: val(orgInp), intent: 'defined_process' });

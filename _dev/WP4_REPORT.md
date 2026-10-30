@@ -227,3 +227,20 @@ e38c92b WP4: add responsive and prototype comparison screenshots, validation rep
   - הצלחה (375px): [compare-success-375.png](file:///C:/Users/msgad/Documents/AI/PowOrg/gadysh-site-v2/_dev/shots/wp4/compare-success-375.png)
   - כשל שליחה (1440px): [compare-failed-1440.png](file:///C:/Users/msgad/Documents/AI/PowOrg/gadysh-site-v2/_dev/shots/wp4/compare-failed-1440.png)
   - כשל שליחה (375px): [compare-failed-375.png](file:///C:/Users/msgad/Documents/AI/PowOrg/gadysh-site-v2/_dev/shots/wp4/compare-failed-375.png)
+
+---
+
+## 9. בדיקת Claude, 30.10.2026
+
+הטופס עובד לפי האפיון, והבדיקות האוטומטיות עוברות. תוקנו הדברים הבאים:
+- **פריסה:** בעמוד הפנייה, בעברית ובאנגלית, השתמשו במחלקה contact-grid, שאין לה CSS. לכן ברוחב 1440 העמוד הוצג בטור אחד, ולא בשני טורים כמו במסך שאושר. עכשיו העמוד משתמש ב־contact-layout. בנוסף נוספו סגנונות לכרטיס "מה יקרה אחר כך", הרקע האפור הוסר, והמרווח מעל הטופס צומצם, כמו במסך.
+- **סגנונות inline:** בטופס הוחזרו 17 סגנונות inline מאב־הטיפוס, כולל צבע קבוע #059669. כולם הועברו למחלקות ב־site.css. ה־honeypot מוסתר עכשיו דרך המחלקה honeypot-field, בלי display:none ובלי תווית ריקה.
+- **מצבי הבדיקה:** המתג ?state= עובד עכשיו רק בשרת מקומי. באתר החי מתעלמים ממנו, כך שאי אפשר לשלוח קישור שמציג "הפנייה התקבלה" בלי שנשלחה פנייה.
+- **ניסוח:** הוסר הרווח המיותר ב"כפופה ל מדיניות הפרטיות".
+
+אחרי התיקונים הבדיקות c1 עד c6 הורצו שוב, ועברו. הצילומים בתיקייה _dev/shots/wp4 צולמו מחדש.
+
+הערות:
+- ה־hashes של ה־commits ברשימה בסעיף 7 לא נכונים. ה־commits בפועל הם 875a4ef, ‏4ff5b23 ו־56965de.
+- הסימון (חובה) ובחירה מסומנת מראש של "יש לנו תהליך מסוים" נלקחו מהמסך שאושר, ולכן נשארו.
+- במצב mailto, הודעה ארוכה מאוד עלולה להיחתך בחלק מתוכנות המייל. זה לא חוסם את העבודה.

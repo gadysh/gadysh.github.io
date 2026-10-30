@@ -1312,6 +1312,11 @@ body.drawer-open {
   gap: var(--space-8);
 }
 
+/* The form follows the page heading directly, as in the approved screen */
+.section-contact {
+  padding-block-start: 0;
+}
+
 @media (max-width: 1023px) {
   .contact-layout {
     grid-template-columns: 1fr;
@@ -1451,6 +1456,75 @@ body.drawer-open {
   margin-block-end: var(--space-2);
 }
 
+.status-panel-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-block-end: var(--space-3);
+}
+
+.status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 36px;
+  block-size: 36px;
+  border-radius: 50%;
+  background: var(--success-text);
+  color: #ffffff;
+}
+
+.status-panel-title {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--success-text);
+}
+
+.status-panel-lead {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-block-end: var(--space-6);
+}
+
+.status-panel-desc {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.form-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-inline-size: 0;
+}
+
+.form-actions {
+  margin-block-start: var(--space-6);
+}
+
+.form-actions .btn-primary {
+  min-inline-size: 180px;
+}
+
+#mailto-mode-note {
+  margin-block-start: var(--space-2);
+}
+
+.form-privacy-note {
+  margin-block-start: var(--space-3);
+}
+
+.noscript-panel {
+  margin-block-start: var(--space-4);
+}
+
 .honeypot-field {
   position: absolute;
   inline-size: 1px;
@@ -1540,6 +1614,10 @@ body.drawer-open {
 
 .mb-2 {
   margin-block-end: var(--space-2) !important;
+}
+
+.mb-3 {
+  margin-block-end: var(--space-3) !important;
 }
 
 .mb-4 {
@@ -1821,6 +1899,22 @@ body.drawer-open {
 }
 
 /* WP3: Contact page sidebar classes from approved screen */
+.info-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+}
+
+.info-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-inline-start: var(--space-4);
+  margin: 0;
+  color: var(--ink);
+}
+
 .info-card-sand {
   background: var(--sand);
 }
