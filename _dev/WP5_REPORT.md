@@ -242,3 +242,66 @@
 
 ### חריגות או מגבלות:
 אין חריגות מדרישות חבילת התיקון. כל הבדיקות a עד d עברו בהצלחה מלאה, מקומית, מול `_site_stub`, ללא תלות ברשת חיצונית וללא חריגה מתקציב הקוד.
+
+---
+
+## 10. קבלת Claude
+
+**החלטה: WP5 התקבלה (ACCEPTED), עם המגבלות L1 עד L5.**
+- סוקר: Claude, בעלי בדיקת הקוד והאיכות לפי d07.
+- תאריך: 30.10.2026, 23:25 בערך.
+- זו קבלה טכנית בלבד. היא לא מאשרת מיזוג ל־main או פרסום.
+
+### על מה נבדק
+- ה־HEAD שנבדק: `692e84c7`. הענף site-v2 לא נדחף ואין לו upstream. main נשאר `e2f9052`.
+- הקבלה מבוססת על הרצה עצמאית של Claude ולא על הדיווח של המבצע:
+  - העתק נקי של `692e84c` חולץ ב־`git archive` לתיקייה זמנית מחוץ לריפו.
+  - נבנה עם `_config.yml,_dev/_config.stub.yml`, כשהטוקן ריק.
+  - הוגש על 127.0.0.1:4012. השרת על 4000 לא נגע.
+  - כל בקשה שאינה ל־127.0.0.1 בוטלה ונרשמה. נרשמו רק בקשות ל־fonts.googleapis.com. לא היו בקשות ל־Cloudflare או לקולט.
+- סקריפט הבדיקה: `_dev/run_wp5_claude_acceptance.js`. התוצאות: `_dev/wp5_claude_acceptance_results.json`.
+- ביקורת שלילית: אותו סקריפט הורץ על `05b324a`, לפני התיקון. הוא נכשל בבדיקה (a) ובשלושת מקרי ה־from הלא מוכרים. כלומר, הבדיקה באמת מזהה את הליקויים.
+
+### ה־diff
+- `05b324a..692e84c` נוגע רק בקבצים המותרים:
+  - `_includes/header.html`: הוסר `class="lang-switch"` בשורות 104 ו־106.
+  - `assets/js/site.js`: הסלקטור הוחלף ל־`a[hreflang]`, נוספו `fromOk` ו־contact_view שמגיע אחרי זיהוי ה־catalog, והערות קוצרו.
+  - ראיות ודוח תחת `_dev/`.
+- ה־diff תואם לחבילה `claude_next_execution_packet_2026-10-30.md` ולא כולל שינוי אחר.
+
+| בדיקה | צפוי | נמדד (Claude) | תוצאה |
+|---|---|---|---|
+| (a) מגירה ב־390px, ‏`/` | 6 המאפיינים של קישור השפה זהים לקישור האח, ואין class | זהים: 0px/0px/transparent/400/0px/0px, ‏class ריק | PASS |
+| (a) מגירה ב־390px, ‏`/en/` | כנ"ל | זהים | PASS |
+| (b) קישור השפה במגירה, ‏he ו־en | שורת `[track] lang_switch` אחת בלבד | שורה אחת בכל לחיצה | PASS |
+| (b) כפתור EN בכותרת, ‏1280px | שורת `lang_switch` אחת בלבד | שורה אחת | PASS |
+| (c) `scenario:recording-to-outputs` | `scenario:recording-to-outputs` | זהה | PASS |
+| (c) `jane@example.com` | `other`, בלי @ | `other`, בלי @ | PASS |
+| (c) `scenario:recording-to-outputs:jane@example.com` | `scenario:recording-to-outputs`, בלי @ | זהה, בלי @ | PASS |
+| (c) `scenario:no-such-slug` | `other` | `other` | PASS |
+| (c) `/en/contact/?from=menu:all_solutions` | `menu:all_solutions` | זהה | PASS |
+| (c) בלי from | `""` | `""` | PASS |
+| (c) בכל המקרים | contact_view אחד, בלי form_start בלי אינטראקציה | התקיים | PASS |
+| (d) `git cat-file -s HEAD:assets/js/site.js` | עד 15,360 | **15,289**, כלומר 71 בתים פנויים | PASS |
+
+ממצאי הסקירה F1 ו־F2 נסגרו. גם תיקוני התיעוד מ־L6 בוצעו, בסעיפים §1.3, §5 ו־§8.1.
+
+### מגבלות שהתקבלו
+- **L1 עד L5** כמפורט בסקירה `docs/coordination/wp5_claude_acceptance_2026-10-30.md` §3. ללא שינוי.
+- **L8 (נמוכה, חדשה):** בדיקת ה־catalog משתמשת ב־`catalog[type][slug]`, ולכן שמות תכונות מובנים של JavaScript עוברים אותה. למשל `?from=scenario:constructor` נותן `from:"scenario:constructor"`.
+  - אין כאן פרט אישי. הערך מוגבל לקבוצה קבועה של שמות מובנים, ולא לטקסט חופשי.
+  - ההתנהגות של פס ההקשר והשדות המוסתרים בכתובת כזו קיימת עוד לפני WP5, מאז `c785bc1`.
+  - לתקן ב־`Object.hasOwn` כשמחברים dispatch, או בחבילת קוד הבאה.
+- **L9 (תיעודית):** ב־`_dev/wp5_fix_validation_results.json` של המבצע רשום `tested_head: 16b4717`, אבל שינוי F2 עוד לא היה אז ב־commit. הריצה העצמאית של Claude על `692e84c` מכסה את הקוד הסופי.
+
+### תנאים ל־WP6
+התנאים נמצאים בסקירה, §6.
+- תנאים 1 עד 4 מתקיימים:
+  - יש commit תיקון, וקבלה זו כתובה כאן.
+  - הראיות נשמרו ב־`_dev/`.
+  - `site.js` הוא 15,289 בתים, כך שב־WP6 יש לכל היותר 71 בתים פנויים ל־JS.
+  - main הוא `e2f9052`, ושום דבר לא נדחף.
+- תנאים 5 ו־6 נשארים פתוחים:
+  - פעולות בעלים ב־Cloudflare ובדיקת HTTPS ב־GitHub Pages נכנסות לרשימת WP6.
+  - מיזוג ל־main ממתין להחלטה B5 של גדי.
+- WP6 לא הופעלה.
