@@ -317,13 +317,16 @@ export function initContactForm() {
     try {
       const res = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        // text/plain: no CORS preflight
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload),
         signal: ctrl.signal
       });
       clearTimeout(timer);
-      if (res.ok) showSuccess();
-      else showFailed(`http_${res.status}`, payload);
+      // Apps Script answers 200 on rejection too
+      const body = res.ok ? await res.json().catch(() => ({})) : {};
+      if (res.ok && body.ok !== false) showSuccess();
+      else showFailed(res.ok ? 'rejected' : `http_${res.status}`, payload);
     } catch (err) {
       clearTimeout(timer);
       showFailed(err.name === 'AbortError' ? 'timeout' : 'network', payload);
@@ -347,20 +350,6 @@ export function initContactForm() {
   else if (sParam === 'success') showSuccess();
   else if (sParam === 'failed') showFailed('demo_test', { name: val(nameInp), email: val(emailInp), organization: val(orgInp), intent: 'defined_process' });
 
-  document.querySelectorAll('[data-set-state]').forEach(b => {
-    b.addEventListener('click', () => {
-      const s = b.getAttribute('data-set-state');
-      if (s === 'error') validate();
-      else if (s === 'success') showSuccess();
-      else if (s === 'failed') showFailed('manual', {});
-      else {
-        form.classList.remove('is-hidden');
-        if (stateSuccess) stateSuccess.classList.add('is-hidden');
-        if (stateFailed) stateFailed.classList.add('is-hidden');
-        if (errorSummary) errorSummary.classList.add('is-hidden');
-      }
-    });
-  });
 }
 
 function initSite() {
