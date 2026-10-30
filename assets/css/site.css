@@ -1758,6 +1758,31 @@ body.drawer-open {
   padding-block: var(--space-12);
 }
 
+/* WP3: How We Work Components from approved screen */
+.about-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-inline-size: 75ch;
+}
+
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+}
+
+.lead-content {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.lead-line {
+  line-height: 1.7;
+}
+
+
 .error-page-actions {
   margin-block-start: var(--space-8);
 }
@@ -1765,4 +1790,14 @@ body.drawer-open {
 /* Info Card Text & Secondary Buttons */
 .info-card-text {
   color: var(--muted);
+}
+
+/* WP3: Contact page sidebar classes from approved screen */
+.info-card-sand {
+  background: var(--sand);
+}
+
+.direct-mail-link {
+  font-weight: 700;
+  font-size: 1.05rem;
 }

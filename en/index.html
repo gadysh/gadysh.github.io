@@ -23,31 +23,27 @@ translations:
 
     <!-- Abstract Flow Diagram (LTR) -->
     <div class="hero-flow-diagram" aria-hidden="true">
-      <div class="flow-abstract-title">
-        <span>Controlled workflow</span>
-        <span class="flow-abstract-highlight">Systems & Human</span>
-      </div>
       <div class="flow-abstract-steps">
         <div class="flow-step-item">
           <span class="flow-step-num">1</span>
-          <span>Input: request, document or recording</span>
+          <span>Request, document or recording</span>
         </div>
         <div class="flow-step-item">
           <span class="flow-step-num">2</span>
-          <span>Understanding intent and structured data</span>
+          <span>Understanding and data</span>
         </div>
         <div class="flow-step-item">
           <span class="flow-step-num">3</span>
-          <span>Checks against core systems</span>
+          <span>Checks against your systems</span>
         </div>
         <div class="flow-step-item" data-human="true">
           <span class="flow-step-num">4</span>
-          <span>Human review for exceptions</span>
-          <span class="flow-step-tag">Control</span>
+          <span>A person reviews</span>
+          <span class="flow-step-tag">Human</span>
         </div>
         <div class="flow-step-item">
           <span class="flow-step-num">5</span>
-          <span>Action, system updates and logging</span>
+          <span>Action and record</span>
         </div>
       </div>
     </div>
@@ -62,8 +58,17 @@ translations:
     </div>
 
     <div class="entry-grid">
-      {% include entry-card.html title="Have a specific process in mind?" desc="Tell us what happens in it today, and we will look at how AI can carry it out, assist with it or shorten it." intent="defined_process" button_text="Talk about a defined process" %}
-      {% include entry-card.html title="Want to understand where AI fits in your organization?" desc="You don't need to arrive with a defined problem. Together we will map the work in your organization and identify where to start." intent="explore" button_text="Explore where to begin" %}
+      <div class="entry-card">
+        <h3>Have a specific process in mind?</h3>
+        <p>Tell us what happens in it today, and we will look at how AI can carry it out, assist with it or shorten it.</p>
+        <a href="{{ '/en/contact/' | relative_url }}?intent=defined_process" class="btn btn-secondary">Talk about a defined process ›</a>
+      </div>
+
+      <div class="entry-card">
+        <h3>Want to understand where AI fits in your organization?</h3>
+        <p>You don't need to arrive with a defined problem. Together we will map the work in your organization and identify where to start.</p>
+        <a href="{{ '/en/contact/' | relative_url }}?intent=explore" class="btn btn-secondary">Map it together ›</a>
+      </div>
     </div>
   </div>
 </section>
@@ -79,12 +84,7 @@ translations:
       {% for domain in site.data.domains %}
         {% if domain.published == true %}
           <div class="domain-card">
-            <div class="domain-card-header">
-              <div class="domain-icon">
-                <!-- Icon: {{ domain.icon }} -->
-              </div>
-              <h3>{{ domain.en.title }}</h3>
-            </div>
+            <h3>{{ domain.en.title }}</h3>
             <p class="domain-framing">{{ domain.en.framing }}</p>
             <ul class="domain-scenarios-list">
               {% for s_slug in domain.scenarios %}
@@ -162,10 +162,7 @@ translations:
       </div>
     </div>
 
-    <div class="section-footer-bar">
-      <p class="text-muted m-0">The path and scope are set together, based on your organization.</p>
-      <a href="{{ '/en/how-we-work/' | relative_url }}" class="btn btn-secondary">How we work ›</a>
-    </div>
+    <p class="text-muted m-0">The path and scope are set together, based on your organization.</p>
   </div>
 </section>
 
@@ -215,17 +212,16 @@ translations:
 </section>
 
 <!-- 8. Who Is Behind PowOrg (Spec §3.2, §6.3, Plain Text, NO photo) -->
-<section class="section section-sand" id="founder">
+<section class="section" id="founder">
   <div class="container">
     <div class="section-header">
       <h2>Who is behind PowOrg</h2>
     </div>
-    <div class="founder-card">
+    <div class="founder-card" style="background: var(--surface-alt);">
       <h3 class="mb-2">Gadi, founder of PowOrg</h3>
-      <p class="text-muted mb-4">
+      <p class="text-muted m-0">
         Experience in development, core systems and enterprise integrations.
       </p>
-      <a href="{{ '/en/how-we-work/#about' | relative_url }}" class="domain-card-link">About us ›</a>
     </div>
   </div>
 </section>

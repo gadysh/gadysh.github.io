@@ -27,4 +27,4 @@ translations:
 <p class="todo-copy">TODO-COPY: פירוט נתוני מקור הפנייה ללא עוגיות מעקב (§3.8)</p>
 
 ## יצירת קשר בנושאי פרטיות
-לפניות בנושא פרטיות ומידע אישי, ניתן לפנות בדוא״ל: <a href="mailto:{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}" dir="ltr">{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}</a>.
+לפניות בנושא פרטיות ומידע אישי, ניתן לפנות בדואר אלקטרוני: <a href="mailto:{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}" dir="ltr">{{ site.lead_fallback_email | default: 'gadi@poworg.com' }}</a>.
