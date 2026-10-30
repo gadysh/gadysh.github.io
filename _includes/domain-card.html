@@ -2,7 +2,7 @@
 <div class="domain-card">
   <div class="domain-card-header">
     <div class="domain-icon">
-      <!-- Icon: {{ include.domain.icon }} -->
+      {% include domain-icon.html icon=include.domain.icon %}
     </div>
     <h3>{{ include.domain[page_lang].title }}</h3>
   </div>

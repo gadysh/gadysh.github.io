@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: base
 lang: en
 title: "How we work and who we are | PowOrg"
 description: "How we work: collaboration, workflow steps, technology choices, accountability and control, and who is behind PowOrg."

@@ -8,6 +8,7 @@
           {% if page.layout == "scenario" %}
             <li><a href="{{ '/solutions/' | append: domain.slug | append: '/' | relative_url }}">{{ domain[page_lang].title }}</a></li>
           {% else %}
+            <li><a href="{{ '/solutions/' | relative_url }}">{{ site.data.i18n.breadcrumbs.solutions[page_lang] }}</a></li>
             <li aria-current="page">{{ domain[page_lang].title }}</li>
           {% endif %}
         {% endif %}

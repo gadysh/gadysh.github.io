@@ -58,7 +58,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   text-size-adjust: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Set on the root only, so the heading line-height (1.25) is not overridden */
@@ -81,7 +81,7 @@ body {
   min-block-size: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @media (max-width: 767px) {
@@ -521,6 +521,8 @@ body.drawer-open {
 .mobile-drawer.is-open {
   transform: translateX(0);
   visibility: visible;
+  /* Visible at once on open, so focus can move into the drawer */
+  transition: transform var(--transition-fast), visibility 0s;
 }
 
 .drawer-header {

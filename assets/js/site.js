@@ -51,6 +51,14 @@ export function initSolutionsMenu() {
   });
 }
 
+// The drawer's visibility may still be hidden on the frame it opens, so retry until focus lands
+function focusWhenVisible(el, tries = 20) {
+  el.focus();
+  if (document.activeElement !== el && tries > 0) {
+    requestAnimationFrame(() => focusWhenVisible(el, tries - 1));
+  }
+}
+
 export function initMobileDrawer() {
   const drawerToggleBtn = document.getElementById('drawer-toggle-btn');
   const drawerCloseBtn = document.getElementById('drawer-close-btn');
@@ -74,11 +82,8 @@ export function initMobileDrawer() {
 
     // Focus enters inside the drawer
     const focusable = getFocusableElements();
-    if (drawerCloseBtn) {
-      drawerCloseBtn.focus();
-    } else if (focusable.length > 0) {
-      focusable[0].focus();
-    }
+    const firstTarget = drawerCloseBtn || focusable[0];
+    if (firstTarget) focusWhenVisible(firstTarget);
   }
 
   function closeDrawer() {

@@ -156,30 +156,26 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
       <h2>התאמה לארגון שלכם</h2>
     </div>
 
-    <div class="fit-grid fit-grid-auto">
-      <div class="pillar-card">
-        <h3>סוגי שיחות</h3>
-        <p>מכירה, שירות, פגישות פנימיות וראיונות.</p>
+    <div class="fit-grid">
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>סוגי שיחות: מכירה, שירות, פגישות פנימיות, ראיונות</div>
       </div>
-
-      <div class="pillar-card">
-        <h3>שפה</h3>
-        <p>עברית, אנגלית ושפות נוספות בהתאם לפעילות.</p>
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>שפה</div>
       </div>
-
-      <div class="pillar-card">
-        <h3>תבניות תוצרים</h3>
-        <p>מבנה הסיכום מותאם לכל קהל ולסוג הפגישה.</p>
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>תבניות התוצרים לכל קהל</div>
       </div>
-
-      <div class="pillar-card">
-        <h3>מערכות יעד</h3>
-        <p>חיבור ל־<bdi>CRM</bdi>, למערכות ניהול משימות ולתיקיות מסמכים.</p>
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>מערכות יעד</div>
       </div>
-
-      <div class="pillar-card col-span-full">
-        <h3>שילוב בעבודה</h3>
-        <p>איך משלבים את ההקלטה בעבודה ובמפגש עם הלקוח, כולל הסבר ללקוח והסכמה להקלטה לפי הכללים שחלים על הארגון.</p>
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>איך משלבים את ההקלטה בעבודה ובמפגש עם הלקוח, כולל ההסבר ללקוח וההסכמה להקלטה לפי הכללים שחלים על הארגון</div>
       </div>
     </div>
   </div>
@@ -200,23 +196,23 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
     </div>
 
     <div class="faq-list">
-      <details class="faq-item">
-        <summary class="faq-question">איפה רצה המערכת?</summary>
-        <div class="faq-answer">
+      <details class="faq-item" open>
+        <summary class="faq-summary">איפה רצה המערכת?</summary>
+        <div class="faq-content">
           <p>אפשר לבנות את הפתרון על התשתית שלנו, או בענן שהארגון כבר עובד איתו, כמו <bdi>Google Cloud</bdi>,‏ <bdi>Microsoft Azure</bdi> או <bdi>AWS</bdi>. הבחירה נעשית לפי המערכות, הדרישות והתקציב שלכם.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary class="faq-question">מי מאשר פעולות ותוצרים?</summary>
-        <div class="faq-answer">
+        <summary class="faq-summary">מי מאשר פעולות ותוצרים?</summary>
+        <div class="faq-content">
           <p>מגדירים יחד אילו פעולות מותרות, מתי אדם מאשר, ומה מתועד. בתרחיש הזה איש הקשר בודק את הסיכום ללקוח ומאשר אותו לפני השליחה. זו ברירת מחדל, ואפשר לשנות אותה.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary class="faq-question">איך מתחברים למערכות?</summary>
-        <div class="faq-answer">
+        <summary class="faq-summary">איך מתחברים למערכות?</summary>
+        <div class="faq-content">
           <p>ההקלטה מגיעה ממערכת הטלפוניה, מכלי הפגישות או מהעלאה, והתיעוד מתויק ב־<bdi>CRM</bdi> ובמערכות. בודקים יחד איזו גישה אפשרית, ישירות או דרך ספק המערכות.</p>
         </div>
       </details>
@@ -225,26 +221,29 @@ description: "מהקלטה של שיחת טלפון, פגישה או שיחת מ
 </section>
 
 <!-- 10 & 11. CTA & Next Steps (Spec §3.4, סעיפים 10-11) -->
-{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" from="scenario:recording-to-outputs" %}
+{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" button="לשיחה על התרחיש הזה" from="scenario:recording-to-outputs" %}
 
 <section class="section" id="next-steps">
   <div class="container">
     <div class="section-header">
-      <h2>המשך קריאה</h2>
+      <h2>תרחישים קשורים</h2>
     </div>
 
-    <div class="entry-grid">
+    <div class="domains-grid">
+      {% for d in site.data.domains %}{% if d.slug == "customers" %}
       <div class="domain-card">
-        <h3>שירות ומכירות</h3>
-        <p>סקירה מלאה של כל הפתרונות והיכולות בתחום.</p>
+        <h3>{{ d.he.title }}</h3>
+        <p class="domain-framing">{{ d.he.framing }}</p>
         <a href="{{ '/solutions/customers/' | relative_url }}" class="domain-card-link">לעמוד התחום ›</a>
       </div>
-
-      <div class="domain-card">
-        <h3>איך עובדים איתנו</h3>
-        <p>מסלול העבודה, שיתוף הפעולה, והבקרה על המערכות.</p>
-        <a href="{{ '/how-we-work/' | relative_url }}" class="domain-card-link">איך עובדים ומי אנחנו ›</a>
-      </div>
+      {% endif %}{% endfor %}
+      {% assign related = "agent-assist-onboarding,whatsapp-service-actions" | split: "," %}
+      {% for slug in related %}
+      {% assign rel = site.data.scenarios | where: "slug", slug | first %}
+      {% include scenario-card.html scenario=rel %}
+      {% endfor %}
     </div>
+
+    <p class="mt-6"><a href="{{ '/how-we-work/' | relative_url }}" class="domain-card-link">איך עובדים ›</a></p>
   </div>
 </section>

@@ -3,8 +3,8 @@ layout: scenario
 lang: he
 scenario: agent-assist-onboarding
 domain: customers
-title: "סיוע לנציגים בזמן אמת והכשרת נציגים חדשים"
-description: "הסוכן מציע לנציג את המידע הנכון תוך כדי השיחה, ומקצר את זמן ההכשרה של נציגים חדשים."
+title: "גם נציג חדש יודע מה לענות ומה לעשות"
+description: "הנציג מקבל בזמן השיחה את המידע, את הנוהל ואת הצעד הבא. נציג חדש לומד מתוך הידע והמקרים של הארגון."
 ---
 
 <!-- 3. Work Today (Spec §3.4, סעיף 3) -->
@@ -73,12 +73,12 @@ description: "הסוכן מציע לנציג את המידע הנכון תוך �
     <div class="section-header">
       <h2>שאלות נפוצות</h2>
     </div>
-    <p class="todo-copy">TODO-COPY: שאלות ותשובות בסיוע לנציגים (§3.5 תרחיש S2)</p>
+    <p class="todo-copy">TODO-COPY: שאלות ותשובות על סיוע והכשרת נציגים (§3.5 תרחיש S2)</p>
   </div>
 </section>
 
 <!-- 10 & 11. CTA & Next Steps (Spec §3.4, סעיפים 10-11) -->
-{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" from="scenario:agent-assist-onboarding" %}
+{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" button="לשיחה על התרחיש הזה" from="scenario:agent-assist-onboarding" %}
 
 <section class="section" id="next-steps">
   <div class="container">

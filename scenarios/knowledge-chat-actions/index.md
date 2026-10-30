@@ -3,8 +3,8 @@ layout: scenario
 lang: he
 scenario: knowledge-chat-actions
 domain: knowledge-and-teams
-title: "צ׳אט ידע ופעולות לעובדים"
-description: "העובד שואל בשפה טבעית, מקבל תשובה שמבוססת על הידע של הארגון, ויכול לבקש מהסוכן לבצע פעולות במערכות."
+title: "תשובות מהידע של הארגון ופעולות במערכות, מתוך שיחה אחת"
+description: "עובדים שואלים בשפה חופשית ומקבלים תשובה מתוך הידע של הארגון, עם מקור. הם יכולים גם לבצע פעולות מוגדרות במערכות בלי לחפש מסכים."
 ---
 
 <!-- 3. Work Today (Spec §3.4, סעיף 3) -->
@@ -78,7 +78,7 @@ description: "העובד שואל בשפה טבעית, מקבל תשובה שמ�
 </section>
 
 <!-- 10 & 11. CTA & Next Steps (Spec §3.4, סעיפים 10-11) -->
-{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" from="scenario:knowledge-chat-actions" %}
+{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" button="לשיחה על התרחיש הזה" from="scenario:knowledge-chat-actions" %}
 
 <section class="section" id="next-steps">
   <div class="container">

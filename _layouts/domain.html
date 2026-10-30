@@ -14,11 +14,11 @@ layout: base
 
     <div class="domain-hero-wrap">
       <div class="content-measure-75">
-        <h1>{{ page.title | default: domain[page_lang].title }}</h1>
+        <h1>{{ domain[page_lang].title }}</h1>
         <p class="text-lead">{{ domain[page_lang].framing }}</p>
       </div>
       <div class="domain-icon domain-hero-icon">
-        <!-- Icon: {{ domain.icon }} -->
+        {% include domain-icon.html icon=domain.icon %}
       </div>
     </div>
   </div>

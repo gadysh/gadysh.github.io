@@ -1,8 +1,8 @@
 <div class="faq-list">
   {% for item in include.items %}
-    <details class="faq-item">
-      <summary class="faq-question">{{ item.q }}</summary>
-      <div class="faq-answer">
+    <details class="faq-item"{% if forloop.first %} open{% endif %}>
+      <summary class="faq-summary">{{ item.q }}</summary>
+      <div class="faq-content">
         <p>{{ item.a }}</p>
       </div>
     </details>

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: base
 lang: he
 title: "איך עובדים ומי אנחנו | PowOrg"
 description: "איך עובדים איתנו: שיתוף פעולה, מסלול עבודה, בחירת טכנולוגיה, אחריות ובקרה, והצוות שמאחורי PowOrg."
