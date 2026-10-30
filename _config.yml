@@ -11,7 +11,8 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
 
-lead_endpoint: ""
+# Google Apps Script lead receiver (_dev/apps_script). Empty means the form falls back to a mail draft
+lead_endpoint: "https://script.google.com/macros/s/AKfycbwvYhcHrL5NGCV4ueTbWUk_MnXvSXEWCwAlHWuK827FGKzE_TqLY4i-hlggSQRXOizcsA/exec"
 # Public addresses. Leads, privacy requests and the form fallback go to contact; accessibility to support
 contact_email: "contact@poworg.com"
 support_email: "support@poworg.com"
