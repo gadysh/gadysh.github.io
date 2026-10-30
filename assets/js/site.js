@@ -1,6 +1,5 @@
 /**
- * PowOrg Website v2 — Core Behaviors, Contact Form & Measurement Adapter
- * Spec: claude_website_spec_v2.md (§2.4, §4.2, §4.3, §4.4, §6.4, §6.6, §6.7, §7.2 WP5)
+ * PowOrg Website v2 — Core Behaviors & Tracking (§6.7, §7.2 WP5)
  */
 
 const $ = (id) => document.getElementById(id);
@@ -63,7 +62,6 @@ function isDebug() {
 }
 
 function dispatch(name, params) {
-  // Cloudflare Web Analytics does not support custom events.
   // Connect future analytics tools (e.g. PostHog, Plausible, GA4) here.
 }
 
@@ -139,8 +137,7 @@ export function initContactForm() {
   const urlParams = new URLSearchParams(location.search);
   const fromParam = urlParams.get('from'), intentParam = urlParams.get('intent');
   let activeTopic = '';
-
-  track('contact_view', { from: fromParam || '' });
+  let fromOk = fromParam === 'menu:all_solutions' ? fromParam : '';
 
   let formStarted = false;
   const onStart = () => { if (!formStarted) { formStarted = true; track('form_start'); } };
@@ -150,6 +147,7 @@ export function initContactForm() {
   if (fromParam && fromParam.includes(':')) {
     const [type, slug] = fromParam.split(':');
     if (catalog[type] && catalog[type][slug]) {
+      fromOk = type + ':' + slug;
       activeTopic = catalog[type][slug][lang] || catalog[type][slug]['he'] || slug;
       hidType && (hidType.value = type);
       hidSlug && (hidSlug.value = slug);
@@ -159,6 +157,8 @@ export function initContactForm() {
       }
     }
   }
+
+  track('contact_view', { from: fromOk || (fromParam ? 'other' : '') });
 
   if (intentParam && ['defined_process', 'explore', 'other'].includes(intentParam)) {
     const r = form.querySelector(`input[name="intent"][value="${intentParam}"]`);

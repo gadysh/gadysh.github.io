@@ -29,7 +29,7 @@
    - **נקודת חיבור יחידה לעתיד:** הפונקציה `dispatch(name, clean)` מהווה נקודת חיבור מרוכזת אחת לשליחה לכלי אנליטיקה עתידי, כרגע כ-no-op מנומק בהערה.
 
 3. **סימון רכיבים ותבניות במאפייני מעקב (Data Attributes):**
-   - `_includes/header.html`: הוספת `data-track-location="header"` לכפתור הפנייה בדסקטופ (`#desktop-cta`), במובייל (`.btn-compact`), ובתוך המגירה (`.drawer-btn`). הוספת מחלקת `.lang-switch` למעבר שפה במגירה.
+   - `_includes/header.html`: הוספת `data-track-location="header"` לכפתור הפנייה בדסקטופ (`#desktop-cta`), במובייל (`.btn-compact`), ובתוך המגירה (`.drawer-footer .btn`). (הערת תיעוד: קישורי השפה במגירה אינם נושאים מחלקת `.lang-switch` כדי לשמר את העיצוב המאושר, ומזוהים באמצעות `a[hreflang]`).
    - `_includes/cta-band.html`: הוספת `data-track-location="cta-band"`.
    - `index.html` ו-`en/index.html`: הוספת `data-track-location="hero"` לכפתור הפנייה הראשי ב-Hero.
    - `_includes/entry-card.html`: הוספת `data-track-intent="{{ include.intent }}"` לכרטיסי הפתיחה.
@@ -120,7 +120,7 @@
 
 ## 5. הוכחה שעם טוקן מזויף נוצרת התגית הנכונה והבקשה יורטה
 
-בקובץ קונפיגורציה ייעודי לבדיקה (`_dev/_config.dummy_analytics.yml`) הוגדר `cloudflare_analytics_token: "dummy_cf_token_12345"`.
+בקובץ קונפיגורציה ייעודי לבדיקה (`_dev/_config.dummy_analytics.yml`) הוגדר `cloudflare_analytics_token: "dummy_cf_token_12345"`. (הערת תיעוד L6: קובץ הקונפיגורציה הזמני לבדיקה וספריית הפלט הזמנית `_site_dummy/` שימשו רק לצורך אימות זה ולא נשמרו בריפו).
 
 1. **תגית ה-DOM שנוצרה בעמוד הבית:**
    ```html
@@ -185,8 +185,60 @@
 ## 8. שאלות פתוחות והחלטות שמרניות
 
 1. **פרמטר `target` ב-`cta_click`:**
-   בחרנו לקרוא ישירות את ה-`href` של כפתור הפנייה (לדוגמה `/contact/` בעמוד הבית או `/contact/?from=scenario:recording-to-outputs` בעמודי תרחיש), התואם במדויק לדוגמה המופיעה בסעיף 6.7 באפיון.
+   בחרנו לקרוא ישירות את ה-`href` המוגדר בתבנית של כפתור הפנייה (לדוגמה `/contact/` בעמוד הבית או `/contact/?from=scenario:recording-to-outputs` בעמודי תרחיש). (הערת תיעוד L6: אף שסעיף §6.7 מונה את `target` כפרמטר מותר ללא הצגת דוגמה מפורשת באפיון, השימוש ב-`href` התבניתי מספק שיוך מדויק ללא קלט משתמש).
 2. **הפעלת `email_fallback_click`:**
    האירוע מופעל הן בעת לחיצה על כפתור המייל החלופי בפאנל הכשל (`#btn-mailto-fallback`) והן בעת לחיצה על קישורי מייל ישירים בעמוד הפנייה (`.direct-mail-link`), בהתאם להנחיות סעיף 3 ב-WP5.
 3. **החרגת תגית ה-Analytics:**
    התגית מוחרגת בעמוד ה-`styleguide` (שמוגדר עם `sitemap: false`) ובעמוד `404.html` (שהוגדר לו במפורש `noindex: true` בפרונט-מטר לפי שורה 870 באפיון), על מנת להבטיח שרק עמודים ציבוריים מאונדקסים ייספרו.
+
+---
+
+## 9. תיקוני WP5-fix: ‏F1/F2
+
+חבילת תיקון ממוקדת זו (WP5-fix) בוצעה בהתאם להנחיות Claude במסמך `claude_next_execution_packet_2026-10-30.md`, וטיפלה בשני ממצאי הקבלה F1 ו-F2 מדוח `wp5_claude_acceptance_2026-10-30.md`.
+
+### פירוט השינויים שבוצעו:
+
+1. **F1: שחזור מראה קישור השפה במגירת המובייל (`_includes/header.html` ו-`assets/js/site.js`)**:
+   - `_includes/header.html` (שורות 104, 106): הוסרה המחלקה `class="lang-switch"` משני קישורי השפה במגירת המובייל (הושארו מאפייני `hreflang` ו-`lang`). בכך בוטלה החלת עיצוב כפתור ה-Pill של הכותרת, ומראה קישורי השפה הושווה לחלוטין לשאר קישורי המגירה (`ul.drawer-links-direct`).
+   - `assets/js/site.js` (בפונקציה `initGlobalTracking`, שורה 103): הוחלף הסלקטור מ-`t.closest('.lang-switch')` ל-`t.closest('a[hreflang]')`. בתוך גוף הדף רק ששת קישורי מעבר השפה נושאים מאפיין `hreflang`, ולכן האירוע `lang_switch` נלכד במדויק גם בכותרת הדסקטופ וגם במגירת המובייל.
+
+2. **F2: מניעת זליגת ערך גולמי בפרמטר `from` באירוע `contact_view` (`assets/js/site.js`)**:
+   - `assets/js/site.js` (בפונקציה `initContactForm`, שורות 137–160):
+     - קריאת `track('contact_view', ...)` הועברה אל אחרי בלוק פענוח ה-`catalog`.
+     - הפרמטר `from` נשלח אך ורק במידה ופוענח כערך מוכר:
+       - צמד `type:slug` מאומת שקיים ב-`catalog` (נבנה מחדש מ-`type + ':' + slug`, כך שערכים זרים כמו כתובת אימייל שצורפה בסוף מנוקים לחלוטין).
+       - הערך המילולי המאושר `menu:all_solutions`.
+       - כל ערך זר אחר שנמסר ב-`from` ממופה למחרוזת `'other'`.
+       - בהיעדר פרמטר `from`, נשלחת מחרוזת ריקה `''`.
+     - שאר התנהגות הטופס, פס ההקשר, ואירוע `form_start` נותרו ללא שינוי.
+
+3. **שמירה על תקציב הגודל של `site.js`**:
+   - קוצרו הערת הכותרת (שורות 2–3) והערת ה-`dispatch` (שורות 66–67).
+   - גודל הקובץ הסופי: **15,289 בתים** (תקרה: 15,360 בתים; מרווח פנוי: 71 בתים).
+
+### טבלת תוצאות הבדיקות האוטומטיות (a עד d):
+
+| בדיקה | תיאור ובדיקה שבוצעה | ערך צפוי | ערך שנמדד | תוצאה |
+|:---:|---|---|---|:---:|
+| **(a)** | **מראה המגירה (F1)**<br>השוואת 6 מאפייני `getComputedStyle` בין קישור השפה לקישור האח "איך אנחנו עובדים" ב-`ul.drawer-links-direct` (ברוחב 390px, הן ב-`/` והן ב-`/en/`) | כל 6 הערכים זהים לחלוטין בשתי השפות: `border-top-width`, `border-radius`, `background-color`, `font-weight`, `padding-inline-start`, `min-height` | זהות מלאה (`allEqual: true`). נשמרו צילומי מסך ב-`_dev/shots/wp5fix/` (`drawer_he_390.png`, `drawer_en_390.png`) | **PASS** |
+| **(b.1)** | **אירוע `lang_switch` במגירה**<br>לחיצה על קישור השפה במגירת המובייל (390px) עם `?debug=track` | שורת לוג יחידה בדיוק: `[track] lang_switch` וללא אירוע נוסף | נרשם בדיוק אירוע אחד:<br>`[track] lang_switch {"page":"/","lang":"he"}` | **PASS** |
+| **(b.2)** | **אירוע `lang_switch` בכותרת**<br>לחיצה על כפתור EN בכותרת הדסקטופ (1280px) עם `?debug=track` | שורת לוג יחידה בדיוק: `[track] lang_switch` וללא אירוע נוסף | נרשם בדיוק אירוע אחד:<br>`[track] lang_switch {"page":"/","lang":"he"}` | **PASS** |
+| **(c.1)** | **אירוע `contact_view` (תרחיש תקין)**<br>`/contact/?from=scenario:recording-to-outputs&debug=track` | `from: "scenario:recording-to-outputs"` | `from: "scenario:recording-to-outputs"` (אירוע בודד, ללא `form_start`) | **PASS** |
+| **(c.2)** | **אירוע `contact_view` (אימייל גולמי)**<br>`/contact/?from=jane@example.com&debug=track` | `from: "other"`, ללא תווים אישיים (`@`) | `from: "other"` (שום `@` לא מופיע בפלט) | **PASS** |
+| **(c.3)** | **אירוע `contact_view` (תרחיש + אימייל מוצמד)**<br>`/contact/?from=scenario:recording-to-outputs:jane@example.com&debug=track` | `from: "scenario:recording-to-outputs"`, ללא תווים אישיים (`@`) | `from: "scenario:recording-to-outputs"` (שום `@` לא מופיע בפלט) | **PASS** |
+| **(c.4)** | **אירוע `contact_view` (מזהה שאינו בקטלוג)**<br>`/contact/?from=scenario:no-such-slug&debug=track` | `from: "other"` | `from: "other"` | **PASS** |
+| **(c.5)** | **אירוע `contact_view` (ערך מאושר מילולית)**<br>`/en/contact/?from=menu:all_solutions&debug=track` | `from: "menu:all_solutions"` | `from: "menu:all_solutions"` | **PASS** |
+| **(c.6)** | **אירוע `contact_view` (ללא פרמטר `from`)**<br>`/contact/?debug=track` | `from: ""` | `from: ""` | **PASS** |
+| **(d)** | **גודל קובץ `assets/js/site.js`**<br>מדידת גודל הקובץ בבתים | עד 15,360 בתים (15KB) | **15,289 בתים** (71 בתים מרווח פנוי) | **PASS** |
+| **רשת** | **בידוד רשת ואנליטיקה**<br>ניטור בקשות רשת במהלך כל הבדיקות | 0 בקשות ל-Cloudflare Web Analytics ול-Google Apps Script | 0 בקשות (`cloudflare: 0, script.google: 0`) | **PASS** |
+
+### קבצי ראיות שנשמרו:
+- סקריפט אימות ייעודי: `_dev/run_wp5_fix_validation.js`
+- קובץ תוצאות מפורט ב-JSON: `_dev/wp5_fix_validation_results.json`
+- צילומי מסך של המגירה ב-390px:
+  - `_dev/shots/wp5fix/drawer_he_390.png`
+  - `_dev/shots/wp5fix/drawer_en_390.png`
+
+### חריגות או מגבלות:
+אין חריגות מדרישות חבילת התיקון. כל הבדיקות a עד d עברו בהצלחה מלאה, מקומית, מול `_site_stub`, ללא תלות ברשת חיצונית וללא חריגה מתקציב הקוד.
