@@ -13,7 +13,9 @@ translations:
 
     <div class="hero-content-measure">
       <h1>Let's talk about the work in your organization</h1>
-      <p class="todo-copy">TODO-COPY: context line in English</p>
+      <p class="text-lead">
+        You can come with a process already in mind, or just a wish to check where AI can help.
+      </p>
     </div>
   </div>
 </section>
@@ -30,12 +32,22 @@ translations:
       <div class="contact-col-info">
         <div class="info-card">
           <h3>What happens next</h3>
-          <p class="todo-copy">TODO-COPY: what happens next in English</p>
+          <ol class="info-steps-list">
+            <li>
+              <strong>We read your inquiry.</strong>
+            </li>
+            <li>
+              <strong>We get back to you.</strong> If it looks like there is something to talk about, we'll suggest an introductory call and some times.
+            </li>
+            <li>
+              <strong>In the call, we get to know the work in your organization</strong> and explore directions together.
+            </li>
+          </ol>
         </div>
 
         <div class="info-card mt-6">
           <h3>Prefer direct email?</h3>
-          <p class="todo-copy">TODO-COPY: direct email fallback in English</p>
+          <p class="info-card-text mb-2">You can write to us directly at:</p>
           <a href="mailto:{{ site.lead_fallback_email | default: 'contact@poworg.com' }}" class="btn btn-secondary direct-mail-link">{{ site.lead_fallback_email | default: 'contact@poworg.com' }}</a>
         </div>
       </div>

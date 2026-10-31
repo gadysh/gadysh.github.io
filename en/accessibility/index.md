@@ -18,6 +18,6 @@ translations:
 <p class="todo-copy">TODO-COPY: known limitations (§3.8, §6.3)</p>
 
 ## Accessibility feedback
-<p class="todo-copy">TODO-COPY: opening sentence for accessibility feedback (§3.8, §6.3)</p>
+<p>If you run into an accessibility problem on the site, write to our accessibility coordinator and describe which page it is on and what the problem is.</p>
 
-<a href="mailto:{{ site.lead_fallback_email }}">{{ site.lead_fallback_email }}</a>
+<a href="mailto:{{ site.support_email }}">{{ site.support_email }}</a>
