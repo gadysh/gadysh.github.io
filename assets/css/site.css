@@ -106,6 +106,11 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Links inside running text on content pages: underline, not color alone (WCAG 1.4.1) */
+.page-content p a:not([class]) {
+  text-decoration: underline;
+}
+
 button, input, textarea, select {
   font: inherit;
   color: inherit;

@@ -1,0 +1,90 @@
+[
+  {
+    "page": "accessibility_he",
+    "path": "/accessibility/",
+    "engineVersion": "4.14.0",
+    "violationsCount": 0,
+    "incompleteCount": 0,
+    "impactCounts": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "seriousCritical": 0,
+    "hasLinkInTextBlock": false,
+    "hasHeadingOrder": false,
+    "requestedOrigins": [
+      "http://127.0.0.1:4077",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ],
+    "pass": true
+  },
+  {
+    "page": "accessibility_en",
+    "path": "/en/accessibility/",
+    "engineVersion": "4.14.0",
+    "violationsCount": 0,
+    "incompleteCount": 0,
+    "impactCounts": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "seriousCritical": 0,
+    "hasLinkInTextBlock": false,
+    "hasHeadingOrder": false,
+    "requestedOrigins": [
+      "http://127.0.0.1:4077",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ],
+    "pass": true
+  },
+  {
+    "page": "privacy_he",
+    "path": "/privacy/",
+    "engineVersion": "4.14.0",
+    "violationsCount": 0,
+    "incompleteCount": 0,
+    "impactCounts": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "seriousCritical": 0,
+    "hasLinkInTextBlock": false,
+    "hasHeadingOrder": false,
+    "requestedOrigins": [
+      "http://127.0.0.1:4077",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ],
+    "pass": true
+  },
+  {
+    "page": "privacy_en",
+    "path": "/en/privacy/",
+    "engineVersion": "4.14.0",
+    "violationsCount": 0,
+    "incompleteCount": 0,
+    "impactCounts": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "seriousCritical": 0,
+    "hasLinkInTextBlock": false,
+    "hasHeadingOrder": false,
+    "requestedOrigins": [
+      "http://127.0.0.1:4077",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ],
+    "pass": true
+  }
+]
