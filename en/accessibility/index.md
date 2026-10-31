@@ -12,7 +12,7 @@ translations:
 <p class="todo-copy">TODO-COPY: accessibility level of the site, written only after the WP6 accessibility check (§3.8, §6.3)</p>
 
 ## Accessibility measures
-<p class="todo-copy">TODO-COPY: accessibility measures (§3.8, §6.3)</p>
+You can navigate the site by keyboard and with a screen reader. There is a skip-to-content link, headings follow a hierarchy, images have descriptions, and the colors meet contrast requirements. Hebrew is displayed right to left and English left to right, and the site works properly at 200% zoom.
 
 ## Known limitations
 <p class="todo-copy">TODO-COPY: known limitations (§3.8, §6.3)</p>
