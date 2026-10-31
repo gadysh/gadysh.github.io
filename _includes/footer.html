@@ -3,7 +3,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <h4>{{ site.data.i18n.footer.domains_heading[page_lang] }}</h4>
+        <h2>{{ site.data.i18n.footer.domains_heading[page_lang] }}</h2>
         <ul class="footer-links">
           {% for domain in site.data.domains %}
             {% if domain.published == true %}
@@ -14,7 +14,7 @@
       </div>
 
       <div class="footer-col">
-        <h4>{{ site.data.i18n.footer.scenarios_heading[page_lang] }}</h4>
+        <h2>{{ site.data.i18n.footer.scenarios_heading[page_lang] }}</h2>
         <ul class="footer-links">
           {% for scenario in site.data.scenarios %}
             {% if scenario.published == true %}
@@ -26,7 +26,7 @@
       </div>
 
       <div class="footer-col">
-        <h4>{{ site.data.i18n.footer.company_heading[page_lang] }}</h4>
+        <h2>{{ site.data.i18n.footer.company_heading[page_lang] }}</h2>
         <ul class="footer-links">
           <li><a href="{% if page_lang == 'en' %}{{ '/en/how-we-work/' | relative_url }}{% else %}{{ '/how-we-work/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.how_we_work_full[page_lang] }}</a></li>
           <li><a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}">{{ site.data.i18n.footer.contact[page_lang] }}</a></li>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="footer-col">
-        <h4>{{ site.data.i18n.footer.info_heading[page_lang] }}</h4>
+        <h2>{{ site.data.i18n.footer.info_heading[page_lang] }}</h2>
         <ul class="footer-links">
           <li><a href="{% if page_lang == 'en' %}{{ '/en/accessibility/' | relative_url }}{% else %}{{ '/accessibility/' | relative_url }}{% endif %}">{{ site.data.i18n.footer.accessibility[page_lang] }}</a></li>
           <li><a href="{% if page_lang == 'en' %}{{ '/en/privacy/' | relative_url }}{% else %}{{ '/privacy/' | relative_url }}{% endif %}">{{ site.data.i18n.footer.privacy[page_lang] }}</a></li>

@@ -1045,6 +1045,7 @@ body.drawer-open {
   margin-block-end: var(--space-3);
 }
 
+.work-step-col h3,
 .work-step-col h4 {
   font-size: 1.05rem;
   margin-block-end: var(--space-2);
@@ -1143,9 +1144,11 @@ body.drawer-open {
   }
 }
 
+.footer-col h2,
 .footer-col h4 {
   color: #ffffff;
   font-size: 1.05rem;
+  letter-spacing: inherit;
   margin-block-end: var(--space-4);
 }
 
@@ -1922,4 +1925,13 @@ body.drawer-open {
 .direct-mail-link {
   font-weight: 700;
   font-size: 1.05rem;
+}
+
+.contact-col-info h2 {
+  font-size: 1.25rem;
+  letter-spacing: inherit;
+}
+
+.contact-col-info h3 {
+  font-size: inherit;
 }

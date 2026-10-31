@@ -11,7 +11,7 @@ const AXE_PATH = path.join(TEMP_DIR, 'node_modules', 'axe-core', 'axe.min.js');
 const PUPPETEER_PATH = path.join(TEMP_DIR, 'node_modules', 'puppeteer-core');
 const CHROME_PATH = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const REPO_ROOT = path.resolve(__dirname, '..');
-const G1_DIR = path.join(REPO_ROOT, '_dev', 'g1');
+const G1_DIR = process.env.OUT_DIR ? path.resolve(REPO_ROOT, process.env.OUT_DIR) : path.join(REPO_ROOT, '_dev', 'g1_fix');
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
