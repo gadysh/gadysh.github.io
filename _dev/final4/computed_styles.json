@@ -1,0 +1,48 @@
+{
+  "accessibility_he": {
+    "mailtoLink": {
+      "textDecorationLine": "underline",
+      "textDecoration": "underline",
+      "color": "rgb(14, 116, 144)",
+      "href": "mailto:support@poworg.com",
+      "text": "support@poworg.com"
+    },
+    "headerNavLink": {
+      "textDecorationLine": "none",
+      "textDecoration": "none",
+      "color": "rgb(11, 37, 64)",
+      "href": "/how-we-work/",
+      "text": "איך עובדים"
+    },
+    "footerLink": {
+      "textDecorationLine": "none",
+      "textDecoration": "none",
+      "color": "rgb(148, 163, 184)",
+      "href": "/solutions/customers/",
+      "text": "שירות ומכירות"
+    }
+  },
+  "accessibility_en": {
+    "mailtoLink": {
+      "textDecorationLine": "underline",
+      "textDecoration": "underline",
+      "color": "rgb(14, 116, 144)",
+      "href": "mailto:support@poworg.com",
+      "text": "support@poworg.com"
+    },
+    "headerNavLink": {
+      "textDecorationLine": "none",
+      "textDecoration": "none",
+      "color": "rgb(11, 37, 64)",
+      "href": "/en/how-we-work/",
+      "text": "How we work"
+    },
+    "footerLink": {
+      "textDecorationLine": "none",
+      "textDecoration": "none",
+      "color": "rgb(148, 163, 184)",
+      "href": "/en/contact/?from=domain:customers",
+      "text": "Service and sales"
+    }
+  }
+}

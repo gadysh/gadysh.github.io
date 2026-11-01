@@ -1,0 +1,121 @@
+# Solution Domains
+# Spec: claude_website_spec_v2.md (§2.1, §2.2, §3.3, §6.2)
+
+- slug: "customers"
+  icon: "users"
+  published: true
+  scenarios:
+    - "whatsapp-service-actions"
+    - "agent-assist-onboarding"
+    - "recording-to-outputs"
+  he:
+    title: "שירות ומכירות"
+    framing: "AI שמלווה את הקשר עם הלקוח, מהפנייה הראשונה ועד שיחת ההמשך."
+    work_types:
+      - "מענה וביצוע פעולות בפניות חוזרות"
+      - "סיוע לנציג בזמן שיחה"
+      - "קליטת נציגים חדשים"
+      - "סיכום ותיעוד שיחות ופגישות"
+      - "הכנת המשך טיפול ומכירה"
+      - "ניתוח איכות השיחות"
+    systems_and_channels:
+      - "<bdi>CRM</bdi>"
+      - "<bdi>ERP</bdi>"
+      - "טלפוניה"
+      - "דואר אלקטרוני"
+      - "<bdi>WhatsApp</bdi>"
+      - "מאגרי מסמכים"
+      - "ומערכות נוספות לפי הארגון"
+  en:
+    title: "Service and sales"
+    framing: "AI that accompanies the customer relationship, from the first inquiry to the follow-up call."
+    work_types:
+      - "Answering and handling recurring requests"
+      - "Assisting agents during calls"
+      - "Onboarding new agents"
+      - "Summarizing and logging calls and meetings"
+      - "Preparing follow-up and sales"
+      - "Analyzing call quality"
+    systems_and_channels:
+      - "CRM"
+      - "ERP"
+      - "Telephony"
+      - "Email"
+      - "WhatsApp"
+      - "Document repositories"
+      - "and additional systems as needed"
+
+- slug: "operations"
+  icon: "document"
+  published: true
+  scenarios:
+    - "documents-across-systems"
+    - "knowledge-chat-actions"
+  he:
+    title: "תפעול, מסמכים ומערכות"
+    framing: "עבודה חוזרת בין מסמכים, מערכות ואנשים מתבצעת ומתועדת, וחריגים מגיעים לטיפול אדם."
+    work_types:
+      - "קליטה וחילוץ של מסמכים"
+      - "בדיקה מול נתוני המערכות"
+      - "עדכון רשומות ופתיחת משימות"
+      - "בקשת השלמות"
+      - "פעולות לעובדים בלי לחפש מסכים"
+    systems_and_channels:
+      - "<bdi>ERP</bdi>"
+      - "<bdi>CRM</bdi>"
+      - "מערכות כספים וחשבוניות"
+      - "מאגרי מסמכים"
+      - "דואר אלקטרוני"
+      - "ומערכות נוספות לפי הארגון"
+  en:
+    title: "Operations, documents and systems"
+    framing: "Repetitive work between documents, systems and people gets done and recorded, and exceptions go to a person."
+    work_types:
+      - "Capturing and extracting documents"
+      - "Checking against system data"
+      - "Updating records and opening tasks"
+      - "Requesting missing information"
+      - "Actions for employees without hunting for screens"
+    systems_and_channels:
+      - "ERP"
+      - "CRM"
+      - "Financial and invoicing systems"
+      - "Document repositories"
+      - "Email"
+      - "and additional systems as needed"
+
+- slug: "knowledge-and-teams"
+  icon: "book"
+  published: true
+  scenarios:
+    - "knowledge-chat-actions"
+    - "agent-assist-onboarding"
+    - "recording-to-outputs"
+  he:
+    title: "ידע ועובדים"
+    framing: "הידע של הארגון זמין לכל עובד, בזמן שהוא צריך אותו."
+    work_types:
+      - "תשובות מתוך נהלים ומסמכים, עם מקור"
+      - "עוזר לנציגים ולעובדים חדשים"
+      - "למידה מתוך שיחות מוקלטות"
+      - "פעולות פשוטות במערכות מתוך הצ׳אט"
+    systems_and_channels:
+      - "פורטל ארגוני"
+      - "מאגרי ידע ונהלים"
+      - "מערכות כרטוס ותמיכה"
+      - "כלי צ׳אט ופגישות"
+      - "ומערכות נוספות לפי הארגון"
+  en:
+    title: "Knowledge and employees"
+    framing: "Your organization's knowledge is available to every employee, when they need it."
+    work_types:
+      - "Answers from procedures and documents, with sources"
+      - "An assistant for agents and new employees"
+      - "Learning from recorded calls"
+      - "Simple system actions from the chat"
+    systems_and_channels:
+      - "Internal portal"
+      - "Knowledge base and procedures"
+      - "Ticketing and support systems"
+      - "Chat and meeting tools"
+      - "and additional systems as needed"

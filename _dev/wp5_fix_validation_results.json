@@ -1,0 +1,222 @@
+{
+  "timestamp": "2026-10-30T21:22:34.977Z",
+  "tested_head": "16b471768514f44f17fada42d89f266b48fc198a",
+  "site_js_size_bytes": 15289,
+  "tests": {
+    "a_drawer_appearance": {
+      "expected": "All 6 computed styles identical between language link and sibling how-we-work link in drawer for both / and /en/",
+      "measured": {
+        "he_drawer": {
+          "allEqual": true,
+          "diffs": {},
+          "values": {
+            "border-top-width": {
+              "lang_link": "0px",
+              "sibling_link": "0px"
+            },
+            "border-radius": {
+              "lang_link": "0px",
+              "sibling_link": "0px"
+            },
+            "background-color": {
+              "lang_link": "rgba(0, 0, 0, 0)",
+              "sibling_link": "rgba(0, 0, 0, 0)"
+            },
+            "font-weight": {
+              "lang_link": "400",
+              "sibling_link": "400"
+            },
+            "padding-inline-start": {
+              "lang_link": "0px",
+              "sibling_link": "0px"
+            },
+            "min-height": {
+              "lang_link": "0px",
+              "sibling_link": "0px"
+            }
+          }
+        },
+        "en_drawer": {
+          "allEqual": true,
+          "diffs": {},
+          "values": {
+            "border-top-width": {
+              "lang_link": "0px",
+              "sibling_link": "0px"
+            },
+            "border-radius": {
+              "lang_link": "0px",
+              "sibling_link": "0px"
+            },
+            "background-color": {
+              "lang_link": "rgba(0, 0, 0, 0)",
+              "sibling_link": "rgba(0, 0, 0, 0)"
+            },
+            "font-weight": {
+              "lang_link": "400",
+              "sibling_link": "400"
+            },
+            "padding-inline-start": {
+              "lang_link": "0px",
+              "sibling_link": "0px"
+            },
+            "min-height": {
+              "lang_link": "0px",
+              "sibling_link": "0px"
+            }
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    "b_lang_switch_drawer": {
+      "expected": "Exactly 1 [track] lang_switch event and no other event",
+      "measured": [
+        "[track] lang_switch {\"page\":\"/\",\"lang\":\"he\"}"
+      ],
+      "status": "PASS"
+    },
+    "b_lang_switch_header": {
+      "expected": "Exactly 1 [track] lang_switch event and no other event",
+      "measured": [
+        "[track] lang_switch {\"page\":\"/\",\"lang\":\"he\"}"
+      ],
+      "status": "PASS"
+    },
+    "c1_scenario_valid": {
+      "url": "/contact/?from=scenario:recording-to-outputs&debug=track",
+      "expected": {
+        "contact_view_count": 1,
+        "form_start_on_load": 0,
+        "from": "scenario:recording-to-outputs",
+        "must_not_contain": [
+          "@"
+        ]
+      },
+      "measured": {
+        "contact_view_count": 1,
+        "form_start_count": 0,
+        "from": "scenario:recording-to-outputs",
+        "raw_events": [
+          "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"scenario:recording-to-outputs\"}"
+        ]
+      },
+      "status": "PASS"
+    },
+    "c2_raw_email_other": {
+      "url": "/contact/?from=jane@example.com&debug=track",
+      "expected": {
+        "contact_view_count": 1,
+        "form_start_on_load": 0,
+        "from": "other",
+        "must_not_contain": [
+          "@"
+        ]
+      },
+      "measured": {
+        "contact_view_count": 1,
+        "form_start_count": 0,
+        "from": "other",
+        "raw_events": [
+          "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"other\"}"
+        ]
+      },
+      "status": "PASS"
+    },
+    "c3_scenario_with_email_stripped": {
+      "url": "/contact/?from=scenario:recording-to-outputs:jane@example.com&debug=track",
+      "expected": {
+        "contact_view_count": 1,
+        "form_start_on_load": 0,
+        "from": "scenario:recording-to-outputs",
+        "must_not_contain": [
+          "@"
+        ]
+      },
+      "measured": {
+        "contact_view_count": 1,
+        "form_start_count": 0,
+        "from": "scenario:recording-to-outputs",
+        "raw_events": [
+          "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"scenario:recording-to-outputs\"}"
+        ]
+      },
+      "status": "PASS"
+    },
+    "c4_unknown_slug_other": {
+      "url": "/contact/?from=scenario:no-such-slug&debug=track",
+      "expected": {
+        "contact_view_count": 1,
+        "form_start_on_load": 0,
+        "from": "other",
+        "must_not_contain": []
+      },
+      "measured": {
+        "contact_view_count": 1,
+        "form_start_count": 0,
+        "from": "other",
+        "raw_events": [
+          "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"other\"}"
+        ]
+      },
+      "status": "PASS"
+    },
+    "c5_menu_all_solutions": {
+      "url": "/en/contact/?from=menu:all_solutions&debug=track",
+      "expected": {
+        "contact_view_count": 1,
+        "form_start_on_load": 0,
+        "from": "menu:all_solutions",
+        "must_not_contain": []
+      },
+      "measured": {
+        "contact_view_count": 1,
+        "form_start_count": 0,
+        "from": "menu:all_solutions",
+        "raw_events": [
+          "[track] contact_view {\"page\":\"/en/contact/\",\"lang\":\"en\",\"from\":\"menu:all_solutions\"}"
+        ]
+      },
+      "status": "PASS"
+    },
+    "c6_empty_from": {
+      "url": "/contact/?debug=track",
+      "expected": {
+        "contact_view_count": 1,
+        "form_start_on_load": 0,
+        "from": "",
+        "must_not_contain": []
+      },
+      "measured": {
+        "contact_view_count": 1,
+        "form_start_count": 0,
+        "from": "",
+        "raw_events": [
+          "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"\"}"
+        ]
+      },
+      "status": "PASS"
+    },
+    "d_site_js_size": {
+      "expected": "<= 15360 bytes",
+      "measured": "15289 bytes (71 bytes headroom remaining)",
+      "status": "PASS"
+    },
+    "network_isolation": {
+      "expected": "0 requests to cloudflareinsights and script.google.com",
+      "measured": "cloudflare: 0, script.google: 0",
+      "status": "PASS"
+    }
+  },
+  "aborted_requests": [],
+  "network_summary": {
+    "cloudflare_requests": 0,
+    "google_script_requests": 0
+  },
+  "summary": {
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "verdict": "PASS"
+  }
+}

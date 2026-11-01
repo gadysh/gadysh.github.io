@@ -1,0 +1,12 @@
+{% if include.evidence and include.evidence.approved == true %}
+<div class="evidence-block">
+  <div class="evidence-tag">{{ include.evidence.maturity_label | default: "בשימוש, לפי דיווח" }}</div>
+  <p class="evidence-desc">{{ include.evidence.description }}</p>
+  {% if include.evidence.metric %}
+    <div class="evidence-metric">{{ include.evidence.metric }}</div>
+  {% endif %}
+  {% if include.evidence.source %}
+    <div class="evidence-source">{{ include.evidence.source }}</div>
+  {% endif %}
+</div>
+{% endif %}

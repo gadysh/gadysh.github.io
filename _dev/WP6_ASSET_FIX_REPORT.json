@@ -1,0 +1,209 @@
+{
+  "task_id": "task-20261031-wp6-asset-fix-impl",
+  "timestamp": "2026-10-31T02:10:48.052Z",
+  "base_commit": "7fd8c6d",
+  "platform": "Google Antigravity (pro / high effort)",
+  "approved_packet": "docs/strategy/website/claude_wp6_asset_fix_2026-10-31.md",
+  "assets": {
+    "favicon": {
+      "path": "assets/icons/favicon.png",
+      "before": {
+        "format": "JPEG",
+        "magic_hex": "ff d8 ff e0 00 10 4a 46",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "bytes": 630837,
+        "sha256": "7f79e9146c7a5062fcb6469d3232320d8766a0b50a2df905dae62a7603d8c789"
+      },
+      "after": {
+        "format": "PNG",
+        "magic_hex": "89 50 4e 47 0d 0a 1a 0a",
+        "dimensions": [
+          64,
+          64
+        ],
+        "mode": "RGB",
+        "bytes": 6339,
+        "sha256": "b37de479a07a1ee0245301f0c2431dccfbfe7b807cee85f968f9ff5885c93742"
+      },
+      "reduction_bytes": 624498,
+      "reduction_percent": 99.0
+    },
+    "logo": {
+      "path": "assets/logo-symbol.png",
+      "before": {
+        "format": "PNG",
+        "magic_hex": "89 50 4e 47 0d 0a 1a 0a",
+        "dimensions": [
+          730,
+          710
+        ],
+        "mode": "RGBA",
+        "bytes": 435438,
+        "sha256": "9d55e211808a99a3fc66b6d017e87f5fce19ba3484befc24210a90734bc9c605"
+      },
+      "after": {
+        "format": "PNG",
+        "magic_hex": "89 50 4e 47 0d 0a 1a 0a",
+        "dimensions": [
+          114,
+          111
+        ],
+        "mode": "RGBA",
+        "bytes": 26976,
+        "sha256": "8e44136073406b28ccc5ceacd1b8025f5c21b8b4321858b2eae531a3b7974ac9"
+      },
+      "reduction_bytes": 408462,
+      "reduction_percent": 93.8
+    },
+    "combined": {
+      "before_bytes": 1066275,
+      "after_bytes": 33315,
+      "reduction_bytes": 1032960,
+      "reduction_percent": 96.88
+    }
+  },
+  "visual_equivalence": {
+    "status": "PASS",
+    "notes": "All renders confirmed visually equivalent. Same opaque square art and background for favicon, RGBA alpha preserved for logo. No cropping, no recoloring, no redraw.",
+    "renders_directory": "_dev/shots/asset_fix/",
+    "renders": [
+      "header_38px_dpr1_before.png / header_38px_dpr1_after.png",
+      "header_38px_dpr2_before.png / header_38px_dpr2_after.png",
+      "drawer_32px_dpr1_before.png / drawer_32px_dpr1_after.png",
+      "drawer_32px_dpr2_before.png / drawer_32px_dpr2_after.png",
+      "favicon_16px_before.png / favicon_16px_after.png",
+      "favicon_32px_before.png / favicon_32px_after.png"
+    ]
+  },
+  "cold_first_visit_weight": {
+    "budget_target_bytes": 614400,
+    "hebrew_home_desktop": {
+      "total_bytes": 180039,
+      "total_kb": 175.82,
+      "pass": true,
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+      "items": [
+        {
+          "type": "Stylesheet",
+          "mime": "text/css",
+          "url": "http://127.0.0.1:4031/assets/css/site.css",
+          "bytes": 38246
+        },
+        {
+          "type": "Document",
+          "mime": "text/html",
+          "url": "http://127.0.0.1:4031/",
+          "bytes": 33879
+        },
+        {
+          "type": "Font",
+          "mime": "font/woff2",
+          "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+          "bytes": 30145
+        },
+        {
+          "type": "Image",
+          "mime": "image/png",
+          "url": "http://127.0.0.1:4031/assets/logo-symbol.png",
+          "bytes": 27170
+        },
+        {
+          "type": "Script",
+          "mime": "application/javascript",
+          "url": "http://127.0.0.1:4031/assets/js/site.js",
+          "bytes": 15511
+        },
+        {
+          "type": "Font",
+          "mime": "font/woff2",
+          "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+          "bytes": 14219
+        },
+        {
+          "type": "Font",
+          "mime": "font/woff2",
+          "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+          "bytes": 12063
+        },
+        {
+          "type": "Other",
+          "mime": "image/png",
+          "url": "http://127.0.0.1:4031/assets/icons/favicon.png",
+          "bytes": 6533
+        },
+        {
+          "type": "Stylesheet",
+          "mime": "text/css",
+          "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+          "bytes": 2273
+        }
+      ],
+      "blocked": []
+    },
+    "english_home_desktop": {
+      "total_bytes": 186702,
+      "total_kb": 182.33,
+      "pass": true,
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+      "items": [
+        {
+          "type": "Font",
+          "mime": "font/woff2",
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+          "bytes": 48288
+        },
+        {
+          "type": "Stylesheet",
+          "mime": "text/css",
+          "url": "http://127.0.0.1:4031/assets/css/site.css",
+          "bytes": 38246
+        },
+        {
+          "type": "Document",
+          "mime": "text/html",
+          "url": "http://127.0.0.1:4031/en/",
+          "bytes": 29280
+        },
+        {
+          "type": "Image",
+          "mime": "image/png",
+          "url": "http://127.0.0.1:4031/assets/logo-symbol.png",
+          "bytes": 27170
+        },
+        {
+          "type": "Script",
+          "mime": "application/javascript",
+          "url": "http://127.0.0.1:4031/assets/js/site.js",
+          "bytes": 15511
+        },
+        {
+          "type": "Font",
+          "mime": "font/woff2",
+          "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+          "bytes": 14219
+        },
+        {
+          "type": "Font",
+          "mime": "font/woff2",
+          "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+          "bytes": 12063
+        },
+        {
+          "type": "Stylesheet",
+          "mime": "text/css",
+          "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+          "bytes": 1925
+        }
+      ]
+    },
+    "hebrew_home_mobile": {
+      "total_bytes": 173130,
+      "total_kb": 169.07,
+      "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36"
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<div class="contact-form-container">
+  <!-- Context Catalog JSON for client lookup (Spec §4.2) -->
+  <script id="poworg-context-catalog" type="application/json">
+  {
+    "scenario": {
+      {% for sc in site.data.scenarios %}
+        "{{ sc.slug }}": {
+          "he": {{ sc.he.short | default: sc.he.title | jsonify }},
+          "en": {{ sc.en.short | default: sc.en.title | jsonify }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    },
+    "domain": {
+      {% for dm in site.data.domains %}
+        "{{ dm.slug }}": {
+          "he": {{ dm.he.title | jsonify }},
+          "en": {{ dm.en.title | jsonify }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    }
+  }
+  </script>
+
+  <!-- Context bar (Spec §3.7, §4.2, approved screen contact.html) -->
+  <div class="context-bar is-hidden" id="contact-context-bar" role="status">
+    <div>
+      <span>{{ site.data.i18n.contact_form.context_prefix[page_lang] }} </span>
+      <strong id="context-topic-name"></strong>
+    </div>
+    <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" id="remove-context-btn">{{ site.data.i18n.contact_form.remove_context[page_lang] }}</a>
+  </div>
+
+  <!-- State Panel: Success (Spec §4.4, approved screen contact-success.html) -->
+  <div class="status-panel status-panel-success is-hidden" id="state-success" role="status" aria-live="polite" tabindex="-1">
+    <div class="status-panel-head">
+      <div class="status-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2 class="status-panel-title">{{ site.data.i18n.contact_form.success_title[page_lang] }}</h2>
+    </div>
+    <p class="status-panel-lead">
+      {{ site.data.i18n.contact_form.success_desc[page_lang] }}
+    </p>
+    <a href="{% if page_lang == 'en' %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" class="btn btn-secondary">{{ site.data.i18n.labels.back_to_home[page_lang] }}</a>
+  </div>
+
+  <!-- State Panel: Input Error Summary Banner (Spec §4.4, approved screen contact-error.html) -->
+  <div class="status-panel status-panel-error is-hidden" id="form-error-summary" role="alert" aria-live="assertive" tabindex="-1">
+    <h3>{{ site.data.i18n.contact_form.error_summary_title[page_lang] }}</h3>
+    <p class="status-panel-desc">
+      {{ site.data.i18n.contact_form.error_summary_desc[page_lang] }}
+    </p>
+  </div>
+
+  <!-- State Panel: Submission Failed (Spec §4.4, approved screen contact-failed.html) -->
+  <div class="status-panel status-panel-error is-hidden" id="state-failed" role="alert" aria-live="assertive" tabindex="-1">
+    <h3>{{ site.data.i18n.contact_form.error_failed_title[page_lang] }}</h3>
+    <p class="status-panel-desc mb-4">
+      {{ site.data.i18n.contact_form.error_failed_desc[page_lang] }}
+    </p>
+    <div class="status-actions">
+      <button type="button" class="btn btn-secondary btn-compact" id="btn-retry">{{ site.data.i18n.contact_form.retry[page_lang] }}</button>
+      <a href="mailto:{{ site.lead_fallback_email | default: site.contact_email | default: 'contact@poworg.com' }}" class="btn btn-primary btn-compact" id="btn-mailto-fallback">{{ site.data.i18n.contact_form.send_ready_mail[page_lang] }}</a>
+    </div>
+  </div>
+
+  <!-- The Contact Form (Spec §4.3, §4.4, §6.6) -->
+  <form id="contact-form" class="contact-form" novalidate data-lead-endpoint="{{ site.lead_endpoint }}" data-contact-email="{{ site.lead_fallback_email | default: site.contact_email | default: 'contact@poworg.com' }}">
+    <!-- Hidden Fields (Spec §4.3, §6.6) -->
+    <input type="hidden" name="form_version" value="2">
+    <input type="hidden" name="lang" value="{{ page_lang }}">
+    <input type="hidden" name="context_type" id="hidden-context-type" value="none">
+    <input type="hidden" name="context_slug" id="hidden-context-slug" value="">
+    <input type="hidden" name="landing_page" id="hidden-landing-page" value="">
+    <input type="hidden" name="referrer_host" id="hidden-referrer-host" value="">
+    <input type="hidden" name="utm_source" id="hidden-utm-source" value="">
+    <input type="hidden" name="utm_medium" id="hidden-utm-medium" value="">
+    <input type="hidden" name="utm_campaign" id="hidden-utm-campaign" value="">
+    <input type="hidden" name="utm_content" id="hidden-utm-content" value="">
+    <input type="hidden" name="utm_term" id="hidden-utm-term" value="">
+
+    <!-- Honeypot (Spec §4.3, instruction 50) -->
+    <div class="honeypot-field" aria-hidden="true">
+      <input type="text" name="hp" id="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    </div>
+
+    <!-- Name Field -->
+    <div class="form-group">
+      <label for="contact-name" class="form-label">{{ site.data.i18n.contact_form.name[page_lang] }} <span class="required-mark">{{ site.data.i18n.contact_form.required_mark[page_lang] }}</span></label>
+      <input type="text" name="name" id="contact-name" class="form-control" required aria-required="true" autocomplete="name">
+      <span class="form-error-msg is-hidden" id="name-error">{{ site.data.i18n.contact_form.error_name[page_lang] }}</span>
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+      <label for="contact-email" class="form-label">{{ site.data.i18n.contact_form.email[page_lang] }} <span class="required-mark">{{ site.data.i18n.contact_form.required_mark[page_lang] }}</span></label>
+      <input type="email" name="email" id="contact-email" class="form-control" required aria-required="true" autocomplete="email" dir="ltr">
+      <span class="form-error-msg is-hidden" id="email-error">{{ site.data.i18n.contact_form.error_email[page_lang] }}</span>
+    </div>
+
+    <!-- Organization Field -->
+    <div class="form-group">
+      <label for="contact-org" class="form-label">{{ site.data.i18n.contact_form.organization[page_lang] }} <span class="required-mark">{{ site.data.i18n.contact_form.required_mark[page_lang] }}</span></label>
+      <input type="text" name="organization" id="contact-org" class="form-control" required aria-required="true">
+      <span class="form-error-msg is-hidden" id="org-error">{{ site.data.i18n.contact_form.error_org[page_lang] }}</span>
+    </div>
+
+    <!-- Intent Field (3 options, Spec §4.3) -->
+    <div class="form-group">
+      <fieldset class="form-fieldset">
+        <legend class="form-label">{{ site.data.i18n.contact_form.intent_label[page_lang] }} <span class="required-mark">{{ site.data.i18n.contact_form.required_mark[page_lang] }}</span></legend>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="intent" value="defined_process" checked>
+            <span>{{ site.data.i18n.contact_form.intent_defined_process[page_lang] }}</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="intent" value="explore">
+            <span>{{ site.data.i18n.contact_form.intent_explore[page_lang] }}</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="intent" value="other">
+            <span>{{ site.data.i18n.contact_form.intent_other[page_lang] }}</span>
+          </label>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Free Text Message Field (Optional, Spec §4.3) -->
+    <div class="form-group">
+      <label for="contact-message" class="form-label">{{ site.data.i18n.contact_form.message[page_lang] }}</label>
+      <textarea name="message" id="contact-message" class="form-control" rows="4" maxlength="1500"></textarea>
+      <span class="form-hint">{{ site.data.i18n.contact_form.message_hint[page_lang] }}</span>
+    </div>
+
+    <!-- Role Field (Optional) -->
+    <div class="form-group">
+      <label for="contact-role" class="form-label">{{ site.data.i18n.contact_form.role[page_lang] }}</label>
+      <input type="text" name="role" id="contact-role" class="form-control" autocomplete="organization-title">
+    </div>
+
+    <!-- Phone Field (Optional) -->
+    <div class="form-group">
+      <label for="contact-phone" class="form-label">{{ site.data.i18n.contact_form.phone[page_lang] }}</label>
+      <input type="tel" name="phone" id="contact-phone" class="form-control" dir="ltr" autocomplete="tel">
+      <span class="form-hint">{{ site.data.i18n.contact_form.phone_hint[page_lang] }}</span>
+    </div>
+
+    <!-- Submit & Privacy Note -->
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" id="submit-btn">{{ site.data.i18n.contact_form.submit[page_lang] }}</button>
+      <p class="form-hint{% if site.lead_endpoint and site.lead_endpoint != '' %} is-hidden{% endif %}" id="mailto-mode-note">
+        {{ site.data.i18n.contact_form.mailto_explanation[page_lang] }}
+      </p>
+      <p class="form-hint form-privacy-note">
+        {{ site.data.i18n.contact_form.privacy_note[page_lang] }}{% if page_lang == 'en' %} {% endif %}<a href="{% if page_lang == 'en' %}{{ '/en/privacy/' | relative_url }}{% else %}{{ '/privacy/' | relative_url }}{% endif %}">{{ site.data.i18n.contact_form.privacy_link[page_lang] }}</a>.
+      </p>
+    </div>
+  </form>
+
+  <!-- Noscript Fallback (Spec §4.4) -->
+  <noscript>
+    <div class="status-panel status-panel-error noscript-panel">
+      <p class="mb-3">{{ site.data.i18n.contact_form.noscript_warning[page_lang] }}</p>
+      <a href="mailto:{{ site.lead_fallback_email | default: site.contact_email | default: 'contact@poworg.com' }}" class="btn btn-primary" dir="ltr">{{ site.lead_fallback_email | default: site.contact_email | default: 'contact@poworg.com' }}</a>
+    </div>
+  </noscript>
+</div>

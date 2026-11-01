@@ -1,0 +1,27 @@
+---
+layout: base
+---
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+{% for d in site.data.domains %}
+  {% if d.slug == page.domain %}
+    {% assign domain = d %}
+  {% endif %}
+{% endfor %}
+
+<section class="section section-hero" data-domain-slug="{{ page.domain }}">
+  <div class="container">
+    {% include breadcrumb.html %}
+
+    <div class="domain-hero-wrap">
+      <div class="content-measure-75">
+        <h1>{{ domain[page_lang].title }}</h1>
+        <p class="text-lead">{{ domain[page_lang].framing }}</p>
+      </div>
+      <div class="domain-icon domain-hero-icon">
+        {% include domain-icon.html icon=domain.icon %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ content }}

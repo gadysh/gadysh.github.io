@@ -1,0 +1,44 @@
+[
+  {
+    "page": "accessibility_en",
+    "path": "/en/accessibility/",
+    "engineVersion": "4.14.0",
+    "violationsCount": 0,
+    "incompleteCount": 0,
+    "impactCounts": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "seriousCritical": 0,
+    "hasHeadingOrder": false,
+    "requestedOrigins": [
+      "http://127.0.0.1:4075",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ],
+    "pass": true
+  },
+  {
+    "page": "accessibility_he",
+    "path": "/accessibility/",
+    "engineVersion": "4.14.0",
+    "violationsCount": 1,
+    "incompleteCount": 0,
+    "impactCounts": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 1,
+      "critical": 0
+    },
+    "seriousCritical": 1,
+    "hasHeadingOrder": false,
+    "requestedOrigins": [
+      "http://127.0.0.1:4075",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ],
+    "pass": false
+  }
+]

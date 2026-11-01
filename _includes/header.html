@@ -1,0 +1,115 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{% if page_lang == 'en' %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" class="brand">
+      <img src="{{ '/assets/logo-symbol.png' | relative_url }}" alt="PowOrg logo" width="38" height="38">
+      <span>{{ site.data.i18n.nav.brand_name[page_lang] }}</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="nav-desktop" aria-label="{% if page_lang == 'he' %}ניווט ראשי{% else %}Main navigation{% endif %}">
+      <div class="nav-item">
+        <button type="button" class="nav-link" id="solutions-menu-btn" aria-expanded="false" aria-controls="solutions-menu">
+          <span>{{ site.data.i18n.nav.solutions[page_lang] }}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+
+        <div class="solutions-menu" id="solutions-menu">
+          <div class="solutions-grid">
+            {% for domain in site.data.domains %}
+              {% if domain.published == true %}
+                <div class="solutions-domain-group">
+                  <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=domain:{{ domain.slug }}{% else %}{{ '/solutions/' | append: domain.slug | append: '/' | relative_url }}{% endif %}" class="domain-group-title">
+                    <span>{{ domain[page_lang].title }}</span>
+                  </a>
+                  <ul class="domain-scenarios-links">
+                    {% for s_slug in domain.scenarios %}
+                      {% for scenario in site.data.scenarios %}
+                        {% if scenario.slug == s_slug and scenario.published == true %}
+                          {% assign s_short = scenario[page_lang].short %}
+                          <li>
+                            <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ scenario.slug }}{% else %}{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}{% endif %}">{% if s_short == nil or s_short == "" or s_short contains "TODO-COPY" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="solutions-menu-footer">
+            <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=menu:all_solutions{% else %}{{ '/solutions/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.all_solutions[page_lang] }} ›</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a href="{% if page_lang == 'en' %}{{ '/en/how-we-work/' | relative_url }}{% else %}{{ '/how-we-work/' | relative_url }}{% endif %}" class="nav-link">{{ site.data.i18n.nav.how_we_work[page_lang] }}</a>
+      </div>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="nav-actions">
+      {% include lang-switch.html %}
+      <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary" id="desktop-cta" data-track-location="header">{{ site.data.i18n.nav.contact[page_lang] }}</a>
+
+      <!-- Mobile Controls -->
+      <div class="mobile-controls">
+        <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary btn-compact" data-track-location="header">{{ site.data.i18n.nav.contact_compact[page_lang] }}</a>
+        <button type="button" class="btn-menu-toggle" id="drawer-toggle-btn" aria-label="{{ site.data.i18n.nav.menu_open[page_lang] }}" aria-expanded="false" aria-controls="mobile-drawer">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Drawer -->
+<div class="mobile-drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+<aside class="mobile-drawer" id="mobile-drawer" aria-label="{% if page_lang == 'he' %}תפריט ניווט במובייל{% else %}Mobile menu{% endif %}">
+  <div class="drawer-header">
+    <a href="{% if page_lang == 'en' %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" class="brand">
+      <img src="{{ '/assets/logo-symbol.png' | relative_url }}" alt="PowOrg logo" width="32" height="32">
+      <span>{{ site.data.i18n.nav.brand_name[page_lang] }}</span>
+    </a>
+    <button type="button" class="btn-close-drawer" id="drawer-close-btn" aria-label="{{ site.data.i18n.nav.menu_close[page_lang] }}">✕</button>
+  </div>
+
+  <nav class="drawer-nav">
+    {% for domain in site.data.domains %}
+      {% if domain.published == true %}
+        <div>
+          <div class="drawer-group-title">{{ domain[page_lang].title }}</div>
+          <ul class="drawer-links">
+            <li><a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=domain:{{ domain.slug }}{% else %}{{ '/solutions/' | append: domain.slug | append: '/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.domain_page[page_lang] }}</a></li>
+            {% for s_slug in domain.scenarios %}
+              {% for scenario in site.data.scenarios %}
+                {% if scenario.slug == s_slug and scenario.published == true %}
+                  {% assign s_short = scenario[page_lang].short %}
+                  <li><a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ scenario.slug }}{% else %}{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}{% endif %}">{% if s_short == nil or s_short == "" or s_short contains "TODO-COPY" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a></li>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+    <div class="drawer-section-divider">
+      <ul class="drawer-links drawer-links-direct">
+        <li><a href="{% if page_lang == 'en' %}{{ '/en/how-we-work/' | relative_url }}{% else %}{{ '/how-we-work/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.how_we_work_full[page_lang] }}</a></li>
+        {% if page_lang == 'he' %}
+          <li><a href="{{ '/en/' | relative_url }}" hreflang="en" lang="en">English Site</a></li>
+        {% else %}
+          <li><a href="{{ '/' | relative_url }}" hreflang="he" lang="he">אתר בעברית</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="drawer-footer">
+    <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary w-full" data-track-location="header">{{ site.data.i18n.nav.contact[page_lang] }}</a>
+  </div>
+</aside>

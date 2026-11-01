@@ -1,0 +1,407 @@
+{
+ "chrome": "Chrome/155.0.8059.82",
+ "base": "http://127.0.0.1:4041",
+ "limit": 614400,
+ "runs": [
+  {
+   "path": "/",
+   "mobile": false,
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+   "total": 182388,
+   "totalKB": 178.11,
+   "underLimit": true,
+   "favAdded": false,
+   "logo": [
+    {
+     "type": "Image",
+     "status": 200,
+     "bytes": 27170,
+     "url": "http://127.0.0.1:4041/assets/logo-symbol.png"
+    }
+   ],
+   "favicon": [
+    {
+     "type": "Other",
+     "status": 200,
+     "bytes": 6533,
+     "url": "http://127.0.0.1:4041/assets/icons/favicon.png"
+    }
+   ],
+   "fonts": [
+    {
+     "bytes": 2386,
+     "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+    },
+    {
+     "bytes": 12063,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2"
+    },
+    {
+     "bytes": 14219,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2"
+    },
+    {
+     "bytes": 30145,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2"
+    }
+   ],
+   "items": [
+    {
+     "type": "Stylesheet",
+     "status": 200,
+     "bytes": 40156,
+     "url": "http://127.0.0.1:4041/assets/css/site.css"
+    },
+    {
+     "type": "Document",
+     "status": 200,
+     "bytes": 33879,
+     "url": "http://127.0.0.1:4041/"
+    },
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 30145,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2"
+    },
+    {
+     "type": "Image",
+     "status": 200,
+     "bytes": 27170,
+     "url": "http://127.0.0.1:4041/assets/logo-symbol.png"
+    },
+    {
+     "type": "Script",
+     "status": 200,
+     "bytes": 15837,
+     "url": "http://127.0.0.1:4041/assets/js/site.js"
+    },
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 14219,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2"
+    },
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 12063,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2"
+    },
+    {
+     "type": "Other",
+     "status": 200,
+     "bytes": 6533,
+     "url": "http://127.0.0.1:4041/assets/icons/favicon.png"
+    },
+    {
+     "type": "Stylesheet",
+     "status": 200,
+     "bytes": 2386,
+     "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+    }
+   ],
+   "blocked": []
+  },
+  {
+   "path": "/",
+   "mobile": true,
+   "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36",
+   "total": 182343,
+   "totalKB": 178.07,
+   "underLimit": true,
+   "favAdded": false,
+   "logo": [
+    {
+     "type": "Image",
+     "status": 200,
+     "bytes": 27170,
+     "url": "http://127.0.0.1:4041/assets/logo-symbol.png"
+    }
+   ],
+   "favicon": [
+    {
+     "type": "Other",
+     "status": 200,
+     "bytes": 6533,
+     "url": "http://127.0.0.1:4041/assets/icons/favicon.png"
+    }
+   ],
+   "fonts": [
+    {
+     "bytes": 2293,
+     "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+    },
+    {
+     "bytes": 12027,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFhsqMA6aw.woff2"
+    },
+    {
+     "bytes": 14271,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFhsqMA6aw.woff2"
+    },
+    {
+     "bytes": 30177,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbFhsqMA.woff2"
+    }
+   ],
+   "items": [
+    {
+     "type": "Stylesheet",
+     "status": 200,
+     "bytes": 40156,
+     "url": "http://127.0.0.1:4041/assets/css/site.css"
+    },
+    {
+     "type": "Document",
+     "status": 200,
+     "bytes": 33879,
+     "url": "http://127.0.0.1:4041/"
+    },
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 30177,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbFhsqMA.woff2"
+    },
+    {
+     "type": "Image",
+     "status": 200,
+     "bytes": 27170,
+     "url": "http://127.0.0.1:4041/assets/logo-symbol.png"
+    },
+    {
+     "type": "Script",
+     "status": 200,
+     "bytes": 15837,
+     "url": "http://127.0.0.1:4041/assets/js/site.js"
+    },
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 14271,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFhsqMA6aw.woff2"
+    },
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 12027,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFhsqMA6aw.woff2"
+    },
+    {
+     "type": "Other",
+     "status": 200,
+     "bytes": 6533,
+     "url": "http://127.0.0.1:4041/assets/icons/favicon.png"
+    },
+    {
+     "type": "Stylesheet",
+     "status": 200,
+     "bytes": 2293,
+     "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+    }
+   ],
+   "blocked": []
+  },
+  {
+   "path": "/en/",
+   "mobile": false,
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+   "total": 195819,
+   "totalKB": 191.23,
+   "underLimit": true,
+   "favAdded": false,
+   "logo": [
+    {
+     "type": "Image",
+     "status": 200,
+     "bytes": 27170,
+     "url": "http://127.0.0.1:4041/assets/logo-symbol.png"
+    }
+   ],
+   "favicon": [
+    {
+     "type": "Other",
+     "status": 200,
+     "bytes": 6533,
+     "url": "http://127.0.0.1:4041/assets/icons/favicon.png"
+    }
+   ],
+   "fonts": [
+    {
+     "bytes": 2273,
+     "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+    },
+    {
+     "bytes": 12063,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2"
+    },
+    {
+     "bytes": 14219,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2"
+    },
+    {
+     "bytes": 48288,
+     "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
+    }
+   ],
+   "items": [
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 48288,
+     "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
+    },
+    {
+     "type": "Stylesheet",
+     "status": 200,
+     "bytes": 40156,
+     "url": "http://127.0.0.1:4041/assets/css/site.css"
+    },
+    {
+     "type": "Document",
+     "status": 200,
+     "bytes": 29280,
+     "url": "http://127.0.0.1:4041/en/"
+    },
+    {
+     "type": "Image",
+     "status": 200,
+     "bytes": 27170,
+     "url": "http://127.0.0.1:4041/assets/logo-symbol.png"
+    },
+    {
+     "type": "Script",
+     "status": 200,
+     "bytes": 15837,
+     "url": "http://127.0.0.1:4041/assets/js/site.js"
+    },
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 14219,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2"
+    },
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 12063,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2"
+    },
+    {
+     "type": "Other",
+     "status": 200,
+     "bytes": 6533,
+     "url": "http://127.0.0.1:4041/assets/icons/favicon.png"
+    },
+    {
+     "type": "Stylesheet",
+     "status": 200,
+     "bytes": 2273,
+     "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+    }
+   ],
+   "blocked": []
+  },
+  {
+   "path": "/en/",
+   "mobile": true,
+   "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36",
+   "total": 196031,
+   "totalKB": 191.44,
+   "underLimit": true,
+   "favAdded": false,
+   "logo": [
+    {
+     "type": "Image",
+     "status": 200,
+     "bytes": 27170,
+     "url": "http://127.0.0.1:4041/assets/logo-symbol.png"
+    }
+   ],
+   "favicon": [
+    {
+     "type": "Other",
+     "status": 200,
+     "bytes": 6533,
+     "url": "http://127.0.0.1:4041/assets/icons/favicon.png"
+    }
+   ],
+   "fonts": [
+    {
+     "bytes": 2293,
+     "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+    },
+    {
+     "bytes": 14271,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFhsqMA6aw.woff2"
+    },
+    {
+     "bytes": 12027,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFhsqMA6aw.woff2"
+    },
+    {
+     "bytes": 48464,
+     "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
+    }
+   ],
+   "items": [
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 48464,
+     "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
+    },
+    {
+     "type": "Stylesheet",
+     "status": 200,
+     "bytes": 40156,
+     "url": "http://127.0.0.1:4041/assets/css/site.css"
+    },
+    {
+     "type": "Document",
+     "status": 200,
+     "bytes": 29280,
+     "url": "http://127.0.0.1:4041/en/"
+    },
+    {
+     "type": "Image",
+     "status": 200,
+     "bytes": 27170,
+     "url": "http://127.0.0.1:4041/assets/logo-symbol.png"
+    },
+    {
+     "type": "Script",
+     "status": 200,
+     "bytes": 15837,
+     "url": "http://127.0.0.1:4041/assets/js/site.js"
+    },
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 14271,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFhsqMA6aw.woff2"
+    },
+    {
+     "type": "Font",
+     "status": 200,
+     "bytes": 12027,
+     "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFhsqMA6aw.woff2"
+    },
+    {
+     "type": "Other",
+     "status": 200,
+     "bytes": 6533,
+     "url": "http://127.0.0.1:4041/assets/icons/favicon.png"
+    },
+    {
+     "type": "Stylesheet",
+     "status": 200,
+     "bytes": 2293,
+     "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+    }
+   ],
+   "blocked": []
+  }
+ ]
+}

@@ -1,0 +1,326 @@
+{
+  "timestamp": "2026-10-30T15:05:58.435Z",
+  "site_js_size_bytes": 15331,
+  "events_captured": {
+    "scenario_view": [
+      {
+        "page": "/scenarios/recording-to-outputs/",
+        "lang": "he",
+        "slug": "recording-to-outputs"
+      },
+      {
+        "page": "/scenarios/recording-to-outputs/",
+        "lang": "he",
+        "slug": "recording-to-outputs"
+      }
+    ],
+    "domain_view": [
+      {
+        "page": "/solutions/customers/",
+        "lang": "he",
+        "slug": "customers"
+      }
+    ],
+    "contact_view": [
+      {
+        "page": "/contact/",
+        "lang": "he",
+        "from": "scenario:recording-to-outputs"
+      },
+      {
+        "page": "/contact/",
+        "lang": "he",
+        "from": ""
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he",
+        "from": ""
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he",
+        "from": ""
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he",
+        "from": ""
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he",
+        "from": ""
+      },
+      {
+        "page": "/contact/",
+        "lang": "he",
+        "from": ""
+      }
+    ],
+    "form_start": [
+      {
+        "page": "/contact/",
+        "lang": "he"
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he"
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he"
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he"
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he"
+      }
+    ],
+    "cta_click": [
+      {
+        "page": "/",
+        "lang": "he",
+        "location": "hero",
+        "target": "/contact/"
+      },
+      {
+        "page": "/",
+        "lang": "he",
+        "location": "header",
+        "target": "/contact/"
+      },
+      {
+        "page": "/",
+        "lang": "he",
+        "location": "cta-band",
+        "target": "/contact/"
+      },
+      {
+        "page": "/scenarios/recording-to-outputs/",
+        "lang": "he",
+        "location": "scenario-hero",
+        "target": "/contact/?from=scenario:recording-to-outputs"
+      }
+    ],
+    "entry_choice": [
+      {
+        "page": "/",
+        "lang": "he",
+        "intent": "defined_process"
+      },
+      {
+        "page": "/",
+        "lang": "he",
+        "intent": "explore"
+      }
+    ],
+    "lang_switch": [
+      {
+        "page": "/",
+        "lang": "he"
+      }
+    ],
+    "form_submit": [
+      {
+        "page": "/stub-contact/",
+        "lang": "he"
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he"
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he"
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he"
+      }
+    ],
+    "lead_submit_success": [
+      {
+        "page": "/stub-contact/",
+        "lang": "he"
+      }
+    ],
+    "lead_submit_error": [
+      {
+        "page": "/stub-contact/",
+        "lang": "he",
+        "error_type": "http_500"
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he",
+        "error_type": "network"
+      },
+      {
+        "page": "/stub-contact/",
+        "lang": "he",
+        "error_type": "rejected"
+      }
+    ],
+    "email_fallback_click": [
+      {
+        "page": "/stub-contact/",
+        "lang": "he"
+      },
+      {
+        "page": "/contact/",
+        "lang": "he"
+      }
+    ]
+  },
+  "all_debug_lines": [
+    "[track] scenario_view {\"page\":\"/scenarios/recording-to-outputs/\",\"lang\":\"he\",\"slug\":\"recording-to-outputs\"}",
+    "[track] domain_view {\"page\":\"/solutions/customers/\",\"lang\":\"he\",\"slug\":\"customers\"}",
+    "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"scenario:recording-to-outputs\"}",
+    "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"\"}",
+    "[track] form_start {\"page\":\"/contact/\",\"lang\":\"he\"}",
+    "[track] cta_click {\"page\":\"/\",\"lang\":\"he\",\"location\":\"hero\",\"target\":\"/contact/\"}",
+    "[track] cta_click {\"page\":\"/\",\"lang\":\"he\",\"location\":\"header\",\"target\":\"/contact/\"}",
+    "[track] cta_click {\"page\":\"/\",\"lang\":\"he\",\"location\":\"cta-band\",\"target\":\"/contact/\"}",
+    "[track] entry_choice {\"page\":\"/\",\"lang\":\"he\",\"intent\":\"defined_process\"}",
+    "[track] entry_choice {\"page\":\"/\",\"lang\":\"he\",\"intent\":\"explore\"}",
+    "[track] lang_switch {\"page\":\"/\",\"lang\":\"he\"}",
+    "[track] scenario_view {\"page\":\"/scenarios/recording-to-outputs/\",\"lang\":\"he\",\"slug\":\"recording-to-outputs\"}",
+    "[track] cta_click {\"page\":\"/scenarios/recording-to-outputs/\",\"lang\":\"he\",\"location\":\"scenario-hero\",\"target\":\"/contact/?from=scenario:recording-to-outputs\"}",
+    "[track] contact_view {\"page\":\"/stub-contact/\",\"lang\":\"he\",\"from\":\"\"}",
+    "[track] form_start {\"page\":\"/stub-contact/\",\"lang\":\"he\"}",
+    "[track] form_submit {\"page\":\"/stub-contact/\",\"lang\":\"he\"}",
+    "[track] lead_submit_success {\"page\":\"/stub-contact/\",\"lang\":\"he\"}",
+    "[track] contact_view {\"page\":\"/stub-contact/\",\"lang\":\"he\",\"from\":\"\"}",
+    "[track] form_start {\"page\":\"/stub-contact/\",\"lang\":\"he\"}",
+    "[track] form_submit {\"page\":\"/stub-contact/\",\"lang\":\"he\"}",
+    "[track] lead_submit_error {\"page\":\"/stub-contact/\",\"lang\":\"he\",\"error_type\":\"http_500\"}",
+    "[track] email_fallback_click {\"page\":\"/stub-contact/\",\"lang\":\"he\"}",
+    "[track] contact_view {\"page\":\"/stub-contact/\",\"lang\":\"he\",\"from\":\"\"}",
+    "[track] form_start {\"page\":\"/stub-contact/\",\"lang\":\"he\"}",
+    "[track] form_submit {\"page\":\"/stub-contact/\",\"lang\":\"he\"}",
+    "[track] lead_submit_error {\"page\":\"/stub-contact/\",\"lang\":\"he\",\"error_type\":\"network\"}",
+    "[track] contact_view {\"page\":\"/stub-contact/\",\"lang\":\"he\",\"from\":\"\"}",
+    "[track] form_start {\"page\":\"/stub-contact/\",\"lang\":\"he\"}",
+    "[track] form_submit {\"page\":\"/stub-contact/\",\"lang\":\"he\"}",
+    "[track] lead_submit_error {\"page\":\"/stub-contact/\",\"lang\":\"he\",\"error_type\":\"rejected\"}",
+    "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"\"}",
+    "[track] email_fallback_click {\"page\":\"/contact/\",\"lang\":\"he\"}"
+  ],
+  "pii_violations": [],
+  "network_requests_empty_token": [
+    {
+      "url": "http://127.0.0.1:4002/",
+      "method": "GET",
+      "resourceType": "document"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "method": "GET",
+      "resourceType": "stylesheet"
+    },
+    {
+      "url": "http://127.0.0.1:4002/assets/css/site.css",
+      "method": "GET",
+      "resourceType": "stylesheet"
+    },
+    {
+      "url": "http://127.0.0.1:4002/assets/logo-symbol.png",
+      "method": "GET",
+      "resourceType": "image"
+    },
+    {
+      "url": "http://127.0.0.1:4002/assets/js/site.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "method": "GET",
+      "resourceType": "font"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "method": "GET",
+      "resourceType": "font"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "method": "GET",
+      "resourceType": "font"
+    },
+    {
+      "url": "http://127.0.0.1:4002/contact/",
+      "method": "GET",
+      "resourceType": "document"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "method": "GET",
+      "resourceType": "stylesheet"
+    },
+    {
+      "url": "http://127.0.0.1:4002/assets/css/site.css",
+      "method": "GET",
+      "resourceType": "stylesheet"
+    },
+    {
+      "url": "http://127.0.0.1:4002/assets/logo-symbol.png",
+      "method": "GET",
+      "resourceType": "image"
+    },
+    {
+      "url": "http://127.0.0.1:4002/assets/js/site.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "method": "GET",
+      "resourceType": "font"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "method": "GET",
+      "resourceType": "font"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "method": "GET",
+      "resourceType": "font"
+    }
+  ],
+  "dummy_token_test": {
+    "beacon_tag_on_home": {
+      "src": "https://static.cloudflareinsights.com/beacon.min.js",
+      "defer": true,
+      "cfBeacon": "{\"token\": \"dummy_cf_token_12345\"}"
+    },
+    "intercepted_request": {
+      "url": "https://static.cloudflareinsights.com/beacon.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "http://127.0.0.1:4002/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Google Chrome\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "accept": "*/*"
+      },
+      "intercepted": true,
+      "aborted": true
+    },
+    "beacon_excluded_on_styleguide": true,
+    "beacon_excluded_on_404": true,
+    "passed": true
+  },
+  "summary": {
+    "total_events_required": 11,
+    "events_tested": 11,
+    "passed": true,
+    "missing_events": []
+  }
+}

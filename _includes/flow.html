@@ -1,0 +1,21 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<div class="flow-container">
+  <ol class="flow-steps">
+    {% for step in include.steps %}
+      <li class="flow-card"{% if step.human %} data-human="true"{% endif %}>
+        <div class="flow-card-header">
+          <span class="flow-card-num">{{ forloop.index }}</span>
+          {% if step.human %}
+            <span class="flow-human-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>{{ site.data.i18n.labels.human_gate[page_lang] }}</span>
+            </span>
+          {% endif %}
+        </div>
+        <div class="flow-card-text">
+          {{ step.text }}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</div>

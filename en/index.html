@@ -1,0 +1,230 @@
+---
+layout: base
+lang: en
+title: "PowOrg | AI solutions for organizational work, development and delivery"
+description: "PowOrg identifies where AI can take part in your work, develops the solution and puts it to work in your systems and in your teams' daily work."
+translations:
+  he: "/"
+---
+
+<!-- 1. Hero (Spec §3.2, §6.3) -->
+<section class="hero" id="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <h1>AI solutions that work inside your organization's processes and systems</h1>
+      <p class="text-lead">
+        PowOrg identifies where AI can take part in your work, develops the solution and puts it to work in your systems and in your teams' daily work. You can start from a process you have already defined, or explore with us where it makes sense to begin.
+      </p>
+      <div class="hero-actions">
+        <a href="{{ '/en/contact/' | relative_url }}" class="btn btn-primary" data-track-location="hero">Get in touch</a>
+        <a href="#solutions" class="btn btn-secondary">Solution areas</a>
+      </div>
+    </div>
+
+    <!-- Abstract Flow Diagram (LTR) -->
+    <div class="hero-flow-diagram" aria-hidden="true">
+      <div class="flow-abstract-steps">
+        <div class="flow-step-item">
+          <span class="flow-step-num">1</span>
+          <span>Request, document or recording</span>
+        </div>
+        <div class="flow-step-item">
+          <span class="flow-step-num">2</span>
+          <span>Understanding and data</span>
+        </div>
+        <div class="flow-step-item">
+          <span class="flow-step-num">3</span>
+          <span>Checks against your systems</span>
+        </div>
+        <div class="flow-step-item" data-human="true">
+          <span class="flow-step-num">4</span>
+          <span>A person reviews</span>
+          <span class="flow-step-tag">Human</span>
+        </div>
+        <div class="flow-step-item">
+          <span class="flow-step-num">5</span>
+          <span>Action and record</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Two Ways to Start (Spec §3.2, §6.3) -->
+<section class="section section-alt" id="entry-paths">
+  <div class="container">
+    <div class="section-header">
+      <h2>Two ways to start</h2>
+    </div>
+
+    <div class="entry-grid">
+      <div class="entry-card">
+        <h3>Have a specific process in mind?</h3>
+        <p>Tell us what happens in it today, and we will look at how AI can carry it out, assist with it or shorten it.</p>
+        <a href="{{ '/en/contact/' | relative_url }}?intent=defined_process" class="btn btn-secondary" data-track-intent="defined_process">Talk about a defined process ›</a>
+      </div>
+
+      <div class="entry-card">
+        <h3>Want to understand where AI fits in your organization?</h3>
+        <p>You don't need to arrive with a defined problem. Together we will map the work in your organization and identify where to start.</p>
+        <a href="{{ '/en/contact/' | relative_url }}?intent=explore" class="btn btn-secondary" data-track-intent="explore">Map it together ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Areas and Scenarios List (Spec §6.3) -->
+<section class="section" id="solutions">
+  <div class="container">
+    <div class="section-header">
+      <h2>Where AI can work in your organization</h2>
+    </div>
+
+    <div class="domains-grid">
+      {% for domain in site.data.domains %}
+        {% if domain.published == true %}
+          <div class="domain-card">
+            <h3>{{ domain.en.title }}</h3>
+            <p class="domain-framing">{{ domain.en.framing }}</p>
+            <ul class="domain-scenarios-list">
+              {% for s_slug in domain.scenarios %}
+                {% for scenario in site.data.scenarios %}
+                  {% if scenario.slug == s_slug and scenario.published == true %}
+                    <li><a href="{{ '/en/contact/' | relative_url }}?from=scenario:{{ scenario.slug }}">{{ scenario.en.title }}</a></li>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="section-footer-note">
+      <p class="text-muted mx-auto">The areas and scenarios are examples. We also build solutions that are not listed here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. What Sets Us Apart (Spec §3.2, §6.3) -->
+<section class="section section-alt" id="difference">
+  <div class="container">
+    <div class="section-header">
+      <h2>What sets us apart</h2>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <h3>Understanding AI</h3>
+        <p>What models can do today, where they make mistakes, and how to build controls around them.</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>Knowing how organizations work</h3>
+        <p>Processes, permissions, exceptions, and what happens when the system doesn't know.</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>Development and delivery</h3>
+        <p>Connecting to existing systems, testing with users, and improving after go-live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. How We Work (Spec §3.2, §6.3) -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-header">
+      <h2>How we work</h2>
+    </div>
+
+    <div class="work-steps-row">
+      <div class="work-step-col">
+        <span class="step-num-badge">1</span>
+        <h3>Introduction</h3>
+      </div>
+      <div class="work-step-col">
+        <span class="step-num-badge">2</span>
+        <h3>Finding opportunities and setting scope</h3>
+      </div>
+      <div class="work-step-col">
+        <span class="step-num-badge">3</span>
+        <h3>Development and system integration</h3>
+      </div>
+      <div class="work-step-col">
+        <span class="step-num-badge">4</span>
+        <h3>Rollout with users</h3>
+      </div>
+      <div class="work-step-col">
+        <span class="step-num-badge">5</span>
+        <h3>Measurement, improvement and expansion</h3>
+      </div>
+    </div>
+
+    <p class="text-muted m-0">The path and scope are set together, based on your organization.</p>
+  </div>
+</section>
+
+<!-- 6. Technology (Spec §3.2, §6.3) -->
+<section class="section section-alt" id="technology">
+  <div class="container text-center">
+    <div class="section-header">
+      <h2>Technology that fits your organization</h2>
+    </div>
+    <p class="text-lead mx-auto">
+      We can build the solution on our infrastructure, or in a cloud your organization already uses, such as Google Cloud, Microsoft Azure or AWS. The choice depends on your systems, requirements and budget.
+    </p>
+  </div>
+</section>
+
+<!-- 7. Who It Fits (Spec §3.2, §6.3) -->
+<section class="section section-sand" id="fit">
+  <div class="container">
+    <div class="section-header">
+      <h2>Who it fits</h2>
+      <p>Especially organizations that</p>
+    </div>
+
+    <div class="fit-grid">
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>have significant repetitive human work</div>
+      </div>
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>have someone leading the effort from inside</div>
+      </div>
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>have an IT owner or systems vendor available</div>
+      </div>
+      <div class="fit-item">
+        <span class="fit-icon" aria-hidden="true">✓</span>
+        <div>are ready to make information accessible and invest in the effort</div>
+      </div>
+    </div>
+
+    <p class="text-muted m-0 founder-meta">
+      Company size matters less. You can also come without a defined problem.
+    </p>
+  </div>
+</section>
+
+<!-- 8. Who Is Behind PowOrg (Spec §3.2, §6.3, Plain Text, NO photo) -->
+<section class="section" id="founder">
+  <div class="container">
+    <div class="section-header">
+      <h2>Who is behind PowOrg</h2>
+    </div>
+    <div class="founder-card founder-card-alt">
+      <h3 class="mb-2">PowOrg</h3>
+      <p class="text-muted m-0">
+        AI solutions for organizational work, development and delivery. Behind the company are more than 15 years of building enterprise systems and leading development teams.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CTA Band (Spec §3.2, §6.3) -->
+{% include cta-band.html title="Want to see what's possible in your organization?" %}

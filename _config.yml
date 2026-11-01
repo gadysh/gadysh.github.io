@@ -1,0 +1,29 @@
+# PowOrg Website v2 Configuration
+# Spec: claude_website_spec_v2.md (§6.2)
+
+url: "https://poworg.com"
+baseurl: ""
+lang: "he"
+title: "PowOrg"
+description: "פתרונות AI לעבודה בארגון, פיתוח והטמעה"
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+# Google Apps Script lead receiver (_dev/apps_script). Empty means the form falls back to a mail draft
+lead_endpoint: "https://script.google.com/macros/s/AKfycbwvYhcHrL5NGCV4ueTbWUk_MnXvSXEWCwAlHWuK827FGKzE_TqLY4i-hlggSQRXOizcsA/exec"
+# Public addresses. Leads, privacy requests and the form fallback go to contact; accessibility to support
+contact_email: "contact@poworg.com"
+support_email: "support@poworg.com"
+lead_fallback_email: "contact@poworg.com"
+cloudflare_analytics_token: ""
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - ORIGIN.md
+  - _dev
+  - vendor
+  - .bundle

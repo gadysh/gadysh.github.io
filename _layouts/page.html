@@ -1,0 +1,9 @@
+---
+layout: base
+---
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<div class="container section">
+  <article class="page-content">
+    {{ content }}
+  </article>
+</div>

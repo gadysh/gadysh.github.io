@@ -1,0 +1,58 @@
+---
+layout: base
+lang: he
+title: "פנייה | PowOrg"
+description: "בואו נדבר על העבודה בארגון שלכם. אפשר להגיע עם תהליך שכבר בראש, או רק עם רצון לבדוק איפה AI יכול לעזור."
+translations:
+  en: "/en/contact/"
+---
+
+<section class="section section-hero">
+  <div class="container">
+    {% include breadcrumb.html %}
+
+    <div class="hero-content-measure">
+      <h1>בואו נדבר על העבודה בארגון שלכם</h1>
+      <p class="text-lead">
+        אפשר להגיע עם תהליך שכבר בראש, או רק עם רצון לבדוק איפה <bdi>AI</bdi> יכול לעזור.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-contact" id="contact-main">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- 7/12: The Form -->
+      <div class="contact-col-form">
+        {% include contact-form.html %}
+      </div>
+
+      <!-- 5/12: What Happens Next & Direct Mail -->
+      <div class="contact-col-info">
+        <div class="info-card">
+          <h2 class="mb-4">מה יקרה אחר כך</h2>
+          <ol class="info-steps-list">
+            <li>
+              <strong>נקרא את הפנייה.</strong>
+            </li>
+            <li>
+              <strong>נחזור אליכם.</strong> אם נראה שיש על מה לדבר, נציע שיחת היכרות ומועדים.
+            </li>
+            <li>
+              <strong>בשיחה נבין את העבודה אצלכם</strong> ונבחן יחד כיוונים.
+            </li>
+          </ol>
+        </div>
+
+        <div class="info-card info-card-sand mt-6">
+          <h3 class="mb-2">מעדיפים מייל?</h3>
+          <p class="info-card-text mb-2">
+            אפשר לפנות ישירות לכתובת:
+          </p>
+          <a href="mailto:{{ site.lead_fallback_email | default: 'contact@poworg.com' }}" class="direct-mail-link" dir="ltr">{{ site.lead_fallback_email | default: 'contact@poworg.com' }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

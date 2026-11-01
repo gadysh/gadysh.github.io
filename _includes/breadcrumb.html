@@ -1,0 +1,23 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<nav class="breadcrumb" aria-label="{% if page_lang == 'he' %}פירורי לחם{% else %}Breadcrumbs{% endif %}">
+  <ol class="breadcrumb-list">
+    <li><a href="{% if page_lang == 'en' %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}">{{ site.data.i18n.breadcrumbs.home[page_lang] }}</a></li>
+    {% if page.domain %}
+      {% for domain in site.data.domains %}
+        {% if domain.slug == page.domain %}
+          {% if page.layout == "scenario" %}
+            <li><a href="{{ '/solutions/' | append: domain.slug | append: '/' | relative_url }}">{{ domain[page_lang].title }}</a></li>
+          {% else %}
+            <li><a href="{{ '/solutions/' | relative_url }}">{{ site.data.i18n.breadcrumbs.solutions[page_lang] }}</a></li>
+            <li aria-current="page">{{ domain[page_lang].title }}</li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% elsif page.is_solutions_index %}
+      <li aria-current="page">{{ site.data.i18n.breadcrumbs.solutions[page_lang] }}</li>
+    {% endif %}
+    {% if page.layout == "scenario" %}
+      <li aria-current="page">{{ page.title }}</li>
+    {% endif %}
+  </ol>
+</nav>

@@ -1,0 +1,406 @@
+---
+layout: base
+lang: he
+title: "מדריך רכיבים ומערכת עיצוב | PowOrg Styleguide"
+description: "ספריית הרכיבים, אסימוני העיצוב ומצבי הממשק של PowOrg Website v2 בעברית ובאנגלית."
+sitemap: false
+noindex: true
+---
+
+<section class="section section-hero">
+  <div class="container">
+    <h1>מערכת עיצוב וספריית רכיבים (Styleguide)</h1>
+    <p class="text-lead content-measure-75">
+      עמוד בדיקה ואימות מרכז לכל אסימוני העיצוב (§5.2), הרכיבים (§5.3) וההתנהגויות ב־RTL וב־LTR.
+      העמוד אינו מקושר מאף עמוד באתר, ומוחרג מאינדוקס ומ־sitemap.
+    </p>
+  </div>
+</section>
+
+<!-- 1. Design Tokens: Colors & Contrast -->
+<section class="section section-alt" id="sg-tokens">
+  <div class="container">
+    <div class="section-header">
+      <h2>1. אסימוני עיצוב: צבעים וניגודיות (§5.2)</h2>
+      <p class="text-muted">כל צירופי הטקסט והרקע עומדים בתקן WCAG 2.1 AA (לפחות 4.5:1 לטקסט רגיל, 3:1 לטקסט גדול).</p>
+    </div>
+
+    <div class="fit-grid fit-grid-auto">
+      <div class="pillar-card">
+        <h3>--ink (#0b2540)</h3>
+        <p class="text-muted">טקסט ראשי וכותרות</p>
+        <p><strong>15.5:1</strong> על לבן (AAA)</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>--navy (#0c4a6e)</h3>
+        <p class="text-muted">רצועות כהות, כותרת תחתונה</p>
+        <p><strong>9.5:1</strong> על לבן (AAA)</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>--teal-700 (#0e7490)</h3>
+        <p class="text-muted">קישורים, כפתורי פעולה עיקריים</p>
+        <p><strong>5.4:1</strong> על לבן (AA)</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>--teal-500 (#0891b2)</h3>
+        <p class="text-muted">אייקונים, קווים, כותרות &gt;24px</p>
+        <p><strong>3.7:1</strong> גרפיקה וטקסט גדול</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>--muted (#475569)</h3>
+        <p class="text-muted">טקסט משני והסברים</p>
+        <p><strong>7.6:1</strong> על לבן (AAA)</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>--error (#b42318)</h3>
+        <p class="text-muted">הודעות שגיאה ומסגרות שגויות</p>
+        <p><strong>6.6:1</strong> על לבן (AAA)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Typography -->
+<section class="section" id="sg-typography">
+  <div class="container">
+    <div class="section-header">
+      <h2>2. טיפוגרפיה בעברית (Heebo) ובאנגלית (Inter)</h2>
+    </div>
+
+    <div class="deliverables-grid">
+      <!-- Hebrew Typography -->
+      <div>
+        <h3>דוגמאות טיפוגרפיה בעברית</h3>
+        <div class="mb-4">
+          <h1>כותרת ראשית H1 עברית</h1>
+          <h2>כותרת משנית H2 עברית</h2>
+          <h3>כותרת רמה H3 עברית</h3>
+          <h4>כותרת קטנה H4 עברית</h4>
+          <p class="text-lead">פסקה מובילה (text-lead): פתרונות AI מבוקרים המשלבים הבנת מערכות ושיקול דעת אנושי.</p>
+          <p>גוף הטקסט הרגיל (body): גופן Heebo בגודל 18px בדסקטופ, גובה שורה 1.7 לקריאות מיטבית.</p>
+          <p class="text-muted">טקסט משני (text-muted): מידע תומך, הערות שוליים והסברי רקע בגוון מותאם.</p>
+        </div>
+      </div>
+
+      <!-- English Typography -->
+      <div lang="en" dir="ltr">
+        <h3>English Typography Samples</h3>
+        <div class="mb-4">
+          <h1>Heading 1 English (H1)</h1>
+          <h2>Heading 2 English (H2)</h2>
+          <h3>Heading 3 English (H3)</h3>
+          <h4>Heading 4 English (H4)</h4>
+          <p class="text-lead">Lead paragraph: AI solutions integrated into your core systems with human oversight.</p>
+          <p>Regular body copy: Inter font set at 18px on desktop with line-height 1.6 for comfortable reading.</p>
+          <p class="text-muted">Secondary text: Supporting information, metadata, and background notes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Buttons & Interactive States -->
+<section class="section section-alt" id="sg-buttons">
+  <div class="container">
+    <div class="section-header">
+      <h2>3. כפתורים ומצבי אינטראקציה (§5.3)</h2>
+      <p class="text-muted">כולל מצב רגיל, ריחוף (Hover), פוקוס גלוי (:focus-visible) וגובה מינימלי של 44px.</p>
+    </div>
+
+    <div class="tag-cloud mb-6">
+      <a href="#sg-buttons" class="btn btn-primary">כפתור ראשי (Primary)</a>
+      <a href="#sg-buttons" class="btn btn-secondary">כפתור משני (Secondary)</a>
+      <a href="#sg-buttons" class="btn btn-primary btn-compact">כפתור קומפקטי (Compact)</a>
+      <button type="button" class="btn btn-primary" disabled>כפתור מושבת (Disabled)</button>
+    </div>
+
+    <div lang="en" dir="ltr" class="tag-cloud">
+      <a href="#sg-buttons" class="btn btn-primary">Primary Button</a>
+      <a href="#sg-buttons" class="btn btn-secondary">Secondary Button</a>
+      <a href="#sg-buttons" class="btn btn-primary btn-compact">Compact Button</a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Breadcrumbs -->
+<section class="section" id="sg-breadcrumbs">
+  <div class="container">
+    <div class="section-header">
+      <h2>4. פירורי לחם (Breadcrumb Navigation)</h2>
+    </div>
+
+    <div class="mb-4">
+      <p class="text-muted mb-2">עברית (RTL):</p>
+      {% include breadcrumb.html %}
+    </div>
+
+    <div lang="en" dir="ltr">
+      <p class="text-muted mb-2">English (LTR):</p>
+      <nav class="breadcrumb" aria-label="Breadcrumbs">
+        <ol class="breadcrumb-list">
+          <li><a href="{{ '/en/' | relative_url }}">Home</a></li>
+          <li><a href="{{ '/solutions/customers/' | relative_url }}">Service &amp; Sales</a></li>
+          <li aria-current="page">Multiple outputs from one recording</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Cards & Grids -->
+<section class="section section-alt" id="sg-cards">
+  <div class="container">
+    <div class="section-header">
+      <h2>5. כרטיסי פתיחה, תחום, תרחיש ועמוד תווך</h2>
+    </div>
+
+    <!-- Entry Cards -->
+    <h3 class="mb-4">כרטיסי דרך פתיחה (Entry Cards)</h3>
+    <div class="entry-grid mb-6">
+      <div class="entry-card">
+        <h3>יש לכם תהליך מסוים בראש?</h3>
+        <p>ספרו לנו מה קורה בו היום, ונבחן איך <bdi>AI</bdi> יכול לבצע, לסייע או לקצר אותו.</p>
+        <span class="entry-card-link">לשיחה על תהליך מוגדר ›</span>
+      </div>
+      <div class="entry-card">
+        <h3>רוצים להבין איפה <bdi>AI</bdi> מתאים אצלכם?</h3>
+        <p>לא צריך להגיע עם בעיה מוגדרת. נמפה יחד את העבודה בארגון ונזהה איפה כדאי להתחיל.</p>
+        <span class="entry-card-link">לשיחת בירור פתוחה ›</span>
+      </div>
+    </div>
+
+    <!-- Domain Card & Scenario Card Sample -->
+    <h3 class="mb-4">כרטיס תחום וכרטיס תרחיש (Domain &amp; Scenario Cards)</h3>
+    <div class="deliverables-grid mb-6">
+      <div>
+        {% assign sample_domain = site.data.domains[0] %}
+        {% include domain-card.html domain=sample_domain %}
+      </div>
+      <div>
+        {% assign sample_scenario = site.data.scenarios[4] %}
+        {% include scenario-card.html scenario=sample_scenario %}
+      </div>
+    </div>
+
+    <!-- Founder Card -->
+    <h3 class="mb-4">כרטיס מייסד (Founder Card)</h3>
+    <div class="founder-card mb-6">
+      <h3 class="mb-2">PowOrg</h3>
+      <p class="text-muted mb-4">
+        ניסיון בפיתוח, במערכות ליבה ובאינטגרציות ארגוניות.
+      </p>
+      <a href="{{ '/how-we-work/#about' | relative_url }}" class="domain-card-link">מי אנחנו ›</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Flow Component RTL & LTR -->
+<section class="section" id="sg-flow">
+  <div class="container">
+    <div class="section-header">
+      <h2>6. רכיב הזרימה ב־RTL וב־LTR (§5.5)</h2>
+      <p class="text-muted">מוצג מימין לשמאל בעברית ומשמאל לימין באנגלית, במאפיינים לוגיים בלבד, ואנכי ברוחב קטן מ־768px.</p>
+    </div>
+
+    <!-- Hebrew RTL Flow -->
+    <h3 class="mb-2">זרימה בעברית (RTL) עם צעד בקרה אנושית</h3>
+    <div class="flow-container mb-6">
+      <ol class="flow-steps">
+        <li class="flow-card">
+          <div class="flow-card-header">
+            <span class="flow-card-num">1</span>
+          </div>
+          <div class="flow-card-text">הקלטה מגיעה ממערכת הטלפוניה או מכלי הפגישות.</div>
+        </li>
+        <li class="flow-card">
+          <div class="flow-card-header">
+            <span class="flow-card-num">2</span>
+          </div>
+          <div class="flow-card-text">הקלטה מתומללת ומעובדת.</div>
+        </li>
+        <li class="flow-card">
+          <div class="flow-card-header">
+            <span class="flow-card-num">3</span>
+          </div>
+          <div class="flow-card-text">תוצרים מופקים לפי סוג השיחה והקהל.</div>
+        </li>
+        <li class="flow-card" data-human="true">
+          <div class="flow-card-header">
+            <span class="flow-card-num">4</span>
+            <span class="flow-human-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>אדם</span>
+            </span>
+          </div>
+          <div class="flow-card-text"><strong>איש הקשר בודק את הסיכום ומאשר לפני שליחה.</strong></div>
+        </li>
+        <li class="flow-card">
+          <div class="flow-card-header">
+            <span class="flow-card-num">5</span>
+          </div>
+          <div class="flow-card-text">התיעוד מתויק ב־<bdi>CRM</bdi> ובמערכות.</div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- English LTR Flow -->
+    <div lang="en" dir="ltr">
+      <h3 class="mb-2">English Flow (LTR) with Human Gate</h3>
+      <div class="flow-container">
+        <ol class="flow-steps">
+          <li class="flow-card">
+            <div class="flow-card-header">
+              <span class="flow-card-num">1</span>
+            </div>
+            <div class="flow-card-text">Recording ingested from telephony or meeting platform.</div>
+          </li>
+          <li class="flow-card">
+            <div class="flow-card-header">
+              <span class="flow-card-num">2</span>
+            </div>
+            <div class="flow-card-text">Recording transcribed and processed.</div>
+          </li>
+          <li class="flow-card">
+            <div class="flow-card-header">
+              <span class="flow-card-num">3</span>
+            </div>
+            <div class="flow-card-text">Multiple structured outputs generated by audience.</div>
+          </li>
+          <li class="flow-card" data-human="true">
+            <div class="flow-card-header">
+              <span class="flow-card-num">4</span>
+              <span class="flow-human-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Human</span>
+              </span>
+            </div>
+            <div class="flow-card-text"><strong>Human owner reviews and approves client summary.</strong></div>
+          </li>
+          <li class="flow-card">
+            <div class="flow-card-header">
+              <span class="flow-card-num">5</span>
+            </div>
+            <div class="flow-card-text">Recordings and tasks filed into CRM.</div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Fit & Outputs Lists, Tags & FAQ -->
+<section class="section section-sand" id="sg-lists">
+  <div class="container">
+    <div class="section-header">
+      <h2>7. רשימת התאמה (Sand), רשימת תוצרים (וי), תגיות ושאלות נפוצות</h2>
+    </div>
+
+    <div class="deliverables-grid mb-6">
+      <!-- Check Deliverables List -->
+      <div>
+        <h3 class="mb-3">רשימת תוצרים עם אייקון וי</h3>
+        <div class="fit-grid fit-grid-single">
+          <div class="fit-item">
+            <span class="fit-icon" aria-hidden="true">✓</span>
+            <div>סיכום ללקוח, עם ההצעות והפרטים שעלו</div>
+          </div>
+          <div class="fit-item">
+            <span class="fit-icon" aria-hidden="true">✓</span>
+            <div>סיכום פנימי שמתויק ב־<bdi>CRM</bdi></div>
+          </div>
+          <div class="fit-item">
+            <span class="fit-icon" aria-hidden="true">✓</span>
+            <div>משימות והמלצה לשיחת ההמשך</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tag Cloud & Pills -->
+      <div>
+        <h3 class="mb-3">ענן תגיות ומערכות</h3>
+        <div class="tag-cloud mb-4">
+          <span class="tag-pill">CRM</span>
+          <span class="tag-pill">ERP</span>
+          <span class="tag-pill">WhatsApp</span>
+          <span class="tag-pill">Google Cloud</span>
+          <span class="tag-pill">Microsoft Azure</span>
+          <span class="tag-pill">AWS</span>
+        </div>
+
+        <h3 class="mb-3">שאלות נפוצות (FAQ Details/Summary)</h3>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-summary">איפה רצה המערכת?</summary>
+            <div class="faq-content">
+              <p>אפשר לבנות את הפתרון על התשתית שלנו, או בענן שהארגון כבר עובד איתו: Google Cloud, Azure או AWS.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-summary">מי מאשר פעולות ותוצרים?</summary>
+            <div class="faq-content">
+              <p>מגדירים יחד אילו פעולות מותרות, מתי אדם מאשר ומה מתועד.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Form Fields and Status Panels -->
+<section class="section section-alt" id="sg-forms">
+  <div class="container">
+    <div class="section-header">
+      <h2>8. שדות טופס ופאנלי מצב (§4.3, §4.4)</h2>
+      <p class="text-muted">תוויות גלויות, שדות חובה, הודעות שגיאה מקושרות, ופאנלי הצלחה וכשל.</p>
+    </div>
+
+    <div class="deliverables-grid">
+      <!-- Form Controls Sample -->
+      <div>
+        <h3 class="mb-4">שדות קלט ומצבי שגיאה</h3>
+        <div class="form-group mb-4">
+          <label for="sg-input-name" class="form-label">שם מלא <span class="required-mark">(חובה)</span></label>
+          <input type="text" id="sg-input-name" class="form-control" placeholder="ישראל ישראלי" required>
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="sg-input-error" class="form-label">כתובת אימייל <span class="required-mark">(חובה)</span></label>
+          <input type="email" id="sg-input-error" class="form-control is-invalid" value="invalid-email" aria-invalid="true" aria-describedby="sg-error-desc">
+          <span class="form-error-msg" id="sg-error-desc">כתובת האימייל אינה נראית תקינה.</span>
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="sg-textarea" class="form-label">ספרו לנו בכמה מילים (רשות)</label>
+          <textarea id="sg-textarea" class="form-textarea" rows="3" placeholder="מה קורה בעבודה היום?"></textarea>
+          <span class="form-hint">לא חובה. אפשר גם לספר בשיחה.</span>
+        </div>
+      </div>
+
+      <!-- Status Panels Sample -->
+      <div>
+        <h3 class="mb-4">פאנלי סטטוס (Status Panels)</h3>
+        
+        <!-- Success Panel -->
+        <div class="status-panel-success mb-4" role="status">
+          <h3>הפנייה התקבלה בהצלחה</h3>
+          <p>תודה, קיבלנו את פרטי הפנייה. נקרא אותה ונחזור אליכם בהקדם.</p>
+        </div>
+
+        <!-- Error Panel -->
+        <div class="status-panel-error mb-4" role="alert">
+          <h3>לא הצלחנו לשלוח את הפנייה</h3>
+          <p>חלה תקלה זמנית. אפשר לנסות שוב או לשלוח לנו מייל ישיר ל־<bdi>contact@poworg.com</bdi>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CTA Band -->
+{% include cta-band.html %}

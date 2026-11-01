@@ -1,0 +1,1223 @@
+{
+  "timestamp": "2026-10-30T22:16:17.652Z",
+  "head": "c10a8e5",
+  "siteDir": "C:\\Users\\msgad\\AppData\\Local\\Temp\\wp6_build\\_site_stub",
+  "prodDir": "C:\\Users\\msgad\\AppData\\Local\\Temp\\wp6_build\\_site_prod",
+  "srcDir": "C:\\Users\\msgad\\AppData\\Local\\Temp\\wp6_build\\src",
+  "blocked_requests": [],
+  "allowed_requests": [
+    {
+      "url": "http://127.0.0.1:4020/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/icons/favicon.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/scenarios/recording-to-outputs/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/contact/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/en/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/scenarios/recording-to-outputs/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/contact/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/contact/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/en/contact/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/solutions/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/en/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/how-we-work/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/privacy/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/scenarios/agent-assist-onboarding/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/en/privacy/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/scenarios/knowledge-chat-actions/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/scenarios/recording-to-outputs/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/scenarios/whatsapp-service-actions/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/solutions/customers/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/solutions/knowledge-and-teams/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/solutions/operations/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/en/how-we-work/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/en/accessibility/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/scenarios/documents-across-systems/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/accessibility/",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/css/site.css",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/js/site.js",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "http://127.0.0.1:4020/assets/logo-symbol.png",
+      "allowed_reason": "local"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2",
+      "allowed_reason": "google_fonts_allowed_in_weight_run"
+    }
+  ],
+  "criteria": {
+    "criterion_1_lighthouse": {
+      "status": "GAP",
+      "gap_id": "G1",
+      "details": "Lighthouse CLI / package is not installed in the environment (%TEMP%\\node_modules has puppeteer-core only). Installation is prohibited per WP6 rules. Scores are not invented.",
+      "pages_targeted": [
+        "/",
+        "/scenarios/recording-to-outputs/",
+        "/contact/"
+      ]
+    },
+    "criterion_2_axe": {
+      "status": "GAP",
+      "gap_id": "G1",
+      "details": "axe-core is not installed in %TEMP%\\node_modules. Installation is prohibited per WP6 rules. Executing supplementary Puppeteer checks (marked clearly as partial supplementary checks, not axe-core).",
+      "supplementary_notice": "בדיקה משלימה, לא axe"
+    },
+    "criterion_3_weight": {
+      "status": "PASS",
+      "measured_kb": "570.01",
+      "budget_kb": 600,
+      "margin_kb": "29.99"
+    },
+    "criterion_4_screen_reader": {
+      "status": "PENDING",
+      "details": "Requires human evaluation in NVDA, Narrator, or VoiceOver in Hebrew. Antigravity prepared CDP accessibility trees and detailed step-by-step checklist in _dev/WP6_SCREEN_READER_CHECKLIST.md. Owner: Gadi or designee."
+    },
+    "criterion_5_todo_copy": {
+      "status": "FAIL",
+      "total_in_production_html": 32,
+      "details": "Expected FAIL per G3: 32 occurrences in 5 production HTML pages, and 36 markers in 8 source files. Insertion of approved copy is a separate content unit."
+    },
+    "criterion_6_claude_approval": {
+      "status": "PENDING",
+      "details": "Claude owns acceptance per d06/d07. Merge to main waits for Gadi decision B5."
+    }
+  },
+  "weight": {
+    "target_kb": 600,
+    "target_bytes": 614400,
+    "with_fonts": {
+      "total_bytes": 583691,
+      "total_kb": "570.01",
+      "document_bytes": 33854,
+      "stylesheet_bytes": 41975,
+      "script_bytes": 15827,
+      "font_bytes": 56427,
+      "image_bytes": 435608,
+      "other_bytes": 0,
+      "items_count": 8
+    },
+    "without_fonts": {
+      "total_bytes": 525435,
+      "total_kb": "513.12",
+      "document_bytes": 33854,
+      "stylesheet_bytes": 40146,
+      "script_bytes": 15827,
+      "font_bytes": 0,
+      "image_bytes": 435608,
+      "other_bytes": 0,
+      "items_count": 5
+    },
+    "pass": true
+  },
+  "todo_copy": {
+    "production_html_counts": {
+      "accessibility/index.html": 2,
+      "en/accessibility/index.html": 4,
+      "en/contact/index.html": 3,
+      "en/how-we-work/index.html": 18,
+      "en/privacy/index.html": 5
+    },
+    "total_in_production_html": 32,
+    "source_markers_count": 36,
+    "source_markers": [
+      {
+        "file": "accessibility/index.md",
+        "line": 12,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: רמת הנגישות של האתר. נכתב רק אחרי בדיקת הנגישות ב־WP6 (§3.8)</p>"
+      },
+      {
+        "file": "accessibility/index.md",
+        "line": 18,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: סייגים ומגבלות ידועות (§3.8)</p>"
+      },
+      {
+        "file": "en/accessibility/index.md",
+        "line": 12,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: accessibility level of the site, written only after the WP6 accessibility check (§3.8, §6.3)</p>"
+      },
+      {
+        "file": "en/accessibility/index.md",
+        "line": 15,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: accessibility measures (§3.8, §6.3)</p>"
+      },
+      {
+        "file": "en/accessibility/index.md",
+        "line": 18,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: known limitations (§3.8, §6.3)</p>"
+      },
+      {
+        "file": "en/accessibility/index.md",
+        "line": 21,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: opening sentence for accessibility feedback (§3.8, §6.3)</p>"
+      },
+      {
+        "file": "en/contact/index.html",
+        "line": 16,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: context line in English</p>"
+      },
+      {
+        "file": "en/contact/index.html",
+        "line": 33,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: what happens next in English</p>"
+      },
+      {
+        "file": "en/contact/index.html",
+        "line": 38,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: direct email fallback in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 15,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: context line in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 29,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: specific process details in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 34,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: explore AI fit details in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 53,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: introduction step in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 61,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: finding opportunities step in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 69,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: architecture step in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 77,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: development step in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 85,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: rollout step in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 93,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: measurement step in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 97,
+        "snippet": "<p class=\"todo-copy mt-6\">TODO-COPY: track note in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 111,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: role of the internal sponsor in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 116,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: role of the process owner in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 121,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: role of IT owner or vendor in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 125,
+        "snippet": "<p class=\"todo-copy mt-4\">TODO-COPY: small organization note in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 135,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: technology choices in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 140,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: accountability and control principles in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 155,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: founder background in English</p>"
+      },
+      {
+        "file": "en/how-we-work/index.md",
+        "line": 158,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: working with AI agents in English</p>"
+      },
+      {
+        "file": "en/privacy/index.md",
+        "line": 15,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: detailed inquiry form fields and data collected (§3.8, §6.3)</p>"
+      },
+      {
+        "file": "en/privacy/index.md",
+        "line": 18,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: purpose of evaluating organizational fit and contact only (§3.8, §6.3)</p>"
+      },
+      {
+        "file": "en/privacy/index.md",
+        "line": 21,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: retention duration, storage location and security measures (§3.8, §6.3)</p>"
+      },
+      {
+        "file": "en/privacy/index.md",
+        "line": 24,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: how to request data inspection, correction or deletion (§3.8, §6.3)</p>"
+      },
+      {
+        "file": "en/privacy/index.md",
+        "line": 27,
+        "snippet": "<p class=\"todo-copy\">TODO-COPY: referral source attribution without persistent tracking cookies (§3.8, §6.3)</p>"
+      },
+      {
+        "file": "_includes/domain-card.html",
+        "line": 15,
+        "snippet": "<li><a href=\"{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}\">{% if s_short == nil or s_short == \"\" or s_short contains \"TODO-COPY\" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a></li>"
+      },
+      {
+        "file": "_includes/footer.html",
+        "line": 22,
+        "snippet": "<li><a href=\"{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ scenario.slug }}{% else %}{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}{% endif %}\">{% if s_short == nil or s_short == \"\" or s_short contains \"TODO-COPY\" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a></li>"
+      },
+      {
+        "file": "_includes/header.html",
+        "line": 31,
+        "snippet": "<a href=\"{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ scenario.slug }}{% else %}{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}{% endif %}\">{% if s_short == nil or s_short == \"\" or s_short contains \"TODO-COPY\" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a>"
+      },
+      {
+        "file": "_includes/header.html",
+        "line": 91,
+        "snippet": "<li><a href=\"{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ scenario.slug }}{% else %}{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}{% endif %}\">{% if s_short == nil or s_short == \"\" or s_short contains \"TODO-COPY\" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a></li>"
+      }
+    ]
+  },
+  "supplementary_a11y": {
+    "/": {
+      "lang": "he",
+      "dir": "rtl",
+      "images_count": 2,
+      "form_fields_count": 0,
+      "headings_count": 33,
+      "landmarks": {
+        "header": true,
+        "main": true,
+        "footer": true,
+        "nav": true
+      },
+      "issues_count": 1,
+      "issues": [
+        {
+          "check": "heading_order",
+          "error": "h2 directly followed by h4; h2 directly followed by h4"
+        }
+      ]
+    },
+    "/scenarios/recording-to-outputs/": {
+      "lang": "he",
+      "dir": "rtl",
+      "images_count": 2,
+      "form_fields_count": 0,
+      "headings_count": 16,
+      "landmarks": {
+        "header": true,
+        "main": true,
+        "footer": true,
+        "nav": true
+      },
+      "issues_count": 0,
+      "issues": []
+    },
+    "/contact/": {
+      "lang": "he",
+      "dir": "rtl",
+      "images_count": 2,
+      "form_fields_count": 10,
+      "headings_count": 10,
+      "landmarks": {
+        "header": true,
+        "main": true,
+        "footer": true,
+        "nav": true
+      },
+      "issues_count": 0,
+      "issues": []
+    },
+    "/en/": {
+      "lang": "en",
+      "dir": "ltr",
+      "images_count": 2,
+      "form_fields_count": 0,
+      "headings_count": 27,
+      "landmarks": {
+        "header": true,
+        "main": true,
+        "footer": true,
+        "nav": true
+      },
+      "issues_count": 1,
+      "issues": [
+        {
+          "check": "heading_order",
+          "error": "h2 directly followed by h4; h2 directly followed by h4"
+        }
+      ]
+    }
+  },
+  "public_pages_audit": {
+    "pages_audited_count": 19,
+    "public_paths": [
+      "/contact/",
+      "/en/contact/",
+      "/solutions/",
+      "/",
+      "/en/",
+      "/how-we-work/",
+      "/privacy/",
+      "/scenarios/agent-assist-onboarding/",
+      "/en/privacy/",
+      "/scenarios/knowledge-chat-actions/",
+      "/scenarios/recording-to-outputs/",
+      "/scenarios/whatsapp-service-actions/",
+      "/solutions/customers/",
+      "/solutions/knowledge-and-teams/",
+      "/solutions/operations/",
+      "/en/how-we-work/",
+      "/en/accessibility/",
+      "/scenarios/documents-across-systems/",
+      "/accessibility/"
+    ],
+    "console_errors": [],
+    "page_errors": [],
+    "load_404s": [],
+    "unique_internal_links_count": 41,
+    "broken_links": [],
+    "pass": true
+  },
+  "robots_and_sitemap": {
+    "robots_exists": true,
+    "robots_has_sitemap_line": true,
+    "robots_content": "Sitemap: https://poworg.com/sitemap.xml",
+    "sitemap_exists": true,
+    "sitemap_public_pages_count": 19,
+    "sitemap_has_404": false,
+    "sitemap_has_styleguide": false,
+    "all_public_in_sitemap": true,
+    "pass": true
+  },
+  "network_audit": {
+    "total_blocked": 0,
+    "total_allowed": 209,
+    "cloudflare_requests": 0,
+    "real_receiver_requests": 0,
+    "isolation_pass": true
+  }
+}

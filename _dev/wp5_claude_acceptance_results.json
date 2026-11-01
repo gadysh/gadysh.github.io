@@ -1,0 +1,218 @@
+{
+  "started": "2026-10-30T21:23:48.347Z",
+  "checks": [
+    {
+      "id": "a:/",
+      "expected": "drawer lang link style == sibling",
+      "actual": {
+        "lang": {
+          "borderTopWidth": "0px",
+          "borderRadius": "0px",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontWeight": "400",
+          "paddingInlineStart": "0px",
+          "minHeight": "0px"
+        },
+        "sib": {
+          "borderTopWidth": "0px",
+          "borderRadius": "0px",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontWeight": "400",
+          "paddingInlineStart": "0px",
+          "minHeight": "0px"
+        },
+        "cls": ""
+      },
+      "pass": true
+    },
+    {
+      "id": "b:drawer/",
+      "expected": [
+        "[track] lang_switch"
+      ],
+      "actual": [
+        "[track] lang_switch"
+      ],
+      "pass": true
+    },
+    {
+      "id": "a:/en/",
+      "expected": "drawer lang link style == sibling",
+      "actual": {
+        "lang": {
+          "borderTopWidth": "0px",
+          "borderRadius": "0px",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontWeight": "400",
+          "paddingInlineStart": "0px",
+          "minHeight": "0px"
+        },
+        "sib": {
+          "borderTopWidth": "0px",
+          "borderRadius": "0px",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontWeight": "400",
+          "paddingInlineStart": "0px",
+          "minHeight": "0px"
+        },
+        "cls": ""
+      },
+      "pass": true
+    },
+    {
+      "id": "b:drawer/en/",
+      "expected": [
+        "[track] lang_switch"
+      ],
+      "actual": [
+        "[track] lang_switch"
+      ],
+      "pass": true
+    },
+    {
+      "id": "b:header-pill",
+      "expected": [
+        "[track] lang_switch"
+      ],
+      "actual": [
+        "[track] lang_switch"
+      ],
+      "pass": true
+    },
+    {
+      "id": "c:/contact/?from=scenario:recording-to-outputs",
+      "expected": {
+        "from": "scenario:recording-to-outputs",
+        "count": 1,
+        "noAt": true
+      },
+      "actual": {
+        "from": [
+          "scenario:recording-to-outputs"
+        ],
+        "count": 1,
+        "noAt": true,
+        "all": [
+          "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"scenario:recording-to-outputs\"}"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "c:/contact/?from=jane@example.com",
+      "expected": {
+        "from": "other",
+        "count": 1,
+        "noAt": true
+      },
+      "actual": {
+        "from": [
+          "other"
+        ],
+        "count": 1,
+        "noAt": true,
+        "all": [
+          "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"other\"}"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "c:/contact/?from=scenario:recording-to-outputs:jane@example.com",
+      "expected": {
+        "from": "scenario:recording-to-outputs",
+        "count": 1,
+        "noAt": true
+      },
+      "actual": {
+        "from": [
+          "scenario:recording-to-outputs"
+        ],
+        "count": 1,
+        "noAt": true,
+        "all": [
+          "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"scenario:recording-to-outputs\"}"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "c:/contact/?from=scenario:no-such-slug",
+      "expected": {
+        "from": "other",
+        "count": 1,
+        "noAt": true
+      },
+      "actual": {
+        "from": [
+          "other"
+        ],
+        "count": 1,
+        "noAt": true,
+        "all": [
+          "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"other\"}"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "c:/en/contact/?from=menu:all_solutions",
+      "expected": {
+        "from": "menu:all_solutions",
+        "count": 1,
+        "noAt": true
+      },
+      "actual": {
+        "from": [
+          "menu:all_solutions"
+        ],
+        "count": 1,
+        "noAt": true,
+        "all": [
+          "[track] contact_view {\"page\":\"/en/contact/\",\"lang\":\"en\",\"from\":\"menu:all_solutions\"}"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "c:/contact/",
+      "expected": {
+        "from": "",
+        "count": 1,
+        "noAt": true
+      },
+      "actual": {
+        "from": [
+          ""
+        ],
+        "count": 1,
+        "noAt": true,
+        "all": [
+          "[track] contact_view {\"page\":\"/contact/\",\"lang\":\"he\",\"from\":\"\"}"
+        ]
+      },
+      "pass": true
+    }
+  ],
+  "blocked": [
+    "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+    "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+    "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+    "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+    "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+    "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+    "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+    "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap",
+    "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+  ],
+  "blocked_cloudflare_or_receiver": [],
+  "all_pass": true,
+  "tested_head": "692e84c7facabd5c76347b37bcabe931c2382ad3",
+  "build": "git archive 692e84c -> temp dir; jekyll build --config _config.yml,_dev/_config.stub.yml; served 127.0.0.1:4012",
+  "negative_control_05b324a": {
+    "a": "FAIL (lang link: border 1px, radius 8px, weight 600, padding 8px, min-height 40px)",
+    "c_email": "FAIL (raw jane@example.com)",
+    "c_appended": "FAIL",
+    "c_unknown_slug": "FAIL"
+  }
+}

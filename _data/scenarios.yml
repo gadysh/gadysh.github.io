@@ -1,0 +1,90 @@
+# Scenarios
+# Spec: claude_website_spec_v2.md (§2.1, §2.2, §3.4, §3.5, §6.2)
+
+- slug: "whatsapp-service-actions"
+  primary_domain: "customers"
+  domains:
+    - "customers"
+  icon: "chat"
+  published: true
+  evidence:
+    approved: false
+  he:
+    title: "שירות ב־WhatsApp שמבצע את הפעולה עבור הלקוח"
+    short: "שירות ופעולות ב־WhatsApp"
+    outcome: "לקוחות פונים בערוץ שהם כבר משתמשים בו. הסוכן מברר, מבצע את הפעולה במערכות, ומעביר לנציג רק את מה שבאמת צריך אדם."
+  en:
+    title: "WhatsApp service that carries out the action for the customer"
+    short: "WhatsApp service and actions"
+    outcome: "Customers reach you on a channel they already use. The agent clarifies the request, carries out the action in your systems, and hands over to a person only what truly needs one."
+
+- slug: "agent-assist-onboarding"
+  primary_domain: "customers"
+  domains:
+    - "customers"
+    - "knowledge-and-teams"
+  icon: "users"
+  published: true
+  evidence:
+    approved: false
+  he:
+    title: "גם נציג חדש יודע מה לענות ומה לעשות"
+    short: "סיוע לנציגים והכשרת נציגים חדשים"
+    outcome: "הנציג מקבל בזמן השיחה את המידע, את הנוהל ואת הצעד הבא. נציג חדש לומד מתוך הידע והמקרים של הארגון."
+  en:
+    title: "Even a new agent knows what to answer and what to do"
+    short: "Agent assist and onboarding"
+    outcome: "Agents get the information, the procedure and the next step during the call. New agents learn from the organization's knowledge and past cases."
+
+- slug: "documents-across-systems"
+  primary_domain: "operations"
+  domains:
+    - "operations"
+  icon: "document"
+  published: true
+  evidence:
+    approved: false
+  he:
+    title: "מסמך שנכנס מקדם את התהליך"
+    short: "מסמכים ותהליכים בין מערכות"
+    outcome: "טופס, חשבונית, בקשה או חוזה נקראים ונבדקים מול המערכות, והתהליך מתקדם. רק חריגים מגיעים לטיפול אדם."
+  en:
+    title: "An incoming document moves the process forward"
+    short: "Documents and processes across systems"
+    outcome: "Forms, invoices, requests and contracts are read and checked against your systems, and the process moves forward. Only exceptions reach a person."
+
+- slug: "knowledge-chat-actions"
+  primary_domain: "knowledge-and-teams"
+  domains:
+    - "knowledge-and-teams"
+    - "operations"
+  icon: "book"
+  published: true
+  evidence:
+    approved: false
+  he:
+    title: "תשובות מהידע של הארגון ופעולות במערכות, מתוך שיחה אחת"
+    short: "צ׳אט ידע ופעולות לעובדים"
+    outcome: "עובדים שואלים בשפה חופשית ומקבלים תשובה מתוך הידע של הארגון, עם מקור. הם יכולים גם לבצע פעולות מוגדרות במערכות בלי לחפש מסכים."
+  en:
+    title: "Answers from your organization's knowledge and actions in your systems, in one conversation"
+    short: "Knowledge chat and actions for employees"
+    outcome: "Employees ask in plain language and get an answer from the organization's knowledge, with its source. They can also carry out defined actions in your systems without hunting for screens."
+
+- slug: "recording-to-outputs"
+  primary_domain: "customers"
+  domains:
+    - "customers"
+    - "knowledge-and-teams"
+  icon: "mic"
+  published: true
+  evidence:
+    approved: false
+  he:
+    title: "כמה תוצרים מהקלטה אחת"
+    short: "תוצרי AI מהקלטת שיחה או פגישה"
+    outcome: "מהקלטה של שיחת טלפון, פגישה או שיחת מכירה מתקבלים כמה תוצרים: סיכום ללקוח, תיעוד ב־CRM, המלצה להמשך, וניתוח איכות ולמידה."
+  en:
+    title: "Several outputs from one recording"
+    short: "AI outputs from a call or meeting recording"
+    outcome: "One recording of a phone call, meeting or sales call becomes several outputs: a summary for the customer, a CRM record, a recommended next step, and quality analysis for learning."

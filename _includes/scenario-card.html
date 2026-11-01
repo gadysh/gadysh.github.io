@@ -1,0 +1,9 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+{% if include.scenario.published == true %}
+<div class="scenario-card">
+  <span class="scenario-tag">{{ site.data.i18n.labels.scenario_tag[page_lang] }}</span>
+  <h3>{{ include.scenario[page_lang].title }}</h3>
+  <p class="scenario-outcome">{{ include.scenario[page_lang].outcome }}</p>
+  <a href="{{ '/scenarios/' | append: include.scenario.slug | append: '/' | relative_url }}" class="domain-card-link">{{ site.data.i18n.labels.explore_scenario[page_lang] }} ›</a>
+</div>
+{% endif %}

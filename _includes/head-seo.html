@@ -1,0 +1,90 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% if page.layout == "scenario" %}
+  {% for s in site.data.scenarios %}
+    {% if s.slug == page.scenario %}
+      {% assign page_scenario = s %}
+    {% endif %}
+  {% endfor %}
+  {% assign page_seo_title = page_scenario[page_lang].title | append: " | PowOrg" %}
+  {% assign page_seo_desc = page_scenario[page_lang].outcome %}
+{% else %}
+  {% assign page_seo_title = page.title | default: site.title %}
+  {% assign page_seo_desc = page.description | default: site.description %}
+{% endif %}
+
+<title>{{ page_seo_title }}</title>
+{% if page.noindex == true or page.sitemap == false %}
+<meta name="robots" content="noindex, nofollow">
+{% endif %}
+{% if page_seo_desc %}
+<meta name="description" content="{{ page_seo_desc }}">
+{% endif %}
+
+<!-- Canonical (Spec §6.5) -->
+<link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+
+<!-- Alternate hreflang (Spec §6.3, §6.5) -->
+{% if page.url == '/' or page.url == '/index.html' or page.url == '/en/' or page.url == '/en/index.html' %}
+<link rel="alternate" hreflang="he" href="{{ '/' | absolute_url }}">
+<link rel="alternate" hreflang="en" href="{{ '/en/' | absolute_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">
+{% elsif page.translations.en %}
+<link rel="alternate" hreflang="he" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+<link rel="alternate" hreflang="en" href="{{ page.translations.en | absolute_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+{% elsif page.translations.he %}
+<link rel="alternate" hreflang="he" href="{{ page.translations.he | absolute_url }}">
+<link rel="alternate" hreflang="en" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ page.translations.he | absolute_url }}">
+{% endif %}
+
+<!-- Open Graph & Twitter Cards (Spec §6.5) -->
+<meta property="og:site_name" content="PowOrg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page_seo_title }}">
+{% if page_seo_desc %}
+<meta property="og:description" content="{{ page_seo_desc }}">
+{% endif %}
+<meta property="og:url" content="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+{% if page_lang == 'en' %}
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="{{ '/assets/img/og-image-en.png' | absolute_url }}">
+<meta name="twitter:image" content="{{ '/assets/img/og-image-en.png' | absolute_url }}">
+{% else %}
+<meta property="og:locale" content="he_IL">
+<meta property="og:image" content="{{ '/assets/img/og-image.png' | absolute_url }}">
+<meta name="twitter:image" content="{{ '/assets/img/og-image.png' | absolute_url }}">
+{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_seo_title }}">
+{% if page_seo_desc %}
+<meta name="twitter:description" content="{{ page_seo_desc }}">
+{% endif %}
+
+{% if page.url == '/' or page.url == '/index.html' or page.url == '/en/' or page.url == '/en/index.html' %}
+<!-- JSON-LD Organization Schema (Home only, Spec §6.5) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PowOrg",
+  "url": "https://poworg.com",
+  "logo": "https://poworg.com/assets/img/poworg-logo.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/company/poworg"
+  ]
+}
+</script>
+{% endif %}
+
+<!-- Google Fonts: Heebo & Inter (Spec §5.2) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Site CSS -->
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+<link rel="icon" type="image/png" href="{{ '/assets/icons/favicon.png' | relative_url }}">

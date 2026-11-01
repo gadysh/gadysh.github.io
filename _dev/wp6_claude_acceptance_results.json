@@ -1,0 +1,167 @@
+{
+ "reviewer": "Claude (Opus), WP6 acceptance recovery task-20261031-020157-wp6-acceptance-recov",
+ "delivered_head": "872b6fa",
+ "public_tree_equal_to": "c10a8e5 (git diff c10a8e5 872b6fa excluding _dev is empty)",
+ "build": "git archive 872b6fa -> %TEMP%wp6_accept_claudesrc; jekyll 3.10.0 prod (_config.yml) and stub (_config.yml,_dev/_config.stub.yml)",
+ "server": "own node static server 127.0.0.1:4030, stopped after each run; port 4000 untouched",
+ "run_all_pages": {
+  "ts": "2026-10-31T00:03:49.164Z",
+  "pages": 19,
+  "console_errors": 0,
+  "page_errors": 0,
+  "local_4xx": 0,
+  "unique_internal_links": 40,
+  "broken_links": [],
+  "blocked_external_unique": [
+   "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+  ],
+  "headings": {
+   "/": "H1,H2,H3,H3,H2,H3,H3,H3,H2,H3,H3,H3,H3,H3,H2,H3,H3,H3,H2,H4,H4,H4,H4,H4,H2,H2,H2,H3,H2,H4,H4,H4,H4",
+   "/en/": "H1,H2,H3,H3,H2,H3,H3,H3,H2,H3,H3,H3,H2,H4,H4,H4,H4,H4,H2,H2,H2,H3,H2,H4,H4,H4,H4",
+   "/scenarios/recording-to-outputs/": "H1,H2,H2,H2,H2,H2,H2,H2,H2,H3,H3,H3,H4,H4,H4,H4",
+   "/contact/": "H1,H2,H3,H3,H3,H4,H4,H4,H4,H4"
+  },
+  "lang_dir": {
+   "/": "he/rtl",
+   "/en/": "en/ltr",
+   "/solutions/": "he/rtl",
+   "/solutions/customers/": "he/rtl",
+   "/solutions/knowledge-and-teams/": "he/rtl",
+   "/solutions/operations/": "he/rtl",
+   "/scenarios/recording-to-outputs/": "he/rtl",
+   "/scenarios/agent-assist-onboarding/": "he/rtl",
+   "/scenarios/documents-across-systems/": "he/rtl",
+   "/scenarios/knowledge-chat-actions/": "he/rtl",
+   "/scenarios/whatsapp-service-actions/": "he/rtl",
+   "/how-we-work/": "he/rtl",
+   "/en/how-we-work/": "en/ltr",
+   "/contact/": "he/rtl",
+   "/en/contact/": "en/ltr",
+   "/privacy/": "he/rtl",
+   "/en/privacy/": "en/ltr",
+   "/accessibility/": "he/rtl",
+   "/en/accessibility/": "en/ltr"
+  }
+ },
+ "weight_headless_ua": {
+  "fontsAllowed": {
+   "total": 604662,
+   "byType": {
+    "Document": 33879,
+    "Image": 435633,
+    "Stylesheet": 42544,
+    "Script": 15837,
+    "Font": 76769
+   },
+   "note": "HeadlessChrome UA; Google Fonts served non-woff2 /l/font kits"
+  },
+  "fontsBlocked": {
+   "total": 525505,
+   "byType": {
+    "Stylesheet": 40156,
+    "Image": 435633,
+    "Document": 33879,
+    "Script": 15837
+   }
+  }
+ },
+ "weight_mobile_chrome_ua": {
+  "chrome": "Chrome/155.0.8059.82",
+  "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36",
+  "total_all_requests": 1215305,
+  "favicon_bytes": 631032,
+  "page_resources_excl_favicon": 584273,
+  "items": [
+   [
+    "Document",
+    "text/html",
+    33879,
+    "http://127.0.0.1:4030/"
+   ],
+   [
+    "Stylesheet",
+    "text/css",
+    40156,
+    "http://127.0.0.1:4030/assets/css/site.css"
+   ],
+   [
+    "Script",
+    "application/javascript",
+    15837,
+    "http://127.0.0.1:4030/assets/js/site.js"
+   ],
+   [
+    "Image",
+    "image/png",
+    435633,
+    "http://127.0.0.1:4030/assets/logo-symbol.png"
+   ],
+   [
+    "Stylesheet",
+    "text/css",
+    2293,
+    "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+   ],
+   [
+    "Font",
+    "font/woff2",
+    12027,
+    "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFhsqMA6aw.woff2"
+   ],
+   [
+    "Font",
+    "font/woff2",
+    30177,
+    "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbFhsqMA.woff2"
+   ],
+   [
+    "Font",
+    "font/woff2",
+    14271,
+    "https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFhsqMA6aw.woff2"
+   ],
+   [
+    "Other",
+    "image/png",
+    631032,
+    "http://127.0.0.1:4030/assets/icons/favicon.png"
+   ]
+  ],
+  "blocked": []
+ },
+ "assets": {
+  "assets/logo-symbol.png": "PNG 730x710, 435438 bytes, rendered 38x38 and 32x32",
+  "assets/icons/favicon.png": "JPEG (JFIF) 1024x1024 with .png name, 630837 bytes"
+ },
+ "todo_copy_prod": {
+  "total": 32,
+  "pages": {
+   "accessibility/index.html": 2,
+   "en/accessibility/index.html": 4,
+   "en/contact/index.html": 3,
+   "en/how-we-work/index.html": 18,
+   "en/privacy/index.html": 5
+  },
+  "source_markers": 36
+ },
+ "robots_sitemap": {
+  "robots": "Sitemap: https://poworg.com/sitemap.xml (single line)",
+  "sitemap_urls": 19,
+  "excludes_404_and_styleguide": true
+ },
+ "rollback_sim": {
+  "clone": "%TEMP%wp6_accept_claude_rollback (deleted)",
+  "merge_parents": "e2f9052 872b6fa",
+  "command": "git revert -m 1 HEAD --no-edit",
+  "git_diff_quiet_e2f9052_rc": 0,
+  "real_repo_after": {
+   "main": "e2f9052",
+   "site-v2": "872b6fa",
+   "dirty": 0
+  }
+ },
+ "tooling": {
+  "lighthouse": "not found (TEMP/node_modules, global npm, Documents/AppData scan)",
+  "axe_core": "not found"
+ }
+}
