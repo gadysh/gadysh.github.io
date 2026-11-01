@@ -1,5 +1,5 @@
 {% assign page_lang = page.lang | default: site.lang | default: "he" %}
-<header class="site-header">
+<header class="site-header{% if page.header_theme == 'dark' %} site-header--dark{% endif %}">
   <div class="container header-inner">
     <a href="{% if page_lang == 'en' %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" class="brand">
       <img src="{{ '/assets/logo-symbol.png' | relative_url }}" alt="PowOrg logo" width="38" height="38">
@@ -46,7 +46,17 @@
       </div>
 
       <div class="nav-item">
-        <a href="{% if page_lang == 'en' %}{{ '/en/how-we-work/' | relative_url }}{% else %}{{ '/how-we-work/' | relative_url }}{% endif %}" class="nav-link">{{ site.data.i18n.nav.how_we_work[page_lang] }}</a>
+        <a href="{% if page_lang == 'en' %}{{ '/en/how-we-work/' | relative_url }}{% else %}{{ '/how-we-work/' | relative_url }}{% endif %}" class="nav-link">{% if page_lang == 'en' %}Working with us{% else %}איך עובדים איתנו{% endif %}</a>
+      </div>
+
+      <div class="nav-item" id="page-menu-wrap">
+        <button type="button" class="nav-link" id="page-menu-btn" aria-expanded="false" aria-controls="page-menu">
+          <span>{% if page_lang == 'en' %}On this page{% else %}בדף הזה{% endif %}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="page-menu" id="page-menu">
+          {% include home-sections-list.html class="page-menu-list" %}
+        </div>
       </div>
     </nav>
 
@@ -78,6 +88,14 @@
   </div>
 
   <nav class="drawer-nav">
+    <div class="drawer-page-sections">
+      <div class="drawer-group-title">{% if page_lang == 'en' %}On this page{% else %}בדף הזה{% endif %}</div>
+      {% include home-sections-list.html class="drawer-links drawer-section-links" %}
+    </div>
+
+    <div class="drawer-section-divider">
+      <div class="drawer-group-title">{% if page_lang == 'en' %}Solutions{% else %}פתרונות{% endif %}</div>
+    </div>
     {% for domain in site.data.domains %}
       {% if domain.published == true %}
         <div>
@@ -99,7 +117,7 @@
 
     <div class="drawer-section-divider">
       <ul class="drawer-links drawer-links-direct">
-        <li><a href="{% if page_lang == 'en' %}{{ '/en/how-we-work/' | relative_url }}{% else %}{{ '/how-we-work/' | relative_url }}{% endif %}">{{ site.data.i18n.nav.how_we_work_full[page_lang] }}</a></li>
+        <li><a href="{% if page_lang == 'en' %}{{ '/en/how-we-work/' | relative_url }}{% else %}{{ '/how-we-work/' | relative_url }}{% endif %}">{% if page_lang == 'en' %}Working with us: full page ›{% else %}איך עובדים איתנו: לעמוד המלא ›{% endif %}</a></li>
         {% if page_lang == 'he' %}
           <li><a href="{{ '/en/' | relative_url }}" hreflang="en" lang="en">English Site</a></li>
         {% else %}

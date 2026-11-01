@@ -1,0 +1,16 @@
+{% comment %}
+  Homepage hero artwork: Founder-approved "living system" scene with the PowOrg AI cube (2026-11-01).
+  Decorative (the hero copy carries the message). Art-directed crops keep the cube legible:
+  mobile = full chain (documents → PowOrg AI cube → systems → human → output), tablet = full scene strip, desktop = full scene under the copy.
+  variant "en" uses the same artwork with the Hebrew plaque labels left blank.
+{% endcomment %}
+{% assign hero_variant = include.variant | default: "he" %}
+{% assign hero_base = '/assets/img/hero/poworg-ai-hero-' | append: hero_variant %}
+<div class="hero-art-media" aria-hidden="true">
+  <picture>
+    <source media="(max-width: 767px)" type="image/webp" srcset="{{ hero_base | append: '-mobile.webp' | relative_url }}" width="1488" height="550">
+    <source media="(max-width: 1023px)" type="image/webp" srcset="{{ hero_base | append: '-scene.webp' | relative_url }}" width="1536" height="520">
+    <source type="image/webp" srcset="{{ hero_base | append: '-1536.webp' | relative_url }}" width="1536" height="1024">
+    <img src="{{ hero_base | append: '-1536.jpg' | relative_url }}" alt="" width="1536" height="1024" fetchpriority="high" decoding="async">
+  </picture>
+</div>

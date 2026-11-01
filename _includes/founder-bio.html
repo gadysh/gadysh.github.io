@@ -1,0 +1,4 @@
+{%- assign bio_lang = page.lang | default: site.lang | default: "he" -%}
+{%- assign bio = site.data.founder.bio[bio_lang] -%}
+<p class="{{ include.class }}">{% if include.emphasis %}<strong class="founder-bio-lead">{{ bio.lead }}</strong>{% else %}{{ bio.lead }}{% endif %} {{ bio.rest }}</p>
+<p class="{{ include.class }}{% if include.last_class %} {{ include.last_class }}{% endif %}">{{ bio.p2 }}</p>

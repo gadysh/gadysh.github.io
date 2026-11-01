@@ -1,0 +1,34 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+{% comment %} Homepage-only editorial row (Founder-approved "domains-editorial-routes", 2026-11-01).
+  Text from _data/domains.yml + scenarios.yml; links keep the previous homepage destinations per language.
+  Scenario pages / solutions pages keep domain-card.html. {% endcomment %}
+{% case include.domain.slug %}
+  {% when "customers" %}{% assign d_img = "/assets/img/domains/domain-service-sales.webp" %}{% assign d_w = 692 %}{% assign d_h = 360 %}
+  {% when "operations" %}{% assign d_img = "/assets/img/domains/domain-operations-documents.webp" %}{% assign d_w = 724 %}{% assign d_h = 331 %}
+  {% when "knowledge-and-teams" %}{% assign d_img = "/assets/img/domains/domain-knowledge-employees.webp" %}{% assign d_w = 692 %}{% assign d_h = 344 %}
+  {% else %}{% assign d_img = nil %}
+{% endcase %}
+<article class="domain-row">
+  <div class="domain-row-text">
+    <h3>{{ include.domain[page_lang].title }}</h3>
+    <p class="domain-row-framing">{{ include.domain[page_lang].framing }}</p>
+  </div>
+  {% if d_img %}<div class="domain-row-scene" aria-hidden="true"><img src="{{ d_img | relative_url }}" alt="" width="{{ d_w }}" height="{{ d_h }}" loading="lazy" decoding="async"></div>{% endif %}
+  <div class="domain-row-links">
+    <ul class="domain-row-scenarios">
+      {% for s_slug in include.domain.scenarios %}
+        {% for scenario in site.data.scenarios %}
+          {% if scenario.slug == s_slug and scenario.published == true %}
+            {% if page_lang == "en" %}
+              <li><a href="{{ '/en/contact/' | relative_url }}?from=scenario:{{ scenario.slug }}">{{ scenario.en.title }}</a></li>
+            {% else %}
+              {% assign s_short = scenario[page_lang].short %}
+              <li><a href="{{ '/scenarios/' | append: scenario.slug | append: '/' | relative_url }}">{% if s_short == nil or s_short == "" or s_short contains "TODO-COPY" %}{{ scenario[page_lang].title }}{% else %}{{ s_short }}{% endif %}</a></li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </ul>
+    {% if page_lang != "en" %}<a href="{{ '/solutions/' | append: include.domain.slug | append: '/' | relative_url }}" class="entry-link domain-row-action"><span>{{ site.data.i18n.labels.explore_domain[page_lang] }} {{ include.domain[page_lang].title }}</span><span class="entry-link-icon" aria-hidden="true"></span></a>{% endif %}
+  </div>
+</article>

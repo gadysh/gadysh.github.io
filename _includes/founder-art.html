@@ -1,0 +1,5 @@
+{%- assign fa_lang = page.lang | default: site.lang | default: "he" -%}
+<figure class="founder-notebook-art">
+  <img src="{{ '/assets/img/founder/founder-notebook.webp' | relative_url }}" width="876" height="682" loading="lazy" decoding="async"
+       alt="{% if fa_lang == 'en' %}An open engineering notebook: Gadi's photograph clipped to one page, AI and system components rising from the other, a metal pen beside it{% else %}מחברת הנדסית פתוחה: התמונה של גדי מוצמדת לעמוד אחד, ורכיבי AI ומערכת עולים מהעמוד השני, ולצדה עט מתכת{% endif %}">
+</figure>

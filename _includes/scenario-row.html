@@ -1,0 +1,27 @@
+{% assign page_lang = page.lang | default: site.lang | default: "he" %}
+{% comment %} Homepage-only scenario teaser row (Founder-approved "home-scenarios-editorial", 2026-11-01).
+  Text from _data/scenarios.yml; tag/action labels from _data/i18n.yml.
+  HE links to the scenario page. EN has no scenario pages (spec §6.3), so it links to EN contact with the
+  scenario as context. Scenario detail pages keep their own design (scenario-card.html is unchanged). {% endcomment %}
+{% if include.scenario.published == true %}
+{% assign s = include.scenario %}
+{% case s.slug %}
+  {% when "whatsapp-service-actions" %}{% assign s_w = 616 %}{% assign s_h = 264 %}
+  {% when "agent-assist-onboarding" %}{% assign s_w = 622 %}{% assign s_h = 266 %}
+  {% when "documents-across-systems" %}{% assign s_w = 642 %}{% assign s_h = 244 %}
+  {% when "knowledge-chat-actions" %}{% assign s_w = 622 %}{% assign s_h = 256 %}
+  {% when "recording-to-outputs" %}{% assign s_w = 606 %}{% assign s_h = 224 %}
+  {% else %}{% assign s_w = nil %}
+{% endcase %}
+<article class="scenario-row" aria-labelledby="scenario-row-{{ s.slug }}">
+  <h3 id="scenario-row-{{ s.slug }}">{{ s[page_lang].title }}</h3>
+  <p class="scenario-row-outcome">{{ s[page_lang].outcome }}</p>
+  <p class="scenario-row-tag"><svg class="scenario-row-tag-icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="16" height="16"><path d="M4 1.5h5.2L12.5 4.8v9.7H4z M9 1.5v3.5h3.5 M6 8h4.5 M6 10.5h4.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span>{{ site.data.i18n.labels.scenario_tag[page_lang] }}</span></p>
+  {% if s_w %}<div class="scenario-row-scene" aria-hidden="true"><img src="{{ '/assets/img/scenarios/scenario-' | append: s.slug | append: '.webp' | relative_url }}" alt="" width="{{ s_w }}" height="{{ s_h }}" loading="lazy" decoding="async"></div>{% endif %}
+  {% if page_lang == "en" %}
+  <a href="{{ '/en/contact/' | relative_url }}?from=scenario:{{ s.slug }}" class="entry-link scenario-row-action" aria-describedby="scenario-row-{{ s.slug }}"><span>{{ site.data.i18n.labels.talk_scenario.en }}</span><span class="entry-link-icon" aria-hidden="true"></span></a>
+  {% else %}
+  <a href="{{ '/scenarios/' | append: s.slug | append: '/' | relative_url }}" class="entry-link scenario-row-action" aria-describedby="scenario-row-{{ s.slug }}"><span>{{ site.data.i18n.labels.explore_scenario[page_lang] }}</span><span class="entry-link-icon" aria-hidden="true"></span></a>
+  {% endif %}
+</article>
+{% endif %}

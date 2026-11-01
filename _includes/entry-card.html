@@ -1,6 +1,8 @@
 {% assign page_lang = page.lang | default: site.lang | default: "he" %}
-<div class="entry-card">
+{% comment %} Optional include.image: Founder-approved crafted scene (2026-11-01) — open, card-less layout with a text-link action. {% endcomment %}
+<div class="entry-card{% if include.image %} entry-card--scene{% endif %}">
+  {% if include.image %}<div class="entry-scene" aria-hidden="true"><img src="{{ include.image | relative_url }}" alt="" width="{{ include.image_w }}" height="{{ include.image_h }}" loading="lazy" decoding="async"></div>{% endif %}
   <h3>{{ include.title }}</h3>
   <p>{{ include.desc }}</p>
-  <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}?intent={{ include.intent }}" class="btn btn-secondary" data-track-intent="{{ include.intent }}">{{ include.button_text }} ›</a>
+  <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}?intent={{ include.intent }}" class="{% if include.image %}entry-link{% else %}btn btn-secondary{% endif %}" data-track-intent="{{ include.intent }}">{% if include.image %}<span>{{ include.button_text }}</span><span class="entry-link-icon" aria-hidden="true"></span>{% else %}{{ include.button_text }} ›{% endif %}</a>
 </div>

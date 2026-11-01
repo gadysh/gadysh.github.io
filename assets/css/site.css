@@ -776,6 +776,184 @@ body.drawer-open {
 }
 
 /* ==========================================================================
+   Homepage Hero Artwork — Founder-approved "living system" with PowOrg AI cube
+   (visual_design_session_2026-11-01). Static artwork; copy and actions stay real HTML.
+   ========================================================================== */
+
+.hero-art {
+  --hero-bg: #092b3b;   /* sampled from the artwork wall */
+  --hero-accent: #5ee0e4;
+  --focus: #67e8f9;     /* light focus ring on the dark wall */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--hero-bg);
+  padding-block: var(--space-12) 0;
+}
+
+.hero-art-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-art .hero-content {
+  max-inline-size: 760px;
+}
+
+.hero-art .hero-content h1 {
+  color: #ffffff;
+  font-size: clamp(2rem, 1rem + 3.2vw, 3.75rem);
+  line-height: 1.15;
+  margin-block-end: var(--space-6);
+}
+
+.hero-accent {
+  color: var(--hero-accent);
+}
+
+.hero-art .hero-content p.text-lead {
+  color: #dce8ed;
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem);
+  max-inline-size: 62ch;
+}
+
+.hero-art .hero-actions {
+  margin-block-end: 0;
+}
+
+.hero-art .btn-primary,
+.site-header--dark .btn-primary {
+  background-color: #fbf5ec;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hero-art .btn-primary:hover,
+.site-header--dark .btn-primary:hover {
+  background-color: #ffffff;
+  color: var(--ink);
+}
+
+.hero-art .btn-secondary {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.72);
+}
+
+.hero-art .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+}
+
+.hero-art .btn {
+  min-inline-size: 180px;
+}
+
+.hero-art-media img {
+  inline-size: 100%;
+  max-inline-size: none;
+}
+
+/* Tablet & mobile: copy first, then the art-directed crop fading up into the wall */
+@media (max-width: 1023px) {
+  .hero-art-media {
+    margin-block-start: var(--space-4);
+  }
+
+  /* Top fades into the dark wall; bottom fades into the ivory field of section 2.
+     The hard colour stop sits behind the opaque middle of the scene, so it is never visible. */
+  .hero-art-media {
+    background: linear-gradient(to bottom, var(--hero-bg) 0 50%, #dccab9 50% 100%);
+  }
+
+  .hero-art-media img {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 22%, #000 72%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 22%, #000 72%, transparent 100%);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-art {
+    padding-block: var(--space-8) 0;
+  }
+
+  .hero-art .btn {
+    min-inline-size: 0;
+  }
+}
+
+/* Desktop: copy sits on the wall; the scene is anchored to the bottom of the hero.
+   Bottom padding reserves the scene height (image is 2/3 of the width) so copy never covers it. */
+@media (min-width: 1024px) {
+  .hero-art {
+    min-block-size: 58vw;
+    padding-block: clamp(var(--space-8), 3.5vw, var(--space-16)) calc(28.5vw + var(--space-6));
+  }
+
+  .hero-art .hero-content {
+    max-inline-size: min(760px, 58%);
+  }
+
+  /* English (LTR): keep the copy over the same open wall area on the right;
+     the longer English headline gets a smaller size (LTR buttons sit nearer the cube, so no wider measure) */
+  .hero-art .hero-content:lang(en) {
+    margin-inline-start: auto;
+  }
+
+  .hero-art .hero-content:lang(en) h1 {
+    font-size: clamp(2.25rem, 0.9rem + 2.5vw, 3.25rem);
+  }
+
+  .hero-art-media {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 0;
+  }
+
+  .hero-art-media img {
+    transform: translateY(6%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 10%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 10%);
+  }
+}
+
+/* Dark header variant used above the artwork hero (front matter: header_theme: dark) */
+.site-header--dark {
+  --focus: #67e8f9;
+  background-color: rgba(8, 40, 55, 0.97);
+  border-block-end-color: rgba(255, 255, 255, 0.08);
+}
+
+.site-header--dark .brand,
+.site-header--dark .nav-link {
+  color: #ffffff;
+}
+
+.site-header--dark .nav-link:hover {
+  color: var(--hero-accent, #5ee0e4);
+}
+
+.site-header--dark .lang-switch {
+  background: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.site-header--dark .lang-switch:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.site-header--dark .btn-menu-toggle {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+/* The dropdown stays a light panel: restore the standard focus ring inside it */
+.site-header--dark .solutions-menu {
+  --focus: #0e7490;
+}
+
+/* ==========================================================================
    Two Entry Paths (Spec §3.2, סעיף 2)
    ========================================================================== */
 
@@ -1939,4 +2117,1358 @@ body.drawer-open {
 
 .contact-col-info h3 {
   font-size: inherit;
+}
+
+/* ==========================================================================
+   Hero -> "Two entry paths" continuity (Founder-approved combined mockup, 2026-11-01)
+   The hero's warm ivory surface continues into section 2; two crafted static scenes,
+   open (no card containers), navy type, teal text-link actions.
+   ========================================================================== */
+
+.entry-paths-scenes {
+  --ivory-join: #dccab9;   /* sampled from the hero artwork's bottom edge */
+  --ivory-field: #f6eadc;  /* sampled from the approved section-2 surface */
+  background: linear-gradient(to bottom, var(--ivory-join) 0, #ecdccb 140px, var(--ivory-field) 360px, #f8efe4 100%);
+  padding-block: clamp(var(--space-12), 7vw, 7rem) var(--space-16);
+}
+
+/* Soft blend of the hero scene's lower edge into the ivory field (no hard seam) */
+.hero-art::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: clamp(48px, 6vw, 110px);
+  background: linear-gradient(to bottom, rgba(220, 202, 185, 0), #dccab9);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.entry-paths-scenes .section-header h2 {
+  color: var(--ink);
+  font-size: clamp(2rem, 1.2rem + 2.4vw, 3.25rem);
+}
+
+.entry-paths-scenes .entry-grid {
+  gap: 0;
+}
+
+.entry-card--scene,
+.entry-card--scene:hover {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  padding: 0 clamp(var(--space-4), 3vw, var(--space-12));
+}
+
+@media (min-width: 768px) {
+  /* thin vertical rule between the two ideas, as in the mockup */
+  .entry-card--scene + .entry-card--scene {
+    border-inline-start: 1px solid rgba(15, 39, 64, 0.18);
+  }
+}
+
+.entry-scene img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  max-inline-size: 560px;
+  margin-inline: auto;
+}
+
+.entry-card--scene h3 {
+  font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.85rem);
+  margin-block: var(--space-6) var(--space-3);
+}
+
+.entry-card--scene p {
+  color: #33475b;
+  font-size: 1.08rem;
+  flex-grow: 1;
+}
+
+.entry-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  align-self: flex-start;
+  min-block-size: 44px;
+  color: var(--teal-700, #0e7490);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.entry-link:hover span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.entry-link-icon {
+  inline-size: 30px;
+  block-size: 30px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  position: relative;
+  flex: none;
+}
+
+/* chevron points in reading direction (left in Hebrew, right in English) */
+.entry-link-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  inline-size: 7px;
+  block-size: 7px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: translateX(-1px) rotate(45deg);
+}
+
+[dir="rtl"] .entry-link-icon::before {
+  transform: translateX(1px) rotate(-135deg);
+}
+
+/* Phone & tablet: the scene image itself fades into the ivory (see .hero-art-media above),
+   so the desktop edge overlay is not needed and section 2 can start closer */
+@media (max-width: 1023px) {
+  .hero-art::after {
+    content: none;
+  }
+
+  .entry-paths-scenes {
+    padding-block-start: var(--space-8);
+  }
+}
+
+@media (max-width: 767px) {
+  .entry-card--scene {
+    padding-inline: 0;
+  }
+
+  .entry-card--scene + .entry-card--scene {
+    margin-block-start: var(--space-12);
+  }
+}
+
+/* ==========================================================================
+   Homepage section 3 — "Where AI can work" editorial rows
+   (Founder-approved domains-editorial-routes, 2026-11-01). Homepage only:
+   solutions/scenario pages keep .domain-card. Continues section 2's ivory field;
+   each row: text + scenario links beside one static crafted scene, thin rule between rows.
+   ========================================================================== */
+
+.domains-editorial {
+  /* section 4 (.scenarios-editorial) continues the same ivory field and does the fade-out */
+  background: #f8efe4;
+  padding-block: var(--space-8) var(--space-12);
+}
+
+.domains-editorial .section-header h2 {
+  color: var(--ink);
+  font-size: clamp(2rem, 1.2rem + 2.4vw, 3.25rem);
+}
+
+.domain-rows {
+  max-inline-size: 1120px;
+  margin-inline: auto;
+}
+
+.domain-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "text" "scene" "links";
+  padding-block: var(--space-8);
+}
+
+.domain-row + .domain-row {
+  border-block-start: 1px solid rgba(15, 39, 64, 0.16);
+}
+
+.domain-row-text { grid-area: text; }
+.domain-row-scene { grid-area: scene; }
+.domain-row-links { grid-area: links; }
+
+.domain-row h3 {
+  color: var(--ink);
+  font-size: clamp(1.5rem, 1.15rem + 1.1vw, 2.15rem);
+  margin-block: 0 var(--space-3);
+}
+
+.domain-row-framing {
+  color: #33475b;
+  font-size: 1.08rem;
+  margin: 0;
+  max-inline-size: 34em;
+}
+
+.domain-row-scene img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  max-inline-size: 560px;
+  margin: var(--space-4) auto;
+  /* the scene's lighter studio backdrop takes on the section ivory (no visible frame) */
+  mix-blend-mode: multiply;
+}
+
+.domain-row-scenarios {
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+}
+
+.domain-row-scenarios a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-block-size: 44px;
+  padding-block: 6px;
+  color: var(--teal-700, #0e7490);
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+
+/* wrapped (longer EN) labels keep the chevron on the first line */
+.domain-row-scenarios a::before {
+  align-self: flex-start;
+  margin-block-start: 0.6em;
+}
+
+.domain-row-scenarios a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* small chevron in reading direction */
+.domain-row-scenarios a::before {
+  content: "";
+  flex: none;
+  inline-size: 7px;
+  block-size: 7px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+[dir="rtl"] .domain-row-scenarios a::before {
+  transform: rotate(-135deg);
+}
+
+/* Desktop: scene on one side, text + links on the reading side (right in Hebrew) */
+@media (min-width: 1024px) {
+  .domain-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+    grid-template-areas: "text scene" "links scene";
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(var(--space-8), 4vw, 4.5rem);
+    align-items: start;
+    padding-block: var(--space-12);
+  }
+
+  .domain-row-scene {
+    align-self: center;
+  }
+
+  .domain-row-scene img {
+    margin: 0;
+    max-inline-size: 600px;
+  }
+
+  .domain-row-links {
+    margin-block-start: var(--space-6);
+  }
+}
+
+/* Tablet: stacked like phone, with a bounded scene so it doesn't dominate */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .domain-row-scene img {
+    max-inline-size: 520px;
+  }
+}
+
+@media (max-width: 767px) {
+  .domains-editorial {
+    padding-block-start: var(--space-4);
+  }
+
+  .domain-row {
+    padding-block: var(--space-8);
+  }
+
+  .domain-row-scene img {
+    margin-block: var(--space-3);
+  }
+}
+
+/* ==========================================================================
+   Homepage section 4 — "What it can do in practice" editorial teaser rows
+   (Founder-approved home-scenarios-editorial, 2026-11-01; HE + EN). Homepage only:
+   scenario detail pages keep their own design. Continues section 3's ivory field,
+   one static crafted scene per scenario, quiet rule between rows, no cards.
+   ========================================================================== */
+
+.scenarios-editorial {
+  --scenarios-fade-to: var(--surface);
+  background: linear-gradient(to bottom, #f8efe4 0, #f8efe4 calc(100% - 140px), var(--scenarios-fade-to) 100%);
+  padding-block: var(--space-4) var(--space-16);
+}
+
+/* EN: the next section is an alternate band */
+.scenarios-editorial:has(+ .section-alt) {
+  --scenarios-fade-to: var(--surface-alt);
+}
+
+.scenarios-editorial .section-header h2 {
+  color: var(--ink);
+  font-size: clamp(2rem, 1.2rem + 2.4vw, 3.25rem);
+}
+
+.scenario-rows {
+  max-inline-size: 1120px;
+  margin-inline: auto;
+}
+
+/* Phone / tablet: tag → title → outcome → scene → action, one readable group per scenario */
+.scenario-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "tag" "title" "outcome" "scene" "action";
+  padding-block: var(--space-8);
+}
+
+.scenario-row + .scenario-row {
+  border-block-start: 1px solid rgba(15, 39, 64, 0.16);
+}
+
+.scenario-row h3 { grid-area: title; }
+.scenario-row-outcome { grid-area: outcome; }
+.scenario-row-tag { grid-area: tag; }
+.scenario-row-scene { grid-area: scene; }
+.scenario-row-action { grid-area: action; }
+
+.scenario-row h3 {
+  color: var(--ink);
+  font-size: clamp(1.45rem, 1.1rem + 1.1vw, 2rem);
+  line-height: 1.25;
+  margin-block: 0 var(--space-3);
+}
+
+.scenario-row-outcome {
+  color: #33475b;
+  font-size: 1.08rem;
+  margin: 0;
+  max-inline-size: 34em;
+}
+
+.scenario-row-tag {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-2);
+  color: var(--teal-700, #0e7490);
+  font-size: 0.95rem;
+}
+
+.scenario-row-tag-icon {
+  flex: none;
+  color: var(--muted);
+}
+
+.scenario-row-scene img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  max-inline-size: 560px;
+  margin: var(--space-4) auto;
+  /* the scene's lighter studio backdrop takes on the section ivory (no visible frame) */
+  mix-blend-mode: multiply;
+}
+
+/* phone: full-width outlined action, as in the approved phone detail */
+.scenario-row-action {
+  justify-self: stretch;
+  justify-content: center;
+  min-block-size: 56px;
+  padding: var(--space-2) var(--space-6);
+  border: 1.5px solid rgba(14, 116, 144, 0.55);
+  border-radius: 999px;
+}
+
+/* Tablet: same stack, bounded scene and an inline-size action */
+@media (min-width: 768px) {
+  .scenario-row-scene img {
+    max-inline-size: 520px;
+  }
+
+  .scenario-row-action {
+    justify-self: start;
+    border: 0;
+    padding: 0;
+    min-block-size: 44px;
+  }
+}
+
+/* Desktop: scene on one side, text on the reading side (right in Hebrew, left in English) */
+@media (min-width: 1024px) {
+  .scenario-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+    /* spacer rows keep the text group vertically centred against the scene */
+    grid-template-areas:
+      ". scene"
+      "title scene"
+      "outcome scene"
+      "tag scene"
+      "action scene"
+      ". scene";
+    grid-template-rows: 1fr auto auto auto auto 1fr;
+    column-gap: clamp(var(--space-8), 4vw, 4.5rem);
+    padding-block: var(--space-8);
+  }
+
+  .scenario-row-scene {
+    align-self: center;
+  }
+
+  .scenario-row-scene img {
+    margin: 0;
+    max-inline-size: 600px;
+  }
+
+  .scenario-row-tag {
+    margin-block: var(--space-6) var(--space-1, 0.25rem);
+  }
+}
+
+/* Section 4 — dark variant (Founder-approved for release 2026-11-01: breaks the ivory run with the hero's dark wall).
+   Removing this block returns the section to the ivory version above. */
+.scenarios-editorial {
+  --focus: #67e8f9;
+  background: #092b3b;
+  padding-block: var(--space-12) var(--space-16);
+}
+
+.scenarios-editorial .section-header h2,
+.scenarios-editorial .scenario-row h3 {
+  color: #ffffff;
+}
+
+.scenarios-editorial .scenario-row-outcome {
+  color: #dce8ed;
+}
+
+.scenarios-editorial .scenario-row-tag,
+.scenarios-editorial .scenario-row-action {
+  color: #5ee0e4;
+}
+
+.scenarios-editorial .scenario-row-tag-icon {
+  color: #9fb6c2;
+}
+
+.scenarios-editorial .scenario-row + .scenario-row {
+  border-block-start-color: rgba(255, 255, 255, 0.14);
+}
+
+.scenarios-editorial .scenario-row-action {
+  border-color: rgba(94, 224, 228, 0.55);
+}
+
+/* the ivory studio backdrop of each scene fades out into the dark wall */
+.scenarios-editorial .scenario-row-scene img {
+  mix-blend-mode: normal;
+  -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% 55%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 78% at 50% 55%, #000 55%, transparent 100%);
+}
+
+/* ==========================================================================
+   Homepage section 5 — "What sets us apart" (Founder-approved difference-shared, 2026-11-01; HE + EN).
+   One shared static sculpture (three complementary capabilities around PowOrg) + three peer text
+   groups; same ivory/navy/teal language, quiet teal rules, no cards and no CTA. Homepage only.
+   Phone/tablet: heading -> sculpture -> groups. Desktop: text on the reading side, sculpture opposite.
+   ========================================================================== */
+
+.difference-shared {
+  --difference-field: #f9eee2;     /* sampled from the approved artwork's surface */
+  --difference-fade-to: var(--surface);
+  background: linear-gradient(to bottom, var(--difference-field) 0, var(--difference-field) calc(100% - 140px), var(--difference-fade-to) 100%);
+  padding-block: var(--space-12) var(--space-16);
+}
+
+/* ivory section 4 now ends in the section-5 ivory instead of fading to white (no light stripe) */
+.scenarios-editorial:has(+ .difference-shared) {
+  --scenarios-fade-to: #f9eee2;
+}
+
+.difference-shared:has(+ .section-alt) {
+  --difference-fade-to: var(--surface-alt);
+}
+
+.difference-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "heading" "art" "groups";
+  max-inline-size: 1180px;
+}
+
+.difference-heading { grid-area: heading; }
+.difference-art { grid-area: art; }
+.difference-groups { grid-area: groups; }
+
+.difference-heading {
+  color: var(--ink);
+  font-size: clamp(2rem, 1.2rem + 2.4vw, 3.25rem);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.difference-art img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  max-inline-size: 640px;
+  margin: var(--space-6) auto var(--space-4);
+}
+
+.difference-group {
+  padding-block: var(--space-6);
+}
+
+.difference-group + .difference-group {
+  border-block-start: 1px solid rgba(14, 116, 144, 0.28);
+}
+
+.difference-group h3 {
+  color: var(--ink);
+  font-size: clamp(1.4rem, 1.1rem + 0.9vw, 1.85rem);
+  line-height: 1.25;
+  margin: 0 0 var(--space-2);
+}
+
+.difference-group p {
+  color: #33475b;
+  font-size: 1.08rem;
+  margin: 0;
+  max-inline-size: 30em;
+}
+
+/* Desktop: heading + groups on the reading side (right in Hebrew, left in English), sculpture opposite */
+@media (min-width: 1024px) {
+  .difference-shared {
+    padding-block: var(--space-16);
+  }
+
+  .difference-layout {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "heading art"
+      "groups art";
+    column-gap: clamp(var(--space-8), 4vw, 4.5rem);
+  }
+
+  .difference-heading {
+    align-self: end;
+    margin-block-end: var(--space-4);
+  }
+
+  .difference-art {
+    align-self: center;
+  }
+
+  .difference-art img {
+    max-inline-size: 720px;
+    margin: 0;
+  }
+
+  .difference-group:last-child {
+    padding-block-end: 0;
+  }
+}
+
+/* Pairs with the section-4 dark variant above: the dark wall eases into the section-5 ivory
+   (short eased fade, no hard dark/ivory seam). Delete together with that variant. */
+.scenarios-editorial + .difference-shared {
+  background:
+    linear-gradient(to bottom, #092b3b 0, #0f3241 16px, #2e4c57 44px, #8a8e8b 80px, #d9d0c4 116px, var(--difference-field) 150px, transparent 150px),
+    linear-gradient(to bottom, var(--difference-field) 0, var(--difference-field) calc(100% - 140px), var(--difference-fade-to) 100%);
+  padding-block-start: calc(var(--space-12) + 100px);
+}
+
+/* ==========================================================================
+   Homepage section 6 — "How we work" five-stage journey (Founder-approved
+   process-five-stages desktop/mobile mocks, 2026-11-01). Continues section 5's ivory field;
+   ordered list, native ordinals and labels, static stage scenes, one quiet teal path. No cards.
+   Phone/tablet: vertical path top-to-bottom. Desktop: five stations in reading order
+   (1 at the right in Hebrew, at the left in English). Homepage only (.process-journey);
+   .work-steps-row and the inner how-we-work page are untouched.
+   ========================================================================== */
+
+.process-journey {
+  --process-field: #f9eee2;        /* same ivory as section 5 */
+  --process-fade-to: var(--surface);
+  --process-path: rgba(14, 116, 144, 0.42);
+  background: linear-gradient(to bottom, var(--process-field) 0, var(--process-field) calc(100% - 140px), var(--process-fade-to) 100%);
+  padding-block: var(--space-8) var(--space-16);
+  scroll-margin-block-start: var(--header-height-mobile);
+}
+
+/* section 5 now ends in the section-6 ivory (one continuous surface, no white/grey stripe) */
+.difference-shared:has(+ .process-journey) {
+  --difference-fade-to: #f9eee2;
+}
+
+/* EN: the next section is an alternate band */
+.process-journey:has(+ .section-alt) {
+  --process-fade-to: var(--surface-alt);
+}
+
+.process-heading {
+  color: var(--ink);
+  font-size: clamp(2rem, 1.2rem + 2.4vw, 3.25rem);
+  line-height: 1.15;
+  margin: 0 0 var(--space-6);
+}
+
+.process-stages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-inline-size: 760px;
+}
+
+/* Phone/tablet: ordinal + path | label | scene */
+.process-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  column-gap: var(--space-3);
+  padding-block: var(--space-4);
+}
+
+/* path segment through the ordinal column, from the first ordinal to the last */
+.process-stage::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: calc(1.25rem - 1px);
+  inline-size: 2px;
+  background: var(--process-path);
+}
+
+.process-stage:first-child::before { inset-block-start: 50%; }
+.process-stage:last-child::before { inset-block-end: 50%; }
+
+/* quiet rule between stages, kept clear of the path column */
+.process-stage + .process-stage::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: calc(2.5rem + var(--space-3)) 0;
+  block-size: 1px;
+  background: rgba(14, 116, 144, 0.18);
+}
+
+.process-ordinal {
+  position: relative;
+  z-index: 1;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border-radius: 50%;
+  background: var(--teal-700);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1;
+  box-shadow: 0 0 0 4px var(--process-field);
+}
+
+.process-stage-title {
+  color: var(--ink);
+  font-size: clamp(1.15rem, 0.95rem + 0.9vw, 1.5rem);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.process-scene img {
+  display: block;
+  inline-size: calc(var(--mw) / 426 * 100%);
+  block-size: auto;
+  margin-inline: auto;
+}
+
+.process-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-block-start: var(--space-6);
+  padding-block-start: var(--space-6);
+  border-block-start: 1px solid rgba(14, 116, 144, 0.18);
+  max-inline-size: 760px;
+}
+
+.process-note {
+  color: #33475b;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* Desktop: five stations side by side; grid order follows the document direction */
+@media (min-width: 1024px) {
+  .process-journey {
+    padding-block: var(--space-12) var(--space-16);
+    scroll-margin-block-start: var(--header-height-desktop);
+  }
+
+  .process-heading {
+    margin-block-end: var(--space-12);
+  }
+
+  .process-stages {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: var(--space-4);
+    max-inline-size: none;
+  }
+
+  /* the shared teal path, at the stations' connector height */
+  .process-stages::before {
+    content: "";
+    position: absolute;
+    inset-inline: 6%;
+    inset-block-end: 26%;
+    block-size: 2px;
+    background: linear-gradient(to right, transparent, var(--process-path) 10%, var(--process-path) 90%, transparent);
+  }
+
+  .process-stage {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    justify-items: center;
+    align-items: start;
+    row-gap: var(--space-3);
+    padding-block: 0;
+    text-align: center;
+  }
+
+  .process-stage::before,
+  .process-stage + .process-stage::after {
+    content: none;
+  }
+
+  .process-stage-title {
+    font-size: clamp(1.1rem, 0.6rem + 0.75vw, 1.4rem);
+    max-inline-size: 13em;
+    min-block-size: 2.6em;
+  }
+
+  .process-scene {
+    position: relative;
+    z-index: 1;
+    align-self: end;
+    inline-size: 100%;
+    display: flex;
+    justify-content: center;   /* centers the slightly wider station, letting its feathered edges overlap */
+    margin-block-start: var(--space-4);
+  }
+
+  .process-scene img {
+    flex: none;
+    inline-size: calc(var(--dw) / 330 * 112%);
+    max-inline-size: none;
+    margin: 0;
+  }
+
+  .process-footer {
+    max-inline-size: none;
+    margin-block-start: var(--space-12);
+  }
+}
+
+/* ==========================================================================
+   Homepage section 7 — "Technology" on a deep petrol field (Founder-approved
+   technology-dark-logos desktop/mobile mocks v2, 2026-11-01). Native heading/paragraph,
+   static scene (PowOrg AI module and a generic cloud as two alternative routes into the
+   organization's systems), nine separate original brand files. >=768px: one stage measured
+   on the v2 desktop mock (1070x870): cloud marks on glass chips above the cloud, system marks
+   on angled stone chips around the junction, quiet teal connectors. <768px: v2 phone mock —
+   scene, then marks in divided rows on the dark field. Desktop (>=1200px): copy on the reading
+   side (right in Hebrew, left in English), stage opposite. Homepage only (.technology-dark).
+   ========================================================================== */
+
+.technology-dark {
+  --tech-field: #03263a;           /* sampled from the approved scene's floor */
+  --tech-ivory: #f6eadc;
+  --tech-teal: #5ee0e4;
+  --focus: #67e8f9;
+  position: relative;
+  color: var(--tech-ivory);
+  background:
+    radial-gradient(120% 70% at 30% 0%, rgba(14, 116, 144, 0.22), transparent 60%),
+    linear-gradient(to bottom, #052f45 0, var(--tech-field) 45%, #021e2e 100%);
+  box-shadow: inset 0 1px 0 rgba(94, 224, 228, 0.28);   /* one crisp teal hairline at the ivory edge */
+  scroll-margin-block-start: var(--header-height-mobile);
+}
+
+/* section 6 keeps its ivory to the edge instead of fading to white before the dark field */
+.process-journey:has(+ .technology-dark) {
+  --process-fade-to: var(--process-field);
+}
+
+.technology-layout {
+  display: grid;
+  row-gap: var(--space-8);
+}
+
+.technology-copy h2 {
+  color: var(--tech-ivory);
+  font-size: clamp(2rem, 1.2rem + 2.4vw, 3.25rem);
+  line-height: 1.15;
+  margin: 0 0 var(--space-4);
+}
+
+.technology-copy .text-lead {
+  color: rgba(246, 234, 220, 0.9);
+  max-inline-size: 34em;
+  margin: 0;
+}
+
+/* Keep provider names ("Google Cloud", "Microsoft Azure") on one line */
+.technology-copy .text-lead bdi {
+  white-space: nowrap;
+}
+
+.technology-art {
+  position: relative;
+  margin: 0;
+}
+
+.tech-stage picture,
+.tech-scene {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+.tech-links {
+  display: none;
+}
+
+.technology-logos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tech-logo img {
+  display: block;
+  flex: none;
+  max-inline-size: 100%;
+  inline-size: auto;
+  object-fit: contain;
+}
+
+.tech-logo picture {
+  display: block;
+  flex: none;
+}
+
+.tech-logo span {
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: start;
+}
+
+/* ---------- Phone (<768px): marks in divided rows on the dark field ---------- */
+@media (max-width: 767px) {
+  .technology-art {
+    margin-inline: calc(-1 * var(--space-4));   /* the scene runs to the screen edges like the mock */
+  }
+
+  .technology-logos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-inline: var(--space-4);
+  }
+
+  .technology-logos--cloud {
+    margin-block-start: var(--space-4);
+    padding-block-end: var(--space-4);
+    border-block-end: 1px solid rgba(246, 234, 220, 0.18);
+  }
+
+  .technology-logos--systems {
+    padding-block-start: var(--space-2);
+  }
+
+  .tech-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-block-size: 3.5rem;
+    padding: 0.5rem 0.35rem;
+    color: var(--tech-ivory);
+    font-size: 0.8rem;
+  }
+
+  .technology-logos > li:not(:nth-child(3n + 1)) {
+    border-inline-start: 1px solid rgba(246, 234, 220, 0.18);   /* thin dividers between marks in a row */
+  }
+
+  .tech-logo img { block-size: 1.5rem; }
+  .tech-logo .tech-logo-glyph { block-size: 1.6rem; }
+  .tech-logo .tech-logo-d365 { block-size: 1.4rem; }
+  .tech-at-d365 { gap: 0.3rem; padding-inline: 0.15rem; }
+  .tech-at-d365 span { font-size: 0.72rem; }
+  .tech-logo .tech-logo-gcp { block-size: auto; inline-size: 100%; max-inline-size: 7rem; }
+  .tech-logo .tech-logo-aws { block-size: 1.9rem; }
+  .tech-logo .tech-logo-sf { block-size: 2.4rem; }
+  .tech-logo .tech-logo-sap { block-size: 1.7rem; }
+  .tech-logo .tech-logo-ns { block-size: 1.75rem; }
+  .tech-logo .tech-logo-priority { block-size: 1.35rem; }
+}
+
+@media (max-width: 379px) {
+  .tech-logo { font-size: 0.74rem; gap: 0.3rem; }
+  .tech-logo .tech-logo-priority { block-size: 1.15rem; }
+}
+
+/* ---------- Tablet/desktop (>=768px): one stage, chips placed on the scene ---------- */
+@media (min-width: 768px) {
+  .technology-art {
+    container-type: inline-size;
+    inline-size: 100%;
+    max-inline-size: 760px;
+    margin-inline: auto;
+    aspect-ratio: 1070 / 870;
+  }
+
+  .tech-stage,
+  .technology-logos {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* the scene is the stage's left 925px (the mock's text column is not part of the art) */
+  .tech-stage picture {
+    inline-size: calc(925 / 1070 * 100%);
+  }
+
+  .tech-scene {
+    -webkit-mask-image: radial-gradient(ellipse 80% 78% at 50% 50%, #000 62%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 78% at 50% 50%, #000 62%, transparent 100%);
+  }
+
+  .tech-links {
+    display: block;
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: var(--tech-teal);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 4px rgba(94, 224, 228, 0.75));
+  }
+
+  .tech-logo {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9cqw;
+    padding: 0.6cqw 1cqw;
+    border-radius: 1cqw;
+    font-size: max(11px, 1.75cqw);
+  }
+
+  /* cloud marks: dark glass with a teal rim, reversed (light) official lockups */
+  .technology-logos--cloud .tech-logo {
+    color: var(--tech-ivory);
+    background: linear-gradient(to bottom, rgba(16, 70, 92, 0.72), rgba(6, 38, 56, 0.82));
+    box-shadow: inset 0 0 0 1px rgba(94, 224, 228, 0.6), 0 0 1.6cqw rgba(94, 224, 228, 0.28), 0 1cqw 2cqw rgba(0, 0, 0, 0.35);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  /* system marks: ivory stone chips with visible thickness, angled like the mock */
+  .technology-logos--systems .tech-logo {
+    color: #1d2b3a;
+    background: linear-gradient(to bottom, #fbf7f1, #ebe1d2);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      0 0.55cqw 0 #c4b39b,
+      0 0.55cqw 0 1px rgba(0, 0, 0, 0.12),
+      0 1.6cqw 2.2cqw rgba(0, 0, 0, 0.45);
+    transform: perspective(60cqw) rotateX(12deg) rotate(var(--tilt, 6deg));
+  }
+
+  /* positions/sizes in % of the 1070x870 stage, measured on the approved v2 desktop mock */
+  .tech-at-gcp   { left: 43.5%; top: 8%;    inline-size: 13.4%; block-size: 10.3%; }
+  .tech-at-azure { left: 59.3%; top: 3.6%;  inline-size: 14.2%; block-size: 14.4%; flex-direction: column; }
+  .tech-at-aws   { left: 75.9%; top: 10.6%; inline-size: 12.5%; block-size: 9.8%; }
+  .tech-at-wa    { left: 6.8%;  top: 66%;   inline-size: 13.9%; block-size: 8%;    --tilt: 8deg; }
+  .tech-at-sf    { left: 15.4%; top: 76.2%; inline-size: 13.1%; block-size: 10.6%; --tilt: 6deg; }
+  .tech-at-d365  { left: 29.9%; top: 79.6%; inline-size: 17%;   block-size: 11.4%; --tilt: 6deg; }
+  .tech-at-sap   { left: 49%;   top: 84%;   inline-size: 13.5%; block-size: 10.2%; --tilt: 5deg; }
+  .tech-at-ns    { left: 64.5%; top: 83%;   inline-size: 15%;   block-size: 10.8%; --tilt: 5deg; }
+  .tech-at-pri   { left: 80.2%; top: 79%;   inline-size: 17.8%; block-size: 10.8%; --tilt: 5deg; }
+
+  .tech-at-azure span { text-align: center; }
+
+  .tech-logo img { block-size: 3.4cqw; }
+  .tech-logo .tech-logo-glyph { block-size: 3cqw; }
+  .tech-at-azure .tech-logo-glyph { block-size: 4.6cqw; }
+  .tech-logo .tech-logo-d365 { block-size: 4.2cqw; }
+  .tech-logo .tech-logo-gcp { block-size: auto; inline-size: 11cqw; }
+  .tech-logo .tech-logo-aws { block-size: 5.4cqw; }
+  .tech-logo .tech-logo-sf { block-size: 6.6cqw; }
+  .tech-logo .tech-logo-sap { block-size: 4.6cqw; }
+  .tech-logo .tech-logo-ns { block-size: 4.2cqw; }
+  .tech-logo .tech-logo-priority { block-size: 3.2cqw; }
+}
+
+@media (min-width: 1024px) {
+  .technology-dark {
+    scroll-margin-block-start: var(--header-height-desktop);
+  }
+}
+
+/* Desktop: copy on the reading side, stage opposite */
+@media (min-width: 1200px) {
+  .technology-layout {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    column-gap: var(--space-8);
+    align-items: center;
+  }
+
+  .technology-art {
+    max-inline-size: none;
+  }
+}
+
+/* ==========================================================================
+   Homepage section 8 — "Who it fits" back on open warm ivory after the dark technology
+   field (Founder-approved fit-light desktop/mobile mocks v1, 2026-11-01). Native heading,
+   intro, four list lines with static teal check marks and thin separators, and a closing
+   note; one shared organization-work scene (extracted clean from the mocks, no baked text).
+   <1200px: heading, scene, list, note. Desktop (>=1200px): copy on the reading side (right in
+   Hebrew, left in English), scene opposite. Homepage only (.fit-light).
+   ========================================================================== */
+
+.fit-light {
+  --fit-field: #fcf2e5;            /* sampled from the approved mocks' ivory backdrop */
+  --fit-rule: rgba(14, 116, 144, 0.32);
+  background:
+    radial-gradient(90% 60% at 15% 40%, rgba(255, 250, 242, 0.9), transparent 70%),
+    var(--fit-field);
+  color: var(--ink);
+  scroll-margin-block-start: var(--header-height-mobile);
+}
+
+.fit-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "head" "art" "list" "note";
+  row-gap: var(--space-6);
+}
+
+.fit-head { grid-area: head; }
+.fit-art { grid-area: art; margin: 0; }
+.fit-list { grid-area: list; }
+.fit-note { grid-area: note; }
+
+.fit-head h2 {
+  color: var(--ink);
+  font-size: clamp(2rem, 1.2rem + 2.4vw, 3.25rem);
+  line-height: 1.15;
+  margin: 0 0 var(--space-3);
+}
+
+.fit-intro {
+  color: var(--ink);
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  font-weight: 700;
+  margin: 0;
+}
+
+.fit-art picture,
+.fit-scene {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+.fit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-inline-size: 36em;
+}
+
+.fit-list li {
+  position: relative;
+  padding-block: var(--space-4);
+  padding-inline-start: calc(2rem + var(--space-4));
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.fit-list li + li {
+  border-block-start: 1px solid var(--fit-rule);
+}
+
+/* static decorative check mark (not a control) */
+.fit-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: calc(var(--space-4) + 0.75em - 1rem);
+  inline-size: 2rem;
+  block-size: 2rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14.5' fill='%23ffffff' fill-opacity='.55' stroke='%230e7490' stroke-width='2'/%3E%3Cpath d='M10 16.5l4 4 8-9' fill='none' stroke='%230e7490' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.fit-note {
+  margin: 0;
+  padding-block-start: var(--space-4);
+  border-block-start: 2px solid var(--teal-700);
+  max-inline-size: 36em;
+  color: var(--ink);
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Tablet: wide scene under the heading, comfortable single-column list */
+@media (min-width: 768px) {
+  .fit-art {
+    max-inline-size: 820px;
+    inline-size: 100%;
+    justify-self: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fit-light {
+    scroll-margin-block-start: var(--header-height-desktop);
+  }
+}
+
+/* Desktop: copy on the reading side, scene opposite */
+@media (min-width: 1200px) {
+  .fit-layout {
+    grid-template-columns: minmax(0, 4.5fr) minmax(0, 7.5fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "head art"
+      "list art"
+      "note art";
+    column-gap: var(--space-8);
+    row-gap: var(--space-4);
+  }
+
+  .fit-art {
+    max-inline-size: none;
+    align-self: center;
+  }
+
+  .fit-note {
+    align-self: start;
+    margin-block-start: var(--space-2);
+  }
+}
+
+/* ==========================================================================
+   Header "On this page" list + drawer section list (2026-11-01)
+   ========================================================================== */
+
+.page-menu {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 0;
+  min-inline-size: 260px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: 0 16px 36px rgba(11, 37, 64, 0.12);
+  padding: var(--space-3);
+  z-index: 200;
+  display: none;
+}
+
+.page-menu.is-open {
+  display: block;
+}
+
+.page-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-menu-list a {
+  display: block;
+  padding-block: var(--space-2);
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-btn);
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.page-menu-list a:hover,
+.page-menu-list a:focus-visible {
+  background: var(--surface-alt);
+  color: var(--teal-700);
+}
+
+.page-menu-list a[aria-current="location"],
+.drawer-section-links a[aria-current="location"] {
+  color: var(--teal-700);
+  font-weight: 600;
+  box-shadow: inset -3px 0 0 var(--teal-700);
+}
+
+:lang(en) .page-menu-list a[aria-current="location"],
+:lang(en) .drawer-section-links a[aria-current="location"] {
+  box-shadow: inset 3px 0 0 var(--teal-700);
+}
+
+.mobile-drawer {
+  inline-size: min(90vw, 440px);
+  background: #fbf6ee;
+}
+
+.drawer-section-links {
+  margin-inline-start: 0;
+  gap: 0;
+}
+
+.drawer-section-links a {
+  display: flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-btn);
+}
+
+.drawer-footer {
+  position: sticky;
+  inset-block-end: calc(-1 * var(--space-6));
+  background: #fbf6ee;
+  padding-block-end: var(--space-2);
+}
+
+/* sticky-header landing clearance for every homepage section target */
+#hero, #entry-paths, #domains, #solutions, #scenarios, #difference, #process,
+#technology, #fit, #founder, #contact-cta {
+  scroll-margin-block-start: calc(var(--header-height-mobile) + var(--space-3));
+}
+
+@media (min-width: 1024px) {
+  #hero, #entry-paths, #domains, #solutions, #scenarios, #difference, #process,
+  #technology, #fit, #founder, #contact-cta {
+    scroll-margin-block-start: calc(var(--header-height-desktop) + var(--space-3));
+  }
+}
+
+/* ==========================================================================
+   #founder: open engineering notebook (Founder-selected concept, 2026-11-01)
+   ========================================================================== */
+
+.founder-notebook {
+  background: linear-gradient(180deg, #fbf4ea 0%, #f7eddf 100%);
+}
+
+.founder-notebook-inner {
+  display: grid;
+  grid-template-areas: "head" "art" "body";
+  gap: var(--space-4);
+}
+
+.founder-notebook-head {
+  grid-area: head;
+}
+
+.founder-notebook-head h2 {
+  margin: 0;
+  color: var(--navy);
+}
+
+.founder-notebook-company {
+  margin: var(--space-1) 0 0;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  color: var(--navy);
+}
+
+.founder-notebook-art {
+  grid-area: art;
+  margin: 0;
+  margin-inline: calc(-1 * var(--space-4));
+}
+
+.founder-notebook-art img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+.founder-notebook-body {
+  grid-area: body;
+  max-inline-size: 38rem;
+}
+
+.founder-bio p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--navy);
+  margin: 0 0 var(--space-4);
+}
+
+.founder-bio-lead {
+  color: var(--teal-700);
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .founder-notebook-inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-areas: "head art" "body art";
+    grid-template-rows: auto 1fr;
+    column-gap: var(--space-8);
+    align-items: start;
+  }
+  .founder-notebook-head {
+    align-self: end;
+    padding-block-start: var(--space-8);
+  }
+  .founder-notebook-art {
+    align-self: center;
+    margin-inline: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .founder-notebook-inner {
+    column-gap: var(--space-12);
+  }
+  .founder-bio p {
+    font-size: 1.25rem;
+  }
 }

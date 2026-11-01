@@ -1,0 +1,7 @@
+{%- assign hs_lang = page.lang | default: site.lang | default: "he" -%}
+{%- if hs_lang == 'en' -%}{%- assign hs_home = '/en/' | relative_url -%}{%- else -%}{%- assign hs_home = '/' | relative_url -%}{%- endif -%}
+<ul class="{{ include.class }}">
+  {%- for s in site.data.home_sections %}
+  <li><a href="{{ hs_home }}#{{ s[hs_lang].id }}" data-section-link="{{ s[hs_lang].id }}">{{ s[hs_lang].label }}</a></li>
+  {%- endfor %}
+</ul>

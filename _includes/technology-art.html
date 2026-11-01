@@ -1,0 +1,46 @@
+{%- comment -%}
+  Homepage section 7 "Technology" art (Founder-approved technology-dark-logos desktop/mobile mocks v2, 2026-11-01).
+  Clean pre-logo scenes (_dev/extract_technology_art.py) + nine separate original brand files in their official
+  colourways (sources in _dev/POWORG_TECHNOLOGY_DARK_LOGOS_2026-11-01.md). Examples only, not partnership/certification seals.
+  >=768px: one 1070x870 stage — cloud marks on glass chips above the cloud, system marks on angled stone chips around
+  the organization's system junction, static teal connectors (positions measured on the v2 desktop mock).
+  <768px: phone scene, then the marks in divided rows on the dark field (v2 phone mock).
+  Params: cloud_label, systems_label (accessible list names), scene_alt.
+{%- endcomment -%}
+{%- assign L = '/assets/img/technology/logos/' | relative_url -%}
+<figure class="technology-art" dir="ltr">
+  <div class="tech-stage">
+    <picture>
+      <source media="(min-width: 768px)" srcset="{{ '/assets/img/technology/technology-stage-desktop.webp' | relative_url }}" width="925" height="870">
+      <img class="tech-scene" src="{{ '/assets/img/technology/technology-stage-mobile.webp' | relative_url }}" alt="{{ include.scene_alt }}" width="946" height="565" loading="lazy" decoding="async">
+    </picture>
+    <svg class="tech-links" viewBox="0 0 1070 870" aria-hidden="true" focusable="false">
+      <g class="tech-links-cloud">
+        <path d="M536 160 C 540 205, 588 214, 612 228"/>
+        <path d="M711 157 L 706 186"/>
+        <path d="M879 176 C 876 214, 832 226, 806 236"/>
+      </g>
+      <g class="tech-links-systems">
+        <path d="M300 598 C 268 598, 246 606, 222 616"/>
+        <path d="M296 654 C 270 652, 252 656, 238 664"/>
+        <path d="M430 716 C 422 708, 414 702, 411 694"/>
+        <path d="M562 776 C 582 768, 594 752, 596 736"/>
+        <path d="M694 708 C 726 708, 756 714, 770 726"/>
+        <path d="M748 640 C 806 640, 846 668, 862 690"/>
+      </g>
+    </svg>
+  </div>
+  <ul class="technology-logos technology-logos--cloud" aria-label="{{ include.cloud_label }}">
+    <li class="tech-logo tech-at-gcp"><img src="{{ L }}google-cloud-reversed.svg" alt="Google Cloud" class="tech-logo-gcp" width="138" height="24" loading="lazy" decoding="async"></li>
+    <li class="tech-logo tech-at-azure"><img src="{{ L }}azure.svg" alt="" class="tech-logo-glyph" width="18" height="18" loading="lazy" decoding="async"><span lang="en">Microsoft Azure</span></li>
+    <li class="tech-logo tech-at-aws"><img src="{{ L }}aws-reversed.svg" alt="AWS" class="tech-logo-aws" width="109" height="64" loading="lazy" decoding="async"></li>
+  </ul>
+  <ul class="technology-logos technology-logos--systems" aria-label="{{ include.systems_label }}">
+    <li class="tech-logo tech-at-wa"><img src="{{ L }}whatsapp-glyph.svg" alt="" class="tech-logo-glyph" width="23" height="23" loading="lazy" decoding="async"><span lang="en">WhatsApp</span></li>
+    <li class="tech-logo tech-at-sf"><img src="{{ L }}salesforce.svg" alt="Salesforce" class="tech-logo-sf" width="92" height="64" loading="lazy" decoding="async"></li>
+    <li class="tech-logo tech-at-d365"><img src="{{ L }}dynamics-365.svg" alt="" class="tech-logo-glyph tech-logo-d365" width="96" height="96" loading="lazy" decoding="async"><span lang="en">Microsoft Dynamics&nbsp;365</span></li>
+    <li class="tech-logo tech-at-sap"><img src="{{ L }}sap.svg" alt="SAP" class="tech-logo-sap" width="412" height="204" loading="lazy" decoding="async"></li>
+    <li class="tech-logo tech-at-ns"><picture><source media="(min-width: 768px)" srcset="{{ L }}oracle-netsuite-color.svg"><img src="{{ L }}oracle-netsuite.svg" alt="Oracle NetSuite" class="tech-logo-ns" width="88" height="32" loading="lazy" decoding="async"></picture></li>
+    <li class="tech-logo tech-at-pri"><picture><source media="(min-width: 768px)" srcset="{{ L }}priority.svg"><img src="{{ L }}priority-reversed.svg" alt="Priority" class="tech-logo-priority" width="152" height="38" loading="lazy" decoding="async"></picture></li>
+  </ul>
+</figure>

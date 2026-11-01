@@ -163,7 +163,7 @@ translations:
 
     <div class="founder-card">
       <h3 class="mb-2">Gadi, founder of PowOrg</h3>
-      <p class="text-muted m-0 lead-line">More than 15 years of building enterprise systems and managing development teams. Since 2025, leading AI agent and automation projects in organizations, from defining the requirements, through rollout with users, to seeing real value.</p>
+      {% include founder-bio.html class="text-muted lead-line mb-2" last_class="m-0" %}
 
       <h4>How we work with AI agents ourselves</h4>
       <p class="text-muted m-0">We work with AI agents too. They write code, test it and document the work. A human team defines the tasks, reviews the outputs and decides what goes live.</p>

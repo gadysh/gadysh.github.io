@@ -1,0 +1,22 @@
+# Homepage main sections, in source order, for the header "On this page" list (desktop flyout + phone drawer).
+# ids are the ACTUAL section ids per language (EN solution areas = #solutions, HE = #domains).
+- he: { label: "ראש הדף", id: "hero" }
+  en: { label: "Top of page", id: "hero" }
+- he: { label: "שתי דרכי פתיחה", id: "entry-paths" }
+  en: { label: "Two ways to start", id: "entry-paths" }
+- he: { label: "תחומי הפתרון", id: "domains" }
+  en: { label: "Solution areas", id: "solutions" }
+- he: { label: "תרחישים", id: "scenarios" }
+  en: { label: "Scenarios", id: "scenarios" }
+- he: { label: "מה מבדיל אותנו", id: "difference" }
+  en: { label: "What sets us apart", id: "difference" }
+- he: { label: "איך עובדים איתנו", id: "process" }
+  en: { label: "Working with us", id: "process" }
+- he: { label: "טכנולוגיה לפי הארגון", id: "technology" }
+  en: { label: "Technology for your organization", id: "technology" }
+- he: { label: "למי זה מתאים", id: "fit" }
+  en: { label: "Who it fits", id: "fit" }
+- he: { label: "מי אנחנו", id: "founder" }
+  en: { label: "Who we are", id: "founder" }
+- he: { label: "שיחת בירור", id: "contact-cta" }
+  en: { label: "Get in touch", id: "contact-cta" }

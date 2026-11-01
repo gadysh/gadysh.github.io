@@ -13,6 +13,38 @@ export function initSolutionsMenu() {
   document.addEventListener('keydown', (e) => { e.key === 'Escape' && menu.classList.contains('is-open') && (toggle(false), btn.focus()); });
 }
 
+// Header "On this page" disclosure: anchor jump list to the homepage's main sections (2026-11-01)
+export function initPageMenu() {
+  const wrap = $('page-menu-wrap'), btn = $('page-menu-btn'), menu = $('page-menu');
+  if (!wrap || !btn || !menu) return;
+  const isOpen = () => menu.classList.contains('is-open');
+  const toggle = (o) => { btn.setAttribute('aria-expanded', o); menu.classList.toggle('is-open', o); };
+  btn.addEventListener('click', () => toggle(!isOpen()));
+  // the solutions button stops propagation, so close this flyout explicitly when it opens
+  const sBtn = $('solutions-menu-btn');
+  sBtn && sBtn.addEventListener('click', () => toggle(false));
+  document.addEventListener('click', (e) => { isOpen() && !wrap.contains(e.target) && toggle(false); });
+  document.addEventListener('keydown', (e) => { e.key === 'Escape' && isOpen() && (toggle(false), btn.focus()); });
+  menu.addEventListener('click', (e) => { e.target.closest('a') && toggle(false); });
+  wrap.addEventListener('focusout', (e) => { isOpen() && !wrap.contains(e.relatedTarget) && e.relatedTarget && toggle(false); });
+}
+
+// Subtle current-section marker (aria-current="location") on the homepage only
+export function initSectionMarker() {
+  const links = Array.from(document.querySelectorAll('[data-section-link]'));
+  const ids = [...new Set(links.map(a => a.dataset.sectionLink))];
+  const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+  if (sections.length !== ids.length || !('IntersectionObserver' in window)) return;
+  const mark = (id) => links.forEach(a => a.dataset.sectionLink === id ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'));
+  const visible = new Map();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => en.isIntersecting ? visible.set(en.target.id, en.target) : visible.delete(en.target.id));
+    const cur = sections.filter(s => visible.has(s.id)).pop();
+    cur && mark(cur.id);
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  sections.forEach(s => io.observe(s));
+}
+
 function focusWhenVisible(el, tries = 20) {
   if (!el) return;
   el.focus();
@@ -25,15 +57,17 @@ export function initMobileDrawer() {
   const toggleBtn = $('drawer-toggle-btn'), closeBtn = $('drawer-close-btn'), drawer = $('mobile-drawer'), overlay = $('drawer-overlay');
   if (!drawer) return;
   const getFocusable = () => Array.from(drawer.querySelectorAll(FOCUSABLE)).filter(el => !el.disabled && el.offsetParent !== null);
-  const setDrawer = (open) => {
+  const setDrawer = (open, restoreFocus = true) => {
     drawer.classList.toggle('is-open', open);
     drawer.setAttribute('aria-hidden', !open);
     overlay && overlay.classList.toggle('is-open', open);
     toggleBtn && toggleBtn.setAttribute('aria-expanded', !!open);
     document.body.classList.toggle('drawer-open', open);
     if (open) focusWhenVisible(closeBtn || getFocusable()[0]);
-    else toggleBtn && toggleBtn.focus();
+    else restoreFocus && toggleBtn && toggleBtn.focus();
   };
+  // in-page section jumps: close the drawer and let the anchor navigation move the reader
+  drawer.querySelectorAll('[data-section-link]').forEach(a => a.addEventListener('click', () => setDrawer(false, false)));
   [toggleBtn, closeBtn, overlay].forEach((el, i) => el && el.addEventListener('click', () => setDrawer(!i)));
   overlay && overlay.addEventListener('touchend', (e) => { e.preventDefault(); setDrawer(false); });
   document.addEventListener('keydown', (e) => {
@@ -329,6 +363,8 @@ export function initContactForm() {
 function initSite() {
   initSolutionsMenu();
   initMobileDrawer();
+  initPageMenu();
+  initSectionMarker();
   initSessionAttribution();
   initGlobalTracking();
   initPageViews();

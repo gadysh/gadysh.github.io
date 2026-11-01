@@ -1,0 +1,12 @@
+# Canonical founder biography (Founder-supplied correction, 2026-11-01).
+# Single source rendered by _includes/founder-bio.html in BOTH homepage #founder and how-we-work #about,
+# per language, so the two locations cannot drift. lead = opening phrase (may be emphasized in place).
+bio:
+  he:
+    lead: "יותר מ־15 שנה"
+    rest: "של בניית מערכות ארגוניות וניהול צוותי פיתוח. בשנים האחרונות, הובלת פרויקטים של סוכני <bdi>AI</bdi> ואוטומציה בארגון."
+    p2: "משלב איתור התהליכים, האפיון, דרך ההטמעה אצל המשתמשים ועד שרואים ערך בפועל."
+  en:
+    lead: "More than 15 years"
+    rest: "of building enterprise systems and leading development teams. In recent years, leading AI agent and automation projects within organizations."
+    p2: "From identifying processes and defining requirements, through rollout with users, to seeing value in practice."

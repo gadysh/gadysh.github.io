@@ -177,9 +177,7 @@ translations:
     <div class="about-stack">
       <div class="about-card">
         <h3 class="mb-2">גדי, מייסד PowOrg</h3>
-        <p class="text-muted m-0 lead-line">
-          יותר מ־15 שנה של בניית מערכות ארגוניות וניהול צוותי פיתוח. מאז 2025 מוביל בארגונים פרויקטים של סוכני <bdi>AI</bdi> ואוטומציה, מהאפיון, דרך ההטמעה אצל המשתמשים ועד שרואים ערך בפועל.
-        </p>
+        {% include founder-bio.html class="text-muted lead-line mb-2" last_class="m-0" %}
       </div>
 
       <div class="about-card">

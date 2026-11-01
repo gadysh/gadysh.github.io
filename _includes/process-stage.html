@@ -1,0 +1,22 @@
+{% comment %} Homepage-only "how we work" stage (Founder-approved process-five-stages desktop/mobile mocks, 2026-11-01).
+  One <li> of the ordered five-stage list; title comes from the page, the scene is static art extracted
+  natively from the approved mocks (_dev/extract_process_art.py): desktop station >= 1024px, phone/tablet scene below.
+  Ordinal is visual only (the <ol> already exposes position to assistive tech). {% endcomment %}
+{% case include.n %}
+  {% when 1 %}{% assign dw = 327 %}{% assign dh = 318 %}{% assign mw = 426 %}{% assign mh = 264 %}
+  {% when 2 %}{% assign dw = 285 %}{% assign dh = 315 %}{% assign mw = 392 %}{% assign mh = 246 %}
+  {% when 3 %}{% assign dw = 325 %}{% assign dh = 310 %}{% assign mw = 422 %}{% assign mh = 274 %}
+  {% when 4 %}{% assign dw = 330 %}{% assign dh = 282 %}{% assign mw = 395 %}{% assign mh = 254 %}
+  {% when 5 %}{% assign dw = 310 %}{% assign dh = 258 %}{% assign mw = 415 %}{% assign mh = 214 %}
+{% endcase %}
+{% assign base = '/assets/img/process/process-' | append: include.n %}
+<li class="process-stage" style="--dw: {{ dw }}; --mw: {{ mw }};">
+  <span class="process-ordinal" aria-hidden="true">{{ include.n }}</span>
+  <h3 class="process-stage-title">{{ include.title }}</h3>
+  <div class="process-scene" aria-hidden="true">
+    <picture>
+      <source media="(min-width: 1024px)" srcset="{{ base | append: '-desktop.webp' | relative_url }}" width="{{ dw }}" height="{{ dh }}">
+      <img src="{{ base | append: '-mobile.webp' | relative_url }}" alt="" width="{{ mw }}" height="{{ mh }}" loading="lazy" decoding="async">
+    </picture>
+  </div>
+</li>
