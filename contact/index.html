@@ -7,52 +7,64 @@ translations:
   en: "/en/contact/"
 ---
 
-<section class="section section-hero">
-  <div class="container">
-    {% include breadcrumb.html %}
+<div class="contact-page-shell">
+  <section class="section section-hero-contact">
+    <div class="container">
+      {% include breadcrumb.html %}
 
-    <div class="hero-content-measure">
-      <h1>בואו נדבר על העבודה בארגון שלכם</h1>
-      <p class="text-lead">
-        אפשר להגיע עם תהליך שכבר בראש, או רק עם רצון לבדוק איפה <bdi>AI</bdi> יכול לעזור.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="section section-contact" id="contact-main">
-  <div class="container">
-    <div class="contact-layout">
-      <!-- 7/12: The Form -->
-      <div class="contact-col-form">
-        {% include contact-form.html %}
-      </div>
-
-      <!-- 5/12: What Happens Next & Direct Mail -->
-      <div class="contact-col-info">
-        <div class="info-card">
-          <h2 class="mb-4">מה יקרה אחר כך</h2>
-          <ol class="info-steps-list">
-            <li>
-              <strong>נקרא את הפנייה.</strong>
-            </li>
-            <li>
-              <strong>נחזור אליכם.</strong> אם נראה שיש על מה לדבר, נציע שיחת היכרות ומועדים.
-            </li>
-            <li>
-              <strong>בשיחה נבין את העבודה אצלכם</strong> ונבחן יחד כיוונים.
-            </li>
-          </ol>
-        </div>
-
-        <div class="info-card info-card-sand mt-6">
-          <h3 class="mb-2">מעדיפים מייל?</h3>
-          <p class="info-card-text mb-2">
-            אפשר לפנות ישירות לכתובת:
-          </p>
-          <a href="mailto:{{ site.lead_fallback_email | default: 'contact@poworg.com' }}" class="direct-mail-link" dir="ltr">{{ site.lead_fallback_email | default: 'contact@poworg.com' }}</a>
-        </div>
+      <div class="contact-hero-center">
+        <h1>בואו נדבר על העבודה בארגון שלכם</h1>
+        <p class="text-lead">
+          אפשר להגיע עם תהליך שכבר בראש, או רק עם רצון לבדוק איפה <bdi>AI</bdi> יכול לעזור.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="section section-contact" id="contact-main">
+    <div class="container">
+      <div class="contact-layout">
+        <!-- 7/12 (approx 60%): The Form Card -->
+        <div class="contact-col-form">
+          {% include contact-form.html %}
+        </div>
+
+        <!-- 5/12 (approx 40%): What Happens Next, Direct Mail & Artwork Aside -->
+        <aside class="contact-col-info" aria-labelledby="contact-info-heading">
+          <div class="contact-info-inner">
+            <h2 id="contact-info-heading" class="contact-info-title">מה יקרה אחר כך</h2>
+            <ol class="contact-steps-list">
+              <li class="contact-step-item">
+                <span class="step-badge" aria-hidden="true">1</span>
+                <span class="step-text"><strong>נקרא את הפנייה.</strong></span>
+              </li>
+              <li class="contact-step-item">
+                <span class="step-badge" aria-hidden="true">2</span>
+                <span class="step-text"><strong>נחזור אליכם.</strong> אם נראה שיש על מה לדבר, נציע שיחת היכרות ומועדים.</span>
+              </li>
+              <li class="contact-step-item">
+                <span class="step-badge" aria-hidden="true">3</span>
+                <span class="step-text"><strong>בשיחה נבין את העבודה אצלכם</strong> ונבחן יחד כיוונים.</span>
+              </li>
+            </ol>
+
+            <hr class="contact-info-divider" aria-hidden="true">
+
+            <div class="contact-direct-mail">
+              <h3 class="direct-mail-title">מעדיפים מייל?</h3>
+              <p class="direct-mail-desc">אפשר לפנות ישירות לכתובת:</p>
+              <a href="mailto:{{ site.lead_fallback_email | default: 'contact@poworg.com' }}" class="direct-mail-link" dir="ltr">{{ site.lead_fallback_email | default: 'contact@poworg.com' }}</a>
+            </div>
+          </div>
+
+          <div class="contact-info-artwork" aria-hidden="true">
+            <picture>
+              <source srcset="{{ '/assets/img/contact/contact-glass-envelope.webp' | relative_url }}" type="image/webp">
+              <img src="{{ '/assets/img/contact/contact-glass-envelope.png' | relative_url }}" alt="סמל מעטפה שקופה ועט PowOrg" width="361" height="408" loading="lazy">
+            </picture>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>

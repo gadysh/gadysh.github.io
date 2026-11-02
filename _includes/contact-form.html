@@ -1,5 +1,5 @@
 {% assign page_lang = page.lang | default: site.lang | default: "he" %}
-<div class="contact-form-container">
+<div class="contact-form-container contact-form-card">
   <!-- Context Catalog JSON for client lookup (Spec §4.2) -->
   <script id="poworg-context-catalog" type="application/json">
   {
@@ -85,18 +85,21 @@
       <input type="text" name="hp" id="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     </div>
 
-    <!-- Name Field -->
-    <div class="form-group">
-      <label for="contact-name" class="form-label">{{ site.data.i18n.contact_form.name[page_lang] }} <span class="required-mark">{{ site.data.i18n.contact_form.required_mark[page_lang] }}</span></label>
-      <input type="text" name="name" id="contact-name" class="form-control" required aria-required="true" autocomplete="name">
-      <span class="form-error-msg is-hidden" id="name-error">{{ site.data.i18n.contact_form.error_name[page_lang] }}</span>
-    </div>
+    <!-- Name & Email Row (Approved desktop pairing) -->
+    <div class="form-row form-row-2col">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="contact-name" class="form-label">{{ site.data.i18n.contact_form.name[page_lang] }} <span class="required-mark">{{ site.data.i18n.contact_form.required_mark[page_lang] }}</span></label>
+        <input type="text" name="name" id="contact-name" class="form-control" required aria-required="true" autocomplete="name">
+        <span class="form-error-msg is-hidden" id="name-error">{{ site.data.i18n.contact_form.error_name[page_lang] }}</span>
+      </div>
 
-    <!-- Email Field -->
-    <div class="form-group">
-      <label for="contact-email" class="form-label">{{ site.data.i18n.contact_form.email[page_lang] }} <span class="required-mark">{{ site.data.i18n.contact_form.required_mark[page_lang] }}</span></label>
-      <input type="email" name="email" id="contact-email" class="form-control" required aria-required="true" autocomplete="email" dir="ltr">
-      <span class="form-error-msg is-hidden" id="email-error">{{ site.data.i18n.contact_form.error_email[page_lang] }}</span>
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="contact-email" class="form-label">{{ site.data.i18n.contact_form.email[page_lang] }} <span class="required-mark">{{ site.data.i18n.contact_form.required_mark[page_lang] }}</span></label>
+        <input type="email" name="email" id="contact-email" class="form-control" required aria-required="true" autocomplete="email" dir="ltr">
+        <span class="form-error-msg is-hidden" id="email-error">{{ site.data.i18n.contact_form.error_email[page_lang] }}</span>
+      </div>
     </div>
 
     <!-- Organization Field -->
@@ -110,7 +113,7 @@
     <div class="form-group">
       <fieldset class="form-fieldset">
         <legend class="form-label">{{ site.data.i18n.contact_form.intent_label[page_lang] }} <span class="required-mark">{{ site.data.i18n.contact_form.required_mark[page_lang] }}</span></legend>
-        <div class="radio-group">
+        <div class="radio-group radio-group-card">
           <label class="radio-option">
             <input type="radio" name="intent" value="defined_process" checked>
             <span>{{ site.data.i18n.contact_form.intent_defined_process[page_lang] }}</span>
@@ -130,31 +133,41 @@
     <!-- Free Text Message Field (Optional, Spec §4.3) -->
     <div class="form-group">
       <label for="contact-message" class="form-label">{{ site.data.i18n.contact_form.message[page_lang] }}</label>
-      <textarea name="message" id="contact-message" class="form-control" rows="4" maxlength="1500"></textarea>
+      <textarea name="message" id="contact-message" class="form-control" rows="3" maxlength="1500"></textarea>
       <span class="form-hint">{{ site.data.i18n.contact_form.message_hint[page_lang] }}</span>
     </div>
 
-    <!-- Role Field (Optional) -->
-    <div class="form-group">
-      <label for="contact-role" class="form-label">{{ site.data.i18n.contact_form.role[page_lang] }}</label>
-      <input type="text" name="role" id="contact-role" class="form-control" autocomplete="organization-title">
-    </div>
+    <!-- Role & Phone Row (Optional, approved pairing) -->
+    <div class="form-row form-row-2col">
+      <!-- Role Field (Optional) -->
+      <div class="form-group">
+        <label for="contact-role" class="form-label">{{ site.data.i18n.contact_form.role[page_lang] }}</label>
+        <input type="text" name="role" id="contact-role" class="form-control" autocomplete="organization-title">
+      </div>
 
-    <!-- Phone Field (Optional) -->
-    <div class="form-group">
-      <label for="contact-phone" class="form-label">{{ site.data.i18n.contact_form.phone[page_lang] }}</label>
-      <input type="tel" name="phone" id="contact-phone" class="form-control" dir="ltr" autocomplete="tel">
-      <span class="form-hint">{{ site.data.i18n.contact_form.phone_hint[page_lang] }}</span>
+      <!-- Phone Field (Optional) -->
+      <div class="form-group">
+        <label for="contact-phone" class="form-label">{{ site.data.i18n.contact_form.phone[page_lang] }}</label>
+        <input type="tel" name="phone" id="contact-phone" class="form-control" dir="ltr" autocomplete="tel">
+        <span class="form-hint">{{ site.data.i18n.contact_form.phone_hint[page_lang] }}</span>
+      </div>
     </div>
 
     <!-- Submit & Privacy Note -->
     <div class="form-actions">
-      <button type="submit" class="btn btn-primary" id="submit-btn">{{ site.data.i18n.contact_form.submit[page_lang] }}</button>
-      <p class="form-hint{% if site.lead_endpoint and site.lead_endpoint != '' %} is-hidden{% endif %}" id="mailto-mode-note">
+      <button type="submit" class="btn btn-primary btn-submit-full" id="submit-btn">
+        <svg class="submit-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 2L11 13"/>
+          <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+        </svg>
+        <span>{{ site.data.i18n.contact_form.submit[page_lang] }}</span>
+      </button>
+      <p class="form-hint mailto-mode-note{% if site.lead_endpoint and site.lead_endpoint != '' %} is-hidden{% endif %}" id="mailto-mode-note">
         {{ site.data.i18n.contact_form.mailto_explanation[page_lang] }}
       </p>
+      <hr class="form-actions-divider" aria-hidden="true">
       <p class="form-hint form-privacy-note">
-        {{ site.data.i18n.contact_form.privacy_note[page_lang] }}{% if page_lang == 'en' %} {% endif %}<a href="{% if page_lang == 'en' %}{{ '/en/privacy/' | relative_url }}{% else %}{{ '/privacy/' | relative_url }}{% endif %}">{{ site.data.i18n.contact_form.privacy_link[page_lang] }}</a>.
+        {% if page_lang == 'en' %}{{ site.data.i18n.contact_form.privacy_note[page_lang] }} <a href="{{ '/en/privacy/' | relative_url }}">{{ site.data.i18n.contact_form.privacy_link[page_lang] }}</a>.{% else %}{{ site.data.i18n.contact_form.privacy_note[page_lang] }}<a href="{{ '/privacy/' | relative_url }}">{{ site.data.i18n.contact_form.privacy_link[page_lang] }}</a>.{% endif %}
       </p>
     </div>
   </form>

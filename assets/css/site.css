@@ -1492,20 +1492,103 @@ body.drawer-open {
    Form Components & States (Spec §4.3, §4.4, §5.3)
    ========================================================================== */
 
+.contact-page-shell {
+  background-color: #faf7f2;
+  background-image: 
+    radial-gradient(circle at 12% 18%, rgba(200, 215, 205, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 88% 85%, rgba(230, 215, 185, 0.20) 0%, transparent 50%);
+  min-block-size: calc(100vh - var(--header-height-desktop));
+  padding-block-end: var(--space-16);
+}
+
+.section-hero-contact {
+  padding-block: var(--space-8) var(--space-4);
+  text-align: center;
+}
+
+.section-hero-contact .breadcrumb {
+  display: none;
+}
+
+.contact-hero-center {
+  margin-inline: auto;
+  max-inline-size: 780px;
+}
+
+.contact-hero-center h1 {
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-block-end: var(--space-3);
+}
+
+.contact-hero-center .text-lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: var(--muted);
+  line-height: 1.6;
+  margin-inline: auto;
+  max-inline-size: 65ch;
+}
+
 .contact-layout {
   display: grid;
-  grid-template-columns: 7fr 5fr;
-  gap: var(--space-8);
+  grid-template-columns: 1fr 370px;
+  gap: var(--space-6);
+  max-inline-size: 1040px;
+  margin-inline: auto;
+  align-items: stretch;
 }
 
 /* The form follows the page heading directly, as in the approved screen */
 .section-contact {
   padding-block-start: 0;
+  padding-block-end: var(--space-12);
 }
 
 @media (max-width: 1023px) {
   .contact-layout {
     grid-template-columns: 1fr;
+    max-inline-size: 640px;
+    gap: var(--space-8);
+    align-items: start;
+  }
+}
+
+.contact-col-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contact Form Card */
+.contact-form-card {
+  background: #ffffff;
+  border: 1px solid rgba(11, 37, 64, 0.08);
+  border-radius: 16px;
+  padding: 40px 36px 36px;
+  box-shadow: 0 4px 20px -2px rgba(11, 37, 64, 0.04), 0 2px 6px -1px rgba(11, 37, 64, 0.02);
+  block-size: 100%;
+}
+
+@media (max-width: 640px) {
+  .contact-form-card {
+    padding: 28px 20px 24px;
+    border-radius: 14px;
+  }
+}
+
+/* Two-column form row pairing (Name+Email, Role+Phone) */
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .form-row-2col {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 }
 
@@ -1548,19 +1631,22 @@ body.drawer-open {
 .form-input,
 .form-textarea {
   inline-size: 100%;
-  min-block-size: 44px;
-  padding: var(--space-3) var(--space-4);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-btn);
+  min-block-size: 48px;
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
   background: var(--surface);
   color: var(--ink);
-  transition: border-color var(--transition-fast);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .form-control:focus,
 .form-input:focus,
 .form-textarea:focus {
-  border-color: var(--focus);
+  border-color: #0e7490;
+  box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.15);
+  outline: none;
 }
 
 .form-control.is-invalid,
@@ -1590,6 +1676,51 @@ body.drawer-open {
   flex-direction: column;
   gap: var(--space-2);
   margin-block-start: var(--space-2);
+}
+
+.radio-group-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-block-start: var(--space-2);
+}
+
+.radio-group-card .radio-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 14px 16px;
+  border: none;
+  border-radius: 0;
+  background: #ffffff;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.radio-group-card .radio-option + .radio-option {
+  border-block-start: 1px solid #e2e8f0;
+}
+
+.radio-group-card .radio-option:hover {
+  background-color: #f8fafc;
+}
+
+.radio-group-card .radio-option input[type="radio"] {
+  margin: 0;
+  inline-size: 18px;
+  block-size: 18px;
+  accent-color: #08778d;
+  cursor: pointer;
+}
+
+.radio-group-card .radio-option span {
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .radio-option {
@@ -1695,16 +1826,68 @@ body.drawer-open {
   margin-block-start: var(--space-6);
 }
 
-.form-actions .btn-primary {
-  min-inline-size: 180px;
+.btn-submit-full {
+  inline-size: 100%;
+  min-block-size: 50px;
+  background: #08778d;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-#mailto-mode-note {
-  margin-block-start: var(--space-2);
+.btn-submit-full:hover {
+  background: #066275;
+  color: #ffffff;
+}
+
+.btn-submit-full:focus-visible {
+  outline: 3px solid rgba(14, 116, 144, 0.4);
+  outline-offset: 2px;
+}
+
+.submit-icon {
+  inline-size: 18px;
+  block-size: 18px;
+  flex-shrink: 0;
+}
+
+[dir="rtl"] .submit-icon {
+  transform: scaleX(-1);
+}
+
+.mailto-mode-note {
+  text-align: center;
+  font-size: 0.88rem;
+  color: #64748b;
+  margin-block-start: var(--space-3);
+  margin-block-end: 0;
+}
+
+.form-actions-divider {
+  border: 0;
+  border-block-start: 1px solid #e2e8f0;
+  margin-block: var(--space-5) var(--space-4);
 }
 
 .form-privacy-note {
-  margin-block-start: var(--space-3);
+  text-align: center;
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.form-privacy-note a {
+  color: #0e7490;
+  text-decoration: underline;
+  font-weight: 500;
 }
 
 .noscript-panel {
@@ -2084,7 +2267,130 @@ body.drawer-open {
   color: var(--muted);
 }
 
-/* WP3: Contact page sidebar classes from approved screen */
+/* WP3: Contact page sidebar / aside classes (Approved design, DEV ONLY) */
+.contact-col-info {
+  background: #0b303e;
+  border-radius: 16px;
+  color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 4px 20px -2px rgba(11, 37, 64, 0.08);
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+}
+
+.contact-info-inner {
+  padding: 36px 32px 28px;
+}
+
+@media (max-width: 640px) {
+  .contact-info-inner {
+    padding: 28px 20px 24px;
+  }
+}
+
+.contact-info-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 var(--space-6) 0;
+  letter-spacing: -0.01em;
+}
+
+.contact-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-6) 0;
+}
+
+.contact-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.step-badge {
+  inline-size: 28px;
+  block-size: 28px;
+  min-inline-size: 28px;
+  border-radius: 50%;
+  border: 1.5px solid #22d3ee;
+  color: #22d3ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-block-start: 2px;
+}
+
+.step-text {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #e2e8f0;
+}
+
+.step-text strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.contact-info-divider {
+  border: 0;
+  border-block-start: 1px solid rgba(255, 255, 255, 0.12);
+  margin-block: 0 var(--space-6);
+}
+
+.contact-direct-mail {
+  margin-block-end: var(--space-2);
+}
+
+.direct-mail-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 var(--space-2) 0;
+}
+
+.direct-mail-desc {
+  font-size: 0.92rem;
+  color: #94a3b8;
+  margin: 0 0 var(--space-2) 0;
+}
+
+.direct-mail-link {
+  display: inline-block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #22d3ee;
+  text-decoration: none;
+  word-break: break-all;
+  transition: color var(--transition-fast);
+}
+
+.direct-mail-link:hover {
+  color: #67e8f9;
+  text-decoration: underline;
+}
+
+.contact-info-artwork {
+  margin-block-start: auto;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.contact-info-artwork img {
+  inline-size: 100%;
+  block-size: auto;
+  display: block;
+}
+
+/* Fallback backwards-compatibility */
 .info-card {
   background: var(--surface-alt);
   border: 1px solid var(--border);
@@ -2103,20 +2409,6 @@ body.drawer-open {
 
 .info-card-sand {
   background: var(--sand);
-}
-
-.direct-mail-link {
-  font-weight: 700;
-  font-size: 1.05rem;
-}
-
-.contact-col-info h2 {
-  font-size: 1.25rem;
-  letter-spacing: inherit;
-}
-
-.contact-col-info h3 {
-  font-size: inherit;
 }
 
 /* ==========================================================================
