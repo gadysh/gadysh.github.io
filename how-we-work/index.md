@@ -71,7 +71,7 @@ translations:
           <span class="step-num-badge m-0">3</span>
           <h3 class="m-0">תכנון פתרון ובחירת טכנולוגיה</h3>
         </div>
-        <p class="m-0">על התשתית שלנו או בענן של הארגון.</p>
+        <p class="m-0">על שרתי הארגון מקומית (<bdi>OnPrem</bdi>) או בענן.</p>
         <p class="step-needs"><span class="step-needs-label">מה נדרש מכם</span>פרטים על המערכות הקיימות מאחראי המחשוב או מהספק.</p>
       </li>
 
@@ -148,7 +148,8 @@ translations:
           <h2>טכנולוגיה לפי הארגון</h2>
         </div>
         <p class="text-lead lead-content">
-          אפשר לבנות את הפתרון על התשתית שלנו, שמשמשת מאיץ, או בענן שהארגון כבר עובד איתו, כמו <bdi>Google Cloud</bdi>,‏ <bdi>Microsoft Azure</bdi> או <bdi>AWS</bdi>. אפשר גם לשלב בין השניים. הבחירה נעשית לפי המערכות, הדרישות והתקציב שלכם.
+          את הפיתרון אפשר לבנות כמעט בכל תצורה, על שרתי הארגון מקומית (<bdi>OnPrem</bdi>) או בענן (<bdi>Google Cloud</bdi>,‏ <bdi>Microsoft Azure</bdi> או <bdi>AWS</bdi>).<br>
+          הבחירה נעשית לפי המערכות, הדרישות והתקציב שלכם.
         </p>
       </div>
 

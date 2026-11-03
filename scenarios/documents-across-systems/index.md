@@ -200,7 +200,7 @@ description: "טופס, חשבונית, בקשה או חוזה נקראים ונ
       <details class="faq-item" open>
         <summary class="faq-summary">איפה רצה המערכת?</summary>
         <div class="faq-content">
-          <p>אפשר לבנות את הפתרון על התשתית שלנו, או בענן שהארגון כבר עובד איתו, כמו <bdi>Google Cloud</bdi>,‏ <bdi>Microsoft Azure</bdi> או <bdi>AWS</bdi>. הבחירה נעשית לפי המערכות, הדרישות והתקציב שלכם.</p>
+          <p>את הפיתרון אפשר לבנות כמעט בכל תצורה, על שרתי הארגון מקומית (<bdi>OnPrem</bdi>) או בענן (<bdi>Google Cloud</bdi>,‏ <bdi>Microsoft Azure</bdi> או <bdi>AWS</bdi>). הבחירה נעשית לפי המערכות, הדרישות והתקציב שלכם.</p>
         </div>
       </details>
 

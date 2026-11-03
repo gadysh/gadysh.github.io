@@ -72,7 +72,7 @@ translations:
           <span class="step-num-badge m-0">3</span>
           <h3 class="m-0">Solution architecture and technology choices</h3>
         </div>
-        <p class="m-0">On our infrastructure or in your organization's cloud.</p>
+        <p class="m-0">On your organization's own servers (on-premises) or in the cloud.</p>
         <p class="step-needs"><span class="step-needs-label">What we need from you</span>details about the existing systems from your IT owner or vendor.</p>
       </li>
 
@@ -142,7 +142,7 @@ translations:
     <div class="deliverables-grid">
       <div class="pillar-card">
         <h3>Technology that fits your organization</h3>
-        <p class="text-lead lead-content">The solution can be built on our infrastructure, which serves as an accelerator, or in the cloud your organization already works with, such as Google Cloud, Microsoft Azure or AWS. The two can also be combined. The choice is made according to your systems, requirements and budget.</p>
+        <p class="text-lead lead-content">The solution can be built in almost any setup: on your organization's own servers (on-premises) or in the cloud (Google Cloud, Microsoft Azure or AWS). The choice depends on your systems, requirements and budget.</p>
       </div>
 
       <div class="pillar-card">
