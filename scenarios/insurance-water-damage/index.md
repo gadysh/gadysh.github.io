@@ -1,10 +1,13 @@
 ---
 layout: scenario
 lang: he
-scenario: knowledge-chat-actions
-domain: knowledge-and-teams
-title: "תשובות מהידע של הארגון ופעולות במערכות, מתוך שיחה אחת"
-description: "עובדים שואלים בשפה חופשית ומקבלים תשובה מתוך הידע של הארגון, עם מקור. הם יכולים גם לבצע פעולות מוגדרות במערכות בלי לחפש מסכים."
+scenario: insurance-water-damage
+story: insurance-water-damage
+domain: operations
+redirect_from:
+  - /scenarios/knowledge-chat-actions/
+title: "פנייה בביטוח עם מסמכים ותמונות, שמועברת לסוכנת עם כל ההקשר"
+description: "פניות על נזק או אירוע ביטוחי מתחילות בוואטסאפ: הסוכן מזהה, מרכז תמונות ומסמכים, מזהה חוסרים, ומעביר לסוכנת תיק מסודר להחלטה והמשך טיפול."
 ---
 
 <!-- 3. Work Today (Spec §3.4, סעיף 3) -->
@@ -14,7 +17,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
       <h2>העבודה היום</h2>
     </div>
     <p class="text-lead content-measure-70">
-      מידע פזור בין נהלים, מסמכים ומערכות. עובדים מבזבזים זמן בחיפוש, שואלים את אותן שאלות שוב ושוב, ומבצעים פעולות פשוטות דרך מסכים מורכבים.
+      כאשר מבוטח פונה בעקבות נזק מים או אירוע בבית, התמונות והמסמכים מגיעים בהודעות נפרדות ובערוצים שונים. בסוכנות הביטוח מנסים לאתר את הפרטים, חוזרים אליו שוב ושוב להשלמות, ומתחילים מחדש בכל פעם שמסמך חסר.
     </p>
   </div>
 </section>
@@ -33,7 +36,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
             <span class="flow-card-num">1</span>
           </div>
           <div class="flow-card-text">
-            העובד שואל או מבקש.
+            המבוטח פונה בוואטסאפ ושולח תמונות של הנזק.
           </div>
         </li>
 
@@ -42,7 +45,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
             <span class="flow-card-num">2</span>
           </div>
           <div class="flow-card-text">
-            המערכת מזהה את העובד ואת ההרשאות שלו.
+            הסוכן הדיגיטלי מזהה את הפנייה ומאתר את התיק.
           </div>
         </li>
 
@@ -51,7 +54,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
             <span class="flow-card-num">3</span>
           </div>
           <div class="flow-card-text">
-            היא מחפשת במסמכים, בנהלים ובמאגרים.
+            הוא בודק מה כבר נמצא בתיק ומה עוד חסר כדי להתחיל לטפל.
           </div>
         </li>
 
@@ -60,7 +63,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
             <span class="flow-card-num">4</span>
           </div>
           <div class="flow-card-text">
-            היא מחזירה תשובה עם מקור, או מבצעת פעולה מוגדרת, כמו פתיחת קריאה, בירור סטטוס או עדכון.
+            המבוטח משלים את המסמכים החסרים באותה שיחה, בלי להתחיל מחדש.
           </div>
         </li>
 
@@ -73,7 +76,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
             </span>
           </div>
           <div class="flow-card-text">
-            פעולה רגישה מתבצעת רק אחרי אישור.
+            הסוכן מעביר את הפנייה, סיכום ההתכתבות והמסמכים לבדיקת הסוכנת.
           </div>
         </li>
 
@@ -82,7 +85,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
             <span class="flow-card-num">6</span>
           </div>
           <div class="flow-card-text">
-            הבקשה מתועדת, והמידע מסייע לשפר את הידע.
+            הסוכנת מקבלת תיק מעודכן ומסודר, בודקת ומחליטה איך להמשיך בטיפול.
           </div>
         </li>
       </ol>
@@ -103,19 +106,19 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
         <div class="fit-grid fit-grid-single">
           <div class="fit-item">
             <span class="fit-icon" aria-hidden="true">✓</span>
-            <div>תשובה עם הפניה למקור</div>
+            <div>ריכוז תמונות ומסמכים לתיק פנייה אחד</div>
           </div>
           <div class="fit-item">
             <span class="fit-icon" aria-hidden="true">✓</span>
-            <div>סיכום מסמך ארוך</div>
+            <div>בדיקת שלמות וזיהוי מסמכים חסרים מול הלקוח</div>
           </div>
           <div class="fit-item">
             <span class="fit-icon" aria-hidden="true">✓</span>
-            <div>ביצוע פעולה מתוך השיחה</div>
+            <div>תקשורת מהירה בערוץ שנוח למבוטח</div>
           </div>
           <div class="fit-item">
             <span class="fit-icon" aria-hidden="true">✓</span>
-            <div>תמונת מצב של השאלות הנפוצות</div>
+            <div>העברת תיק מסודר ומלא עם כל ההקשר לסוכנת</div>
           </div>
         </div>
       </div>
@@ -128,15 +131,15 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
         <div class="fit-grid fit-grid-single">
           <div class="fit-item">
             <span class="fit-icon" aria-hidden="true">✓</span>
-            <div>גישה למקורות הידע</div>
+            <div>הגדרת סוגי הפניות והמסמכים הדרושים</div>
           </div>
           <div class="fit-item">
             <span class="fit-icon" aria-hidden="true">✓</span>
-            <div>בעלים לכל מקור ידע</div>
+            <div>חיבור למערכת ניהול התיקים או ה־CRM</div>
           </div>
           <div class="fit-item">
             <span class="fit-icon" aria-hidden="true">✓</span>
-            <div>החלטה על הרשאות</div>
+            <div>הגדרת נקודת המעבר לבדיקה והחלטה אנושית</div>
           </div>
         </div>
       </div>
@@ -155,19 +158,19 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
     <div class="fit-grid">
       <div class="fit-item">
         <span class="fit-icon" aria-hidden="true">✓</span>
-        <div>מקורות ידע</div>
+        <div>ערוץ הפנייה: WhatsApp, פורטל לקוחות או דוא״ל</div>
       </div>
       <div class="fit-item">
         <span class="fit-icon" aria-hidden="true">✓</span>
-        <div>הממשק: באתר הפנימי או בכלי העבודה הקיים של הארגון</div>
+        <div>סוגי האירועים: נזקי מים, רכב, דירה או ביטוח עסקי</div>
       </div>
       <div class="fit-item">
         <span class="fit-icon" aria-hidden="true">✓</span>
-        <div>הרשאות לפי תפקיד</div>
+        <div>מערכות הליבה וההרשאות של הסוכנות</div>
       </div>
       <div class="fit-item">
         <span class="fit-icon" aria-hidden="true">✓</span>
-        <div>אילו פעולות זמינות</div>
+        <div>מסלול ההעברה לנציג או לסוכנת המטפלת</div>
       </div>
     </div>
   </div>
@@ -189,23 +192,23 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
 
     <div class="faq-list">
       <details class="faq-item" open>
+        <summary class="faq-summary">האם הסוכן מאשר תביעות או מבטיח תשלום?</summary>
+        <div class="faq-content">
+          <p>לא. המערכת מרכזת את המידע, בודקת שלמות מסמכים ומכינה את התיק. כל החלטה מהותית או אישור טיפול מתבצעים על ידי הסוכנת או החתם האנושי.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">איך נשמר הקשר בין ההודעות למסמכים?</summary>
+        <div class="faq-content">
+          <p>כל התמונות, המסמכים וההתכתבות מקושרים לתיק הפנייה, כך שכל מי שנכנס לטפל רואה תמונה מלאה ומעודכנת.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
         <summary class="faq-summary">איפה רצה המערכת?</summary>
         <div class="faq-content">
           <p>אפשר לבנות את הפתרון על התשתית שלנו, או בענן שהארגון כבר עובד איתו, כמו <bdi>Google Cloud</bdi>,‏ <bdi>Microsoft Azure</bdi> או <bdi>AWS</bdi>. הבחירה נעשית לפי המערכות, הדרישות והתקציב שלכם.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary class="faq-summary">מי מאשר פעולות ותוצרים?</summary>
-        <div class="faq-content">
-          <p>מגדירים יחד אילו פעולות מותרות, מתי אדם מאשר, ומה מתועד.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary class="faq-summary">איך מתחברים למערכות?</summary>
-        <div class="faq-content">
-          <p>הצ׳אט מתחבר למאגרי המסמכים ולמערכות שבהן מבצעים פעולות. ההרשאות נלקחות מהמערכות הקיימות של הארגון. בודקים יחד איזו גישה אפשרית, ישירות או דרך ספק המערכות.</p>
         </div>
       </details>
     </div>
@@ -213,7 +216,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
 </section>
 
 <!-- 10 & 11. CTA & Next Steps (Spec §3.4, סעיפים 10-11) -->
-{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" button="לשיחה על התרחיש הזה" from="scenario:knowledge-chat-actions" %}
+{% include cta-band.html title="רוצים לבדוק איך זה ייראה אצלכם?" button="לשיחה על התרחיש הזה" from="scenario:insurance-water-damage" %}
 
 <section class="section" id="next-steps">
   <div class="container">
@@ -226,7 +229,7 @@ description: "עובדים שואלים בשפה חופשית ומקבלים ת�
       <div class="domain-card">
         <h3>{{ d.he.title }}</h3>
         <p class="domain-framing">{{ d.he.framing }}</p>
-        <a href="{{ '/solutions/knowledge-and-teams/' | relative_url }}" class="domain-card-link">לעמוד התחום ›</a>
+        <a href="{{ '/solutions/operations/' | relative_url }}" class="domain-card-link">לעמוד התחום ›</a>
       </div>
       {% endif %}{% endfor %}
       {% assign related = "agent-assist-onboarding,documents-across-systems" | split: "," %}

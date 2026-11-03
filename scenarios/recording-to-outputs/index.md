@@ -3,6 +3,7 @@ layout: scenario
 lang: he
 scenario: recording-to-outputs
 domain: customers
+story: recording-to-outputs
 title: "כמה תוצרים מהקלטה אחת"
 description: "מהקלטה של שיחת טלפון, פגישה או שיחת מכירה מתקבלים כמה תוצרים: סיכום ללקוח, תיעוד ב־CRM, המלצה להמשך, וניתוח איכות ולמידה."
 ---

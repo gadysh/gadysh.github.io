@@ -53,23 +53,23 @@
     short: "Documents and processes across systems"
     outcome: "Forms, invoices, requests and contracts are read and checked against your systems, and the process moves forward. Only exceptions reach a person."
 
-- slug: "knowledge-chat-actions"
-  primary_domain: "knowledge-and-teams"
+- slug: "insurance-water-damage"
+  primary_domain: "operations"
   domains:
-    - "knowledge-and-teams"
     - "operations"
-  icon: "book"
+    - "customers"
+  icon: "file-text"
   published: true
   evidence:
     approved: false
   he:
-    title: "תשובות מהידע של הארגון ופעולות במערכות, מתוך שיחה אחת"
-    short: "צ׳אט ידע ופעולות לעובדים"
-    outcome: "עובדים שואלים בשפה חופשית ומקבלים תשובה מתוך הידע של הארגון, עם מקור. הם יכולים גם לבצע פעולות מוגדרות במערכות בלי לחפש מסכים."
+    title: "פנייה בביטוח עם מסמכים ותמונות, שמועברת לסוכנת עם כל ההקשר"
+    short: "ריכוז פניות ומסמכים בביטוח"
+    outcome: "פניות על נזק מתחילות בוואטסאפ: הסוכן מזהה, מרכז תמונות ומסמכים, מזהה חוסרים, ומעביר לסוכנת תיק מסודר להחלטה והמשך טיפול."
   en:
-    title: "Answers from your organization's knowledge and actions in your systems, in one conversation"
-    short: "Knowledge chat and actions for employees"
-    outcome: "Employees ask in plain language and get an answer from the organization's knowledge, with its source. They can also carry out defined actions in your systems without hunting for screens."
+    title: "Insurance claims with documents and photos, handed off with full context"
+    short: "Insurance intake and documents"
+    outcome: "The customer starts on WhatsApp. The digital agent finds the case, adds photos and documents, flags missing items, and hands the file to an insurance representative for review."
 
 - slug: "recording-to-outputs"
   primary_domain: "customers"

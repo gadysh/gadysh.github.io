@@ -3,6 +3,7 @@ layout: scenario
 lang: he
 scenario: documents-across-systems
 domain: operations
+story: documents-across-systems
 title: "מסמך שנכנס מקדם את התהליך"
 description: "טופס, חשבונית, בקשה או חוזה נקראים ונבדקים מול המערכות, והתהליך מתקדם. רק חריגים מגיעים לטיפול אדם."
 ---
@@ -237,7 +238,7 @@ description: "טופס, חשבונית, בקשה או חוזה נקראים ונ
         <a href="{{ '/solutions/operations/' | relative_url }}" class="domain-card-link">לעמוד התחום ›</a>
       </div>
       {% endif %}{% endfor %}
-      {% assign related = "knowledge-chat-actions,recording-to-outputs" | split: "," %}
+      {% assign related = "insurance-water-damage,recording-to-outputs" | split: "," %}
       {% for slug in related %}
       {% assign rel = site.data.scenarios | where: "slug", slug | first %}
       {% include scenario-card.html scenario=rel %}

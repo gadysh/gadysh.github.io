@@ -3,6 +3,7 @@ layout: scenario
 lang: he
 scenario: whatsapp-service-actions
 domain: customers
+story: whatsapp-service-actions
 title: "שירות ב־WhatsApp שמבצע את הפעולה עבור הלקוח"
 description: "לקוחות פונים בערוץ שהם כבר משתמשים בו. הסוכן מברר, מבצע את הפעולה במערכות, ומעביר לנציג רק את מה שבאמת צריך אדם."
 ---

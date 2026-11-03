@@ -12,6 +12,10 @@ layout: base
   <div class="container">
     {% include breadcrumb.html %}
 
+    {% comment %} Picture story: front matter `story: <id>` plus _data/stories.yml (guide: _dev/STORY_ENGINE_GUIDE.md) {% endcomment %}
+    {% assign has_story = false %}
+    {% if page.story and site.data.stories[page.story][page_lang] %}{% assign has_story = true %}{% endif %}
+    {% if has_story %}<div class="scenario-hero-split">{% endif %}
     <div class="hero-content-measure">
       <span class="scenario-tag">{{ site.data.i18n.labels.scenario_tag[page_lang] }}</span>
       <h1>{{ page.title | default: scenario[page_lang].title }}</h1>
@@ -20,6 +24,7 @@ layout: base
         <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% else %}{{ '/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% endif %}" class="btn btn-primary" data-track-location="scenario-hero">{{ site.data.i18n.labels.talk_scenario[page_lang] }}</a>
       </div>
     </div>
+    {% if has_story %}{% include story-player.html id=page.story %}</div>{% endif %}
   </div>
 </section>
 

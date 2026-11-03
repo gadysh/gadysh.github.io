@@ -1,0 +1,1002 @@
+# Picture stories for scenario pages (before → magic transition → after).
+# Full guide (fields, image sizes, safe zones, checklist): _dev/STORY_ENGINE_GUIDE.md
+# Rendered by _includes/story-player.html (poster + full-screen player) and played by assets/js/story.js.
+# A scenario page shows its story when its front matter has `story: <id>` and this file has <id>.<lang>.
+#
+# Per frame: chapter, image (16:9), optional image_portrait (9:16, phones), focus / focus_portrait
+# (CSS object-position, the point kept in view when cropped), alt, title, text, optional time,
+# human (a person decides) and duration (ms, overrides interval).
+# Images are optimized landscape/portrait WebP illustrations; audio and timed captions are optional.
+
+documents-across-systems:
+  he:
+    heading: איך זה עובד
+    length: כ־70 שניות
+    dialog_label: 'הדמיה: איך זה עובד'
+    poster_frames:
+    - 0
+    - 3
+    - 4
+    - 6
+    interval: 5000
+    chapter_break:
+      ms: 3000
+      label: With PowOrg
+      image: /assets/img/stories/documents-across-systems/chapter-separator-landscape.webp
+      image_portrait: /assets/img/stories/documents-across-systems/chapter-separator-portrait.webp
+    audio_tail_ms: 600
+    labels:
+      of: מתוך
+      human: אדם
+      progress: שלבי הסיפור
+      pause: השהיה
+      play: הפעלה
+      close: סגירה
+      replay: לצפייה חוזרת
+      sound_on: הפעלת קריינות
+      sound_off: השתקת קריינות
+      sound_failed: הקריינות לא נטענה
+      narrated: עם קריינות
+      play_silent: צפייה בלי קול
+    end:
+      title: רוצים לראות את זה אצלכם?
+      text: נבדוק יחד איך התהליך הזה ייראה אצלכם, עם המסמכים, המערכות והכללים שלכם.
+      cta: לשיחה על התרחיש הזה
+    chapters:
+    - id: today
+      label: היום
+      mood: before
+    - id: poworg
+      label: עם PowOrg
+      mood: after
+    frames:
+    - chapter: today
+      time: '08:12'
+      image: /assets/img/stories/documents-across-systems/before-1-landscape.webp
+      image_portrait: /assets/img/stories/documents-across-systems/before-1-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: דנה מול ערימות חשבוניות ושני מסכים בתחילת יום העבודה
+      title: עוד בוקר מול ערימה
+      text: דנה מהנהלת החשבונות פותחת את המייל. עשרות חשבוניות מחכות לה, וכל אחת צריכה טיפול ידני.
+      audio:
+        src: /assets/audio/stories/documents-across-systems/before-1.m4a
+        duration_ms: 8040
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 1660
+        text: דנה מהנהלת החשבונות
+      - start_ms: 1660
+        end_ms: 2800
+        text: פותחת את המייל.
+      - start_ms: 3380
+        end_ms: 5420
+        text: עשרות חשבוניות מחכות לה,
+      - start_ms: 5740
+        end_ms: 7760
+        text: וכל אחת צריכה טיפול ידני.
+      duration: 8640
+    - chapter: today
+      time: '10:30'
+      image: /assets/img/stories/documents-across-systems/before-2-landscape.webp
+      image_portrait: /assets/img/stories/documents-across-systems/before-2-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: דנה מעתיקה נתונים בין חלונות המייל, ה-ERP וההזמנות
+      title: מעתיקים, משווים, מעתיקים שוב
+      text: 'לכל חשבונית: להוריד את הקובץ, להקליד ספק וסכום ל-ERP, לחפש את ההזמנה ולהשוות. רוב היום הולך על העתקה.'
+      audio:
+        src: /assets/audio/stories/documents-across-systems/before-2.m4a
+        duration_ms: 9880
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 1360
+        text: 'לכל חשבונית:'
+      - start_ms: 1520
+        end_ms: 2640
+        text: להוריד את הקובץ,
+      - start_ms: 2880
+        end_ms: 5140
+        text: להקליד ספק וסכום ל-ERP,
+      - start_ms: 5380
+        end_ms: 7940
+        text: לחפש את ההזמנה ולהשוות.
+      - start_ms: 8240
+        end_ms: 9620
+        text: רוב היום הולך על העתקה.
+      duration: 10480
+    - chapter: today
+      time: סוף החודש
+      image: /assets/img/stories/documents-across-systems/before-3-landscape.webp
+      image_portrait: /assets/img/stories/documents-across-systems/before-3-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: דנה משווה שני מסמכים ומגלה בסוף החודש פער בין החשבונית להזמנה
+      title: הפער מתגלה מאוחר
+      text: בעומס, חשבונית שגבוהה מההזמנה עלולה לעבור בלי שאיש ישים לב. הפער מתגלה רק בסגירת החודש.
+      audio:
+        src: /assets/audio/stories/documents-across-systems/before-3.m4a
+        duration_ms: 9480
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 3260
+        text: בעומס, חשבונית שגבוהה מההזמנה
+      - start_ms: 3260
+        end_ms: 5900
+        text: עלולה לעבור בלי שאיש ישים לב.
+      - start_ms: 6340
+        end_ms: 7320
+        text: הפער מתגלה
+      - start_ms: 7320
+        end_ms: 9180
+        text: רק בסגירת החודש.
+      duration: 10080
+    - chapter: poworg
+      time: '08:12'
+      image: /assets/img/stories/documents-across-systems/after-1-landscape.webp
+      image_portrait: /assets/img/stories/documents-across-systems/after-1-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: החשבונית יוצאת מהמייל בקרן אור אל קוביית PowOrg AI
+      title: החשבונית נקלטת לבד
+      text: אותה חשבונית מגיעה למייל, ו-PowOrg AI קולט אותה מיד. אף אחד לא צריך לפתוח, להוריד או להעביר אותה.
+      audio:
+        src: /assets/audio/stories/documents-across-systems/after-1.m4a
+        duration_ms: 8840
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 2040
+        text: אותה חשבונית מגיעה למייל,
+      - start_ms: 2040
+        end_ms: 4800
+        text: ו-PowOrg AI קולט אותה מיד.
+      - start_ms: 5100
+        end_ms: 6780
+        text: אף אחד לא צריך לפתוח,
+      - start_ms: 7040
+        end_ms: 8500
+        text: להוריד או להעביר אותה.
+      duration: 9440
+    - chapter: poworg
+      time: '08:12'
+      image: /assets/img/stories/documents-across-systems/after-2-landscape.webp
+      image_portrait: /assets/img/stories/documents-across-systems/after-2-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: החשבונית וההזמנה זו לצד זו, עם קווים המחברים בין השדות התואמים
+      title: נקראת ונבדקת מול ההזמנה
+      text: 'הסוכן מזהה שזו חשבונית ספק, מחלץ את הנתונים ובודק אותם מול ההזמנה ב-ERP: ספק, מספר הזמנה וסכום.'
+      audio:
+        src: /assets/audio/stories/documents-across-systems/after-2.m4a
+        duration_ms: 9960
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 2340
+        text: הסוכן מזהה שזו חשבונית ספק,
+      - start_ms: 2480
+        end_ms: 3680
+        text: מחלץ את הנתונים
+      - start_ms: 3680
+        end_ms: 6140
+        text: 'ובודק אותם מול ההזמנה ב-ERP:'
+      - start_ms: 6400
+        end_ms: 8900
+        text: ספק, מספר הזמנה וסכום.
+      duration: 10560
+    - chapter: poworg
+      time: '08:13'
+      image: /assets/img/stories/documents-across-systems/after-3-landscape.webp
+      image_portrait: /assets/img/stories/documents-across-systems/after-3-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: מסך ERP עם שורה חדשה שממתינה לאישור, ומשימת אישור שנשלחה
+      title: המערכת מתעדכנת
+      text: כשהכול תואם, הרשומה נפתחת ב-ERP ומשימת אישור נשלחת למי שמאשר תשלומים. כל צעד נרשם ביומן.
+      audio:
+        src: /assets/audio/stories/documents-across-systems/after-3.m4a
+        duration_ms: 9120
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 1360
+        text: כשהכול תואם,
+      - start_ms: 1620
+        end_ms: 3120
+        text: הרשומה נפתחת ב-ERP
+      - start_ms: 3120
+        end_ms: 5020
+        text: ומשימת אישור נשלחת
+      - start_ms: 5020
+        end_ms: 6180
+        text: למי שמאשר תשלומים.
+      - start_ms: 6560
+        end_ms: 8640
+        text: כל צעד נרשם ביומן.
+      duration: 9720
+    - chapter: poworg
+      time: '09:41'
+      image: /assets/img/stories/documents-across-systems/after-4-landscape.webp
+      image_portrait: /assets/img/stories/documents-across-systems/after-4-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      human: true
+      alt: דנה רגועה ליד שולחן נקי, ומולה הודעה אחת על חשבונית שדורשת החלטה
+      title: דנה מקבלת רק את מה שצריך אותה
+      text: חשבונית שלא תואמת להזמנה לא עוברת בשקט. היא מגיעה לדנה עם הסבר מה לא התאים, ודנה מחליטה.
+      audio:
+        src: /assets/audio/stories/documents-across-systems/after-4.m4a
+        duration_ms: 8520
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 2260
+        text: חשבונית שלא תואמת להזמנה
+      - start_ms: 2260
+        end_ms: 3960
+        text: לא עוברת בשקט.
+      - start_ms: 4040
+        end_ms: 5140
+        text: היא מגיעה לדנה
+      - start_ms: 5140
+        end_ms: 7200
+        text: עם הסבר מה לא התאים,
+      - start_ms: 7200
+        end_ms: 8200
+        text: ודנה מחליטה.
+      duration: 9120
+
+agent-assist-onboarding:
+  he:
+    heading: איך זה עובד
+    length: כ־40 שניות
+    dialog_label: 'הדמיה: איך זה עובד'
+    poster_frames:
+    - 0
+    - 3
+    - 4
+    - 5
+    interval: 5000
+    audio_tail_ms: 600
+    labels:
+      of: מתוך
+      human: אדם
+      progress: שלבי הסיפור
+      pause: השהיה
+      play: הפעלה
+      close: סגירה
+      replay: לצפייה חוזרת
+      sound_on: הפעלת קריינות
+      sound_off: השתקת קריינות
+      sound_failed: הקריינות לא נטענה
+      narrated: עם קריינות
+      play_silent: צפייה בלי קול
+    end:
+      title: רוצים לראות את זה אצלכם?
+      text: 'נבדוק יחד איך העוזר הזה ייראה אצלכם, עם הנהלים, המערכות והמידע של הארגון שלכם.'
+      cta: לשיחה על התרחיש הזה
+    chapters:
+    - id: today
+      label: היום
+      mood: before
+    - id: poworg
+      label: עם PowOrg
+      mood: after
+    frames:
+    - chapter: today
+      image: /assets/img/stories/agent-assist-onboarding/before-1-landscape.webp
+      image_portrait: /assets/img/stories/agent-assist-onboarding/before-1-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: 'עובד חדש ליד שולחן חדש, בין עמיתים שהוא עוד לא מכיר, ומחברת פתוחה עם שלוש שאלות'
+      title: חדש כאן
+      text: 'הרבה שאלות קטנות. הוא עוד לא מכיר את האנשים, ולא יודע למי לפנות.'
+      audio:
+        src: /assets/audio/stories/agent-assist-onboarding/before-1.m4a
+        duration_ms: 4930
+        voice: google-gemini-tts/sulafat
+      captions:
+      - start_ms: 0
+        end_ms: 1380
+        text: הרבה שאלות קטנות.
+      - start_ms: 1740
+        end_ms: 2940
+        text: 'הוא עוד לא מכיר את האנשים,'
+      - start_ms: 2940
+        end_ms: 4520
+        text: ולא יודע למי לפנות.
+      duration: 5530
+    - chapter: today
+      image: /assets/img/stories/agent-assist-onboarding/before-2-landscape.webp
+      image_portrait: /assets/img/stories/agent-assist-onboarding/before-2-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: 'העובד החדש עם המחברת ביד, מופנה מעמית לעמית ולא יודע למי לפנות'
+      title: מאחד לשני
+      text: '״תשאל אותה״. ״אולי הוא יודע״. הוא רק רוצה תשובה, וממשיך לחפש.'
+      audio:
+        src: /assets/audio/stories/agent-assist-onboarding/before-2.m4a
+        duration_ms: 5040
+        voice: google-gemini-tts/sulafat
+      captions:
+      - start_ms: 0
+        end_ms: 780
+        text: ״תשאל אותה״.
+      - start_ms: 1160
+        end_ms: 1780
+        text: ״אולי הוא יודע״.
+      - start_ms: 2200
+        end_ms: 3600
+        text: 'הוא רק רוצה תשובה,'
+      - start_ms: 3600
+        end_ms: 4800
+        text: וממשיך לחפש.
+      duration: 5640
+    - chapter: today
+      image: /assets/img/stories/agent-assist-onboarding/before-3-landscape.webp
+      image_portrait: /assets/img/stories/agent-assist-onboarding/before-3-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: 'עמית עסוק עונה בקצרה, והעובד סוגר את המחברת בחיוך נבוך קטן'
+      title: השאלה נשארת אצלו
+      text: 'כולם עסוקים. התשובה קצרה, והוא מתבייש לבקש שיסבירו שוב.'
+      audio:
+        src: /assets/audio/stories/agent-assist-onboarding/before-3.m4a
+        duration_ms: 5410
+        voice: google-gemini-tts/sulafat
+      captions:
+      - start_ms: 0
+        end_ms: 1200
+        text: כולם עסוקים.
+      - start_ms: 1480
+        end_ms: 2840
+        text: 'התשובה קצרה,'
+      - start_ms: 3100
+        end_ms: 5280
+        text: והוא מתבייש לבקש שיסבירו שוב.
+      duration: 6010
+    - chapter: poworg
+      image: /assets/img/stories/agent-assist-onboarding/after-1-landscape.webp
+      image_portrait: /assets/img/stories/agent-assist-onboarding/after-1-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: רובוט ידידותי של PowOrg מושיט יד לעובד החדש ומלווה אותו אל העמדה שלו
+      title: מישהו לצדו
+      text: 'עם PowOrg, הוא שואל בנחת ומקבל הסבר ברור, מתוך הידע של הארגון.'
+      audio:
+        src: /assets/audio/stories/agent-assist-onboarding/after-1.m4a
+        duration_ms: 6210
+        voice: google-gemini-tts/sulafat
+      captions:
+      - start_ms: 0
+        end_ms: 940
+        text: 'עם PowOrg,'
+      - start_ms: 940
+        end_ms: 4360
+        text: 'הוא שואל בנחת ומקבל הסבר ברור,'
+      - start_ms: 4360
+        end_ms: 5900
+        text: מתוך הידע של הארגון.
+      duration: 6810
+    - chapter: poworg
+      image: /assets/img/stories/agent-assist-onboarding/after-2-landscape.webp
+      image_portrait: /assets/img/stories/agent-assist-onboarding/after-2-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      human: true
+      alt: 'העובד מדווח שעות בעצמו על המסך, והרובוט לצדו מסביר ומראה כל צעד'
+      title: כך עושים את זה
+      text: '״איפה מדווחים שעות?״ העוזר מראה במסך מה לעשות, והעובד מתנסה בעצמו.'
+      audio:
+        src: /assets/audio/stories/agent-assist-onboarding/after-2.m4a
+        duration_ms: 6230
+        voice: google-gemini-tts/sulafat
+      captions:
+      - start_ms: 0
+        end_ms: 1800
+        text: ״איפה מדווחים שעות?״
+      - start_ms: 2540
+        end_ms: 4420
+        text: 'העוזר מראה במסך מה לעשות,'
+      - start_ms: 4740
+        end_ms: 6080
+        text: והעובד מתנסה בעצמו.
+      duration: 6830
+    - chapter: poworg
+      image: /assets/img/stories/agent-assist-onboarding/after-5-landscape.webp
+      image_portrait: /assets/img/stories/agent-assist-onboarding/after-5-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: 'העובד עובד ברוגע, שלוש השאלות במחברת מסומנות כמטופלות, והוא שואל את הרובוט שאלה חדשה'
+      title: מרגיש בבית
+      text: 'יש עוד הרבה ללמוד. עכשיו נעים לו לשאול, ויש מי שיעזור.'
+      audio:
+        src: /assets/audio/stories/agent-assist-onboarding/after-5.m4a
+        duration_ms: 4400
+        voice: google-gemini-tts/sulafat
+      captions:
+      - start_ms: 0
+        end_ms: 1220
+        text: יש עוד הרבה ללמוד.
+      - start_ms: 1560
+        end_ms: 3000
+        text: 'עכשיו נעים לו לשאול,'
+      - start_ms: 3140
+        end_ms: 4220
+        text: ויש מי שיעזור.
+      duration: 5000
+
+# Chat story (kind: chat). One fixed scene (sunny street café, Ofek and an enlarged WhatsApp phone) and the
+# approved conversation as native chat bubbles mapped onto the drawn phone body. Frames are the four phases:
+# each opens with its short narration (optional), then its messages appear with reading time.
+# Approved copy: _dev/story_packages/storyboards.json (whatsapp-service-actions). Contract and timing rules:
+# _dev/story_packages/WHATSAPP_CAFE_CHAT.md.
+#   chat.geometry.<landscape|portrait>.body: phone chat-body box in % of the scene image (x, y, w, h).
+#   message: from (customer | agent), text, at_ms (from the phase lead), typing_ms (agent typing bubble before),
+#   scene (switch the scene when this message appears; the satisfied face comes only with the final success).
+#   frame.chat_ms: reading time of the phase, counted from its lead.
+whatsapp-service-actions:
+  he:
+    kind: chat
+    heading: איך זה עובד
+    length: כ־50 שניות
+    dialog_label: 'הדמיה: שיחת WhatsApp עם הסוכן'
+    interval: 5000
+    audio_tail_ms: 600
+    labels:
+      of: מתוך
+      human: אדם
+      progress: שלבי הסיפור
+      pause: השהיה
+      play: הפעלה
+      close: סגירה
+      replay: לצפייה חוזרת
+      sound_on: הפעלת קריינות
+      sound_off: השתקת קריינות
+      sound_failed: הקריינות לא נטענה
+      narrated: עם קריינות
+      play_silent: צפייה בלי קול
+      chat: השיחה ב־WhatsApp
+      chat_latest: להודעה האחרונה
+      typing: הסוכן מקליד
+    end:
+      title: רוצים לראות את זה אצלכם?
+      text: נבדוק יחד איך השירות הזה ייראה אצלכם, עם הערוצים, המערכות והפעולות שתתירו.
+      cta: לשיחה על התרחיש הזה
+    chat:
+      lead_ms: 700
+      gap_ms: 500
+      read_rule:
+        base_ms: 1500
+        per_word_ms: 300
+        min_ms: 1800
+      participants:
+        customer:
+          name: אופק
+        agent:
+          name: הסוכן הדיגיטלי של PowOrg
+      scenes:
+      - id: concerned
+        image: /assets/img/stories/whatsapp-service-actions/cafe-base-concerned-landscape.webp
+        image_portrait: /assets/img/stories/whatsapp-service-actions/cafe-base-concerned-portrait.webp
+        alt: אופק יושב בבית קפה ברחוב שטוף שמש ומביט בטלפון בדאגה קלה. לצדו מסך WhatsApp מוגדל של השיחה עם PowOrg.
+      - id: happy
+        image: /assets/img/stories/whatsapp-service-actions/cafe-base-happy-landscape.webp
+        image_portrait: /assets/img/stories/whatsapp-service-actions/cafe-base-happy-portrait.webp
+        alt: אופק באותו בית קפה, מחייך בסיפוק קל מול הטלפון. לצדו מסך WhatsApp מוגדל של השיחה עם PowOrg.
+      # Measured on the delivered WebPs with _dev/story_voice/measure_chat_body.py (inset box, both scenes).
+      geometry:
+        landscape:
+          aspect: 1.7778
+          body:
+            x: 56.6
+            y: 18.9
+            w: 23.3
+            h: 61.5
+        portrait:
+          aspect: 0.5625
+          body:
+            x: 45.1
+            y: 31.0
+            w: 46.8
+            h: 46.9
+    chapters:
+    - id: chat
+      label: ב־WhatsApp
+      mood: after
+    frames:
+    - chapter: chat
+      id: request
+      title: פנייה וזיהוי
+      text: אופק צריך להזיז תור. הוא פונה בוואטסאפ, מהמקום שנוח לו.
+      audio:
+        src: /assets/audio/stories/whatsapp-service-actions/request.m4a
+        duration_ms: 5000
+        voice: google-gemini-tts/algenib
+      chat_ms: 12500
+      messages:
+      - from: customer
+        text: היי, אפשר להזיז את התור שקבעתי למחר?
+        at_ms: 0
+      - from: agent
+        text: היי 👋 אני הסוכן הדיגיטלי של PowOrg, ואשמח לעזור. נא להזין את פרטי ההזדהות שלך 🔐
+        at_ms: 5000
+        typing_ms: 1400
+      - from: customer
+        text: XXXXX
+        at_ms: 10700
+    - chapter: chat
+      id: lookup
+      title: איתור התור
+      text: לאחר הזיהוי, הסוכן מאתר את התור במערכת.
+      audio:
+        src: /assets/audio/stories/whatsapp-service-actions/lookup.m4a
+        duration_ms: 3760
+        voice: google-gemini-tts/algenib
+      chat_ms: 6600
+      messages:
+      - from: agent
+        text: היי אופק 🙂 מצאתי את התור שלך למחר. לאיזה תאריך ושעה תרצה להעביר אותו?
+        at_ms: 1200
+        typing_ms: 1200
+    - chapter: chat
+      id: check
+      title: בדיקת זמינות
+      text: בדיקת זמינות
+      chat_ms: 6700
+      messages:
+      - from: customer
+        text: ביום חמישי בשעה עשר, אם אפשר.
+        at_ms: 0
+      - from: agent
+        text: בודק עבורך זמינות 🔎
+        at_ms: 4300
+        typing_ms: 1000
+    - chapter: chat
+      id: success
+      title: התור עודכן
+      text: הסוכן מעדכן את התור במערכת, ואופק מקבל אישור בתוך השיחה.
+      audio:
+        src: /assets/audio/stories/whatsapp-service-actions/success.m4a
+        duration_ms: 5400
+        voice: google-gemini-tts/algenib
+      chat_ms: 7200
+      messages:
+      - from: agent
+        text: המועד פנוי! התור הועבר ליום חמישי ב־10:00 ✅ נתראה 🙂
+        at_ms: 1200
+        typing_ms: 1200
+        scene: happy
+
+# Recording → outputs (DEV review candidate, 2026-11-03). Six frames: 2 today + 4 poworg, one per output.
+# Approved copy: _dev/story_packages/storyboards.json (recording-to-outputs; Founder-approved short-v2 bodies).
+# Audio: Algenib master-base-v1, take master-base-v1-medium-cut (produced, NOT accepted; listening pending).
+# Captions: measured medium-ASR phrase cues on the final clips, with two Root-authorized boundary corrections
+# (before-1 cue 2 end 1960→2880, after-2 cue 2 start 1560→800). Not a voice or caption approval.
+recording-to-outputs:
+  he:
+    heading: איך זה עובד
+    length: כ־40 שניות
+    dialog_label: 'הדמיה: איך זה עובד'
+    poster_frames:
+    - 0
+    - 2
+    - 3
+    - 4
+    - 5
+    interval: 5000
+    # Founder-requested (2026-11-03): the same chapter break as the invoice story, reusing its approved separator art.
+    chapter_break:
+      ms: 3000
+      label: With PowOrg
+      image: /assets/img/stories/documents-across-systems/chapter-separator-landscape.webp
+      image_portrait: /assets/img/stories/documents-across-systems/chapter-separator-portrait.webp
+    audio_tail_ms: 600
+    labels:
+      of: מתוך
+      human: אדם
+      progress: שלבי הסיפור
+      pause: השהיה
+      play: הפעלה
+      close: סגירה
+      replay: לצפייה חוזרת
+      sound_on: הפעלת קריינות
+      sound_off: השתקת קריינות
+      sound_failed: הקריינות לא נטענה
+      narrated: עם קריינות
+      play_silent: צפייה בלי קול
+    end:
+      title: רוצים לראות את זה אצלכם?
+      text: 'נבדוק יחד איך זה ייראה אצלכם, עם סוגי השיחות, התבניות והמערכות שלכם.'
+      cta: לשיחה על התרחיש הזה
+    chapters:
+    - id: today
+      label: היום
+      mood: before
+    - id: poworg
+      label: עם PowOrg
+      mood: after
+    frames:
+    - chapter: today
+      image: /assets/img/stories/recording-to-outputs/before-1-landscape.webp
+      image_portrait: /assets/img/stories/recording-to-outputs/before-1-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: 'איש מכירות ליד שולחן אחרי שיחת טלפון, השפופרת כבר במקומה, והוא מחפש בתמיהה בין דפים מפוזרים'
+      title: אחרי שיחה עם לקוח
+      text: 'השיחה נגמרה, והוא מחפש בין הדפים. ״רגע, מה הצעתי לו… ואיפה רשמתי את זה?״'
+      audio:
+        src: /assets/audio/stories/recording-to-outputs/before-1.m4a
+        duration_ms: 5590
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 1180
+        text: 'השיחה נגמרה,'
+      - start_ms: 1380
+        end_ms: 2880
+        text: והוא מחפש בין הדפים.
+      - start_ms: 3100
+        end_ms: 4340
+        text: '״רגע, מה הצעתי לו…'
+      - start_ms: 4600
+        end_ms: 5480
+        text: ואיפה רשמתי את זה?״
+      duration: 6190
+    - chapter: today
+      image: /assets/img/stories/recording-to-outputs/before-2-landscape.webp
+      image_portrait: /assets/img/stories/recording-to-outputs/before-2-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: 'איש המכירות מחזיק פתק כמעט ריק ומביט מהורהר במסך, שבו טופס פרטי קשר עם שדות ריקים'
+      title: ומה עכשיו?
+      text: 'גם המייל שלו לא נרשם. ״איך אני ממשיך איתו מכאן? ובכלל, עניתי לו כמו שצריך?״'
+      audio:
+        src: /assets/audio/stories/recording-to-outputs/before-2.m4a
+        duration_ms: 5820
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 1980
+        text: גם המייל שלו לא נרשם.
+      - start_ms: 2220
+        end_ms: 3700
+        text: ״איך אני ממשיך איתו מכאן?
+      - start_ms: 3980
+        end_ms: 5680
+        text: 'ובכלל, עניתי לו כמו שצריך?״'
+      duration: 6420
+    - chapter: poworg
+      image: /assets/img/stories/recording-to-outputs/after-1-landscape.webp
+      image_portrait: /assets/img/stories/recording-to-outputs/after-1-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: 'איש המכירות רגוע מול המסך: למעלה הקלטת השיחה, ומתחתיה סיכום פנימי מסודר. על השולחן קוביית PowOrg זוהרת, מחוברת למחשב בקווי אור'
+      title: הסיכום הפנימי
+      text: 'השיחה הוקלטה. תוך דקות, סיכום פנימי מרכז את ההצעות והפרטים החשובים בתוך תהליך המכירה במערכת.'
+      audio:
+        src: /assets/audio/stories/recording-to-outputs/after-1.m4a
+        duration_ms: 6600
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 1320
+        text: השיחה הוקלטה.
+      - start_ms: 1600
+        end_ms: 2160
+        text: 'תוך דקות,'
+      - start_ms: 2160
+        end_ms: 3880
+        text: סיכום פנימי מרכז את ההצעות
+      - start_ms: 3880
+        end_ms: 5240
+        text: והפרטים החשובים בתוך
+      - start_ms: 5240
+        end_ms: 6580
+        text: תהליך המכירה במערכת.
+      duration: 7200
+    - chapter: poworg
+      image: /assets/img/stories/recording-to-outputs/after-2-landscape.webp
+      image_portrait: /assets/img/stories/recording-to-outputs/after-2-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      human: true
+      alt: 'איש המכירות בודק במסך טיוטה של סיכום והצעה ללקוח, לידה חלונית עם שדה ריק להשלמה, ורושם פרט חסר לפני שהוא מאשר. על השולחן קוביית PowOrg זוהרת, מחוברת למחשב בקווי אור'
+      title: סיכום והצעה ללקוח
+      text: 'גם סיכום והצעה ללקוח כבר מוכנים. הוא בודק, משלים פרטים חסרים ומאשר את השליחה.'
+      audio:
+        src: /assets/audio/stories/recording-to-outputs/after-2.m4a
+        duration_ms: 5620
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 800
+        text: גם סיכום
+      - start_ms: 800
+        end_ms: 2500
+        text: והצעה ללקוח כבר מוכנים.
+      - start_ms: 2680
+        end_ms: 3220
+        text: 'הוא בודק,'
+      - start_ms: 3360
+        end_ms: 4500
+        text: משלים פרטים חסרים
+      - start_ms: 4500
+        end_ms: 5560
+        text: ומאשר את השליחה.
+      duration: 6220
+    - chapter: poworg
+      image: /assets/img/stories/recording-to-outputs/after-3-landscape.webp
+      image_portrait: /assets/img/stories/recording-to-outputs/after-3-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: 'איש המכירות מצביע על המסך על צעד אחד שבחר מתוך שלוש אפשרויות להמשך הקשר עם הלקוח. על השולחן קוביית PowOrg זוהרת, מחוברת למחשב בקווי אור'
+      title: הצעד הבא בעסקה
+      text: 'המלצה לשיחת ההמשך עוזרת לו לקדם את העסקה, לפי שיטת המכירה של הארגון ומה שעלה בשיחה.'
+      audio:
+        src: /assets/audio/stories/recording-to-outputs/after-3.m4a
+        duration_ms: 5760
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 1740
+        text: המלצה לשיחת ההמשך עוזרת
+      - start_ms: 1740
+        end_ms: 3040
+        text: 'לו לקדם את העסקה,'
+      - start_ms: 3040
+        end_ms: 4700
+        text: לפי שיטת המכירה של הארגון
+      - start_ms: 4700
+        end_ms: 5740
+        text: ומה שעלה בשיחה.
+      duration: 6360
+    - chapter: poworg
+      image: /assets/img/stories/recording-to-outputs/after-4-landscape.webp
+      image_portrait: /assets/img/stories/recording-to-outputs/after-4-portrait.webp
+      focus: 50% 50%
+      focus_portrait: 50% 50%
+      alt: 'איש המכירות רושם במחברת הערה לשיחה הבאה בחצי חיוך, ועל המסך שני משובים: מה הלך טוב ועל מה כדאי לעבוד. על השולחן קוביית PowOrg זוהרת, מחוברת למחשב בקווי אור'
+      title: משתפרים משיחה לשיחה
+      text: 'ולבסוף, משוב על השיחה: מה הוא עשה טוב, ואיפה כדאי לחדד כדי להשתפר בשיחה הבאה.'
+      audio:
+        src: /assets/audio/stories/recording-to-outputs/after-4.m4a
+        duration_ms: 5980
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 2060
+        text: 'ולבסוף, משוב על השיחה:'
+      - start_ms: 2220
+        end_ms: 3040
+        text: 'מה הוא עשה טוב,'
+      - start_ms: 3040
+        end_ms: 4360
+        text: ואיפה כדאי לחדד
+      - start_ms: 4360
+        end_ms: 5980
+        text: כדי להשתפר בשיחה הבאה.
+      duration: 6580
+
+
+# Insurance water damage claim intake (DEV review candidate, 2026-11-03).
+# Six frames: 2 today + 3 WhatsApp chat + 1 agency handoff.
+# Approved copy: Founder-approved WhatsApp-v2 narration and messages (COPY_REVIEW.whatsapp-v2.json).
+# Audio: Algenib master-base-v1, take master-base-v1-medium-cut (produced, NOT accepted; listening pending).
+# Captions: measured medium-ASR phrase cues on the final clips. Not a voice or caption approval.
+# Images: 10 Root-produced WebPs under assets/img/stories/insurance-water-damage/ (INSURANCE_DELIVERY_READY.json).
+insurance-water-damage:
+  he:
+    kind: mixed
+    heading: איך זה עובד
+    length: כ־70 שניות
+    dialog_label: 'הדמיה: טיפול בתביעת ביטוח נזק מים עם PowOrg'
+    interval: 5000
+    audio_tail_ms: 600
+    labels:
+      of: מתוך
+      human: אדם
+      progress: שלבי הסיפור
+      pause: השהיה
+      play: הפעלה
+      close: סגירה
+      replay: לצפייה חוזרת
+      sound_on: הפעלת קריינות
+      sound_off: השתקת קריינות
+      sound_failed: הקריינות לא נטענה
+      narrated: עם קריינות
+      play_silent: צפייה בלי קול
+      chat: השיחה ב־WhatsApp
+      chat_latest: להודעה האחרונה
+      typing: הסוכן מקליד
+    end:
+      title: רוצים לראות את זה אצלכם?
+      text: נבדוק יחד איך סוכנות הביטוח או החברה שלכם מחברת ערוצי לקוחות, מסמכים ומערכות ליבה.
+      cta: לשיחה על התרחיש הזה
+    chapter_break:
+      ms: 3000
+      label: With PowOrg
+      image: /assets/img/stories/documents-across-systems/chapter-separator-landscape.webp
+      image_portrait: /assets/img/stories/documents-across-systems/chapter-separator-portrait.webp
+    chat:
+      lead_ms: 700
+      gap_ms: 500
+      read_rule:
+        base_ms: 1500
+        per_word_ms: 300
+        min_ms: 1800
+      participants:
+        customer:
+          name: הלקוח
+        agent:
+          name: הסוכן הדיגיטלי של PowOrg
+      scenes:
+      - id: checking
+        image: /assets/img/stories/insurance-water-damage/chat-checking-landscape.webp
+        image_portrait: /assets/img/stories/insurance-water-damage/chat-checking-portrait.webp
+        alt: הלקוח בביתו מביט בטלפון בשיחת WhatsApp עם הסוכן
+      - id: calm
+        image: /assets/img/stories/insurance-water-damage/chat-calm-landscape.webp
+        image_portrait: /assets/img/stories/insurance-water-damage/chat-calm-portrait.webp
+        alt: הלקוח רגוע בביתו לאחר העברת הפנייה עם כל ההקשר לבדיקת הסוכנת
+      geometry:
+        landscape:
+          aspect: 1.7778
+          body:
+            x: 62.2
+            y: 18.1
+            w: 23.4
+            h: 63.3
+        portrait:
+          aspect: 0.5625
+          body:
+            x: 43.1
+            y: 28.9
+            w: 47.1
+            h: 45.0
+    poster_frames: [0, 5]
+    chapters:
+    - id: before
+      label: לפני
+      mood: before
+    - id: after
+      label: עם PowOrg
+      mood: after
+    frames:
+    - chapter: before
+      id: before-1
+      duration: 7750
+      title: נזק מים בבית
+      text: הוא מגלה נזק מים בבית, מצלם ושולח לסוכנות הביטוח. אבל מה עוד צריך כדי להתחיל לטפל?
+      image: /assets/img/stories/insurance-water-damage/before-1-landscape.webp
+      image_portrait: /assets/img/stories/insurance-water-damage/before-1-portrait.webp
+      alt: לקוח מגלה נזק מים בדירה ומצלם בטלפון
+      audio:
+        src: /assets/audio/stories/insurance-water-damage/before-1.m4a
+        duration_ms: 7150
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 1840
+        text: הוא מגלה נזק מים בבית,
+      - start_ms: 2040
+        end_ms: 4020
+        text: מצלם ושולח לסוכנות הביטוח.
+      - start_ms: 4320
+        end_ms: 6160
+        text: אבל מה עוד צריך
+      - start_ms: 6160
+        end_ms: 7040
+        text: כדי להתחיל לטפל?
+    - chapter: before
+      id: before-2
+      duration: 7240
+      title: שוב חסר משהו
+      text: בסוכנות, התמונות והמסמכים מגיעים בנפרד. הסוכנת מחפשת את הפרטים וחוזרת אליו שוב להשלמות.
+      image: /assets/img/stories/insurance-water-damage/before-2-landscape.webp
+      image_portrait: /assets/img/stories/insurance-water-damage/before-2-portrait.webp
+      alt: סוכנת ביטוח במשרד מול מסכים ומסמכים מפוזרים
+      audio:
+        src: /assets/audio/stories/insurance-water-damage/before-2.m4a
+        duration_ms: 6640
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 700
+        text: בסוכנות,
+      - start_ms: 920
+        end_ms: 2840
+        text: התמונות והמסמכים מגיעים בנפרד.
+      - start_ms: 3040
+        end_ms: 4980
+        text: הסוכנת מחפשת את הפרטים
+      - start_ms: 4980
+        end_ms: 6620
+        text: וחוזרת אליו שוב להשלמות.
+    - chapter: after
+      id: after-1
+      phase: chat
+      scene: checking
+      title: אותה שיחה, אותו תיק
+      text: בוואטסאפ, אחרי זיהוי קצר, הסוכן כבר מכיר את התיק ומרכז אליו את מה שנשלח.
+      audio:
+        src: /assets/audio/stories/insurance-water-damage/after-1.m4a
+        duration_ms: 5780
+        voice: google-gemini-tts/algenib
+      chat_ms: 11000
+      messages:
+      - from: customer
+        text: היי, אני ממשיך לגבי נזק המים בבית. מצרף תמונות.
+        at_ms: 0
+      - from: agent
+        text: שלום 👋 איתרתי את תיק הפנייה שלך. התמונות צורפו לתיק, ואני בודק מה עוד חסר.
+        at_ms: 5400
+        typing_ms: 1200
+    - chapter: after
+      id: after-2
+      phase: chat
+      scene: checking
+      title: משלימים בלי להתחיל מחדש
+      text: משלימים בלי להתחיל מחדש
+      chat_ms: 14500
+      messages:
+      - from: agent
+        text: בדקתי מה כבר נמצא בתיק. חסר דוח בדיקת הנזילה. אפשר לצרף אותו כאן? 📎
+        at_ms: 1400
+        typing_ms: 1400
+      - from: customer
+        text: מצורף הדוח 📎
+        at_ms: 7000
+      - from: agent
+        text: קיבלתי ✅ הדוח נוסף לתיק הפנייה. כל החומר נשמר יחד.
+        at_ms: 10500
+        typing_ms: 1200
+    - chapter: after
+      id: after-3
+      phase: chat
+      scene: calm
+      title: מוכנים לבדיקה אנושית
+      text: כאן נדרשת בדיקת הסוכנת. הסוכן מעביר אליה את הפנייה, עם כל ההקשר.
+      audio:
+        src: /assets/audio/stories/insurance-water-damage/after-3.m4a
+        duration_ms: 4900
+        voice: google-gemini-tts/algenib
+      chat_ms: 7500
+      messages:
+      - from: agent
+        text: העברתי את הפנייה לסוכנת הביטוח, עם המסמכים וסיכום ההתכתבות. היא תמשיך איתך מכאן.
+        at_ms: 1400
+        typing_ms: 1400
+    - chapter: after
+      id: after-4
+      duration: 8460
+      title: הסוכנת נכנסת עם כל ההקשר
+      text: הסוכנת מקבלת תיק מעודכן ומסודר, עם סיכום ההתכתבות והמסמכים. היא בודקת ומחליטה איך להמשיך בטיפול.
+      human: true
+      image: /assets/img/stories/insurance-water-damage/after-4-landscape.webp
+      image_portrait: /assets/img/stories/insurance-water-damage/after-4-portrait.webp
+      alt: סוכנת ביטוח בודקת תיק פנייה מעודכן ומסודר עם קוביית PowOrg
+      audio:
+        src: /assets/audio/stories/insurance-water-damage/after-4.m4a
+        duration_ms: 7860
+        voice: google-gemini-tts/algenib
+      captions:
+      - start_ms: 0
+        end_ms: 1260
+        text: הסוכנת מקבלת תיק
+      - start_ms: 1260
+        end_ms: 2600
+        text: מעודכן ומסודר,
+      - start_ms: 2760
+        end_ms: 4580
+        text: עם סיכום ההתכתבות והמסמכים.
+      - start_ms: 4940
+        end_ms: 6000
+        text: היא בודקת
+      - start_ms: 6000
+        end_ms: 7740
+        text: ומחליטה איך להמשיך בטיפול.
