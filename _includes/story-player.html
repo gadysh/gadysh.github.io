@@ -1,0 +1,70 @@
+{% comment %}
+  Story poster (shown in the scenario hero) and the full-screen player it opens.
+  Content: _data/stories.yml. Behaviour: assets/js/story.js.
+  A narrated story (frames with audio + labels.sound_on/sound_off) opens WITH narration from the poster,
+  unless the story sets sound_default: off.
+  A chat story (kind: chat) shows its first scene on the poster; the player maps the chat onto its phone.
+  A mixed story (kind: mixed) uses poster_frames like a picture story; a chat-phase frame shows its scene. labels.play_silent adds a secondary "watch without sound" button;
+  labels.play_narrated adds a secondary narrated button only for a story whose default is silent.
+{% endcomment %}
+{% assign page_lang = include.lang | default: page.lang | default: site.lang | default: "he" %}
+{% assign story = site.data.stories[include.id][page_lang] %}
+{% if story %}
+{% assign instance_id = include.instance | default: include.id %}
+{% assign asset_v = site.time | date: '%s' %}
+{% if include.from %}
+  {% assign cta_from = include.from %}
+{% else %}
+  {% capture cta_from %}scenario:{{ page.scenario }}{% endcapture %}
+{% endif %}
+{% if page_lang == 'en' %}
+  {% capture cta_url %}{{ '/en/contact/' | relative_url }}?from={{ cta_from | strip }}{% endcapture %}
+{% else %}
+  {% capture cta_url %}{{ '/contact/' | relative_url }}?from={{ cta_from | strip }}{% endcapture %}
+{% endif %}
+{% assign has_audio = false %}
+{% if story.labels.sound_on and story.labels.sound_off %}
+  {% for f in story.frames %}
+    {% if f.audio and f.audio.src %}
+      {% assign has_audio = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% assign narrated_default = false %}
+{% if has_audio and story.sound_default != 'off' %}{% assign narrated_default = true %}{% endif %}
+<link rel="stylesheet" href="{{ '/assets/css/story.css' | relative_url }}?v={{ asset_v }}">
+<div class="story-poster-wrap">
+  <button type="button" class="story-poster" data-story-open="story-dialog-{{ instance_id }}"{% if narrated_default %} data-story-sound="on"{% endif %}>
+    {% if story.kind == 'chat' %}{% assign s0 = story.chat.scenes[0] %}
+    <img src="{{ s0.image | relative_url }}" alt="" data-mood="chat" class="is-on">
+    {% else %}
+    {% for i in story.poster_frames %}{% assign f = story.frames[i] %}{% assign f_img = f.image %}
+    {% if story.kind == 'mixed' and f.phase == 'chat' %}{% assign f_img = story.chat.scenes[0].image %}{% for s in story.chat.scenes %}{% if s.id == f.scene %}{% assign f_img = s.image %}{% endif %}{% endfor %}{% endif %}
+    <img src="{{ f_img | relative_url }}" alt="" data-mood="{% if f.chapter == story.chapters[0].id %}before{% else %}after{% endif %}"{% if forloop.first %} class="is-on"{% endif %} style="object-position: {{ f.focus | default: 'center' }}">
+    {% endfor %}
+    {% endif %}
+    <span class="story-poster-play" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+    <span class="story-poster-label">{{ story.heading }} <small>· {{ story.length }}</small>{% if narrated_default and story.labels.narrated %} <span class="story-poster-voice"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>{{ story.labels.narrated }}</span>{% endif %}</span>
+  </button>
+  {% if narrated_default and story.labels.play_silent %}
+    <button type="button" class="story-poster-alt" data-story-silent="story-dialog-{{ instance_id }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+      <span>{{ story.labels.play_silent }}</span>
+    </button>
+  {% elsif has_audio and story.labels.play_narrated %}
+    <button type="button" class="story-poster-alt" data-story-narrated="story-dialog-{{ instance_id }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+      <span>{{ story.labels.play_narrated }}</span>
+    </button>
+  {% endif %}
+</div>
+
+<dialog class="story-dialog" id="story-dialog-{{ instance_id }}" aria-label="{{ story.dialog_label }}">
+  <button type="button" class="story-close" aria-label="{{ story.labels.close }}"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+  <div class="story story--player" data-story data-cta-url="{{ cta_url | strip }}">
+    <script type="application/json" class="story-data">{{ story | jsonify }}</script>
+  </div>
+</dialog>
+<script src="{{ '/assets/js/story.js' | relative_url }}?v={{ asset_v }}" defer></script>
+{% endif %}

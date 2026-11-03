@@ -8,6 +8,7 @@
     - "whatsapp-service-actions"
     - "agent-assist-onboarding"
     - "recording-to-outputs"
+    - "insurance-water-damage"
   he:
     title: "שירות ומכירות"
     framing: "AI שמלווה את הקשר עם הלקוח, מהפנייה הראשונה ועד שיחת ההמשך."
@@ -50,7 +51,7 @@
   published: true
   scenarios:
     - "documents-across-systems"
-    - "knowledge-chat-actions"
+    - "insurance-water-damage"
   he:
     title: "תפעול, מסמכים ומערכות"
     framing: "עבודה חוזרת בין מסמכים, מערכות ואנשים מתבצעת ומתועדת, וחריגים מגיעים לטיפול אדם."
@@ -88,7 +89,6 @@
   icon: "book"
   published: true
   scenarios:
-    - "knowledge-chat-actions"
     - "agent-assist-onboarding"
     - "recording-to-outputs"
   he:

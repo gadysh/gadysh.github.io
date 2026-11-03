@@ -3,6 +3,7 @@ layout: scenario
 lang: he
 scenario: agent-assist-onboarding
 domain: customers
+story: agent-assist-onboarding
 title: "גם נציג חדש יודע מה לענות ומה לעשות"
 description: "הנציג מקבל בזמן השיחה את המידע, את הנוהל ואת הצעד הבא. נציג חדש לומד מתוך הידע והמקרים של הארגון."
 ---
