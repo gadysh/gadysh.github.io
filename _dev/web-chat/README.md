@@ -2,7 +2,7 @@
 
 Branch: `codex/web-chat-turnstile-2026-11-05`, based on `origin/main` at `2b8725f`.
 This checkout is isolated from the dirty hero/POC checkouts. The Founder authorized publishing this chat and the larger desktop panel in AI-Bus task `task-20261105-083631-enlarge-desktop-chat`.
-The homepage UI and its optional WhatsApp-link include were carried forward from the existing POC. Scenario-page changes, WhatsApp destinations and DEV-only WhatsApp previews were not imported.
+The homepage UI and its optional WhatsApp-link include were carried forward from the existing POC. The Founder's subsequent live-site fix request restores the disabled WhatsApp placeholder in the chat and all five scenario heroes, with no number/destination configured.
 
 ## Behavior
 
@@ -13,7 +13,8 @@ The homepage UI and its optional WhatsApp-link include were carried forward from
 - Both individual messages and the next combined batch are capped at 1,000 UTF-16 characters. A submission exceeding the remaining queue space stays in the input. Existing accepted messages stay queued.
 - Failures retain the failed batch and later queued text. Retry resends that batch first; later text follows only after success. A 429 honors `Retry-After` before retry can run. Session/daily-limit errors keep their own friendly message. No raw error codes are displayed.
 - New conversation sends a bodyless reset POST. History/queue are cleared only on 204; draft text stays. Reset is disabled during inference and sends cannot be accepted while reset is pending.
-- Replies use `textContent` and preserve line breaks; no HTML rendering.
+- Replies preserve line breaks. A small DOM renderer converts Markdown links and bare HTTP(S) URLs to underlined anchors with `target="_self"`. Labels and all other content are literal text, unsafe URL schemes remain plain text, and no model HTML is interpreted. Visitor messages remain plain text.
+- The shared base layout supplies exactly one dialog, stylesheet and module to every page. Desktop/mobile header buttons open the chat on the current page; the homepage cube keeps its opening animation. Closing returns focus to the opener. Narrow headers retain both contact/chat actions; the language choice is available in the menu.
 - Desktop (768px and above): fixed console up to 36rem wide and 56rem tall, bounded by viewport edges and the site header. The middle grid row uses the remaining height with independent scrolling. New messages and reopening scroll to the latest message after layout settles. The mobile bottom-drawer rules are preserved.
 
 ## Reproduce
@@ -21,7 +22,7 @@ The homepage UI and its optional WhatsApp-link include were carried forward from
 From this checkout:
 
 ```powershell
-node --test _dev/web-chat/client.test.mjs _dev/web-chat/turnstile.test.mjs
+node --test _dev/web-chat/client.test.mjs _dev/web-chat/turnstile.test.mjs _dev/web-chat/links.test.mjs
 ruby _dev/web-chat/build.rb
 node _dev/web-chat/mock-server.mjs
 ```
@@ -37,11 +38,11 @@ Cloudflare references: [official testing keys](https://developers.cloudflare.com
 
 ## Verification and remaining checks
 
-24 Node tests passed: actual loopback HTTP mock contract and cookie continuity, first/expired/rejected challenges, one-retry bound, combined queue, Retry-After, 409/404/503/502/504, 429 session/daily limits, reset success/failure/pending, size limits, network loss, malformed reply, timeout, missing/invalid mock tokens, hostname key selection, and Turnstile API lifecycle/load failures against a test double.
+28 Node tests passed: the original 24 client/Turnstile checks plus Hebrew Markdown/bare links, punctuation/balanced parentheses, unsafe schemes and relative URLs, and safe same-tab DOM rendering of hostile model output. `[links]` on the loopback mock supplies a reproducible response with Markdown and bare links without calling a model or production API.
 
 Jekyll build passed; built Hebrew/English homepages and module assets returned HTTP 200. `_dev` is excluded from generated output. `node --check` and `git diff --check` passed. Plain-text rendering was reviewed in source; an actual DOM/XSS browser check has not been completed.
 
-Claude's independent browser QA of the previous mock build passed Hebrew RTL/opening, combining two follow-ups during a pending reply into one request, friendly 429/Retry-After with Retry, and the 375×812 mobile bottom drawer. This task does not repeat those checks. For the desktop enlargement, Codex's embedded browser reported `The browser access host is unavailable`; the native fallback was stopped because it could not determine the current browser URL confidently enough to enforce policy. No further browser input or workaround was attempted. Calculated console dimensions at a 16px root font are 576×496 at 800×600, 576×664 at 1366×768, and 576×896 at 1920×1080. These are CSS geometry checks, not rendered viewport/screenshot verification; visual acceptance of the enlargement remains unverified.
+Claude's earlier browser QA passed Hebrew RTL/opening, combining two queued follow-ups, and friendly 429/Retry-After. During the subsequent Founder fix, the embedded browser became available: local browser QA verified visible Markdown/bare links, `_self` targets and actual same-tab navigation into a scenario, header chat opening on that internal page, disabled WhatsApp, and the 375×812 modal drawer. Rendered desktop bounds passed at 800×600 (576×496), 1366×768 (576×664) and 1920×1080 (576×896); English headers were checked at 320px and 1024px. Static built-page validation found exactly one shared dialog/module/stylesheet and both header launchers on all 21 rendered site pages.
 
 The backend's missing-token, invalid-token and foreign-Origin rejections were verified independently by Claude. After publication, the Founder performs the first real conversation, a follow-up while pending, and New conversation. Publication verification uses only read-only HTTP asset checks: no automated chat messages, reset requests, or tokens go to production. Turnstile is loaded lazily when the first message requires verification; fetching the homepage alone does not load or render its challenge.
 

@@ -21,6 +21,8 @@ cloudflare_analytics_token: ""
 
 # Same-origin Cloudflare gateway; only a public Turnstile site key is used by the client.
 homepage_web_agent: true
+whatsapp_chat_url: ""
+whatsapp_chat_preview: true
 
 exclude:
   - Gemfile

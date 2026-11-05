@@ -63,10 +63,12 @@
     <!-- Header Actions -->
     <div class="nav-actions">
       {% include lang-switch.html %}
+      {% if site.homepage_web_agent %}<button type="button" class="btn btn-secondary header-agent" id="desktop-agent" data-cube-open aria-haspopup="dialog" aria-controls="cube-chat" aria-expanded="false" hidden>{% if page_lang == 'he' %}שאל את הסוכן{% else %}Ask the agent{% endif %}</button>{% endif %}
       <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary" id="desktop-cta" data-track-location="header">{{ site.data.i18n.nav.contact[page_lang] }}</a>
 
       <!-- Mobile Controls -->
       <div class="mobile-controls">
+        {% if site.homepage_web_agent %}<button type="button" class="btn btn-secondary btn-compact header-agent" data-cube-open aria-haspopup="dialog" aria-controls="cube-chat" aria-expanded="false" hidden>{% if page_lang == 'he' %}שאל את הסוכן{% else %}Ask the agent{% endif %}</button>{% endif %}
         <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}" class="btn btn-primary btn-compact" data-track-location="header">{{ site.data.i18n.nav.contact_compact[page_lang] }}</a>
         <button type="button" class="btn-menu-toggle" id="drawer-toggle-btn" aria-label="{{ site.data.i18n.nav.menu_open[page_lang] }}" aria-expanded="false" aria-controls="mobile-drawer">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>

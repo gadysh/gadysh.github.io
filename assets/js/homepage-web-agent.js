@@ -1,7 +1,9 @@
 import { WebChatClient } from './web-chat-client.mjs';
 import { ChatTurnstile } from './web-chat-turnstile.mjs';
+import { appendMessage } from './web-chat-links.mjs';
 
-const invitation = document.querySelector('[data-cube-open]');
+const invitations = [...document.querySelectorAll('[data-cube-open]')];
+const invitation = document.querySelector('.cube-invitation');
 const dialog = document.querySelector('#cube-chat');
 const form = dialog.querySelector('form');
 const input = form.elements.message;
@@ -57,6 +59,7 @@ const labels = document.documentElement.lang === 'he' ? {
 const narrowLayout = window.matchMedia('(max-width: 767px)');
 const visualViewport = window.visualViewport;
 let revealTimer;
+let activeOpener;
 
 function fitChatToViewport() {
   if (!visualViewport || !dialog.matches(':modal')) return;
@@ -74,25 +77,28 @@ visualViewport?.addEventListener('resize', fitChatToViewport);
 visualViewport?.addEventListener('scroll', fitChatToViewport);
 
 function openChat() {
+  if (dialog.open) { input.focus({ preventScroll: true }); return; }
   if (narrowLayout.matches) {
     dialog.showModal();
     fitChatToViewport();
   } else {
     dialog.show();
-    dialog.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
-  invitation.setAttribute('aria-expanded', 'true');
+  invitations.forEach(button => button.setAttribute('aria-expanded', 'true'));
   scrollToLatest();
 }
 
-invitation.addEventListener('click', () => {
-  if (dialog.open || invitation.hasAttribute('data-opening')) return;
-  invitation.setAttribute('data-opening', '');
-  // Keep the open cube visible for a beat before showing the chat.
-  revealTimer = window.setTimeout(openChat, 620);
-});
+invitations.forEach(button => button.addEventListener('click', () => {
+  activeOpener = button;
+  window.clearTimeout(revealTimer);
+  if (button === invitation && !dialog.open) {
+    invitation.setAttribute('data-opening', '');
+    // Keep the open cube visible for a beat before showing the chat.
+    revealTimer = window.setTimeout(openChat, 620);
+  } else openChat();
+}));
 
-invitation.addEventListener('keydown', (event) => {
+invitation?.addEventListener('keydown', (event) => {
   if (event.key !== 'Escape' || dialog.open) return;
   window.clearTimeout(revealTimer);
   invitation.removeAttribute('data-opening');
@@ -103,9 +109,9 @@ dialog.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !dialog.matches(':modal')) dialog.close();
 });
 dialog.addEventListener('close', () => {
-  invitation.removeAttribute('data-opening');
-  invitation.setAttribute('aria-expanded', 'false');
-  invitation.focus({ preventScroll: true });
+  invitation?.removeAttribute('data-opening');
+  invitations.forEach(button => button.setAttribute('aria-expanded', 'false'));
+  activeOpener?.focus({ preventScroll: true });
 });
 
 function scrollToLatest() {
@@ -120,7 +126,8 @@ function addMessage(speaker, label, message) {
   item.dataset.speaker = speaker;
   name.textContent = label;
   body.dir = 'auto';
-  body.textContent = message;
+  if (speaker === 'agent') appendMessage(body, message, location.href);
+  else body.textContent = message;
   item.append(name, body);
   transcript.append(item);
   scrollToLatest();
@@ -191,4 +198,4 @@ reset.addEventListener('click', async () => {
   }
 });
 
-invitation.hidden = false;
+invitations.forEach(button => { button.hidden = false; });

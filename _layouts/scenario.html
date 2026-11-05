@@ -22,6 +22,7 @@ layout: base
       <p class="text-lead">{{ scenario[page_lang].outcome }}</p>
       <div class="scenario-hero-actions">
         <a href="{% if page_lang == 'en' %}{{ '/en/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% else %}{{ '/contact/' | relative_url }}?from=scenario:{{ page.scenario }}{% endif %}" class="btn btn-primary" data-track-location="scenario-hero">{{ site.data.i18n.labels.talk_scenario[page_lang] }}</a>
+        {% include whatsapp-chat-link.html lang=page_lang link_class="btn btn-secondary" he_label="דברו איתנו בוואטסאפ" en_label="Talk to us on WhatsApp" %}
       </div>
     </div>
     {% if has_story %}{% include story-player.html id=page.story %}</div>{% endif %}

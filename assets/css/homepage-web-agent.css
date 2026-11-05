@@ -168,7 +168,7 @@
     pointer-events: none;
   }
 
-  .hero-art-media:has(.cube-chat[open]) .cube-chat-link { display: block; }
+  body:has(.cube-chat[open]) .cube-chat-link { display: block; }
 }
 
 @media (min-width: 1024px) {
@@ -381,6 +381,30 @@ html:has(.cube-chat:modal) { overflow: hidden; }
   background: #263e47;
 }
 .cube-chat-messages strong { display: block; color: #a8dfcf; font-size: .76rem; }
+.cube-chat-messages a { color: #9ef2df; text-decoration: underline; text-underline-offset: .2em; unicode-bidi: isolate; }
+.cube-chat-messages a:hover { color: #fff; }
+
+[data-cube-open][hidden] { display: none; }
+.header-agent { white-space: nowrap; font-family: inherit; }
+#desktop-agent { display: none; }
+.site-header--dark .header-agent { color: #e9f7f1; border-color: #65b9ad; }
+.site-header--dark .header-agent:hover { background: #173c47; }
+.whatsapp-chat-preview { cursor: not-allowed; opacity: .65; }
+.whatsapp-chat-preview small { font-size: .75em; margin-inline-start: .4em; }
+@media (min-width: 1024px) {
+  #desktop-agent:not([hidden]) { display: inline-flex; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .nav-desktop { gap: .5rem; }
+  .nav-actions { gap: .5rem; }
+  .nav-actions > .btn { padding-inline: .75rem; }
+}
+@media (max-width: 600px) {
+  /* Keep both actions readable; the language switch remains in the menu. */
+  .site-header:has(.header-agent) .brand span,
+  .site-header:has(.header-agent) .nav-actions > .lang-switch { display: none; }
+  .site-header:has(.header-agent) .nav-actions { gap: .5rem; }
+}
 
 .cube-chat-compose {
   border-top: 1px solid #336069;
