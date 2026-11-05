@@ -88,3 +88,6 @@
 <!-- Site CSS -->
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 <link rel="icon" type="image/png" href="{{ '/assets/icons/favicon.png' | relative_url }}">
+{% if site.homepage_web_agent and page.header_theme == 'dark' %}
+<link rel="stylesheet" href="{{ '/assets/css/homepage-web-agent.css' | relative_url }}">
+{% endif %}

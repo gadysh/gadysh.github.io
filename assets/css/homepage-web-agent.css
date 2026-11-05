@@ -1,0 +1,478 @@
+.hero-art-media:has(.cube-invitation) { position: relative; }
+.hero-art-media:has(.cube-invitation) picture,
+.hero-art-media:has(.cube-invitation) img { display: block; }
+
+.cube-invitation {
+  position: absolute;
+  z-index: 1;
+  left: max(29.2%, 76px);
+  bottom: 4px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.cube-invitation[hidden] { display: none; }
+
+.cube-invitation-bubble {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  min-height: 48px;
+  padding: .55rem 1.1rem;
+  border: 1px solid #7df1e7;
+  border-radius: 16px;
+  background: #0d303c;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 7px 24px #041e3059, 0 0 20px #51e8dc45;
+}
+
+.cube-invitation-bubble::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: calc(50% - 6px);
+  top: -7px;
+  transform: rotate(45deg);
+  border-top: inherit;
+  border-left: inherit;
+  background: inherit;
+}
+
+.cube-invitation:hover .cube-invitation-bubble,
+.cube-invitation:focus-visible .cube-invitation-bubble { background: #145063; }
+.cube-invitation:focus-visible { outline: none; }
+.cube-invitation:focus-visible .cube-invitation-bubble,
+.cube-chat :focus-visible { outline: 2px solid #85ffed; outline-offset: 4px; }
+
+.cube-invitation-signal {
+  display: inline-block;
+  flex: none;
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  background: #85ffed;
+  box-shadow: 0 0 10px #6ff9e9;
+}
+
+/* The overlay samples the same art-directed crop as the picture underneath. */
+.cube-portal {
+  --cube-face-he: url('../img/hero/poworg-ai-hero-he-mobile.webp');
+  --cube-face-en: url('../img/hero/poworg-ai-hero-en-mobile.webp');
+  --cube-face-scale: 783.158%;
+  --cube-face-x: 25.116%;
+  --cube-face-y: 27.607%;
+  position: absolute;
+  z-index: 2;
+  top: 16.364%;
+  left: 21.909%;
+  width: 12.769%;
+  aspect-ratio: 190 / 224;
+  visibility: hidden;
+  perspective: 520px;
+  pointer-events: none;
+}
+
+.cube-portal::before,
+.cube-portal-door,
+.cube-door-front,
+.cube-door-back {
+  position: absolute;
+  inset: 0;
+}
+
+.cube-portal::before,
+.cube-door-front {
+  clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 90%);
+}
+
+.cube-portal::before {
+  content: "";
+  background:
+    linear-gradient(110deg, #75e5e8b3, transparent 21%, transparent 82%, #54e9df99),
+    radial-gradient(ellipse at 57% 50%, #effff4 1%, #7cffdf 8%, #16877f 29%, #0b3a42 55%, #061c24 83%);
+  box-shadow: inset 0 0 0 3px #a6ffef, inset 0 0 16px #2dd4bf;
+}
+
+.cube-door-front {
+  background-image: var(--cube-face-he);
+  background-size: var(--cube-face-scale) auto;
+  background-position: var(--cube-face-x) var(--cube-face-y);
+  backface-visibility: hidden;
+}
+
+.cube-portal-door {
+  transform-origin: left center;
+  transform-style: preserve-3d;
+}
+
+.cube-door-back {
+  clip-path: polygon(100% 0, 0 8%, 0 100%, 100% 90%);
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  background:
+    radial-gradient(ellipse at 48% 47%, #4fa89d 0%, #23525a 23%, transparent 50%),
+    repeating-linear-gradient(0deg, #193c45 0 4px, #26555d 4px 5px, #0e3039 5px 7px);
+  box-shadow: inset 0 0 0 2px #89a8a1, inset 0 0 0 5px #42626a, inset 0 0 14px #07191f;
+}
+
+.cube-portal:lang(en) .cube-door-front { background-image: var(--cube-face-en); }
+.cube-invitation[data-opening] + .cube-portal { visibility: visible; }
+.cube-invitation[data-opening] + .cube-portal .cube-portal-door {
+  animation: cube-door-open 420ms cubic-bezier(.22,.65,.28,1) both;
+}
+@keyframes cube-door-open { to { transform: rotateY(-116deg); } }
+
+.cube-chat-link { display: none; }
+
+@media (min-width: 768px) {
+  .hero-art-media:has(.cube-invitation[data-opening]) { z-index: 2; }
+  .cube-invitation { top: 0; bottom: auto; }
+  .cube-invitation-bubble::after {
+    top: auto;
+    bottom: -7px;
+    border: 0;
+    border-bottom: inherit;
+    border-right: inherit;
+  }
+
+  .cube-portal {
+    --cube-face-he: url('../img/hero/poworg-ai-hero-he-scene.webp');
+    --cube-face-en: url('../img/hero/poworg-ai-hero-en-scene.webp');
+    --cube-face-scale: 808.421%;
+    --cube-face-x: 26.003%;
+    --cube-face-y: 40.541%;
+    top: 23.077%;
+    left: 22.786%;
+    width: 12.37%;
+  }
+
+  .cube-chat-link {
+    position: absolute;
+    z-index: 2;
+    top: 45%;
+    left: 29.6%;
+    width: 14.4%;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #67fbe8, #cafbe9 86%, #79e5d7);
+    box-shadow: 0 0 12px #54ecdf;
+    pointer-events: none;
+  }
+
+  .hero-art-media:has(.cube-chat[open]) .cube-chat-link { display: block; }
+}
+
+@media (min-width: 1024px) {
+  /* Let the invitation sit above the copy wrapper while the artwork stays below it. */
+  .hero-art-media:has(.cube-invitation) {
+    position: absolute;
+    z-index: auto;
+  }
+  /* The desktop button spans the cube in the 1536 × 1024 image. */
+  .cube-invitation {
+    z-index: 2;
+    top: 50.5%;
+    left: 22.6%;
+    width: 19.2%;
+    aspect-ratio: 362 / 335;
+    transform: none;
+    pointer-events: none;
+  }
+
+  .cube-invitation::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(0 17%, 45% 2%, 100% 8%, 100% 79%, 64% 100%, 0 90%);
+    pointer-events: auto;
+  }
+
+  .cube-invitation:hover:not([data-opening])::before {
+    background: #7df1e726;
+    box-shadow: inset 0 0 26px #7df1e760;
+  }
+
+  .cube-invitation-bubble {
+    position: absolute;
+    top: 0;
+    left: 34.375%;
+    transform: translate(-50%, -100%);
+    pointer-events: auto;
+  }
+
+  .cube-portal {
+    --cube-face-he: url('../img/hero/poworg-ai-hero-he-1536.webp');
+    --cube-face-en: url('../img/hero/poworg-ai-hero-en-1536.webp');
+    --cube-face-y: 62.5%;
+    top: 54.828%; /* The desktop artwork is translated down by 6%. */
+  }
+
+  .cube-chat-link { top: 66%; }
+}
+
+html:has(.cube-chat:modal) { overflow: hidden; }
+
+.cube-chat {
+  --cube-panel-edge: #65b9ad;
+  --cube-panel-text: #e9f7f1;
+  position: fixed;
+  inset: auto 0 0;
+  width: min(100%, 29rem);
+  max-width: 100%;
+  max-height: 88vh;
+  max-height: 88dvh;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--cube-panel-edge);
+  border-radius: 20px 20px 0 0;
+  background: #0b2933;
+  color: var(--cube-panel-text);
+  box-shadow: 0 16px 52px #041820a6, 0 0 20px #2ee9c62b;
+}
+
+.cube-chat[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  animation: cube-drawer-enter 230ms cubic-bezier(.2,.75,.3,1) both;
+}
+
+.cube-chat:modal {
+  bottom: var(--cube-bottom-inset, 0px);
+  max-height: min(88dvh, calc(var(--cube-visible-height, 100dvh) - 12px));
+}
+
+.cube-chat::backdrop { background: #051d26a8; }
+@keyframes cube-drawer-enter { from { opacity: 0; transform: translateY(18px); } }
+
+@media (min-width: 768px) {
+  .cube-chat:not(:modal) {
+    position: absolute;
+    z-index: 3;
+    inset: auto auto 12px 43%;
+    width: min(29rem, 55%);
+    max-height: min(26rem, calc(100dvh - 5.5rem));
+    margin: 0;
+    border-radius: 18px;
+  }
+
+  .cube-chat[open]:not(:modal) {
+    transform-origin: left center;
+    animation: cube-console-enter 260ms cubic-bezier(.18,.68,.23,1) both;
+  }
+
+  @keyframes cube-console-enter { from { opacity: 0; transform: translateX(-14px) scale(.975); } }
+}
+
+@media (min-width: 1024px) {
+  .cube-chat:not(:modal) { bottom: 14%; }
+}
+
+.cube-chat-top {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  padding: .75rem 1rem;
+  border-bottom: 1px solid #336069;
+  background: linear-gradient(120deg, #173c47, #0a2934 75%);
+}
+
+.cube-chat-emblem {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #80a9a0;
+  border-radius: 9px;
+  background: linear-gradient(145deg, #2a5358, #061e29 72%);
+  box-shadow: inset 0 0 0 3px #183640;
+}
+
+.cube-chat-emblem::after {
+  content: "";
+  width: 17px;
+  height: 17px;
+  border: 1px solid #9cf7e6;
+  border-radius: 3px;
+  background: #2f887f;
+  box-shadow: 0 0 10px #63f5dd75;
+  transform: rotate(12deg);
+}
+
+.cube-chat-heading { flex: 1; min-width: 0; }
+.cube-chat-brand {
+  margin: 0 0 .18rem;
+  color: #9ef2df;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+.cube-chat-brand .cube-invitation-signal { width: .35rem; height: .35rem; margin-inline-end: .28rem; }
+.cube-chat-top h2 { margin: 0; color: inherit; font-size: 1.15rem; }
+
+.cube-chat button { font: inherit; cursor: pointer; }
+.cube-chat button:disabled { cursor: wait; opacity: .68; }
+
+.cube-chat .cube-chat-close {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: #d5e9e2;
+  font-size: 1.5rem;
+}
+.cube-chat-close:hover { border-color: #619087; background: #163f49; }
+
+.cube-chat-feed {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: .95rem 1rem;
+  scrollbar-color: #528079 #0b2933;
+}
+
+.cube-chat-welcome { margin: 0 0 .75rem; color: #d9ece7; }
+
+.cube-chat-suggestions { display: flex; flex-wrap: wrap; gap: .4rem; }
+.cube-chat-suggestions[hidden] { display: none; }
+.cube-chat-suggestions button {
+  min-height: 44px;
+  border: 1px solid #54867e;
+  border-radius: 9px;
+  padding: .35rem .7rem;
+  background: #143841;
+  color: #e0f7ed;
+  font-size: .88rem;
+}
+.cube-chat-suggestions button:hover { background: #1b4951; }
+
+.cube-chat-messages {
+  list-style: none;
+  display: grid;
+  gap: .55rem;
+  margin: .7rem 0 0;
+  padding: 0;
+}
+.cube-chat-messages:empty { margin: 0; }
+.cube-chat-messages li {
+  width: fit-content;
+  max-width: 94%;
+  padding: .5rem .7rem;
+  border-inline-start: 2px solid #5eb4a2;
+  border-radius: 7px;
+  background: #143841;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.cube-chat-messages li[data-speaker="visitor"] {
+  justify-self: end;
+  border-inline-start: 0;
+  background: #263e47;
+}
+.cube-chat-messages strong { display: block; color: #a8dfcf; font-size: .76rem; }
+
+.cube-chat-compose {
+  border-top: 1px solid #336069;
+  padding: .7rem 1rem max(.85rem, env(safe-area-inset-bottom));
+  background: #102f39;
+}
+.cube-chat-status { margin: 0 0 .4rem; color: #b7e1d7; font-size: .86rem; }
+.cube-chat-status:empty { display: none; }
+.cube-chat-status[data-error] { color: #ffc8b9; }
+.cube-chat-actions { display: flex; gap: .6rem; margin-block-end: .5rem; }
+.cube-chat-actions button { min-height: 36px; padding: .3rem .65rem; border: 1px solid #73988f; border-radius: 8px; background: transparent; color: #d7eae3; font: inherit; font-size: .8rem; }
+.cube-chat [hidden] { display: none; }
+.cube-chat-hint { margin: .4rem 0 0; color: #b7d5cd; font-size: .75rem; }
+.cube-chat-challenge { display: flex; justify-content: center; margin-block-end: .5rem; }
+.cube-chat-messages li[data-delivery="queued"] { border-inline-end: 2px dotted #b7d5cd; }
+.cube-chat-messages li[data-delivery="failed"] { border-inline-end: 2px solid #ffc8b9; }
+.cube-chat-compose-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .25rem .65rem;
+  margin-bottom: .3rem;
+}
+
+.cube-chat-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: #9ef2df;
+  font-size: .85rem;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.cube-chat-whatsapp:hover { color: #d9fff3; }
+.cube-chat-whatsapp.whatsapp-chat-preview { text-decoration: none; }
+.cube-chat-label { display: block; color: #d7eae3; font-size: .85rem; font-weight: 700; }
+.cube-chat-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: end;
+  padding: .2rem;
+  border: 1px solid #73988f;
+  border-radius: 17px;
+  background: #f7f5ed;
+}
+
+.cube-chat-controls:focus-within {
+  border-color: #6ce3cd;
+  box-shadow: 0 0 0 2px #6ce3cd4d;
+}
+
+.cube-chat-controls textarea {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  max-height: 7rem;
+  padding: .6rem .65rem;
+  border: 0;
+  border-radius: 13px;
+  background: transparent;
+  color: #142e36;
+  font: inherit;
+  font-size: max(16px, 1em);
+  field-sizing: content;
+  resize: none;
+  outline: none;
+}
+
+.cube-chat-controls textarea:focus-visible { outline: none; }
+
+.cube-chat .cube-chat-send {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #61cfbc;
+}
+
+.cube-chat .cube-chat-send:hover:enabled { color: #49bda9; }
+.cube-chat .cube-chat-send:focus-visible { outline: 2px solid #12655b; outline-offset: -1px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cube-chat[open], .cube-chat[open]:not(:modal) { animation: none; }
+
+  /* Show both door states without a sweeping rotation. */
+  .cube-invitation[data-opening] + .cube-portal .cube-portal-door {
+    animation: cube-door-open 180ms steps(1, end) both;
+  }
+}

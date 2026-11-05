@@ -1,0 +1,55 @@
+<button type="button" class="cube-invitation" data-cube-open aria-haspopup="dialog" aria-controls="cube-chat" aria-expanded="false" hidden>
+  <span class="cube-invitation-bubble">
+    <span class="cube-invitation-signal" aria-hidden="true"></span>
+    <span>{% if include.lang == "he" %}נסה אותי{% else %}Try me{% endif %}</span>
+  </span>
+</button>
+<div class="cube-portal" aria-hidden="true">
+  <div class="cube-portal-door">
+    <div class="cube-door-front"></div>
+    <div class="cube-door-back"></div>
+  </div>
+</div>
+<div class="cube-chat-link" aria-hidden="true"></div>
+<dialog id="cube-chat" class="cube-chat" aria-labelledby="cube-chat-title">
+  <div class="cube-chat-top">
+    <span class="cube-chat-emblem" aria-hidden="true"></span>
+    <div class="cube-chat-heading">
+      <p class="cube-chat-brand"><span class="cube-invitation-signal" aria-hidden="true"></span> POWORG AI</p>
+      <h2 id="cube-chat-title" tabindex="-1" autofocus>{% if include.lang == "he" %}הסוכן של PowOrg{% else %}PowOrg AI agent{% endif %}</h2>
+    </div>
+    <button type="button" class="cube-chat-close" data-cube-close aria-label="{% if include.lang == 'he' %}סגירת השיחה{% else %}Close chat{% endif %}">×</button>
+  </div>
+  <div class="cube-chat-feed">
+    <p class="cube-chat-welcome">{% if include.lang == "he" %}אפשר לשאול אותי איך PowOrg יכולה לעזור, או לבקש דוגמה מתהליך שמעסיק אתכם.{% else %}Ask how PowOrg can help, or tell me about a workflow you’d like to improve.{% endif %}</p>
+    <div class="cube-chat-suggestions" data-cube-suggestions>
+      <button type="button">{% if include.lang == "he" %}מה PowOrg עושה?{% else %}What does PowOrg do?{% endif %}</button>
+      <button type="button">{% if include.lang == "he" %}איך זה עובד בוואטסאפ?{% else %}How does it work in WhatsApp?{% endif %}</button>
+    </div>
+    <ol class="cube-chat-messages" role="log" aria-label="{% if include.lang == 'he' %}הודעות בשיחה{% else %}Chat messages{% endif %}"></ol>
+  </div>
+  <div class="cube-chat-compose">
+    <p class="cube-chat-status" role="status"></p>
+    <div class="cube-chat-challenge" data-cube-challenge hidden></div>
+    <div class="cube-chat-actions">
+      <button type="button" data-cube-reset>{% if include.lang == "he" %}שיחה חדשה{% else %}New conversation{% endif %}</button>
+      <button type="button" data-cube-retry hidden>{% if include.lang == "he" %}ניסיון חוזר{% else %}Retry{% endif %}</button>
+    </div>
+    <form class="cube-chat-form">
+      <div class="cube-chat-compose-bar">
+        <label class="cube-chat-label" for="cube-chat-input">{% if include.lang == "he" %}מה הייתם רוצים לשאול?{% else %}What would you like to ask?{% endif %}</label>
+        {% include whatsapp-chat-link.html lang=include.lang link_class="cube-chat-whatsapp" he_label="מעבר לוואטסאפ" en_label="Open WhatsApp" %}
+      </div>
+      <div class="cube-chat-controls">
+        <textarea id="cube-chat-input" name="message" dir="auto" enterkeyhint="send" maxlength="1000" rows="2" required aria-describedby="cube-chat-hint"></textarea>
+        <button type="submit" class="cube-chat-send" aria-label="{% if include.lang == 'he' %}שליחת הודעה{% else %}Send message{% endif %}">
+          <svg aria-hidden="true" width="34" height="34" viewBox="0 0 34 34" fill="none">
+            <circle cx="17" cy="17" r="17" fill="currentColor"/>
+            <path d="M17 23V11m-5 5 5-5 5 5" stroke="#0b2933" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </form>
+    <p id="cube-chat-hint" class="cube-chat-hint">{% if include.lang == "he" %}עד 1,000 תווים. אפשר לשלוח המשך בזמן ההמתנה; ההודעות יישלחו יחד אחרי התשובה.{% else %}Up to 1,000 characters. Messages sent while waiting will be combined after the reply.{% endif %}</p>
+  </div>
+</dialog>

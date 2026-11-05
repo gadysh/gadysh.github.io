@@ -19,6 +19,9 @@ support_email: "support@poworg.com"
 lead_fallback_email: "contact@poworg.com"
 cloudflare_analytics_token: ""
 
+# Same-origin Cloudflare gateway; only a public Turnstile site key is used by the client.
+homepage_web_agent: true
+
 exclude:
   - Gemfile
   - Gemfile.lock

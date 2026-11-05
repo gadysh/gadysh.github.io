@@ -1,0 +1,15 @@
+{% assign whatsapp_url = site.whatsapp_chat_url | strip %}
+{% if include.lang == "he" %}
+  {% assign whatsapp_label = include.he_label %}
+  {% assign whatsapp_soon = "בקרוב" %}
+{% else %}
+  {% assign whatsapp_label = include.en_label %}
+  {% assign whatsapp_soon = "Coming soon" %}
+{% endif %}
+{% if whatsapp_url != "" %}
+  <a class="{{ include.link_class }}" data-whatsapp-chat href="{{ whatsapp_url | escape }}" target="_blank" rel="noopener noreferrer">{{ whatsapp_label }}</a>
+{% elsif site.whatsapp_chat_preview %}
+  <span class="{{ include.link_class }} whatsapp-chat-preview" data-whatsapp-chat role="link" aria-disabled="true">
+    {{ whatsapp_label }} <small>{{ whatsapp_soon }}</small>
+  </span>
+{% endif %}

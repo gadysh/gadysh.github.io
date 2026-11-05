@@ -6,11 +6,15 @@
 {% endcomment %}
 {% assign hero_variant = include.variant | default: "he" %}
 {% assign hero_base = '/assets/img/hero/poworg-ai-hero-' | append: hero_variant %}
-<div class="hero-art-media" aria-hidden="true">
-  <picture>
+<div class="hero-art-media"{% unless site.homepage_web_agent %} aria-hidden="true"{% endunless %}>
+  <picture aria-hidden="true">
     <source media="(max-width: 767px)" type="image/webp" srcset="{{ hero_base | append: '-mobile.webp' | relative_url }}" width="1488" height="550">
     <source media="(max-width: 1023px)" type="image/webp" srcset="{{ hero_base | append: '-scene.webp' | relative_url }}" width="1536" height="520">
     <source type="image/webp" srcset="{{ hero_base | append: '-1536.webp' | relative_url }}" width="1536" height="1024">
     <img src="{{ hero_base | append: '-1536.jpg' | relative_url }}" alt="" width="1536" height="1024" fetchpriority="high" decoding="async">
   </picture>
+{% if site.homepage_web_agent %}
+  {% include homepage-web-agent.html lang=hero_variant %}
+  <script type="module" src="{{ '/assets/js/homepage-web-agent.js' | relative_url }}"></script>
+{% endif %}
 </div>
