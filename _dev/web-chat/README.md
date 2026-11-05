@@ -14,7 +14,9 @@ branches are preserved unchanged.
 - Every submitted message is processed separately and sequentially. Pending messages are no longer
   joined into one request: a rejected submission cannot swallow a separate valid submission.
 - No Retry or Cancel pending messages controls, queue counters, delivery badges, or recovery
-  instructions are present in the customer UI. The existing New conversation feature is unchanged.
+  instructions are present in the customer UI. Per the subsequent Founder request, New conversation
+  is also removed: the customer stays in one conversation leading to contact-detail collection.
+  Closing and reopening the panel keeps the current conversation.
 - Technical/network failures have a separate ordinary error bubble. The affected request is never
   automatically replayed because its server completion may be uncertain. Other accepted messages
   remain ordered and are not silently discarded.

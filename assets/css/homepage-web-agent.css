@@ -414,8 +414,6 @@ html:has(.cube-chat:modal) { overflow: hidden; }
 .cube-chat-status { margin: 0 0 .4rem; color: #b7e1d7; font-size: .86rem; }
 .cube-chat-status:empty { display: none; }
 .cube-chat-status[data-error] { color: #ffc8b9; }
-.cube-chat-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-block-end: .5rem; }
-.cube-chat-actions button { min-height: 36px; padding: .3rem .65rem; border: 1px solid #73988f; border-radius: 8px; background: transparent; color: #d7eae3; font: inherit; font-size: .8rem; }
 .cube-chat [hidden] { display: none; }
 .cube-chat-hint { margin: .4rem 0 0; color: #b7d5cd; font-size: .75rem; }
 .cube-chat-challenge { display: flex; justify-content: center; margin-block-end: .5rem; }

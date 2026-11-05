@@ -12,11 +12,9 @@ const feed = dialog.querySelector('.cube-chat-feed');
 const transcript = dialog.querySelector('.cube-chat-messages');
 const suggestions = dialog.querySelector('[data-cube-suggestions]');
 const status = dialog.querySelector('.cube-chat-status');
-const reset = dialog.querySelector('[data-cube-reset]');
 const labels = document.documentElement.lang === 'he' ? {
   visitor: 'אתם',
   pending: 'מנסח תשובה…',
-  resetting: 'פותח שיחה חדשה…',
   session_limit: 'שיחת ההדגמה הגיעה למכסת ההודעות שלה.',
   rate_limited: 'נשלחו יותר מדי הודעות. אפשר לנסות שוב בעוד רגע.',
   busy: 'ההודעה הקודמת עדיין בעיבוד. אפשר לנסות שוב בעוד רגע.',
@@ -27,14 +25,12 @@ const labels = document.documentElement.lang === 'he' ? {
   challenge_failed: 'לא הצלחנו להשלים את האימות כרגע.',
   budget_exhausted: 'הצ׳אט הגיע למכסה היומית שלו. אפשר לחזור מאוחר יותר.',
   agent_error: 'לא הצלחנו להשיב כרגע.',
-  reset_error: 'לא הצלחנו לפתוח שיחה חדשה כרגע. השיחה הקודמת נשמרה.',
   too_long: 'אפשר לשלוח עד 1,000 תווים בהודעה.',
   queue_full: 'אפשר לשלוח הודעה נוספת בעוד רגע. הטקסט שכתבתם נשמר.',
   cooldown: 'אפשר לשלוח הודעה נוספת בעוד רגע.',
 } : {
   visitor: 'You',
   pending: 'Thinking…',
-  resetting: 'Starting a new conversation…',
   session_limit: 'This demo conversation has reached its message limit.',
   rate_limited: 'Too many messages. Try again in a moment.',
   busy: 'The previous message is still processing. Try again in a moment.',
@@ -45,7 +41,6 @@ const labels = document.documentElement.lang === 'he' ? {
   challenge_failed: 'We couldn’t complete verification right now.',
   budget_exhausted: 'Chat has reached its daily limit. Please come back later.',
   agent_error: 'We couldn’t reply right now.',
-  reset_error: 'We couldn’t start a new conversation right now. Your previous conversation is preserved.',
   too_long: 'Please use no more than 1,000 characters per message.',
   queue_full: 'Please wait a moment before sending another message. Your draft is preserved.',
   cooldown: 'Please wait a moment before sending another message.',
@@ -150,10 +145,8 @@ const client = new WebChatClient({
 
 function renderState(state) {
   // Sending stays available during inference; later submissions retain their order.
-  send.disabled = state.resetting || state.failure === 'reset_error';
-  reset.disabled = state.busy;
   status.removeAttribute('data-error');
-  status.textContent = state.resetting ? labels.resetting : state.busy ? labels.pending : '';
+  status.textContent = state.busy ? labels.pending : '';
 }
 
 form.addEventListener('submit', (event) => {
@@ -172,15 +165,6 @@ form.addEventListener('submit', (event) => {
   input.value = '';
   suggestions.hidden = true;
   input.focus({ preventScroll: true });
-});
-
-reset.addEventListener('click', async () => {
-  if (await client.reset()) {
-    transcript.replaceChildren();
-    suggestions.hidden = false;
-    // Keep any unsent draft the visitor is editing.
-    input.focus({ preventScroll: true });
-  }
 });
 
 invitations.forEach(button => { button.hidden = false; });
