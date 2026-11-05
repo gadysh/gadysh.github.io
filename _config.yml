@@ -21,7 +21,8 @@ cloudflare_analytics_token: ""
 
 # Same-origin Cloudflare gateway; only a public Turnstile site key is used by the client.
 homepage_web_agent: true
-whatsapp_chat_url: ""
+# Public click-to-chat destination supplied by the Founder; no API credentials.
+whatsapp_chat_url: "https://wa.me/972552829883"
 whatsapp_chat_preview: true
 
 exclude:

@@ -25,7 +25,14 @@ branches are preserved unchanged.
 - Same-origin POST body remains exactly `{"message":"..."}` with same-origin credentials. Only
   loopback receives the public Turnstile test key. Public hosts retain the production public key.
 - Single-use challenge handling, plain DOM link rendering with same-tab navigation, shared header
-  launcher, responsive drawer and disabled WhatsApp placeholders remain intact.
+  launcher and responsive drawer remain intact.
+- Founder selected a new WhatsApp conversation (no website-history handoff). The shared public
+  destination is `https://wa.me/972552829883`, supplied by the Founder. It activates the existing
+  chat link and five scenario-page links locally; no prefilled personal data or website transcript
+  is attached. Meta Phone Number ID is not a website destination or a client setting.
+- Business-channel readiness is still pending the Founder/Antigravity phone test: an incoming
+  WhatsApp message must reach the intended agent and a reply must return. No GCP setting,
+  Meta credential, deployment, or live WhatsApp test was changed/performed by this client task.
 
 ## Offline checks and preview
 
