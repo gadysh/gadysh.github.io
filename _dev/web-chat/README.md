@@ -1,7 +1,7 @@
-# Website chat → Cloudflare gateway (local branch, 5 November 2026)
+# Website chat → Cloudflare gateway (5 November 2026)
 
 Branch: `codex/web-chat-turnstile-2026-11-05`, based on `origin/main` at `2b8725f`.
-This checkout is isolated from the dirty hero/POC checkouts. Nothing was pushed or published.
+This checkout is isolated from the dirty hero/POC checkouts. The Founder authorized publishing this chat and the larger desktop panel in AI-Bus task `task-20261105-083631-enlarge-desktop-chat`.
 The homepage UI and its optional WhatsApp-link include were carried forward from the existing POC. Scenario-page changes, WhatsApp destinations and DEV-only WhatsApp previews were not imported.
 
 ## Behavior
@@ -14,6 +14,7 @@ The homepage UI and its optional WhatsApp-link include were carried forward from
 - Failures retain the failed batch and later queued text. Retry resends that batch first; later text follows only after success. A 429 honors `Retry-After` before retry can run. Session/daily-limit errors keep their own friendly message. No raw error codes are displayed.
 - New conversation sends a bodyless reset POST. History/queue are cleared only on 204; draft text stays. Reset is disabled during inference and sends cannot be accepted while reset is pending.
 - Replies use `textContent` and preserve line breaks; no HTML rendering.
+- Desktop (768px and above): fixed console up to 36rem wide and 56rem tall, bounded by viewport edges and the site header. The middle grid row uses the remaining height with independent scrolling. New messages and reopening scroll to the latest message after layout settles. The mobile bottom-drawer rules are preserved.
 
 ## Reproduce
 
@@ -27,7 +28,7 @@ node _dev/web-chat/mock-server.mjs
 
 Preview: <http://127.0.0.1:4285/> and <http://127.0.0.1:4285/en/>.
 The build helper uses the existing installed Jekyll 3.10.0 and plugins, without installing gems.
-Normal deployment still uses the existing GitHub Pages/Jekyll workflow and requires Founder approval.
+Deployment uses the existing GitHub Pages/Jekyll flow from `main`; publication is explicitly approved for this release.
 `bundle check` tried resolving a newer github-pages dependency set and reported missing gems; it was not used for the successful local build. No dependency files were changed or packages installed.
 
 The mock binds only to `127.0.0.1`, serves `_site`, and never forwards to Cloudflare/External or calls a model. It validates request shape, length, its synthetic cookie and dummy token format. It is **not** a Turnstile verifier and **does not** prove live token verification. Its commands simulate `[429]`, `[409]`, `[503]`, `[404]`, `[502]`, `[504]`, `[limit]`, `[budget]`, `[challenge]`, `[invalid]`; New conversation clears a paused failed batch.
@@ -40,8 +41,8 @@ Cloudflare references: [official testing keys](https://developers.cloudflare.com
 
 Jekyll build passed; built Hebrew/English homepages and module assets returned HTTP 200. `_dev` is excluded from generated output. `node --check` and `git diff --check` passed. Plain-text rendering was reviewed in source; an actual DOM/XSS browser check has not been completed.
 
-Browser QA is incomplete. The Codex embedded-browser tool reported `The browser access host is unavailable`. The subsequent native fallback was stopped by Computer Use because it could not determine the Windows browser URL confidently enough to enforce policy. No further browser interaction or workaround was attempted. Consequently no loaded/open embedded tab, visual/mobile QA, actual dummy-token acquisition or browser cookie behavior is claimed.
+Claude's independent browser QA of the previous mock build passed Hebrew RTL/opening, combining two follow-ups during a pending reply into one request, friendly 429/Retry-After with Retry, and the 375×812 mobile bottom drawer. This task does not repeat those checks. For the desktop enlargement, Codex's embedded browser reported `The browser access host is unavailable`; the native fallback was stopped because it could not determine the current browser URL confidently enough to enforce policy. No further browser input or workaround was attempted. Calculated console dimensions at a 16px root font are 576×496 at 800×600, 576×664 at 1366×768, and 576×896 at 1920×1080. These are CSS geometry checks, not rendered viewport/screenshot verification; visual acceptance of the enlargement remains unverified.
 
-After deployment approval and backend readiness, the remaining live E2E is: one real conversation from `poworg.com` with a valid token, a missing-token rejection with a clean session, an invalid-token rejection, session continuation/reset and queued follow-up in the real browser. Do not send test keys/tokens to production or change External/Worker to make local tests pass.
+The backend's missing-token, invalid-token and foreign-Origin rejections were verified independently by Claude. After publication, the Founder performs the first real conversation, a follow-up while pending, and New conversation. Publication verification uses only read-only HTTP asset checks: no automated chat messages, reset requests, or tokens go to production. Turnstile is loaded lazily when the first message requires verification; fetching the homepage alone does not load or render its challenge.
 
 Native AI-Bus visibility remains pending: app title/project/sidebar tools were absent in this runner. Existing receipts were inspected; no receipt was marked applied and no native grouping/history presentation is claimed.

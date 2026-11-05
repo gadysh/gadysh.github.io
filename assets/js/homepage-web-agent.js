@@ -82,6 +82,7 @@ function openChat() {
     dialog.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
   invitation.setAttribute('aria-expanded', 'true');
+  scrollToLatest();
 }
 
 invitation.addEventListener('click', () => {
@@ -107,6 +108,11 @@ dialog.addEventListener('close', () => {
   invitation.focus({ preventScroll: true });
 });
 
+function scrollToLatest() {
+  // Wait for pending status, hidden suggestions and composer sizing to settle.
+  requestAnimationFrame(() => { feed.scrollTop = feed.scrollHeight; });
+}
+
 function addMessage(speaker, label, message) {
   const item = document.createElement('li');
   const name = document.createElement('strong');
@@ -117,7 +123,7 @@ function addMessage(speaker, label, message) {
   body.textContent = message;
   item.append(name, body);
   transcript.append(item);
-  feed.scrollTop = feed.scrollHeight;
+  scrollToLatest();
   return item;
 }
 

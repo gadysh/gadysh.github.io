@@ -256,11 +256,14 @@ html:has(.cube-chat:modal) { overflow: hidden; }
 
 @media (min-width: 768px) {
   .cube-chat:not(:modal) {
-    position: absolute;
+    /* Reserve the header and viewport edges; let the feed fill the console. */
+    position: fixed;
     z-index: 3;
-    inset: auto auto 12px 43%;
-    width: min(29rem, 55%);
-    max-height: min(26rem, calc(100dvh - 5.5rem));
+    inset: 5.5rem auto auto clamp(1rem, 43vw, calc(100vw - 37rem));
+    width: min(36rem, calc(100vw - 2rem));
+    height: min(56rem, calc(100vh - 6.5rem));
+    height: min(56rem, calc(100dvh - 6.5rem));
+    max-height: none;
     margin: 0;
     border-radius: 18px;
   }
@@ -271,10 +274,6 @@ html:has(.cube-chat:modal) { overflow: hidden; }
   }
 
   @keyframes cube-console-enter { from { opacity: 0; transform: translateX(-14px) scale(.975); } }
-}
-
-@media (min-width: 1024px) {
-  .cube-chat:not(:modal) { bottom: 14%; }
 }
 
 .cube-chat-top {
@@ -336,6 +335,7 @@ html:has(.cube-chat:modal) { overflow: hidden; }
 .cube-chat-close:hover { border-color: #619087; background: #163f49; }
 
 .cube-chat-feed {
+  min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: .95rem 1rem;
