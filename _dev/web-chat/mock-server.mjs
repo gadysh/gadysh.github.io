@@ -47,6 +47,7 @@ export async function createMock({ root, port = 0, plan = [], delay = 80 } = {})
       };
       if (commands[data.message]) {
         const [code, error] = commands[data.message];
+        await new Promise(resolve => setTimeout(resolve, delay));
         return json(code, { error }, { 'Retry-After': '3' });
       }
       const session = sessions.has(sid) ? sid : String(++sequence).padStart(43, '0');

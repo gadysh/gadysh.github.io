@@ -176,3 +176,102 @@ test('cannot accept a message into a reset that will clear the queue', async t =
   assert.equal(await resetting, true);
   assert.equal(client.snapshot().resetting, false);
 });
+
+test('new text after failure replaces the failed batch and stale queued text without resetting the conversation', async t => {
+  const { client, mock } = await fixture(t, { plan: [{}, { status: 502, error: 'agent_error' }] });
+  client.enqueue('initial'); await wait(() => !client.busy);
+  const failed = [], queued = [];
+  client.enqueue('failed original', state => failed.push(state));
+  client.enqueue('x'.repeat(1000), state => queued.push(state));
+  await wait(() => !client.busy);
+  assert.equal(client.failure, 'agent_error');
+  assert.equal(client.snapshot().pending, 2);
+  assert.equal(client.enqueue('different question'), null);
+  await wait(() => !client.busy);
+  assert.deepEqual(mock.requests.map(r => r.message), ['initial', 'failed original', 'different question']);
+  assert.equal(mock.requests.at(-1).session, true);
+  assert.equal(failed.at(-1), 'skipped');
+  assert.equal(queued.at(-1), 'skipped');
+  assert.equal(client.failure, null);
+  assert.equal(client.snapshot().pending, 0);
+});
+
+test('cancel pending removes local retries, preserves history callbacks and sends nothing by itself', async t => {
+  const { client, mock } = await fixture(t, { plan: [{ status: 503, error: 'unavailable' }] });
+  const states = [];
+  client.enqueue('failed', state => states.push(['failed', state]));
+  client.enqueue('queued', state => states.push(['queued', state]));
+  await wait(() => !client.busy);
+  assert.equal(client.discardPending(), true);
+  assert.deepEqual(states.slice(-2), [['failed', 'skipped'], ['queued', 'skipped']]);
+  await client.retry();
+  assert.equal(mock.requests.length, 1);
+  assert.equal(client.snapshot().pending, 0);
+  client.enqueue('new'); await wait(() => !client.busy);
+  assert.deepEqual(mock.requests.map(r => r.message), ['failed', 'new']);
+});
+
+test('explicit retry still retries the original failed batch before queued text', async t => {
+  const { client, mock } = await fixture(t, { plan: [{ status: 502, error: 'agent_error' }] });
+  client.enqueue('failed'); client.enqueue('queued'); await wait(() => !client.busy);
+  await client.retry(); await wait(() => !client.busy);
+  assert.deepEqual(mock.requests.map(r => r.message), ['failed', 'failed', 'queued']);
+});
+
+test('new submissions and cancellation cannot bypass Retry-After', async t => {
+  let now = 0;
+  const { client, mock } = await fixture(t, { plan: [{ status: 429, error: 'rate_limited', headers: { 'Retry-After': '17' } }], client: { now: () => now } });
+  client.enqueue('failed'); client.enqueue('queued'); await wait(() => !client.busy);
+  assert.equal(client.enqueue('keep draft'), 'cooldown');
+  assert.equal(client.snapshot().pending, 2);
+  assert.equal(client.discardPending(), true);
+  assert.equal(client.enqueue('keep draft'), 'cooldown');
+  await client.retry();
+  assert.equal(mock.requests.length, 1);
+  assert.equal(client.snapshot().retrySeconds, 17);
+  now = 17000;
+  assert.equal(client.enqueue('new'), null); await wait(() => !client.busy);
+  assert.deepEqual(mock.requests.map(r => r.message), ['failed', 'new']);
+});
+
+test('invalid new submissions do not cancel pending work', async t => {
+  const { client } = await fixture(t, { plan: [{ status: 503, error: 'unavailable' }] });
+  client.enqueue('failed'); client.enqueue('queued'); await wait(() => !client.busy);
+  assert.equal(client.enqueue('  '), 'empty');
+  assert.equal(client.enqueue('x'.repeat(1001)), 'too_long');
+  assert.equal(client.snapshot().pending, 2);
+  assert.equal(client.active[0].message, 'failed');
+});
+
+test('cancellation cannot race an active request or abandon a failed session reset', async t => {
+  const { client } = await fixture(t, { delay: 50 });
+  client.enqueue('in flight');
+  assert.equal(client.discardPending(), false);
+  await wait(() => !client.busy);
+  client.fetcher = async () => new Response(null, { status: 503 });
+  await client.reset();
+  assert.equal(client.discardPending(), false);
+  assert.equal(client.enqueue('keep draft'), 'reset_error');
+});
+
+test('a normal 200 policy refusal is displayed once and does not block later messages', async t => {
+  const refusal = 'הבקשה נחסמה על ידי מדיניות האבטחה. אפשר לשאול שאלה אחרת.';
+  const { client, mock, replies } = await fixture(t, { plan: [{ reply: refusal }], delay: 30 });
+  client.enqueue('original'); client.enqueue('different question');
+  await wait(() => !client.busy);
+  assert.deepEqual(mock.requests.map(r => r.message), ['original', 'different question']);
+  assert.equal(replies[0], refusal);
+  assert.equal(client.failure, null);
+});
+
+test('new text cannot clear session or daily quota failures', async t => {
+  for (const code of ['session_limit', 'budget_exhausted']) {
+    let now = 0;
+    const { client, mock } = await fixture(t, { plan: [{ status: 429, error: code }], client: { now: () => now } });
+    client.enqueue('failed'); await wait(() => !client.busy);
+    client.discardPending(); now = 100000;
+    assert.equal(client.enqueue('keep draft'), code);
+    assert.equal(client.failure, code);
+    assert.equal(mock.requests.length, 1);
+  }
+});

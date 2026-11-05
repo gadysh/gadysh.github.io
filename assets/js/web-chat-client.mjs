@@ -1,4 +1,4 @@
-// One request at a time. Failed batches stay intact until an explicit retry/reset.
+// One request at a time. A new submission after failure replaces unsent work.
 export class WebChatClient {
   constructor({ challenge, fetcher = globalThis.fetch.bind(globalThis), onChange = () => {},
     onReply = () => {}, now = Date.now, timeout = 80000 }) {
@@ -14,6 +14,7 @@ export class WebChatClient {
 
   snapshot() {
     return { busy: this.busy, resetting: this.resetting, failure: this.failure, queued: this.queue.length,
+      pending: this.active.length + this.queue.length,
       retrySeconds: Math.max(0, Math.ceil((this.retryAt - this.now()) / 1000)) };
   }
 
@@ -24,6 +25,12 @@ export class WebChatClient {
     message = message.trim();
     if (!message) return 'empty';
     if (message.length > 1000) return 'too_long';
+    if (this.failure && !this.busy) {
+      if (['session_limit', 'budget_exhausted'].includes(this.failure)) return this.failure;
+      if (this.snapshot().retrySeconds) return 'cooldown';
+      // A deliberate new submission must never replay the failed batch or stale follow-ups.
+      this.discardPending();
+    }
     if ([...this.queue.map(item => item.message), message].join('\n').length > 1000) return 'queue_full';
     this.queue.push({ message, delivery });
     delivery('queued');
@@ -100,6 +107,19 @@ export class WebChatClient {
   retry() {
     if (this.failure === 'reset_error') return this.reset();
     return this.run();
+  }
+
+  discardPending() {
+    if (this.busy || !this.failure || this.failure === 'reset_error') return false;
+    [...this.active, ...this.queue].forEach(item => item.delivery('skipped'));
+    this.active = [];
+    this.queue = [];
+    // Dropping local messages cannot bypass server limits or a Retry-After cooldown.
+    if (!['session_limit', 'budget_exhausted'].includes(this.failure)) {
+      this.failure = this.snapshot().retrySeconds ? 'rate_limited' : null;
+    }
+    this.changed();
+    return true;
   }
 
   async reset() {
