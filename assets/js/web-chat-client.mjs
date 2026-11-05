@@ -1,8 +1,8 @@
-// One request at a time. A new submission after failure replaces unsent work.
+// One submitted message per turn. Completed refusals never block later turns.
 export class WebChatClient {
   constructor({ challenge, fetcher = globalThis.fetch.bind(globalThis), onChange = () => {},
-    onReply = () => {}, now = Date.now, timeout = 80000 }) {
-    Object.assign(this, { challenge, fetcher, onChange, onReply, now, timeout });
+    onReply = () => {}, onError = () => {}, now = Date.now, timeout = 80000 }) {
+    Object.assign(this, { challenge, fetcher, onChange, onReply, onError, now, timeout });
     this.queue = [];
     this.active = [];
     this.busy = false;
@@ -10,6 +10,7 @@ export class WebChatClient {
     this.liveSession = false;
     this.failure = null;
     this.retryAt = 0;
+    this.wakeTimer = null;
   }
 
   snapshot() {
@@ -28,14 +29,13 @@ export class WebChatClient {
     if (this.failure && !this.busy) {
       if (['session_limit', 'budget_exhausted'].includes(this.failure)) return this.failure;
       if (this.snapshot().retrySeconds) return 'cooldown';
-      // A deliberate new submission must never replay the failed batch or stale follow-ups.
-      this.discardPending();
+      this.failure = null;
     }
     if ([...this.queue.map(item => item.message), message].join('\n').length > 1000) return 'queue_full';
     this.queue.push({ message, delivery });
     delivery('queued');
     this.changed();
-    if (!this.busy && !this.failure) void this.run();
+    if (!this.busy) void this.run();
     return null;
   }
 
@@ -54,8 +54,18 @@ export class WebChatClient {
   }
 
   async run() {
-    if (this.busy || this.now() < this.retryAt) return;
-    if (!this.active.length) this.active = this.queue.splice(0);
+    if (this.busy || ['reset_error', 'session_limit', 'budget_exhausted'].includes(this.failure)) return;
+    clearTimeout(this.wakeTimer);
+    this.wakeTimer = null;
+    if (this.now() < this.retryAt) {
+      if (this.queue.length) {
+        this.wakeTimer = setTimeout(() => { void this.run(); }, Math.min(this.retryAt - this.now(), 2147483647));
+        this.wakeTimer.unref?.();
+      }
+      return;
+    }
+    // Preserve message boundaries: one rejected message cannot swallow valid follow-ups.
+    if (!this.active.length && this.queue.length) this.active = [this.queue.shift()];
     if (!this.active.length) return;
     this.busy = true;
     this.failure = null;
@@ -96,30 +106,15 @@ export class WebChatClient {
     } catch (error) {
       this.failure = error.name === 'TimeoutError' || error.name === 'AbortError' ? 'timeout' : error.code || 'error';
       this.active.forEach(item => item.delivery('failed'));
+      this.active = [];
+      // A transport/technical failure gets a separate safe UI response, never an
+      // automatic replay of an ambiguously processed request or a content refusal.
+      this.onError(this.failure);
     } finally {
       this.busy = false;
       this.changed();
     }
-    // Include every line queued during the previous reply in a single next request.
-    if (!this.failure && this.queue.length) void this.run();
-  }
-
-  retry() {
-    if (this.failure === 'reset_error') return this.reset();
-    return this.run();
-  }
-
-  discardPending() {
-    if (this.busy || !this.failure || this.failure === 'reset_error') return false;
-    [...this.active, ...this.queue].forEach(item => item.delivery('skipped'));
-    this.active = [];
-    this.queue = [];
-    // Dropping local messages cannot bypass server limits or a Retry-After cooldown.
-    if (!['session_limit', 'budget_exhausted'].includes(this.failure)) {
-      this.failure = this.snapshot().retrySeconds ? 'rate_limited' : null;
-    }
-    this.changed();
-    return true;
+    if (this.queue.length) void this.run();
   }
 
   async reset() {
@@ -130,6 +125,8 @@ export class WebChatClient {
     try {
       const { response } = await this.post('session/reset');
       if (response.status !== 204) throw new Error('Reset failed');
+      clearTimeout(this.wakeTimer);
+      this.wakeTimer = null;
       this.queue = [];
       this.active = [];
       this.failure = null;
@@ -139,6 +136,7 @@ export class WebChatClient {
       return true;
     } catch {
       this.failure = 'reset_error';
+      this.onError('reset_error');
       return false;
     } finally {
       this.busy = false;

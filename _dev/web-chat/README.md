@@ -1,52 +1,52 @@
-# Website chat → Cloudflare gateway (5 November 2026)
+# Local Web content-refusal candidate — 5 November 2026
 
-Branch: `codex/web-chat-turnstile-2026-11-05`, based on `origin/main` at `2b8725f`.
-This checkout is isolated from the dirty hero/POC checkouts. The Founder authorized publishing this chat and the larger desktop panel in AI-Bus task `task-20261105-083631-enlarge-desktop-chat`.
-The homepage UI and its optional WhatsApp-link include were carried forward from the existing POC. The Founder's subsequent live-site fix request restores the disabled WhatsApp placeholder in the chat and all five scenario heroes, with no number/destination configured.
+Branch: `codex/web-content-refusal-local-2026-11-05`, based on website `origin/main` at `d8beb2f`.
+This candidate is LOCAL ONLY. No push, merge, live rollback, release or deployment is authorized.
+Founder approval of the tested exact version is required before publication. The prior live chat
+branches are preserved unchanged.
 
-## Behavior
+## Customer behavior
 
-- Hebrew RTL and English homepage chat, same-origin `POST /api/external/web/messages`, exact `{"message":"..."}`, `credentials: "same-origin"`. Cookie/session values remain inaccessible to JavaScript.
-- Lazy explicit Managed Turnstile widget. Public production key on public hosts; official passing test site key only on loopback. No query-string override. Tokens are single use, kept in memory and sent only in `X-PowOrg-Turnstile`.
-- First turn gets a token. `403 challenge_required` refreshes it and retries that exact batch once. A repeated requirement or `challenge_failed` pauses for an explicit retry. No automatic retry of network errors or potentially processed messages.
-- Input/send stays available during reply processing. All accepted waiting lines are joined with newlines into one next message after success. Only one request can be in flight, including challenge retry and reset.
-- Both individual messages and the next combined batch are capped at 1,000 UTF-16 characters. A submission exceeding the remaining queue space stays in the input. Existing accepted messages stay queued.
-- Failures retain the failed batch and queued text for an explicit Retry. A valid new submission after failure cancels both the failed batch and stale queued follow-ups, then sends only the new text. Cancellation marks the old bubbles visibly and keeps their text in the transcript. Cancel pending messages also clears local retry work without sending a request or resetting the server conversation. Empty/oversized submissions do not discard anything. In-flight requests and failed resets cannot be discarded.
-- A 429 honors `Retry-After` for retries and new submissions; cancellation cannot bypass it. Session/daily-limit errors keep their specific message and reject new submissions with the draft intact. A successful HTTP 200 policy-refusal reply is displayed normally and does not pause the client. HTTP/transport failures are not classified as guardrail blocks by inspecting reply wording; the supplied screenshots do not identify the actual blocking rule or production response contract.
-- New conversation sends a bodyless reset POST. History/queue are cleared only on 204; draft text stays. Reset is disabled during inference and sends cannot be accepted while reset is pending.
-- Replies preserve line breaks. A small DOM renderer converts Markdown links and bare HTTP(S) URLs to underlined anchors with `target="_self"`. Labels and all other content are literal text, unsafe URL schemes remain plain text, and no model HTML is interpreted. Visitor messages remain plain text.
-- The shared base layout supplies exactly one dialog, stylesheet and module to every page. Desktop/mobile header buttons open the chat on the current page; the homepage cube keeps its opening animation. Closing returns focus to the opener. Narrow headers retain both contact/chat actions; the language choice is available in the menu.
-- Desktop (768px and above): fixed console up to 36rem wide and 56rem tall, bounded by viewport edges and the site header. The middle grid row uses the remaining height with independent scrolling. New messages and reopening scroll to the latest message after layout settles. The mobile bottom-drawer rules are preserved.
+- A confirmed server content refusal is a completed HTTP 200 answer:
+  `{"reply":"התוכן שנשלח נמצא לא תקין","outcome":"content_rejected"}`.
+  The client displays the server reply as an ordinary agent bubble. It does not infer refusal from
+  reply wording or HTTP 403/5xx, replay the refused message, reset the session, or stop later turns.
+- Every submitted message is processed separately and sequentially. Pending messages are no longer
+  joined into one request: a rejected submission cannot swallow a separate valid submission.
+- No Retry or Cancel pending messages controls, queue counters, delivery badges, or recovery
+  instructions are present in the customer UI. The existing New conversation feature is unchanged.
+- Technical/network failures have a separate ordinary error bubble. The affected request is never
+  automatically replayed because its server completion may be uncertain. Other accepted messages
+  remain ordered and are not silently discarded.
+- A Retry-After cooldown delays subsequent accepted messages internally; the rejected rate-limited
+  message is not replayed. Daily/session caps remain enforced. A rejected draft stays in the input.
+- Same-origin POST body remains exactly `{"message":"..."}` with same-origin credentials. Only
+  loopback receives the public Turnstile test key. Public hosts retain the production public key.
+- Single-use challenge handling, plain DOM link rendering with same-tab navigation, shared header
+  launcher, responsive drawer and disabled WhatsApp placeholders remain intact.
 
-## Reproduce
-
-From this checkout:
+## Offline checks and preview
 
 ```powershell
 node --test _dev/web-chat/client.test.mjs _dev/web-chat/turnstile.test.mjs _dev/web-chat/links.test.mjs
 ruby _dev/web-chat/build.rb
+$env:WEB_CHAT_PORT = '4286'
 node _dev/web-chat/mock-server.mjs
 ```
 
-Preview: <http://127.0.0.1:4285/> and <http://127.0.0.1:4285/en/>.
-The build helper uses the existing installed Jekyll 3.10.0 and plugins, without installing gems.
-Deployment uses the existing GitHub Pages/Jekyll flow from `main`; publication is explicitly approved for this release.
-`bundle check` tried resolving a newer github-pages dependency set and reported missing gems; it was not used for the successful local build. No dependency files were changed or packages installed.
+Preview: http://127.0.0.1:4286/ (and /en/). This server is loopback-only and never forwards traffic to
+External, Cloudflare, SQL or a model. Turnstile uses the official passing loopback test key.
+`[blocked]` or `בדיקת חסימת תוכן` simulates the exact typed-refusal contract; follow with any normal
+question. `[links]` shows safe clickable links. `[502]`, `[504]`, `[429]` and other existing mock
+commands simulate technical errors. This preview is not a real guardrail/model verdict.
 
-The mock binds only to `127.0.0.1`, serves `_site`, and never forwards to Cloudflare/External or calls a model. It validates request shape, length, its synthetic cookie and dummy token format. It is **not** a Turnstile verifier and **does not** prove live token verification. Its commands simulate `[429]`, `[409]`, `[503]`, `[404]`, `[502]`, `[504]`, `[limit]`, `[budget]`, `[challenge]`, `[invalid]`; New conversation clears a paused failed batch.
+32 Node checks cover ordered independent messages, first-turn/mid-conversation/repeated typed
+refusals, same cookie continuity, accepted pending follow-ups, no reset or replay, technical error
+separation, one-bound challenge refresh, real cooldown wakeup, caps, draft limits, network loss,
+malformed responses, reset safety, test-key isolation, link safety, and widget lifecycle.
+Jekyll builds using the installed local gems; `_dev` remains excluded from the generated site.
 
-Cloudflare references: [official testing keys](https://developers.cloudflare.com/turnstile/troubleshooting/testing/), [explicit rendering](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/), [configuration/lifecycle](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/).
-
-## Verification and remaining checks
-
-36 Node tests passed: the original 24 client/Turnstile checks, four link-rendering checks, and eight failure-recovery regressions covering new text replacing failed/stale batches, explicit cancellation, explicit retry, cooldown/cap preservation, invalid draft retention, active/reset race protection, and a normal HTTP 200 policy refusal. `[links]` on the loopback mock supplies a reproducible link response; `[502]` simulates a delayed technical failure to test recovery without calling a model or production API.
-
-Jekyll build passed; built Hebrew/English homepages and module assets returned HTTP 200. `_dev` is excluded from generated output. `node --check` and `git diff --check` passed. Plain-text rendering was reviewed in source; an actual DOM/XSS browser check has not been completed.
-
-Claude's earlier browser QA passed Hebrew RTL/opening, combining two queued follow-ups, and friendly 429/Retry-After. During the subsequent Founder fix, the embedded browser became available: local browser QA verified visible Markdown/bare links, `_self` targets and actual same-tab navigation into a scenario, header chat opening on that internal page, disabled WhatsApp, and the 375×812 modal drawer. Rendered desktop bounds passed at 800×600 (576×496), 1366×768 (576×664) and 1920×1080 (576×896); English headers were checked at 320px and 1024px. Static built-page validation found exactly one shared dialog/module/stylesheet and both header launchers on all 21 rendered site pages.
-
-The backend's missing-token, invalid-token and foreign-Origin rejections were verified independently by Claude. After publication, the Founder performs the first real conversation, a follow-up while pending, and New conversation. Publication verification uses only read-only HTTP asset checks: no automated chat messages, reset requests, or tokens go to production. Turnstile is loaded lazily when the first message requires verification; fetching the homepage alone does not load or render its challenge.
-
-Failure-recovery browser QA (local mock only): simulated `[502]`, observed the failed bubble and recovery instructions, then sent a different question and received its response while the old bubble changed to Retry cancelled. Retry controls disappeared after success. At 375×812 all three recovery actions were visible; Cancel pending messages cleared the retry state while preserving the transcript. No live model request or production guardrail experiment was performed; the actual reason for the Founder's block remains unverified.
-
-Native AI-Bus visibility remains pending: app title/project/sidebar tools were absent in this runner. Existing receipts were inspected; no receipt was marked applied and no native grouping/history presentation is claimed.
+The matching External candidate is in the separate local product worktree
+`PowOrg-AI Platform/tmp/web-content-refusal-product`. Its own tests must validate the actual
+orchestrator classification and HTTP response; the UI mock alone cannot prove that mapping or
+production behavior. No production chat, guardrail experiment, or production token is authorized.

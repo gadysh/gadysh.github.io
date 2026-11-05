@@ -1,4 +1,4 @@
-import { WebChatClient } from './web-chat-client.mjs?v=20261105-recovery';
+import { WebChatClient } from './web-chat-client.mjs?v=20261105-content-refusal';
 import { ChatTurnstile } from './web-chat-turnstile.mjs';
 import { appendMessage } from './web-chat-links.mjs';
 
@@ -12,8 +12,6 @@ const feed = dialog.querySelector('.cube-chat-feed');
 const transcript = dialog.querySelector('.cube-chat-messages');
 const suggestions = dialog.querySelector('[data-cube-suggestions]');
 const status = dialog.querySelector('.cube-chat-status');
-const retry = dialog.querySelector('[data-cube-retry]');
-const discard = dialog.querySelector('[data-cube-discard]');
 const reset = dialog.querySelector('[data-cube-reset]');
 const labels = document.documentElement.lang === 'he' ? {
   visitor: 'אתם',
@@ -25,18 +23,14 @@ const labels = document.documentElement.lang === 'he' ? {
   timeout: 'התשובה מתעכבת. אפשר לנסות שוב בעוד רגע.',
   unavailable: 'השיחה אינה זמינה כרגע. אפשר לנסות שוב מאוחר יותר.',
   error: 'לא התקבלה תשובה להודעה הזו.',
-  challenge_required: 'נדרש אימות נוסף. לחצו על ניסיון חוזר כדי להמשיך.',
-  challenge_failed: 'האימות לא הושלם. לחצו על ניסיון חוזר ובצעו את האימות מחדש.',
+  challenge_required: 'לא הצלחנו להשלים את האימות כרגע.',
+  challenge_failed: 'לא הצלחנו להשלים את האימות כרגע.',
   budget_exhausted: 'הצ׳אט הגיע למכסה היומית שלו. אפשר לחזור מאוחר יותר.',
-  agent_error: 'לא הצלחנו להכין תשובה כרגע. ההודעה נשמרה לניסיון חוזר.',
-  reset_error: 'לא הצלחנו לפתוח שיחה חדשה. השיחה נשמרה; אפשר לנסות שוב.',
+  agent_error: 'לא הצלחנו להשיב כרגע.',
+  reset_error: 'לא הצלחנו לפתוח שיחה חדשה כרגע. השיחה הקודמת נשמרה.',
   too_long: 'אפשר לשלוח עד 1,000 תווים בהודעה.',
-  queue_full: 'ההודעות הממתינות יחד מוגבלות ל־1,000 תווים. הטקסט שכתבתם נשמר; שלחו אותו אחרי התשובה.',
-  queued: count => `מנסח תשובה… ${count} הודעות ממתינות ויישלחו יחד אחריה.`,
-  waiting: count => `${count} הודעות נוספות ממתינות. ההודעה שנכשלה נשמרה לניסיון חוזר.`,
-  cooldown: seconds => `נשלחו יותר מדי הודעות. אפשר לנסות שוב בעוד ${seconds} שניות.`,
-  replace_failed: 'אפשר לנסות שוב את ההודעה הקודמת, או לשלוח ניסוח חדש. שליחה חדשה תבטל את ההודעות שלא נשלחו.',
-  delivery: { queued: 'ממתינה לשליחה', sending: 'נשלחת…', failed: 'לא התקבלה תשובה', skipped: 'הניסיון החוזר בוטל' },
+  queue_full: 'אפשר לשלוח הודעה נוספת בעוד רגע. הטקסט שכתבתם נשמר.',
+  cooldown: 'אפשר לשלוח הודעה נוספת בעוד רגע.',
 } : {
   visitor: 'You',
   pending: 'Thinking…',
@@ -47,18 +41,14 @@ const labels = document.documentElement.lang === 'he' ? {
   timeout: 'The reply is taking longer than expected. Try again in a moment.',
   unavailable: 'Chat is temporarily unavailable. Try again later.',
   error: 'No reply was received for this message.',
-  challenge_required: 'Verification is needed. Select Retry to continue.',
-  challenge_failed: 'Verification was not completed. Select Retry and verify again.',
+  challenge_required: 'We couldn’t complete verification right now.',
+  challenge_failed: 'We couldn’t complete verification right now.',
   budget_exhausted: 'Chat has reached its daily limit. Please come back later.',
-  agent_error: 'We couldn’t prepare a reply. Your message is saved for retry.',
-  reset_error: 'We couldn’t start a new conversation. Your conversation is saved; try again.',
+  agent_error: 'We couldn’t reply right now.',
+  reset_error: 'We couldn’t start a new conversation right now. Your previous conversation is preserved.',
   too_long: 'Please use no more than 1,000 characters per message.',
-  queue_full: 'Queued messages are limited to 1,000 characters combined. Your draft is saved; send it after the reply.',
-  queued: count => `Thinking… ${count} messages will be sent together after the reply.`,
-  waiting: count => `${count} more messages are waiting. The failed message is saved for retry.`,
-  cooldown: seconds => `Too many messages. You can retry in ${seconds} seconds.`,
-  replace_failed: 'Retry the previous message or send different text. A new submission cancels messages that were not sent successfully.',
-  delivery: { queued: 'Waiting to send', sending: 'Sending…', failed: 'No reply received', skipped: 'Retry cancelled' },
+  queue_full: 'Please wait a moment before sending another message. Your draft is preserved.',
+  cooldown: 'Please wait a moment before sending another message.',
 };
 
 const narrowLayout = window.matchMedia('(max-width: 767px)');
@@ -154,27 +144,16 @@ input.addEventListener('keydown', (event) => {
 const client = new WebChatClient({
   challenge: new ChatTurnstile(dialog.querySelector('[data-cube-challenge]')),
   onReply: reply => addMessage('agent', 'PowOrg AI', reply),
+  onError: code => addMessage('agent', 'PowOrg AI', labels[code] || labels.error),
   onChange: renderState,
 });
-let cooldownTimer;
 
 function renderState(state) {
-  clearTimeout(cooldownTimer);
-  // Sending stays available during inference; it appends to the next batch.
+  // Sending stays available during inference; later submissions retain their order.
   send.disabled = state.resetting || state.failure === 'reset_error';
   reset.disabled = state.busy;
-  const limited = ['session_limit', 'budget_exhausted'].includes(state.failure);
-  retry.hidden = !state.failure || limited || (!state.pending && state.failure !== 'reset_error');
-  retry.disabled = state.busy || state.retrySeconds > 0;
-  discard.hidden = !state.failure || !state.pending || state.failure === 'reset_error';
-  discard.disabled = state.busy;
-  status.toggleAttribute('data-error', Boolean(state.failure));
-  if (state.failure) {
-    status.textContent = state.failure === 'rate_limited' && state.retrySeconds
-      ? labels.cooldown(state.retrySeconds) : labels[state.failure] || labels.error;
-    if (state.failure !== 'reset_error' && !limited && !state.retrySeconds) status.textContent += ` ${labels.replace_failed}`;
-  } else status.textContent = state.resetting ? labels.resetting : state.busy ? state.queued ? labels.queued(state.queued) : labels.pending : '';
-  if (state.retrySeconds) cooldownTimer = setTimeout(() => renderState(client.snapshot()), 1000);
+  status.removeAttribute('data-error');
+  status.textContent = state.resetting ? labels.resetting : state.busy ? labels.pending : '';
 }
 
 form.addEventListener('submit', (event) => {
@@ -182,21 +161,12 @@ form.addEventListener('submit', (event) => {
   const message = input.value.trim();
   if (!message || send.disabled) return;
   let outgoing;
-  let receipt;
-  const error = client.enqueue(message, delivery => {
-    if (!outgoing) {
-      outgoing = addMessage('visitor', labels.visitor, message);
-      receipt = document.createElement('small');
-      receipt.className = 'cube-chat-delivery';
-      outgoing.append(receipt);
-    }
-    outgoing.dataset.delivery = delivery;
-    receipt.textContent = labels.delivery[delivery] || '';
-    receipt.hidden = !receipt.textContent;
+  const error = client.enqueue(message, () => {
+    if (!outgoing) outgoing = addMessage('visitor', labels.visitor, message);
   });
   if (error) {
     status.setAttribute('data-error', '');
-    status.textContent = error === 'cooldown' ? labels.cooldown(client.snapshot().retrySeconds) : labels[error] || labels.error;
+    status.textContent = labels[error] || labels.error;
     return;
   }
   input.value = '';
@@ -204,11 +174,6 @@ form.addEventListener('submit', (event) => {
   input.focus({ preventScroll: true });
 });
 
-retry.addEventListener('click', () => { void client.retry(); });
-discard.addEventListener('click', () => {
-  client.discardPending();
-  input.focus({ preventScroll: true });
-});
 reset.addEventListener('click', async () => {
   if (await client.reset()) {
     transcript.replaceChildren();

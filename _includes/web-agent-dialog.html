@@ -20,8 +20,6 @@
     <div class="cube-chat-challenge" data-cube-challenge hidden></div>
     <div class="cube-chat-actions">
       <button type="button" data-cube-reset>{% if include.lang == "he" %}שיחה חדשה{% else %}New conversation{% endif %}</button>
-      <button type="button" data-cube-retry hidden>{% if include.lang == "he" %}ניסיון חוזר{% else %}Retry{% endif %}</button>
-      <button type="button" data-cube-discard hidden>{% if include.lang == "he" %}בטל הודעות ממתינות{% else %}Cancel pending messages{% endif %}</button>
     </div>
     <form class="cube-chat-form">
       <div class="cube-chat-compose-bar">
@@ -38,6 +36,6 @@
         </button>
       </div>
     </form>
-    <p id="cube-chat-hint" class="cube-chat-hint">{% if include.lang == "he" %}עד 1,000 תווים. אפשר לשלוח המשך בזמן ההמתנה; ההודעות יישלחו יחד אחרי התשובה.{% else %}Up to 1,000 characters. Messages sent while waiting will be combined after the reply.{% endif %}</p>
+    <p id="cube-chat-hint" class="cube-chat-hint">{% if include.lang == "he" %}עד 1,000 תווים.{% else %}Up to 1,000 characters.{% endif %}</p>
   </div>
 </dialog>

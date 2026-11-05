@@ -56,7 +56,8 @@ export async function createMock({ root, port = 0, plan = [], delay = 80 } = {})
       await new Promise(resolve => setTimeout(resolve, action?.delay ?? delay));
       busy.delete(session);
       const linkExample = 'אפשר להתרשם כאן:\n[מסמכים ותהליכים בין מערכות](/scenarios/documents-across-systems/)\n[ניהול ידע וסיוע לעובדים](https://poworg.com/solutions/knowledge-and-teams/)\nוגם https://poworg.com/contact/';
-      json(200, { reply: action?.reply ?? (data.message === '[links]' ? linkExample : `תשובת דמה מקומית:\n${data.message}`) }, {
+      const outcome = action?.outcome || (['[blocked]', 'בדיקת חסימת תוכן'].includes(data.message) ? 'content_rejected' : null);
+      json(200, { reply: action?.reply ?? (outcome === 'content_rejected' ? 'התוכן שנשלח נמצא לא תקין' : data.message === '[links]' ? linkExample : `תשובת דמה מקומית:\n${data.message}`), ...(outcome ? { outcome } : {}) }, {
         'Set-Cookie': `pow_web_sid=${session}; HttpOnly; SameSite=Strict; Path=/api/external/web`,
       });
       return;
